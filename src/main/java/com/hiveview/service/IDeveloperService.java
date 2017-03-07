@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by hxq on 2017/3/2.
  */
-public interface IDeveloperService {
+public  interface IDeveloperService {
 
     public List<AppDeveloper> queryMeg();
 }

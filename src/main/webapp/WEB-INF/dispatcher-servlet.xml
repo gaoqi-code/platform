@@ -113,4 +113,10 @@
 	<!-- ===================================================== -->
 	<!-- ViewResolver For FreeMarkerConfigurer  end -->
 	<!-- ===================================================== -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.hiveview.interceptor.CheckLoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

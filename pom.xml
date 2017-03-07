@@ -162,6 +162,7 @@
 			<artifactId>xstream</artifactId>
 			<version>1.4.4</version>
 		</dependency>
+		<!--reids jar-->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
@@ -278,17 +279,20 @@
 			<artifactId>guava</artifactId>
 			<version>13.0.1</version>
 		</dependency>
+
+
 		<!-- jsp Template jar -->
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>2.3.19</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tuckey</groupId>
-			<artifactId>urlrewritefilter</artifactId>
-			<version>4.0.3</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.freemarker</groupId>-->
+			<!--<artifactId>freemarker</artifactId>-->
+			<!--<version>2.3.19</version>-->
+		<!--</dependency>-->
+		<!--url重写-->
+		<!--<dependency>-->
+			<!--<groupId>org.tuckey</groupId>-->
+			<!--<artifactId>urlrewritefilter</artifactId>-->
+			<!--<version>4.0.3</version>-->
+		<!--</dependency>-->
 	</dependencies>
 
 <!-- 	<distributionManagement> -->
