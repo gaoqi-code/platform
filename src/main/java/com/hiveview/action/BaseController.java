@@ -68,7 +68,7 @@ public class BaseController {
         Long memberId = null;
         if(member != null) {
 //            memberId = assertion.getPrincipal().getAttributes().get("memberId");
-            memberId = member.getUserId();
+            memberId = member.getId();
         }
 
         return memberId != null?memberId:-1L;

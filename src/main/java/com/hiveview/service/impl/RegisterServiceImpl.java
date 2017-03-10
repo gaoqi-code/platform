@@ -7,6 +7,8 @@ import com.hiveview.util.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Created by hxq on 2017/3/2.
  */
@@ -31,14 +33,11 @@ public  class RegisterServiceImpl implements IRegisterService{
 
     @Override
     public boolean verifyPW(long memberId, String oldPW) {
-        boolean flag= true;
         Member member = new Member();
-        member.setUserId(memberId);
-
-
-//        int count= memberDao.get(memberId, oldPW);
-
-        return flag;
+        member.setId(memberId);
+        member.setPassword(oldPW);
+        Member mb= memberDao.get(member);
+        return Optional.ofNullable(mb).isPresent();
     }
 
 }

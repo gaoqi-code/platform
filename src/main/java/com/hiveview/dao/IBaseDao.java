@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BaseDao<T> {
+public interface IBaseDao<T> {
 
 	public Integer save(T t);
 

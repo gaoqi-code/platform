@@ -3,7 +3,7 @@ package com.hiveview.action;
 import com.hiveview.entity.Data;
 import com.hiveview.entity.Msg;
 import com.hiveview.entity.Member;
-import com.hiveview.service.SysUserService;
+import com.hiveview.service.IMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class LoginAction {
 
 	@Autowired
-	SysUserService sysUserService;
+    IMemberService memberService;
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
@@ -40,11 +40,11 @@ public class LoginAction {
 	@RequestMapping(value = "/login")
 	public String login(HttpServletRequest req,Member member) {
 		try {
-			if(null== member ||null== member.getUserMail()||null== member.getUserPwd()){
+			if(null== member ||null== member.getPassword()){
 				req.setAttribute("loginInfo","");
 				return "login";
 			}
-			Member currentUser = sysUserService.getLoginInfo(member);
+			Member currentUser = memberService.getMemberInfo(member);
 			if(null==currentUser){
 				req.setAttribute("loginInfo","用户名和密码错误！");
 				return "login";
@@ -52,12 +52,10 @@ public class LoginAction {
 				HttpSession session = req.getSession();
 				session.setAttribute("currentUser", currentUser);
 				String sessionId = session.getId();
-				
 				//登录用户的信息放到application
 				ServletContext application = session.getServletContext();
-				Msg.getInstance().put(currentUser.getUserId().toString(),sessionId);
+				Msg.getInstance().put(currentUser.getId().toString(),sessionId);
 				application.setAttribute("sessionIdMap",Msg.sessionIdMap);
-//				req.setAttribute("leftMeau",sysAuthService.getLeftAuth(currentUser.getRoleId()));
 				return "index";
 			}
 		} catch (Exception e) {

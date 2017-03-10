@@ -6,113 +6,187 @@ import java.util.Date;
 public class Member {
 
 //	`sys_user_id` bigint(64) NOT NULL AUTO_INCREMENT,
-    private Long userId;
+    private Long id;
     
 //	`user_name` varchar(45) DEFAULT NULL COMMENT '用户名',
-    private String userName;
+    private String name;
     
 //	`user_pwd` varchar(65) DEFAULT NULL COMMENT '密码',
-    private String userPwd;
-    
-//	`user_mail` varchar(45) DEFAULT NULL COMMENT '账号（邮箱）',
-    private String userMail;
-    
-//	`role_id` bigint(64) DEFAULT NULL COMMENT '角色id',
-    private Integer roleId;
+    private String password;
     
 //	`created_time` datetime DEFAULT NULL COMMENT '创建时间',
-    private Date createdTime;
-    
-//	`created_by` bigint(64) DEFAULT '0' COMMENT '创建人id',
-    private Integer createdBy;
+    private Date addTime;
     
 //	`updated_time` datetime DEFAULT NULL COMMENT '更新时间',
-    private Date updatedTime;
+    private Date updateTime;
     
-//	`updated_by` bigint(64) DEFAULT '0' COMMENT '更新人id',
-    private Integer updatedBy;
-    
-//	`is_effective` bigint(1) DEFAULT '1' COMMENT '0:无效    1：有效',
-    private Integer isEffective;
+	private String headPortrait;
 
-	public Long getUserId() {
-		return userId;
+	private String sex;
+
+	private Integer level;
+
+	private Date workTime;
+
+	private String description;
+
+	private String mobile;
+
+	private String qq;
+
+	private Integer checkStatus;
+
+	private Integer status;
+
+	private Integer realNameAuthentication;
+
+	private Long companyId;
+
+	private Integer type;
+
+	private String personalProfile;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUserPwd() {
-		return userPwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getUserMail() {
-		return userMail;
+	public Date getAddTime() {
+		return addTime;
 	}
 
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
 	}
 
-	public Integer getRoleId() {
-		return roleId;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 
-	public Date getCreatedTime() {
-		return createdTime;
+	public String getHeadPortrait() {
+		return headPortrait;
 	}
 
-	public void setCreatedTime(Date createdTime) {
-		this.createdTime = createdTime;
+	public void setHeadPortrait(String headPortrait) {
+		this.headPortrait = headPortrait;
 	}
 
-	public Integer getCreatedBy() {
-		return createdBy;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
-	public Date getUpdatedTime() {
-		return updatedTime;
+	public Integer getLevel() {
+		return level;
 	}
 
-	public void setUpdatedTime(Date updatedTime) {
-		this.updatedTime = updatedTime;
+	public void setLevel(Integer level) {
+		this.level = level;
 	}
 
-	public Integer getUpdatedBy() {
-		return updatedBy;
+	public Date getWorkTime() {
+		return workTime;
 	}
 
-	public void setUpdatedBy(Integer updatedBy) {
-		this.updatedBy = updatedBy;
+	public void setWorkTime(Date workTime) {
+		this.workTime = workTime;
 	}
 
-	public Integer getIsEffective() {
-		return isEffective;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setIsEffective(Integer isEffective) {
-		this.isEffective = isEffective;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-    
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+
+	public Integer getCheckStatus() {
+		return checkStatus;
+	}
+
+	public void setCheckStatus(Integer checkStatus) {
+		this.checkStatus = checkStatus;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getRealNameAuthentication() {
+		return realNameAuthentication;
+	}
+
+	public void setRealNameAuthentication(Integer realNameAuthentication) {
+		this.realNameAuthentication = realNameAuthentication;
+	}
+
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public String getPersonalProfile() {
+		return personalProfile;
+	}
+
+	public void setPersonalProfile(String personalProfile) {
+		this.personalProfile = personalProfile;
+	}
 }

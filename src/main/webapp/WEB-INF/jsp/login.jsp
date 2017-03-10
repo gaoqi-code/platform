@@ -53,7 +53,7 @@ function locationCenter(){
 <td class="tdH"><span class="fontCss_login">用户名：</span></td><td><input id="userMail" type="text" class="inputCss" name="userMail" value=""></td>
 </tr>
 <tr>
-<td class="tdH"><span class="fontCss_login">密　码：</span></td><td><input id="userPwd" type="password" class="inputCss" name="userPwd" value=""></td>
+<td class="tdH"><span class="fontCss_login">密　码：</span></td><td><input id="password" type="password" class="inputCss" name="password" value=""></td>
 </tr>
 <tr>
 <td class="tdH" colspan="2"><button id="submit_login" class="submit_reset" type="button">登录</button>　<button id="reset_login" class="submit_reset" type="button">重填</button></td>

@@ -1,2 +1,1 @@
-# platform
-66888asd张三四
+使用maven的  mvn mybatis-generator:generate 命令生成逆向工程文件

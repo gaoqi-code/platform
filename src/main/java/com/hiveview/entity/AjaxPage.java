@@ -1,6 +1,5 @@
 package com.hiveview.entity;
 
-import com.hiveview.entity.Pagin;
 
 @SuppressWarnings("rawtypes")
 public class AjaxPage extends Pagin {

@@ -1,5 +1,7 @@
 package com.hiveview.entity;
 
+import com.google.common.collect.Maps;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,9 +15,9 @@ public class Msg {
 	public static Map<String, String> sessionIdMap = null;
 	
 	
-	public static Map<String, String> getInstance(){
+	public synchronized static Map<String, String> getInstance(){
 		if(sessionIdMap==null){
-			sessionIdMap = new HashMap<String, String>();
+			sessionIdMap = Maps.newHashMap();
 		}	
 		return sessionIdMap;
 	}

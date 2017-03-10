@@ -1,6 +1,5 @@
 package com.hiveview.interceptor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,8 +21,12 @@ public class CheckLoginInterceptor implements HandlerInterceptor{
 			//boolean s=request.getServletPath().lastIndexOf(".josn");
 //			System.out.println(request.getServletPath());
 			//http://localhost:8080/data_display/sysAuth/getLeftAuth.json
+
+
+			if(true)
+				return true;
 			if(request.getServletPath().startsWith(LoginUrl))
-		        return true;
+				return true;
 
 			if(request.getServletPath().startsWith(UploadUrl))
 				return true;  
