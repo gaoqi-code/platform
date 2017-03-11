@@ -32,7 +32,7 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">我的产品</p>
+            <p class="layui-elem-quote">会员中心首页推荐信息</p>
             <div class="layui-form">
                 <table class="layui-table" lay-skin="line">
                     <colgroup>

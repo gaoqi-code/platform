@@ -6,13 +6,13 @@
         <c:when test="${nav eq 'center'}"><li class="current_c"></c:when>
         <c:otherwise><li></c:otherwise>
         </c:choose>
-            <a href="member/myshop.html">个人中心</a>
+            <a href="member/index.html">个人中心</a>
         </li>
         <c:choose>
             <c:when test="${nav eq 'myshop'}"><li class="current_c"></c:when>
             <c:otherwise><li></c:otherwise>
         </c:choose>
-            <a href="member/index.html">我的店铺</a>
+            <a href="member/myshop.html">我的店铺</a>
         </li>
         <%--<li><a href="#" class="pl60 pr60">会员信息</a></li>--%>
         <%--<li><a href="#" class="pl60 pr60">服务</a></li>--%>
