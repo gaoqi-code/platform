@@ -64,8 +64,8 @@
          <property name="maxInMemorySize">
              <value>4096</value>
          </property>
+		<property name="defaultEncoding" value="utf-8"></property>
     </bean>
-
 
 
 	<!-- ===================================================== -->
@@ -113,4 +113,11 @@
 	<!-- ===================================================== -->
 	<!-- ViewResolver For FreeMarkerConfigurer  end -->
 	<!-- ===================================================== -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.hiveview.interceptor.CheckLoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

@@ -1,0 +1,464 @@
+package com.hiveview.comm;
+
+import com.google.common.collect.Maps;
+import com.hiveview.entity.Data;
+import com.hiveview.util.Constants;
+import com.hiveview.util.ProperManager;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+@Controller
+@RequestMapping("/fileUpload")
+public class FileUploadAction {
+	Logger logger = Logger.getLogger(FileUploadAction.class);
+
+	@ResponseBody
+	@RequestMapping(value = "/upload/{propKey}")
+	public Map<String,Object> upload(HttpServletRequest request,
+									 HttpServletResponse response, @PathVariable("propKey") String propKey, Integer ruleType,
+									 Integer visitWay) throws Exception {
+
+		int fileType = 1;// 标识文件类型
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		// String basePath =
+		// request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();//访问路径：http://localhost:8080
+//		String basePath = request.getScheme() + "://" + request.getServerName();// 访问路径：http://localhost
+		// String localPath =
+		// request.getSession().getServletContext().getRealPath("upload");//物理路径
+
+		String extName = "";// 扩展名
+		String newFileName = "";// 新文件名
+
+		Iterator<String> iter = multipartRequest.getFileNames();
+
+		// 创建目录 -->若物理路径不存在，则创建物理路径
+//		String propPath = getPathForProperties(propKey);
+		String propPath = "D:\\asd";
+		String realPath = mkdir(propPath, 2);
+		logger.info("+++++++++++++++++创建目录" + realPath + "+++++++++++++++++");
+		String fileName = "";
+		String filePath = "";
+		while (iter.hasNext()) {
+			MultipartFile file = multipartRequest.getFile(iter.next());
+			fileName = file.getOriginalFilename();
+
+			fileType = getFileType(fileName);
+			if (fileType == 4) {
+				// propKey = "subtitlePath";
+			}
+
+			if (fileName.lastIndexOf(".") > -1) {
+				extName = fileName.substring(fileName.lastIndexOf("."));
+				newFileName = System.currentTimeMillis() + extName;
+
+				File localFile = null;
+//				localFile = new File(realPath + "/" + newFileName);
+				filePath = realPath + "\\" + newFileName;
+				localFile = new File(filePath);
+				file.transferTo(localFile);
+			}
+		}
+//		response.setContentType("application/json;charset=UTF-8");
+//		response.setCharacterEncoding("UTF-8");
+//		response.setHeader("Pragma", "No-cache");
+//		response.setHeader("Cache-Control", "no-cache");
+//		response.setDateHeader("Expires", 0);
+//		final PrintWriter out = response.getWriter();
+//		out.print(java.net.URLDecoder.decode(
+//				getVisitPath(propPath, visitWay, basePath, realPath,
+//						newFileName), "utf-8"));
+//		out.flush();
+		HashMap<String, Object> result = Maps.newHashMap();
+		result.put("path", filePath);
+		return result;
+	}
+	
+	@RequestMapping(value = "/uploadTemp")
+	public String upload(HttpServletRequest request,HttpServletResponse response, String propKey,String module, Integer ruleType,Integer visitWay) throws Exception {
+
+		int fileType = 1;// 标识文件类型
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		// String basePath =
+		// request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();//访问路径：http://localhost:8080
+		String basePath = request.getScheme() + "://" + request.getServerName();// 访问路径：http://localhost
+		// String localPath =
+		// request.getSession().getServletContext().getRealPath("upload");//物理路径
+
+		String extName = "";// 扩展名
+		String newFileName = "";// 新文件名
+
+		Iterator<String> iter = multipartRequest.getFileNames();
+
+		// 创建目录 -->若物理路径不存在，则创建物理路径
+		String propPath = getPathForProperties(propKey)+"/"+module;
+		String realPath = mkdir(propPath, 2);
+		logger.info("+++++++++++++++++创建目录" + realPath + "+++++++++++++++++");
+		String fileName = "";
+		while (iter.hasNext()) {
+			MultipartFile file = multipartRequest.getFile(iter.next());
+			fileName = file.getOriginalFilename();
+
+			fileType = getFileType(fileName);
+			if (fileType == 4) {
+				// propKey = "subtitlePath";
+			}
+
+			if (fileName.lastIndexOf(".") > -1) {
+				extName = fileName.substring(fileName.lastIndexOf("."));
+				newFileName = System.currentTimeMillis() + extName;
+
+				File localFile = null;
+				localFile = new File(realPath + "/" + newFileName);
+				file.transferTo(localFile);
+			}
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+		final PrintWriter out = response.getWriter();
+		out.print(java.net.URLDecoder.decode(getVisitPath(propPath, visitWay, basePath, realPath,newFileName), "utf-8"));
+		out.flush();
+		return null;
+	}
+
+	@RequestMapping(value = "/uploadSuffix")
+	public String uploadSuffix(HttpServletRequest request,
+			HttpServletResponse response, String propKey, Integer ruleType,
+			String suffix) throws Exception {
+
+		int fileType = 1;// 标识文件类型
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		// String basePath =
+		// request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort();//访问路径：http://localhost:8080
+		String basePath = request.getScheme()+"://" + request.getServerName();// 访问路径：http://localhost
+		// String localPath =
+		// request.getSession().getServletContext().getRealPath("upload");//物理路径
+
+		String extName = "";// 扩展名
+		String newFileName = "";// 新文件名
+
+		Iterator<String> iter = multipartRequest.getFileNames();
+
+		// 创建目录 -->若物理路径不存在，则创建物理路径
+		String propPath = getPathForProperties(propKey);
+		String realPath = mkdir(propPath, 2);
+		logger.info("+++++++++++++++++创建目录" + realPath + "+++++++++++++++++");
+		String fileName = "";
+		while (iter.hasNext()) {
+			MultipartFile file = multipartRequest.getFile(iter.next());
+			fileName = file.getOriginalFilename();
+
+			fileType = getFileType(fileName);
+			if (fileType == 4) {
+				// propKey = "subtitlePath";
+			}
+
+			if (fileName.lastIndexOf(".") > -1) {
+				extName = fileName.substring(fileName.lastIndexOf("."));
+				newFileName = System.currentTimeMillis() + extName;
+
+				File localFile = null;
+				localFile = new File(realPath + "/"
+						+ System.currentTimeMillis() + suffix + extName);
+				file.transferTo(localFile);
+			}
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);
+		final PrintWriter out = response.getWriter();
+		out.print(java.net.URLDecoder.decode(
+				getVisitPath(propPath, basePath, realPath, newFileName),
+				"utf-8"));
+		out.flush();
+		return null;
+	}
+
+	/**
+	 * 删除无效的文件
+	 * 
+	 * @param request
+	 * @param response
+	 * @param fileUrl
+	 *            要删除的文件URL http://localhost/tvimg/focus/20141/1388990051456.jpg
+	 * @param propKey
+	 *            存放目录 /home/nginx/upload/tvimg/focus
+	 * @param ruleType
+	 * @param visitWay
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/delete")
+	public Data delete(HttpServletRequest request,
+					   HttpServletResponse response, String fileUrl, String propKey,
+					   Integer ruleType, Integer visitWay) throws Exception {
+		// 获取文件的存放目录
+		String propPath = getPathForProperties(propKey);
+		// 返回最长公共目录 /tvimg/focus
+		String commonStr = getLCString(fileUrl.toCharArray(),
+				propPath.toCharArray());
+		// 获取文件存放的真实目录
+		String realPath = propPath + fileUrl.split(commonStr)[1];
+		File localFile = null;
+		localFile = new File(realPath);
+		if (localFile.isFile() && localFile.exists()) {
+			localFile.delete();
+		}
+		return new Data(1, "");
+	}
+
+	/**
+	 * 确定保存，将临时目录下的文件移动到正确的目录下，并返回正确的路径
+	 * 
+	 * @param request
+	 * @param response
+	 * @param fileUrl
+	 * @param propKey
+	 * @param ruleType
+	 * @param visitWay
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/saveFile")
+	public Data saveFile(HttpServletRequest request,
+			HttpServletResponse response, String fileUrl, String propKey,
+			Integer ruleType, Integer visitWay) throws Exception {
+		// 获取临时文件的存放目录
+		String tempPath = getPathForProperties("tempPath");
+		// 正确的文件路径
+		String propPath = getPathForProperties(propKey);
+		// 最长公共目录 /tvimg/focus
+		String commonStr = getLCString(fileUrl.toCharArray(),
+				tempPath.toCharArray());
+		String extPath = fileUrl.split(commonStr)[1];
+		String realPath = mkdir(propPath, 2);
+		// System.currentTimeMillis() + extName;
+		String extName = extPath.substring(extPath.lastIndexOf("."));
+		File tempFile = new File(tempPath + extPath);
+		String newFileName = System.currentTimeMillis() + extName;
+		File destFile = new File(realPath + "/" + newFileName);
+		tempFile.renameTo(destFile);
+		String basePath = request.getScheme() + "://" + request.getServerName();
+		String result = java.net.URLDecoder.decode(
+				getVisitPath(propPath, visitWay, basePath, realPath,
+						newFileName), "UTF-8");
+		Data data = new Data();
+		data.setCode(1);
+		data.setObj(result);
+		return data;
+	}
+	
+	@RequestMapping(value = "/sendStoreServer")
+	public Data sendStoreServer(String imgName, String propKey) throws Exception {
+		// 正确的文件路径
+		String[] arg = imgName.split("/");
+		int fileType = getFileType(arg[1]);
+		String propStr=getPathForProperties(propKey);
+		String module;
+		if(fileType==1){
+			module = propStr.substring(propStr.lastIndexOf("tvimg")+5);
+		}else
+			module = propStr.substring(propStr.lastIndexOf("tvapk")+5);
+		String commondHeadFile = "/usr/bin/rsync -avP --password-file=/etc/rsyncd.psw ";
+		//远程服务器
+		String imgServer=getPathForProperties("imagesServer");
+		String appServer=getPathForProperties("appsServer");
+		
+		Data data = new Data();
+		try {
+			data.setCode(1);
+			//2.同步文件
+			StringBuffer fileAbsolutePath = new StringBuffer(getPathForProperties("tempPath"));
+			fileAbsolutePath.append("/").append(imgName);//获得本地文件路径
+			StringBuffer synchronizationFileCommond = new StringBuffer(commondHeadFile);
+			synchronizationFileCommond.append(fileAbsolutePath.toString());
+			if(fileType==1){
+				synchronizationFileCommond.append(" root@").append(imgServer).append("::dataSource").append("/tvimg");
+				data.setMsg(getVisitPath(propStr,"http://"+imgServer,propStr+arg[0],arg[1]));
+			}else if(fileType==3){
+				synchronizationFileCommond.append(" root@").append(appServer).append("::dataSource").append("/tvapk");
+				data.setMsg(getVisitPath(propStr,"http://"+appServer,propStr+arg[0],arg[1]));
+			}
+			synchronizationFileCommond.append(module);//精确到模块
+			synchronizationFileCommond.append("/").append(arg[0]).append("/");//精确到日期[201402]
+			logger.info("==========>>>开始执行同步文件命令：" + synchronizationFileCommond.toString());
+//			RsyncUtils.rsyncExec(synchronizationFileCommond.toString());
+		} catch (Exception e) {
+			data.setCode(0);
+			data.setMsg("");
+			e.printStackTrace();
+		}
+		return data;
+	} 
+
+	
+	public static void main(String[] args) {
+//		FileUploadAction f = new FileUploadAction();
+		String propStr = "/home/nginx/upload/tvimg/appIcon";
+		System.out.println(propStr.substring(propStr.lastIndexOf("tvimg")+5));
+	}
+	/**
+	 * 获取str1和str2的最长公共串
+	 * 
+	 * @param str1
+	 * @param str2
+	 * @return
+	 */
+	private String getLCString(char[] str1, char[] str2) {
+		int i, j;
+		int len1, len2;
+		len1 = str1.length;
+		len2 = str2.length;
+		int maxLen = len1 > len2 ? len1 : len2;
+		int[] max = new int[maxLen];
+		int[] maxIndex = new int[maxLen];
+		int[] c = new int[maxLen];
+
+		for (i = 0; i < len2; i++) {
+			for (j = len1 - 1; j >= 0; j--) {
+				if (str2[i] == str1[j]) {
+					if ((i == 0) || (j == 0))
+						c[j] = 1;
+					else
+						c[j] = c[j - 1] + 1;
+				} else {
+					c[j] = 0;
+				}
+
+				if (c[j] > max[0]) { // 如果是大于那暂时只有一个是最长的,而且要把后面的清0;
+					max[0] = c[j];
+					maxIndex[0] = j;
+
+					for (int k = 1; k < maxLen; k++) {
+						max[k] = 0;
+						maxIndex[k] = 0;
+					}
+				} else if (c[j] == max[0]) { // 有多个是相同长度的子串
+					for (int k = 1; k < maxLen; k++) {
+						if (max[k] == 0) {
+							max[k] = c[j];
+							maxIndex[k] = j;
+							break; // 在后面加一个就要退出循环了
+						}
+
+					}
+				}
+			}
+		}
+		String returnStr = "";
+		for (j = 0; j < maxLen; j++) {
+			if (max[j] > 0) {
+				for (i = maxIndex[j] - max[j] + 1; i <= maxIndex[j]; i++) {
+					returnStr += String.valueOf(str1[i]);
+				}
+			}
+		}
+		return returnStr;
+	}
+
+	// 获得文件后缀名
+	private String getFileSuffixName(String fileName) {
+		return fileName.substring(fileName.lastIndexOf(".") + 1,
+				fileName.length());
+	}
+
+	// 获得文件类型
+	private int getFileType(String fileName) {
+		String suffix = getFileSuffixName(fileName).toLowerCase();
+		if (suffix.equals("jpg") || suffix.equals("png")
+				|| suffix.equals("gif") || suffix.equals("ico")
+				|| suffix.equals("bmp")) {
+			return 1;
+		} else if (suffix.equals("txt") || suffix.equals("csv")) {
+			return 2;
+		} else if (suffix.equals("apk")) {
+			return 3;
+		} else if (suffix.equals("mp4") || suffix.equals("m3u8")
+				|| suffix.equals("3gp")) {
+			return 5;
+		} else {
+			return 4;// 字幕
+		}
+	}
+
+	// 创建目录
+	private String mkdir(String path, Integer flag) {
+		String realPath = path + getYMD(flag);
+		File saveFile = new File(realPath);
+		if (!saveFile.exists() && !saveFile.isDirectory()) {
+			saveFile.mkdirs();
+		}
+		return realPath;
+	}
+//	private String mkdir(String path) {
+//		File saveFile = new File(path);
+//		if (!saveFile.exists() && !saveFile.isDirectory()) {
+//			saveFile.mkdirs();
+//		}
+//		return path;
+//	}
+
+	// 生成时间(年月日)
+	private static String getYMD(Integer flag) {
+		Calendar cal = Calendar.getInstance();// 使用日历类
+		int year = cal.get(Calendar.YEAR);// 得到年
+		int month = cal.get(Calendar.MONTH) + 1;// 得到月，因为从0开始的，所以要加1
+		int day = cal.get(Calendar.DAY_OF_MONTH);// 得到天
+		StringBuffer ymd = new StringBuffer("/");
+		switch (flag) {
+		case 1:
+			return ymd.append(year).append(month).append(day).toString();
+		default:
+			return ymd.append(year).append(month).toString();
+		}
+	}
+
+	private String getVisitPath(String propPath, Integer visitWay,
+			String basePath, String realPath, String newFileName) {
+		StringBuilder configPath = null;
+		if (null == visitWay) {
+			return getVisitPath(propPath, basePath, realPath, newFileName);
+		} else {
+			configPath = new StringBuilder(realPath).append("/").append(
+					newFileName);
+		}
+		logger.info("================返回到页面上的文件路径:" + configPath.toString());
+		return configPath.toString();
+	}
+
+	private String getVisitPath(String propPath, String basePath,
+			String realPath, String newFileName) {
+		StringBuilder configPath = null;
+		String visitPath = realPath.substring(
+				realPath.lastIndexOf(Constants.UPLOAD) + 6, realPath.length());
+		configPath = new StringBuilder(basePath).append(visitPath).append("/")
+				.append(newFileName);
+		logger.info("================返回到页面上的文件路径:" + configPath.toString());
+		return configPath.toString();
+	}
+
+	//
+	private String getPathForProperties(String key) throws IOException {
+		return ProperManager.getString(key);
+	}
+}

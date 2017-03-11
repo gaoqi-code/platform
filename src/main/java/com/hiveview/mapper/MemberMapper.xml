@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hiveview.dao.IMemberDao" >
+  <resultMap id="BaseResultMap" type="com.hiveview.entity.Member" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="head_portrait" property="headPortrait" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="work_time" property="workTime" jdbcType="TIMESTAMP" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="check_status" property="checkStatus" jdbcType="TINYINT" />
+    <result column="add_time" property="addTime" jdbcType="DATE" />
+    <result column="update_time" property="updateTime" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="real_name_authentication" property="realNameAuthentication" jdbcType="TINYINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hiveview.entity.Member" extends="BaseResultMap" >
+    <result column="personal_profile" property="personalProfile" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, head_portrait, sex, level, work_time, password, description, mobile, qq, 
+    check_status, add_time, update_time, status, real_name_authentication, company_id, 
+    type
+  </sql>
+  <sql id="Blob_Column_List" >
+    personal_profile
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from j_member
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from j_member
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hiveview.entity.Member" >
+    insert into j_member ( name, head_portrait,
+      sex, level, work_time, 
+      password, description, mobile, 
+      qq, check_status, add_time, 
+      update_time, status, real_name_authentication, 
+      company_id, type, personal_profile
+      )
+    values ( #{name,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR},
+      #{sex,jdbcType=CHAR}, #{level,jdbcType=INTEGER}, #{workTime,jdbcType=TIMESTAMP}, 
+      #{password,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{checkStatus,jdbcType=TINYINT}, #{addTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE}, #{status,jdbcType=TINYINT}, #{realNameAuthentication,jdbcType=TINYINT}, 
+      #{companyId,jdbcType=BIGINT}, #{type,jdbcType=TINYINT}, #{personalProfile,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hiveview.entity.Member" >
+    insert into j_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="headPortrait != null" >
+        head_portrait,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="workTime != null" >
+        work_time,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="realNameAuthentication != null" >
+        real_name_authentication,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="personalProfile != null" >
+        personal_profile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null" >
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="workTime != null" >
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=TINYINT},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="realNameAuthentication != null" >
+        #{realNameAuthentication,jdbcType=TINYINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="personalProfile != null" >
+        #{personalProfile,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hiveview.entity.Member" >
+    update j_member
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null" >
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="workTime != null" >
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=TINYINT},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="realNameAuthentication != null" >
+        real_name_authentication = #{realNameAuthentication,jdbcType=TINYINT},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="personalProfile != null" >
+        personal_profile = #{personalProfile,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hiveview.entity.Member" >
+    update j_member
+    set name = #{name,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      level = #{level,jdbcType=INTEGER},
+      work_time = #{workTime,jdbcType=TIMESTAMP},
+      password = #{password,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      check_status = #{checkStatus,jdbcType=TINYINT},
+      add_time = #{addTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      status = #{status,jdbcType=TINYINT},
+      real_name_authentication = #{realNameAuthentication,jdbcType=TINYINT},
+      company_id = #{companyId,jdbcType=BIGINT},
+      type = #{type,jdbcType=TINYINT},
+      personal_profile = #{personalProfile,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hiveview.entity.Member" >
+    update j_member
+    set name = #{name,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      level = #{level,jdbcType=INTEGER},
+      work_time = #{workTime,jdbcType=TIMESTAMP},
+      password = #{password,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      check_status = #{checkStatus,jdbcType=TINYINT},
+      add_time = #{addTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      status = #{status,jdbcType=TINYINT},
+      real_name_authentication = #{realNameAuthentication,jdbcType=TINYINT},
+      company_id = #{companyId,jdbcType=BIGINT},
+      type = #{type,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+  <select id="verifyPhoneRegister" parameterType="String"  resultType="Integer">
+    SELECT count(1)
+    FROM j_member WHERE mobile = #{phone};
+  </select>
+  <select id="get" parameterType="com.hiveview.entity.Member"  resultMap="ResultMapWithBLOBs">
+      select
+      <include refid="Base_Column_List" />
+      ,
+      <include refid="Blob_Column_List" />
+      from j_member
+      <where>
+        <if test="id != null" >
+          #{id,jdbcType=BIGINT}
+        </if>
+        <if test="sex != null" >
+          AND  #{sex,jdbcType=CHAR}
+        </if>
+        <if test="level != null" >
+          AND  #{level,jdbcType=INTEGER}
+        </if>
+        <if test="password != null" >
+          AND   #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="checkStatus != null" >
+          AND #{checkStatus,jdbcType=TINYINT}
+        </if>
+        <if test="status != null" >
+          AND  #{status,jdbcType=TINYINT}
+        </if>
+        <if test="realNameAuthentication != null" >
+          AND #{realNameAuthentication,jdbcType=TINYINT}
+        </if>
+        <if test="companyId != null" >
+          AND #{companyId,jdbcType=BIGINT}
+        </if>
+        <if test="type != null" >
+          AND  #{type,jdbcType=TINYINT}
+        </if>
+  </where>
+  </select>
+
+</mapper>
