@@ -1,69 +1,110 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<!doctype html>
 <html>
 <head>
-<base href="<%=basePath%>">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>家视天下云平台</title>
-<link rel="stylesheet" type="text/css" href="css/all.css" />
-<script type="text/javascript" src="js/common/jquery/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/common/user_login.js"></script>
-<style type="text/css">
-#container{text-align: center;height: 100%;}
-.content{margin:auto auto;position:relative;width:890px;height:254px;background-image: url("images/loginBg.png");}
-.leftInfo{float:left;width:480px;}
-.fontCss_login{font-size:14px;font-family:"微软雅黑","宋体";}
-.formInfo{float:left;padding-top: 51px;height:254px;}
-.submit_reset{width:78px; height:25px; border:none; background-image: url("images/btnBg.jpg");color:#FFFFFF}
-#loginerrorinfo{color:red;height:20px;}
-#loginForm .warm{border:1px solid red;}
-.tdH{height:30px;}
-</style>
-<script type="text/javascript">
-$(function(){
-	locationCenter();
-});
-$(window).resize(function() {
-	locationCenter();
-});
-
-function locationCenter(){
-	var windowobj = $(window);
-	var browserheight = windowobj.height();
-	var	scrollTop = windowobj.scrollTop();
-	$("#container").height(browserheight);
-	$("#content").css("top",(browserheight-270)/2-51);
-}
-</script>
+    <base href="<%=basePath%>">
+    <meta charset="utf-8">
+    <title>企巴巴</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
+    <style>
+        .reg_css{margin-bottom:35px;}
+        .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
+        .login_left{width: 590px;border-right: 1px solid #e5e5e5;float: left;}
+        .login_left_content{width: 440px;}
+        .login_right{text-align: center;}
+        .forget_m{float: right;}
+        .login_right_company{margin:25px 0px;}
+    </style>
 </head>
-<body bgcolor="#F8F8F8">
+<body>
+
+<jsp:include page="common/top.jsp"></jsp:include>
 <div id="container">
-<div id="content" class="content">
-<div class="leftInfo">&nbsp;</div>
-<div id="formInfo" class="formInfo">
-<div id="loginerrorinfo"><%=request.getAttribute("loginInfo") %></div>
-<form id="loginForm" method="post" class="loginForm" action="<%=basePath%>login.html">
-<table>
-<tr>
-<td class="tdH"><span class="fontCss_login">用户名：</span></td><td><input id="userMail" type="text" class="inputCss" name="userMail" value=""></td>
-</tr>
-<tr>
-<td class="tdH"><span class="fontCss_login">密　码：</span></td><td><input id="password" type="password" class="inputCss" name="password" value=""></td>
-</tr>
-<tr>
-<td class="tdH" colspan="2"><button id="submit_login" class="submit_reset" type="button">登录</button>　<button id="reset_login" class="submit_reset" type="button">重填</button></td>
-</tr>
-</table>
-</form>
+
+    <div class="content login_title">
+        用户登录
+    </div>
+    <div class="content reg_css">
+        <div class="login_left">
+            <div class="login_left_content">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登录密码：</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="forget_m"><a href="pass_find.html">忘记密码？</a></div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="login_right">
+            <div style="height: 40px;"></div>
+            <img src="./images/logo_h.png">
+            <div class="login_right_company"><span>还不是企巴巴平台的会员，赶快去注册！</span></div>
+            <a href="reg.html"><button class="layui-btn layui-btn-big">免费注册</button></a>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
 </div>
-<div style="clear:both;"></div>
-<div id="Copyright">家视天下 &copy; 2013 hiveview.com</div>
-</div>
-</div>
+
+
+
+<jsp:include page="common/bottom.jsp"></jsp:include>
+<script src="./plugins/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form'], function(){
+        var form = layui.form()
+                ,layer = layui.layer;
+
+        //自定义验证规则
+        form.verify({
+            mobile: function(value){
+                if(value.length < 11){
+                    return '请输入正确的手机号';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            alert("呵呵");
+            location.href="member/index.html";
+            return false;
+        });
+
+
+    });
+</script>
 </body>
 </html>
