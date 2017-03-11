@@ -5,12 +5,11 @@
 %>
 <html>
 <head>
-    <jsp:include page="common/top.jsp"></jsp:include>
-    <jsp:include page="common/nav.jsp"></jsp:include>
     <base href="<%=basePath%>">
-    <title>Title</title>
+    <title>企巴巴</title>
+    <jsp:include page="common/css.jsp"></jsp:include>
 </head>
 <body>
-666
+<jsp:include page="common/top.jsp"></jsp:include>
 </body>
 </html>

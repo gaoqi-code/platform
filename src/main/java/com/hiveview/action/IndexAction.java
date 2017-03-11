@@ -39,9 +39,39 @@ public class IndexAction {
 		return mav;
 	}
 
+	/**
+	 * 找需求
+	 * @param request
+	 * @param mav
+	 * @return
+	 */
 	@RequestMapping(value="/need/list")
 	public ModelAndView need(HttpServletRequest request, ModelAndView mav) {
-		mav.setViewName("need/list");
+		mav.setViewName("need_list");
+		return mav;
+	}
+
+	/**
+	 * 找顾问
+	 * @param request
+	 * @param mav
+	 * @return
+	 */
+	@RequestMapping(value="/adviser/list")
+	public ModelAndView adviser(HttpServletRequest request, ModelAndView mav) {
+		mav.setViewName("adviser_list");
+		return mav;
+	}
+
+	/**
+	 * 找产品
+	 * @param request
+	 * @param mav
+	 * @return
+	 */
+	@RequestMapping(value="/product/list")
+	public ModelAndView product(HttpServletRequest request, ModelAndView mav) {
+		mav.setViewName("product_list");
 		return mav;
 	}
 

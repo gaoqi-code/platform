@@ -101,7 +101,16 @@
         </ul>
     </div>
 </div>
+<script>
+    $(function () {
 
-<script src="./plugins/layui/layui.js" charset="utf-8"></script>
+        $(".nav-li1").mouseover(function () {
+            $(".nav-l2-container").css("display","block");
+        });
+        $(".nav-l2-container").mouseout(function () {
+            $(".nav-l2-container").css("display","none");
+        });
+    });
+</script>
 </body>
 </html>
