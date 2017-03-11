@@ -60,4 +60,14 @@ public class MemberAction {
 		return "member/associate_member_list";
 	}
 
+	/**
+	 * 添加企业
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/company_add")
+	public String addCompany(HttpServletRequest request) {
+		request.setAttribute("nav","myshop");
+		return "member/company_add";
+	}
 }

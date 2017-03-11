@@ -92,7 +92,7 @@
                     <th>操作</th>
                 </tr>
                 <tr>
-                    <td colspan="3" style="text-align: center;">没有找到该企业，<a class="ta1" href="member/addCompany.html">添加企业</a></td>
+                    <td colspan="3" style="text-align: center;">没有找到该企业，<a class="ta1" href="member/company_add.html">添加企业</a></td>
                 </tr>
             </table>
             <div id="productPager"></div>
