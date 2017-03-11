@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>企巴巴-一站式商业服务平台</title>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#kinMaxShow").kinMaxShow({height:200});
+});
+
+</script>
+</head>
+<body>
+<div class="top_out">
+	<div class="content">
+		<div class="top_logo">企巴巴</div>
+		<div class="top_out_right">
+			<div class="top_welcome">您好，欢迎来到企巴巴</div>
+			<div class="top_reg"><a href="">登录</a><a href="">注册</a></div>
+			<div class="top_tuiguang">网站导航</div>
+		</div>
+	</div>
+</div>
+
+<div class="content top-search">
+	<div class="logo-box"><img src="./images/logo_h.png"></div>
+	<div class="search-form">
+
+		<form action="" id="queryType" method="post" class="inlineb" target="_blank">
+			<ul class="search-form-tab">
+				<li class="active" id="1"><a href="javascript:void(0)">找服务</a><i></i>
+				</li>
+				<li id="4"><a href="javascript:void(0)">找顾问</a><i></i>
+				</li>
+				<li id="2"><a href="javascript:void(0)">查公司</a><i></i></li>
+				<li id="3"><a href="javascript:void(0)">查商标</a><i></i>
+				</li>
+			</ul>
+			<div class="tabBox">
+				<div class="search-form-box">
+					<input type="text" placeholder="请输入关键字查询" id="keyword" name="keyword" value="" maxlength="20">
+					<button type="submit"><i class="size25 icon1"></i><span class="inline">搜索</span></button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+
+<div class="nav">
+	<div class="content">
+		<ul>
+			<li class="nav-li1">
+				<a href="javascript:void(0);">全部服务分类</a>
+				<div class="nav-l2-container">
+					<div class="nav-l2c">
+						<div class="nav-t2">金融服务</div>
+						<div class="nav-c2">
+							<span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="nav-l2c">
+						<div class="nav-t2">法律顾问</div>
+						<div class="nav-c2">
+							<span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span><span>找贷款</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="nav-l2c">
+						<div class="nav-t2">企业办证</div>
+						<div class="nav-c2">
+							<span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="nav-li">
+				<a href="javascript:void(0);">找需求</a>
+			</li>
+			<li class="nav-li">
+				<a href="javascript:void(0);">找顾问</a>
+			</li>
+			<li class="nav-li">
+				<a href="javascript:void(0);">找服务</a>
+			</li>
+			<li class="nav-li">
+				<a href="javascript:void(0);">关于企巴巴</a>
+			</li>
+			<li class="nav-li">
+				<a href="javascript:void(0);">商家入驻</a>
+			</li>
+			<li class="clear"></li>
+		</ul>
+	</div>
+</div>
+
+
+<div id="container">
+
+	<div class="content login_title">
+		新用户注册
+	</div>
+	<div class="content reg_css">
+		<div class="login_left">
+			<div class="login_left_content">
+				<form class="layui-form" action="">
+					<div class="layui-form-item">
+						<label class="layui-form-label">手机号：</label>
+						<div class="layui-input-block">
+							<input type="text" name="title" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">验证码：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+						</div>
+						<div class="layui-form-mid layui-word-aux">图形验证码</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">短信验证：</label>
+						<div class="layui-input-inline">
+							<input type="tel" name="phone" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">登录密码：</label>
+						<div class="layui-input-block">
+							<input type="password" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">确认密码：</label>
+						<div class="layui-input-block">
+							<input type="password" name="password" placeholder="请重复上面密码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+							<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="login_right">
+			<div style="height: 40px;"></div>
+			<img src="./images/logo_h.png">
+			<div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>
+			<button class="layui-btn layui-btn-big">商家入驻</button>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+</div>
+
+
+
+
+<div class="bottomCss">
+	<div class="content">
+		<div class="footLogo">
+			<div class="bottomNav">
+				<a href="index.html" title="网站首页">网站首页</a>
+				<a href="company.html" title="公司概况">公司概况</a>
+				<a href="product.html" title="产品介绍">产品介绍</a>
+				<a href="contact.html" title="联系方式">联系方式</a>
+				<a class="clear"></a>
+			</div>
+			<div class="app">
+				<div class="erweima">
+					<img style="width: 110px;" src="./images/link/kwx.jpg" /><span>客服微信</span>
+				</div>
+				<div class="erweima">
+					<img style="width: 110px;" src="./images/link/erweima.png" /><span>公从号</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="kefuPhone">
+				<span>客服热线（工作日：8:30-21:00）</span>
+				<strong>020-61059612</strong>
+				<span>在线客服咨询请点击右侧浮窗</span>
+				<span>在线客服（工作日：8:30-21:00）</span>
+
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="footBottom">
+			<p class="copyright">版权所有 © 广州墨迪投资咨询有限公司</p>
+			<p class="copy-info">Copyright © 2014-2017 Guang Zhou Mo Di Tou Zi Zi Xun You Xian Gong Si </p>
+			<p class="copy-num">粤ICP备16125363号-1</p>
+			<a id="szfw_logo" href="https://credit.szfw.org/CX20160510015126120135.html" target="_blank"></a>
+		</div>
+	</div>
+</div>
+</body>
+</html>
