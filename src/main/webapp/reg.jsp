@@ -120,7 +120,6 @@
 </div>
 <link rel="contents" href="bottom.jsp">
 <iframe src="bottom.jsp" name="" ></iframe>
-<%--<script src="/plugins/layui/layui.js" charset="utf-8"></script>--%>
 <script src="/plugins/layui/layui.js" charset="utf-8"></script>
 
 <script>
