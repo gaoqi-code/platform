@@ -63,21 +63,21 @@
                         <div class="nav-t2">金融服务</div>
                         <div class="nav-c2">
                             <span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span>
-                            <div class="clear"></div>
+                            <div class="clear nav-c2-fenge"></div>
                         </div>
                     </div>
                     <div class="nav-l2c">
                         <div class="nav-t2">法律顾问</div>
                         <div class="nav-c2">
                             <span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span><span>找贷款</span>
-                            <div class="clear"></div>
+                            <div class="clear nav-c2-fenge"></div>
                         </div>
                     </div>
                     <div class="nav-l2c">
                         <div class="nav-t2">企业办证</div>
                         <div class="nav-c2">
                             <span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span>
-                            <div class="clear"></div>
+                            <div class="clear nav-c2-fenge" style="border-bottom: 0px;"></div>
                         </div>
                     </div>
                 </div>

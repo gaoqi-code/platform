@@ -20,17 +20,14 @@
         .search-select h3{width:100px;height: 30px;line-height: 30px;display:block;float: left;}
         .allSelect{background-color:#ee4134;color: #FFF;display:block;}
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser_mainli li{height: 195px;border-bottom: 1px solid #eee;}
-        .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
-        .li-img img{width: 165px;}
-        .adviser-list-info{height: 165px;float: left;width: 600px;}
-        .adviser-list-content{margin-top:30px;margin-left: 30px;}
         .adviser-list-info span{font-size:22px;margin-right: 20px;}
         .adviser-list-info p{line-height: 35px;height: 35px;}
-        .adviser-list-href{height: 165px;line-height:165px;float: left}
         .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
         .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
 
+        .need_mainli{margin-top: 10px;}
+        .need_mainli tr{height:80px;}
+        .layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{border-bottom:1px dashed #e2e2e2;}
         .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .adviser_right_tj img{width:90px;}
         .adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}
@@ -161,46 +158,71 @@
                 </ul>
             </div>
 
-            <div class="adviser_mainli">
-                <ul>
-                    <li>
-                        <div class="li-img"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser-list-info">
-                            <div class="adviser-list-content">
-                                <p>需求名称1</p>
-                                <p>需求类型&nbsp;联系方式：156********</p>
-                                <p>需求简介：审计、验资、财税咨询</p>
-                            </div>
-                        </div>
-                        <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <div class="li-img"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser-list-info">
-                            <div class="adviser-list-content">
-                                <p>需求名称1</p>
-                                <p>需求类型&nbsp;联系方式：156********</p>
-                                <p>需求简介：审计、验资、财税咨询</p>
-                            </div>
-                        </div>
-                        <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
-                        <div class="clear"></div>
-                    </li>
-                    <li>
-                        <div class="li-img"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser-list-info">
-                            <div class="adviser-list-content">
-                                <p>需求名称1</p>
-                                <p>需求类型&nbsp;联系方式：156********</p>
-                                <p>需求简介：审计、验资、财税咨询</p>
-                            </div>
-                        </div>
-                        <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
-                        <div class="clear"></div>
-                    </li>
-                </ul>
-
+            <div class="need_mainli">
+                <div class="layui-form">
+                    <table class="layui-table" lay-skin="line">
+                        <colgroup>
+                            <col>
+                            <col width="150">
+                            <col width="100">
+                            <col width="80">
+                            <col width="100">
+                            <col width="120">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <td>需求名称</td>
+                            <td>类型</td>
+                            <td>联系人</td>
+                            <td>联系电话</td>
+                            <td>地区</td>
+                            <td>发布日期</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>需求名称1</td>
+                            <td>金融贷款</td>
+                            <td>张三三</td>
+                            <td>156****3076</td>
+                            <td>北京市</td>
+                            <td>2017-03-18</td>
+                        </tr>
+                        <tr>
+                            <td>需求名称1</td>
+                            <td>金融贷款</td>
+                            <td>张三三</td>
+                            <td>156****3076</td>
+                            <td>北京市</td>
+                            <td>2017-03-18</td>
+                        </tr>
+                        <tr>
+                            <td>需求名称1</td>
+                            <td>金融贷款</td>
+                            <td>张三三</td>
+                            <td>156****3076</td>
+                            <td>北京市</td>
+                            <td>2017-03-18</td>
+                        </tr>
+                        <tr>
+                            <td>需求名称1</td>
+                            <td>金融贷款</td>
+                            <td>张三三</td>
+                            <td>156****3076</td>
+                            <td>北京市</td>
+                            <td>2017-03-18</td>
+                        </tr>
+                        <tr>
+                            <td>需求名称1</td>
+                            <td>金融贷款</td>
+                            <td>张三三</td>
+                            <td>156****3076</td>
+                            <td>北京市</td>
+                            <td>2017-03-18</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
