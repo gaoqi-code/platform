@@ -167,9 +167,9 @@
                         <div class="li-img"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser-list-info">
                             <div class="adviser-list-content">
-                                <p><span>张三</span>贷款顾问 <img src="images/qq/qq.gif"></p>
-                                <p>北京中汛担保有限公司&nbsp;金牌顾问&nbsp;执行7年</p>
-                                <p>个人简介：审计、验资、财税咨询</p>
+                                <p>需求名称1</p>
+                                <p>需求类型&nbsp;联系方式：156********</p>
+                                <p>需求简介：审计、验资、财税咨询</p>
                             </div>
                         </div>
                         <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
@@ -179,9 +179,9 @@
                         <div class="li-img"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser-list-info">
                             <div class="adviser-list-content">
-                                <p><span>张三</span>贷款顾问 <img src="images/qq/qq.gif"></p>
-                                <p>北京中汛担保有限公司&nbsp;金牌顾问&nbsp;执行7年</p>
-                                <p>个人简介：审计、验资、财税咨询</p>
+                                <p>需求名称1</p>
+                                <p>需求类型&nbsp;联系方式：156********</p>
+                                <p>需求简介：审计、验资、财税咨询</p>
                             </div>
                         </div>
                         <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
@@ -191,9 +191,9 @@
                         <div class="li-img"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser-list-info">
                             <div class="adviser-list-content">
-                                <p><span>张三</span>贷款顾问 <img src="images/qq/qq.gif"></p>
-                                <p>北京中汛担保有限公司&nbsp;金牌顾问&nbsp;执行7年</p>
-                                <p>擅长领域：审计、验资、财税咨询</p>
+                                <p>需求名称1</p>
+                                <p>需求类型&nbsp;联系方式：156********</p>
+                                <p>需求简介：审计、验资、财税咨询</p>
                             </div>
                         </div>
                         <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>

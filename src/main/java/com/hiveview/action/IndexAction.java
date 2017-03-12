@@ -4,6 +4,7 @@ import com.hiveview.entity.AppDeveloper;
 import com.hiveview.service.IDeveloperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,11 +34,47 @@ public class IndexAction {
 		return mav;
 	}
 
-	@RequestMapping(value="/pass_update")
-	public ModelAndView passUpdate(HttpServletRequest request, ModelAndView mav) {
-		mav.setViewName("password_update");
-		return mav;
-	}
+    @RequestMapping(value="/pass_update")
+    public ModelAndView passUpdate(HttpServletRequest request, ModelAndView mav) {
+        mav.setViewName("password_update");
+        return mav;
+    }
+
+    /**
+     * 顾问详情页面（店铺）
+     * @param request
+     * @param mav
+     * @return
+     */
+    @RequestMapping(value="/adviser")
+    public ModelAndView adviser(HttpServletRequest request, ModelAndView mav) {
+        mav.setViewName("adviser");
+        return mav;
+    }
+
+    /**
+     * 产品详情页面
+     * @param request
+     * @param mav
+     * @return
+     */
+    @RequestMapping(value="/product/{id}")
+    public ModelAndView product(HttpServletRequest request, ModelAndView mav,@PathVariable("id")int id) {
+        mav.setViewName("product");
+        return mav;
+    }
+
+    /**
+     * 需求详情页
+     * @param request
+     * @param mav
+     * @return
+     */
+    @RequestMapping(value="/need")
+    public ModelAndView need(HttpServletRequest request, ModelAndView mav) {
+        mav.setViewName("need");
+        return mav;
+    }
 
 	/**
 	 * 找需求
@@ -46,7 +83,7 @@ public class IndexAction {
 	 * @return
 	 */
 	@RequestMapping(value="/need/list")
-	public ModelAndView need(HttpServletRequest request, ModelAndView mav) {
+	public ModelAndView needList(HttpServletRequest request, ModelAndView mav) {
 		mav.setViewName("need_list");
 		return mav;
 	}
@@ -58,7 +95,7 @@ public class IndexAction {
 	 * @return
 	 */
 	@RequestMapping(value="/adviser/list")
-	public ModelAndView adviser(HttpServletRequest request, ModelAndView mav) {
+	public ModelAndView adviserList(HttpServletRequest request, ModelAndView mav) {
 		mav.setViewName("adviser_list");
 		return mav;
 	}

@@ -172,7 +172,7 @@
                                 <p>个人简介：审计、验资、财税咨询</p>
                             </div>
                         </div>
-                        <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
+                        <div class="adviser-list-href"><a href="adviser.html">访问主页</a></div>
                         <div class="clear"></div>
                     </li>
                     <li>
@@ -184,7 +184,7 @@
                                 <p>个人简介：审计、验资、财税咨询</p>
                             </div>
                         </div>
-                        <div class="adviser-list-href"><a href="javascript:void(0);">访问主页</a></div>
+                        <div class="adviser-list-href"><a href="adviser.html">访问主页</a></div>
                         <div class="clear"></div>
                     </li>
                     <li>
