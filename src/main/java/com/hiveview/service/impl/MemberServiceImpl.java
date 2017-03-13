@@ -5,7 +5,8 @@ import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
+
+import java.util.List;
 
 /**
  * Created by hxq on 2017/3/2.
@@ -26,7 +27,6 @@ public  class MemberServiceImpl implements IMemberService{
     @Override
     public Member getMemberInfo(Member member){
         try {
-            member.setPassword(DigestUtils.md5DigestAsHex(member.getPassword().getBytes()));
             return memberDao.get(member);
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,6 +42,17 @@ public  class MemberServiceImpl implements IMemberService{
     @Override
     public Integer saveMember(Member member) {
         return memberDao.insert(member);
+    }
+
+    @Override
+    public List<Member> getRecommendCounselorList() {
+        Member member = new Member();
+        return memberDao.getList(member);
+    }
+
+    @Override
+    public int updateInfo(Member member) {
+        return memberDao.updateByPrimaryKeySelective(member);
     }
 
 }

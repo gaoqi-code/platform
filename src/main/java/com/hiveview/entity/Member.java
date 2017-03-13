@@ -22,6 +22,8 @@ public class Member {
     
 	private String headPortrait;
 
+	private String nation;//民族
+
 	private String sex;
 
 	private Integer level;
@@ -34,6 +36,8 @@ public class Member {
 
 	private String qq;
 
+	private String email;
+
 	private Integer checkStatus;
 
 	private Integer status;
@@ -41,6 +45,8 @@ public class Member {
 	private Integer realNameAuthentication;
 
 	private Long companyId;
+
+	private String companyName;
 
 	private Integer type;
 
@@ -188,5 +194,29 @@ public class Member {
 
 	public void setPersonalProfile(String personalProfile) {
 		this.personalProfile = personalProfile;
+	}
+
+	public String getNation() {
+		return nation;
+	}
+
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 }

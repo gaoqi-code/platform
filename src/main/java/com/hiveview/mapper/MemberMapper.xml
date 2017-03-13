@@ -5,6 +5,7 @@
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="head_portrait" property="headPortrait" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="CHAR" />
     <result column="level" property="level" jdbcType="INTEGER" />
     <result column="work_time" property="workTime" jdbcType="TIMESTAMP" />
@@ -12,6 +13,7 @@
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="check_status" property="checkStatus" jdbcType="TINYINT" />
     <result column="add_time" property="addTime" jdbcType="DATE" />
     <result column="update_time" property="updateTime" jdbcType="DATE" />
@@ -24,7 +26,7 @@
     <result column="personal_profile" property="personalProfile" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, head_portrait, sex, level, work_time, password, description, mobile, qq, 
+    id, name, head_portrait,nation, sex, level, work_time, password, description, mobile, qq,email,
     check_status, add_time, update_time, status, real_name_authentication, company_id, 
     type
   </sql>
@@ -204,6 +206,9 @@
       <if test="qq != null" >
         qq = #{qq,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
       <if test="checkStatus != null" >
         check_status = #{checkStatus,jdbcType=TINYINT},
       </if>
@@ -286,33 +291,76 @@
       from j_member
       <where>
         <if test="id != null" >
-          #{id,jdbcType=BIGINT}
+          id = #{id,jdbcType=BIGINT}
         </if>
         <if test="sex != null" >
-          AND  #{sex,jdbcType=CHAR}
+          AND sex = #{sex,jdbcType=CHAR}
         </if>
         <if test="level != null" >
-          AND  #{level,jdbcType=INTEGER}
+          AND level = #{level,jdbcType=INTEGER}
+        </if>
+        <if test="mobile != null" >
+          AND mobile = #{mobile,jdbcType=VARCHAR}
         </if>
         <if test="password != null" >
-          AND   #{password,jdbcType=VARCHAR}
+          AND password =  #{password,jdbcType=VARCHAR}
         </if>
         <if test="checkStatus != null" >
-          AND #{checkStatus,jdbcType=TINYINT}
+          AND check_status = #{checkStatus,jdbcType=TINYINT}
         </if>
         <if test="status != null" >
-          AND  #{status,jdbcType=TINYINT}
+          AND  status =  #{status,jdbcType=TINYINT}
         </if>
         <if test="realNameAuthentication != null" >
-          AND #{realNameAuthentication,jdbcType=TINYINT}
+          AND real_name_authentication = #{realNameAuthentication,jdbcType=TINYINT}
         </if>
         <if test="companyId != null" >
-          AND #{companyId,jdbcType=BIGINT}
+          AND company_id = #{companyId,jdbcType=BIGINT}
         </if>
         <if test="type != null" >
-          AND  #{type,jdbcType=TINYINT}
+          AND type = #{type,jdbcType=TINYINT}
         </if>
   </where>
+  </select>
+
+  <select id="getList" parameterType="com.hiveview.entity.Member"  resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from j_member
+    <where>
+      <if test="id != null" >
+        id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="sex != null" >
+        AND sex = #{sex,jdbcType=CHAR}
+      </if>
+      <if test="level != null" >
+        AND level = #{level,jdbcType=INTEGER}
+      </if>
+      <if test="mobile != null" >
+        AND mobile = #{mobile,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+        AND password =  #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="checkStatus != null" >
+        AND check_status = #{checkStatus,jdbcType=TINYINT}
+      </if>
+      <if test="status != null" >
+        AND  status =  #{status,jdbcType=TINYINT}
+      </if>
+      <if test="realNameAuthentication != null" >
+        AND real_name_authentication = #{realNameAuthentication,jdbcType=TINYINT}
+      </if>
+      <if test="companyId != null" >
+        AND company_id = #{companyId,jdbcType=BIGINT}
+      </if>
+      <if test="type != null" >
+        AND type = #{type,jdbcType=TINYINT}
+      </if>
+    </where>
   </select>
 
 </mapper>

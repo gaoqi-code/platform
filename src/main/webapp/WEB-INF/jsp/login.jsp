@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!doctype html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <base href="<%=basePath%>">
     <meta charset="utf-8">
     <title>企巴巴</title>
@@ -35,17 +32,17 @@
     <div class="content reg_css">
         <div class="login_left">
             <div class="login_left_content">
-                <form class="layui-form" action="">
+                <form class="layui-form" action="" id="loginForm">
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="15765056585" name="mobile" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="15765056585" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -95,11 +92,27 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
+//            layer.alert(JSON.stringify(data.field), {
+//                title: '最终的提交信息'
+//            });
+//            alert("呵呵");
+//            location.href="member/index.html";
+            $.ajax({
+                type: "POST",
+                url: "/login.json",
+                data: $("#loginForm").serialize(),
+                dataType: "json",
+                sync:false,
+                success: function(data){
+                    if(data.flag) {
+                        setTimeout(function () {
+                            location.href = "/member/index.html";
+                        }, 1000);
+                    }else {
+                        layer.msg(data.msg);
+                    }
+                }
             });
-            alert("呵呵");
-            location.href="member/index.html";
             return false;
         });
 

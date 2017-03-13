@@ -1,17 +1,22 @@
 package com.hiveview.action;
 
+import com.google.common.collect.Maps;
 import com.hiveview.entity.Data;
 import com.hiveview.entity.Msg;
 import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 
 @Controller
@@ -21,14 +26,12 @@ public class LoginAction {
 	@Autowired
     IMemberService memberService;
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index() {
-		return "index";
+	@RequestMapping(value="/tologin")
+	public ModelAndView login(HttpServletRequest request, ModelAndView mav) {
+		mav.setViewName("login");
+		return mav;
 	}
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String welcome() {
-		return "common/welcome";
-	}
+
 
 	@RequestMapping(value = "/loginChecksession", method = RequestMethod.POST)
 	public Data loginChecksession(HttpServletRequest req) {
@@ -37,17 +40,18 @@ public class LoginAction {
 		else
 			return new Data(0,"会话没有信息，已经退出登录！");
 	}
+	@ResponseBody
 	@RequestMapping(value = "/login")
-	public String login(HttpServletRequest req,Member member) {
+	public Map<String ,Object> login(HttpServletRequest req, Member member) {
+		Map<String, Object> result = Maps.newHashMap();
+		Boolean flag;
+		String message;
 		try {
-			if(null== member ||null== member.getPassword()){
-				req.setAttribute("loginInfo","");
-				return "login";
-			}
+			member.setPassword(DigestUtils.md5DigestAsHex(member.getPassword().getBytes()));
 			Member currentUser = memberService.getMemberInfo(member);
 			if(null==currentUser){
-				req.setAttribute("loginInfo","用户名和密码错误！");
-				return "login";
+				flag = false;
+				message = "用户名或密码错误！";
 			}else{
 				HttpSession session = req.getSession();
 				session.setAttribute("currentUser", currentUser);
@@ -56,13 +60,19 @@ public class LoginAction {
 				ServletContext application = session.getServletContext();
 				Msg.getInstance().put(currentUser.getId().toString(),sessionId);
 				application.setAttribute("sessionIdMap",Msg.sessionIdMap);
-				return "index";
+				flag = true;
+				message = "登录成功！";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			flag = false;
+			message = "登录异常";
 		}
+		result.put("flag", flag);
+		result.put("msg", message);
+		return result;
 	}
+
 	@RequestMapping(value = "/logout")
 	public String exit(HttpServletRequest request) {
 		request.setAttribute("loginInfo","");

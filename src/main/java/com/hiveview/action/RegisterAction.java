@@ -5,6 +5,7 @@ import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.IRegisterService;
 import com.hiveview.util.AuthCodeUtil;
+import com.hiveview.util.MemberUtil;
 import com.hiveview.util.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +46,6 @@ public class RegisterAction extends BaseController{
     @ResponseBody
     @RequestMapping(value = "registerMember")
     public Map registerMember(HttpServletRequest request,Member member){
-        String a = request.getParameter("mobile");
         String mobile = member.getMobile();
         Map<String, Object> msg = AuthCodeUtil.checkPhoneNumber(member.getMobile());
         if(!Boolean.parseBoolean(msg.get("flag").toString())){
@@ -55,7 +56,9 @@ public class RegisterAction extends BaseController{
         HashMap<String, Object> result = Maps.newHashMap();
         if (registerService.checkPhoneRegister(mobile)) {
             try {
-                member.setMobile(DigestUtils.md5DigestAsHex(member.getPassword().getBytes()));
+                member.setPassword(DigestUtils.md5DigestAsHex(member.getPassword().getBytes()));
+                member.setStatus(MemberUtil.STATUS.getNormal());
+                member.setAddTime(new Date());
                 if (memberService.saveMember(member) > 0) {
                     flag = true;
                     message ="注册成功！";

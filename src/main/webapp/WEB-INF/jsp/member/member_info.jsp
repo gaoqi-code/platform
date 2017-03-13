@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
     <title>企巴巴</title>
@@ -34,64 +31,65 @@
 
         <div class="c_right">
             <p class="layui-elem-quote">完成个人资料</p>
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="memberInfo">
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="margin-top: 80px;">个人头像</label>
                     <div class="layui-input-block">
                         <div class="site-demo-upload">
-                            <img id="LAY_demo_upload" src="http://www.dgg.net/images/portrait.jpg">
+                            <img id="LAY_demo_upload" src="${member.headPortrait}" >
                             <div class="site-demo-upbar">
-                                <input type="file" name="file" class="layui-upload-file" id="test">
+                                <input type="file" name="file" class="layui-upload-file" id="uploadHeadPortrait">
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="headPortrait" id="headPortrait" value="${member.headPortrait}">
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">个人名称</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="name" value="${member.name}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="mobile" value="${member.mobile}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">QQ</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="qq"  value="${member.qq}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">常用邮箱</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="email"  value="${member.email}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">执业年限</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name=""  value="${member.workTime}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">所属企业</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" readonly disabled autocomplete="off" class="layui-input">
+                        <input type="input" name="input"  value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"><a href="member/list.html" class="ta1">修改所属企业</a></div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">个人介绍</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" name="description" class="layui-textarea">${member.description}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -139,30 +137,41 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+//            layer.alert(JSON.stringify(data.field), {
+//                title: '最终的提交信息'
+//            })
+            $.ajax({
+                type: "POST",
+                url: "/member/updateInfo.json",
+                data: $("#memberInfo").serialize(),
+                dataType: "json",
+                sync:false,
+                success: function(data){
+                    if(data.flag) {
+                        layer.alert("保存成功！");
+                    }else {
+                        layer.alert("保存失败！");
+                    }
+                }
+            });
             return false;
         });
 
 
     });
-</script>
-<script>
     layui.use('upload', function(){
         layui.upload({
-            url: '' //上传接口
-            ,success: function(res){ //上传成功后的回调
-                console.log(res)
-            }
-        });
-
-        layui.upload({
-            url: '/test/upload.json'
-            ,elem: '#test' //指定原始元素，默认直接查找class="layui-upload-file"
-            ,method: 'get' //上传接口的http类型
-            ,success: function(res){
-                LAY_demo_upload.src = res.url;
+            url: '/fileUpload/upload.json'
+            ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
+            ,method: 'post' //上传接口的http类型
+            ,success: function(data){
+                if(data.flag) {
+                    var path = "<%=basePath%>"+data.path;
+                    LAY_demo_upload.src = path;
+                    $("#headPortrait").val(path);
+                }else {
+                    layer.alert("头像上传失败！");
+                }
             }
         });
     });

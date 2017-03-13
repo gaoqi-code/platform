@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%><!doctype html>
+<!doctype html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <meta charset="utf-8">
     <title>企巴巴-用户注册</title>
     <meta name="renderer" content="webkit">
@@ -13,7 +11,6 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
     <script src="./plugins/layui/layui.js" charset="utf-8"></script>
-    <script src="/js/jquery-1.9.1.js" charset="utf-8"></script>
     <style>
         .reg_css{margin-bottom:35px;}
         .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
@@ -121,7 +118,14 @@
                 dataType: "json",
                 sync:false,
                 success: function(data){
-
+                    if(data.flag) {
+                        layer.msg("恭喜注册成功！");
+                        setTimeout(function () {
+                            location.href = "/tologin.html";
+                        }, 1000);
+                    }else {
+                        layer.msg(data.msg);
+                    }
                 }
             });
             return false;

@@ -1,16 +1,11 @@
 package com.hiveview.action;
 
-import com.hiveview.entity.AppDeveloper;
-import com.hiveview.service.IDeveloperService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -22,11 +17,6 @@ public class IndexAction {
 		return mav;
 	}
 
-	@RequestMapping(value="/login")
-	public ModelAndView login(HttpServletRequest request, ModelAndView mav) {
-		mav.setViewName("login");
-		return mav;
-	}
 
 	@RequestMapping(value="/pass_find")
 	public ModelAndView passFind(HttpServletRequest request, ModelAndView mav) {
