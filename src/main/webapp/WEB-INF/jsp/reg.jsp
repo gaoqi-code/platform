@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
+    <script src="./plugins/layui/layui.js" charset="utf-8"></script>
+    <script src="/js/jquery-1.9.1.js" charset="utf-8"></script>
     <style>
         .reg_css{margin-bottom:35px;}
         .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
@@ -31,41 +33,41 @@
     <div class="content reg_css">
         <div class="login_left">
             <div class="login_left_content">
-                <form class="layui-form" action="">
+                <form class="layui-form" action="" id="regForm">
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="15765056585" name="mobile" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" value="15765056585" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux">图形验证码</div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" name="phone" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="tel" value="15765056585" name="msgCode" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="15765056585" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">确认密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" name="password" placeholder="请重复上面密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="15765056585" name="password2" placeholder="请重复上面密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1" id="tj">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
@@ -86,7 +88,7 @@
 </div>
 
 <jsp:include page="common/bottom.jsp"></jsp:include>
-<script src="./plugins/layui/layui.js" charset="utf-8"></script>
+
 <script>
     layui.use(['form'], function(){
         var form = layui.form()
@@ -107,13 +109,23 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+//            layer.alert(JSON.stringify(data.field), {
+//                title: '最终的提交信息'
+//            })
+            var para= JSON.stringify(data.field);
+            console.log($("#regForm").serialize());
+            $.ajax({
+                type: "POST",
+                url: "/register/registerMember.json",
+                data: $("#regForm").serialize(),
+                dataType: "json",
+                sync:false,
+                success: function(data){
+
+                }
+            });
             return false;
         });
-
-
     });
 </script>
 </body>
