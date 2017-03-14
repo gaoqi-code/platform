@@ -27,4 +27,9 @@ public class CompanyServiceImpl implements ICompanyService {
     public List<Company> getCompanyPage(Company company, int start, int count) {
         return companyDao.getCompanyPage(company,start,count);
     }
+
+    @Override
+    public int saveCompany(Company company) {
+        return companyDao.insert(company);
+    }
 }

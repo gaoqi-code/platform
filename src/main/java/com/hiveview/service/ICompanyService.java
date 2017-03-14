@@ -24,4 +24,6 @@ public interface ICompanyService {
      * @return
      */
     List<Company> getCompanyPage(Company company, int start, int count);
+
+    int saveCompany(Company company);
 }

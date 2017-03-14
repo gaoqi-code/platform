@@ -20,18 +20,13 @@
         <tr>
             <td>${company.companyName}</td>
             <td>${company.address}</td>
-            <td><a href="javascript:void(0);"><button class="layui-btn layui-btn-small">申请加入</button></a></td>
+            <td><a href="javascript:void(0);"><button name="applyFor" companyId="${company.id}" class="layui-btn layui-btn-small">申请加入</button></a></td>
         </tr>
     </c:forEach>
 
     <c:if test="${empty companys}">
         <tr>
-            <th>公司名称</th>
-            <th>所在地区</th>
-            <th>操作</th>
-        </tr>
-        <tr>
-            <td colspan="3" style="text-align: center;">没有找到该企业，<a class="ta1" href="member/company_add.html">添加企业</a></td>
+            <td colspan="3" style="text-align: center;">没有找到该企业，<a class="ta1" href="/member/company/toAdd.html">添加企业</a></td>
         </tr>
     </c:if>
 
@@ -42,4 +37,33 @@
    <input type="hidden" id="currentPage" value="${paging.currentPage}"/>
    
  <script type="text/javascript">
+     $(function () {
+         $("button[name='applyFor']").click(function() {
+             var companyId = $(this).attr("companyId");
+             layer.confirm('您确定要申请加入吗？', {
+                 btn: ['确定','取消'] //按钮
+             }, function(index){
+                 $.ajax({
+                     type: "POST",
+                     url: "/member/company/add.json",
+                     data: {id:companyId},
+                     dataType: "json",
+                     success: function(data){
+                         console.log(data);
+                         if(data) {
+                             layer.msg("恭喜申请成功！");
+                             setTimeout(function () {
+                                 location.href = "/member/info.html";
+                             }, 1000);
+                         }else {
+                             layer.msg("申请失败！");
+                         }
+                     }
+                 });
+             }, function(index){
+//                 layer.close(index);
+             });
+         });
+     });
+
  </script>

@@ -24,11 +24,11 @@
     delete from j_company
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hiveview.entity.Company" >
-    insert into j_company (id, company_name, add_time, 
+  <insert id="insert" parameterType="com.hiveview.entity.Company" useGeneratedKeys="true" keyProperty="id" >
+    insert into j_company (company_name, add_time,
       type_link_id, address, introduce, 
       update_time, code)
-    values (#{id,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+    values (#{companyName,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP},
       #{typeLinkId,jdbcType=BIGINT}, #{address,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{code,jdbcType=VARCHAR})
   </insert>

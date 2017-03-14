@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
     <title>企巴巴</title>
@@ -34,32 +31,32 @@
 
         <div class="c_right">
             <p class="layui-elem-quote">完成个人资料</p>
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="createCompany">
                 <div class="layui-form-item">
                     <label class="layui-form-label">公司名称</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="companyName" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="mobile" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">详细地址</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="address" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">公司简介</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" name="introduce" class="layui-textarea"></textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -107,9 +104,24 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            $.ajax({
+                type: "POST",
+                url: "/member/company/add.json",
+                data: $("#createCompany").serialize(),
+                dataType: "json",
+                async:false,
+                success: function(data){
+                    console.log(data);
+                    if(data) {
+                        layer.msg("恭喜创建成功！");
+                        setTimeout(function () {
+                            location.href = "/member/info.html";
+                        }, 1000);
+                    }else {
+                        layer.msg("创建失败！");
+                    }
+                }
+            });
             return false;
         });
 

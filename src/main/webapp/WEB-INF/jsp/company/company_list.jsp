@@ -9,6 +9,7 @@
     <jsp:include page="../common/css.jsp"></jsp:include>
     <link rel="stylesheet" href="../css/buysell.css">
     <link rel="stylesheet" href="../plugins/layui/css/global.css">
+    <script src="../plugins/layui/layui.js" charset="utf-8"></script>
     <style>
         .memver_c{margin-top: 15px;margin-bottom: 15px;}
         .c_left{width: 210px;float:left;}
@@ -50,7 +51,7 @@
         <div class="clear"></div>
     </div>
 </div>
-<script src="../plugins/layui/layui.js" charset="utf-8"></script>
+
 <script>
     $(function () {
         layui.use(['laypage', 'layer'], function(){
