@@ -125,4 +125,20 @@
       code = #{code,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="getCompanyPage" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from j_company
+    <where>
+      <if test="company != null" >
+        <if test="company.id != null" >
+          id = #{company.id,jdbcType=BIGINT}
+        </if>
+        <if test="company.companyName != null and company.companyName != ''" >
+          AND   company_name   LIKE CONCAT('%',#{company.companyName,jdbcType=VARCHAR} ,'%')
+        </if>
+      </if>
+    </where>
+     limit #{start},#{count};
+  </select>
 </mapper>

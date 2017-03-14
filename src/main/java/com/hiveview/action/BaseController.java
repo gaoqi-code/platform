@@ -1,6 +1,10 @@
 package com.hiveview.action;
 
+import com.hiveview.dao.IPagingDao;
 import com.hiveview.entity.Member;
+import com.hiveview.entity.Paging;
+import com.hiveview.util.BeanUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -73,6 +77,36 @@ public class BaseController {
 
         return memberId != null?memberId:-1L;
     }
+
+
+    /**
+     * 获得paging对象用于分页
+     * @param request
+     * @param tableName
+     * @return
+     */
+    public  Paging getPaging(HttpServletRequest request,String tableName) {
+        if(request == null) {
+            return null;
+        } else {
+            Paging paging = new Paging();
+            String pagesize = request.getParameter("pageSize");
+            if (StringUtils.isNotEmpty(pagesize)) {
+                paging.setPageSize(Integer.parseInt(pagesize));
+            }
+            String currentPage = request.getParameter("currentPage");
+            if (StringUtils.isNotEmpty(currentPage)) {
+                paging.setCurrentPage(Integer.parseInt(currentPage));
+            }
+            IPagingDao pagingDao =  BeanUtil.getBean("pagingDao");
+            int total = pagingDao.getTableTotal(tableName);
+            if (total>0) {
+                paging.setRecCount(total);
+            }
+            return paging;
+        }
+    }
+
 
 
 }

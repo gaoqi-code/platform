@@ -84,7 +84,7 @@
                     <div class="layui-input-inline">
                         <input type="input" name="input"  value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux"><a href="member/list.html" class="ta1">修改所属企业</a></div>
+                    <div class="layui-form-mid layui-word-aux"><a href="member/company/list.html" class="ta1">修改所属企业</a></div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">个人介绍</label>
@@ -145,7 +145,6 @@
                 url: "/member/updateInfo.json",
                 data: $("#memberInfo").serialize(),
                 dataType: "json",
-                sync:false,
                 success: function(data){
                     if(data.flag) {
                         layer.alert("保存成功！");

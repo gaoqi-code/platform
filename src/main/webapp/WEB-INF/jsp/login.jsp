@@ -102,7 +102,6 @@
                 url: "/login.json",
                 data: $("#loginForm").serialize(),
                 dataType: "json",
-                sync:false,
                 success: function(data){
                     if(data.flag) {
                         setTimeout(function () {

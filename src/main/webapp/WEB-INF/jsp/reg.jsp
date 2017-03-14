@@ -116,7 +116,6 @@
                 url: "/register/registerMember.json",
                 data: $("#regForm").serialize(),
                 dataType: "json",
-                sync:false,
                 success: function(data){
                     if(data.flag) {
                         layer.msg("恭喜注册成功！");

@@ -85,10 +85,10 @@ public class MemberAction extends BaseController{
 	 * 会员中心关联企业
 	 * @return
 	 */
-	@RequestMapping(value="/list")
+	@RequestMapping(value="/companyList")
 	public String list(HttpServletRequest request) {
 		request.setAttribute("nav","myshop");
-		return "member/associate_member_list";
+		return "company/associate_member_list";
 	}
 
 	/**
