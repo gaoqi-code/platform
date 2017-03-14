@@ -1,0 +1,7 @@
+.adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
+.adviser_right_tj img{width:90px;}
+.adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}
+.adviser_right_tjperson p{height:30px;line-height: 30px;}
+.adviser_right_tj_personwork{text-align: left;border-bottom: 1px solid #eee;margin-bottom: 20px;}
+.adviser_right_tj_personwork p{height:30px;line-height: 30px;padding-left:10px;}
+.adviser_tj_title{height: 35px;line-height: 35px;}

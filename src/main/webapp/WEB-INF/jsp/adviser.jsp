@@ -12,6 +12,7 @@
     <title>企巴巴-一站式商业服务平台</title>
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" type="text/css" href="css/adviser_tui.css">
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
     <style>
@@ -75,16 +76,6 @@
             width: 0;
             height: 35px;
             margin: 0 30px;
-        }
-        .recently-handled {
-            padding: 10px 17px;
-            line-height: normal;
-            background-color: rgba(255,255,255,.1);
-            border-radius: 5px;
-            height: 40px;
-            color: #999;
-            overflow: hidden;
-            display: inline-block;
         }
         .head-update-middle ul li {
             display: inline-block;
@@ -177,42 +168,20 @@
                     <span class="c-post">金牌顾问</span>
                 </div>
                 <div class="sub-til">
-                    <span>小顶网（成都）</span>
-                    <span class="c-border"></span>
-                    <span>
-
-                        高级顾问
-                </span>
-                    <span class="c-border"></span>
-                    <span>
-                    3年执业经验
-                </span>
+                    <span>北京中讯担宝</span>
                 </div>
-
-                <div class="recently-banli" id="isHidden">
-                    <p>最近办理：</p>
-                    <div class="recently-handled" id="setDate"><p style="margin-top: 0px;">2017-02-16 受理 陈** 客户“发明专利”业务</p><p></p><p>2017-02-04 受理 李** 客户“商标注册”业务</p><p></p></div>
+                <div class="sub-til">
+                    <span>在线咨询：<a href="javascript:void(0);"><img src="images/qq/qq.gif" /></a></span>
                 </div>
-                <ul>
-
-                    <li>
-                        <p>37014</p>
-                        <b>关注量 </b>
-                    </li>
-                    <li class="li-border"></li>
-
-                    <li>
-                        <p>2019</p>
-                        <b>咨询量 </b>
-                    </li>
-
-                    <li class="li-border" id="may_hede"></li>
-                    <li>
-                        <p>76</p>
-                        <b>成单量 </b>
-                    </li>
-
-                </ul>
+                <div class="sub-til">
+                    <span>联系电话：15600183076</span>
+                </div>
+                <div class="sub-til">
+                    <span>主营业务：公司注册、会计理财</span>
+                </div>
+                <div class="sub-til">
+                    <span>所在地区：北京市昌平区永旺大楼321</span>
+                </div>
             </div>
 
             <div class="head-update-right">
@@ -226,7 +195,7 @@
 
     </div>
 
-    <div class="content">
+    <div class="content contentTop">
 
         <div class="adviser_left">
             <div class="layui-collapse" lay-accordion="">
@@ -254,9 +223,9 @@
                         <div class="layui-input-inline">
                             <select name="quiz1">
                                 <option value="">请选择省</option>
-                                <option value="浙江" selected="">浙江省浙江省浙江省浙江省</option>
-                                <option value="你的工号">江西省</option>
-                                <option value="你最喜欢的老师">福建省</option>
+                                <option value="浙江" selected="">企业服务</option>
+                                <option value="你的工号">金融服务</option>
+                                <option value="你最喜欢的老师">法律顾问</option>
                             </select>
                         </div>
                     </div>
@@ -277,27 +246,58 @@
                     </div>
                 </form>
             </div>
-            <div>
-                <div>顾问推荐</div>
-                <div>
-                    顾问一
+            <div class="adviser_tj">
+                <div class="adviser_tj_title">顾问推荐</div>
+                <div class="adviser_tj_li">
+                    <div>
+                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
+                        <div class="adviser_right_tjperson">
+                            <div style="margin-top: 15px;">
+                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="adviser_right_tj_personwork">
+                            <p><span>执业经验：</span>8年</p>
+                            <p><span>主营业务：</span>8年</p>
+                            <p><span>个人简介：</span>8年</p>
+                            <p><span>所在地区：</span>北京市昌平区</p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    顾问二
+                <div class="adviser_tj_li">
+                    <div>
+                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
+                        <div class="adviser_right_tjperson">
+                            <div style="margin-top: 15px;">
+                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="adviser_right_tj_personwork">
+                            <p><span>执业经验：</span>8年</p>
+                            <p><span>主营业务：</span>8年</p>
+                            <p><span>个人简介：</span>8年</p>
+                            <p><span>所在地区：</span>北京市昌平区</p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    顾问三
-                </div>
-            </div>
-            <div>
-                <div></div>
-                <div>
-                    <ul>
-                        <li><div><h3>价格透明</h3><p>服务无差价</p></div></li>
-                        <li><div><h3>安全保障</h3><p>签订交易协议，资料专人管理</p></div></li>
-                        <li><div><h3>准时保质</h3><p>准点保持交付，超时赔付</p></div></li>
-                        <li><div><h3>售后无忧</h3><p>投诉100%受理，100%解决</p></div></li>
-                    </ul>
+                <div class="adviser_tj_li">
+                    <div>
+                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
+                        <div class="adviser_right_tjperson">
+                            <div style="margin-top: 15px;">
+                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="adviser_right_tj_personwork">
+                            <p><span>执业经验：</span>8年</p>
+                            <p><span>主营业务：</span>8年</p>
+                            <p><span>个人简介：</span>8年</p>
+                            <p><span>所在地区：</span>北京市昌平区</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

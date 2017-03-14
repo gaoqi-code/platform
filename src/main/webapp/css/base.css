@@ -49,6 +49,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	top: -2px;
 }
 .size25 {display: inline-block;vertical-align: middle;width: 25px;height: 25px;background-image: url(../images/public.png);}
+.contentTop{margin-top:10px;}
 
 
 
@@ -88,9 +89,10 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .t_nav li a:hover{background-color: #ff3300;}
 .current_c{background-color: #ff6600 !important;}
 /*** nav part end ***/
-
+.position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
 
 .content{width:1180px;margin-left: auto; margin-right: auto;}
+/** posttion part**/
 
 /*** bottom part ***/
 .bottomCss{margin-top:5px;padding-top:40px;background-color:#2a3235;color: #FFF;}

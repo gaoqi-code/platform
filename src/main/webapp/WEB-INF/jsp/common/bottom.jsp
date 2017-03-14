@@ -28,8 +28,8 @@
             <div class="clear"></div>
         </div>
         <div class="footBottom">
-            <p class="copyright">版权所有 © 广州墨迪投资咨询有限公司</p>
-            <p class="copy-info">Copyright © 2014-2017 Guang Zhou Mo Di Tou Zi Zi Xun You Xian Gong Si </p>
+            <p class="copyright">版权所有 © 中讯担保</p>
+            <p class="copy-info">Copyright © 2015-2018 Zhong Xun Dan Bao Tou Zi Zi Xun You Xian Gong Si </p>
             <p class="copy-num">粤ICP备16125363号-1</p>
             <a id="szfw_logo" href="https://credit.szfw.org/CX20160510015126120135.html" target="_blank"></a>
         </div>

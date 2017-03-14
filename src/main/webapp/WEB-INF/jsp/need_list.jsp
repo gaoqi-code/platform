@@ -23,7 +23,6 @@
         .adviser-list-info span{font-size:22px;margin-right: 20px;}
         .adviser-list-info p{line-height: 35px;height: 35px;}
         .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
-        .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
 
         .need_mainli{margin-top: 10px;}
         .need_mainli tr{height:80px;}
