@@ -78,6 +78,16 @@ public class BaseController {
         return memberId != null?memberId:-1L;
     }
 
+    public long getCompanyId(HttpServletRequest request) {
+        Member member = (Member) request.getSession().getAttribute("currentUser");
+        Long companyId = null;
+        if(member != null) {
+//            memberId = assertion.getPrincipal().getAttributes().get("memberId");
+            companyId = member.getCompanyId();
+        }
+
+        return companyId != null?companyId:-1L;
+    }
 
     /**
      * 获得paging对象用于分页

@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
     <title>企巴巴</title>
@@ -35,26 +32,51 @@
 
         <div class="c_right">
             <p class="layui-elem-quote">发布新需求</p>
-            <form class="layui-form" action="">
+            <form class="layui-form" action="" id="needForm">
+                <input type="hidden" name="id" value="${need.id}">
                 <div class="layui-form-item">
                     <label class="layui-form-label">需求名称</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <input type="input" name="title" value="${need.title}" autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">需求类型</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <select  lay-filter="oneLevel" id="oneLevel">
+                            <option value="">请选择</option>
+                            <c:forEach items="${oneLevelCategories}" var="category">
+                                <option value="${category.id}" <c:if test="${category.id == selectClass.oneLevel}">selected=""</c:if>  >${category.name}</option>
+                            </c:forEach>
+                        </select>
                     </div>
-                    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+                    <div class="layui-input-inline">
+                        <select  lay-filter="twoLevel" id="twoLevel">
+                            <option value="">请选择</option>
+                            <%--<option value="宁波"selected="" disabled="">宁波</option>--%>
+                            <c:forEach items="${twoLevelCategories}" var="category">
+                                <option value="${category.id}" <c:if test="${category.id == selectClass.twoLevel}">selected=""</c:if> >${category.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select lay-filter="threeLevel" id="threeLevel">
+                            <option value="">请选择</option>
+                            <c:forEach items="${threeLevelCategories}" var="category">
+                                <option value="${category.id}" <c:if test="${category.id == selectClass.threeLevel}">selected=""</c:if> >${category.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <input type="hidden" id="classId" name ="classId" value="${need.classId}" >
                 </div>
+
+
 
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">需求简介</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" name="content" class="layui-textarea">${need.content}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -102,13 +124,62 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            $.ajax({
+                type: "POST",
+                url: "/member/need/add.json",
+                data: $("#needForm").serialize(),
+                dataType: "json",
+                async:false,
+                success: function (data) {
+                    if (data) {
+                        layer.msg("恭喜发布成功！");
+                        setTimeout(function () {
+                            location.href = "/member/need/list.html";
+                        }, 1000);
+                    } else {
+                        layer.msg("发布失败！");
+                    }
+                }
+            });
             return false;
         });
 
-
+        form.on('select', function(data){
+            var oldDom = data.elem;
+            var selectVal = data.value;
+            var classId = $("#classId").val();
+            if(selectVal != classId) {
+                $("#classId").val(selectVal)
+            }else{
+                return;
+            }
+            var level = $(oldDom).attr("id");
+            if(level != "threeLevel") {
+                $.ajax({
+                    type: "POST",
+                    url: "/member/category/getSonCategory.json",
+                    data: {parentId:selectVal},
+                    dataType: "json",
+                    async:false,
+                    success: function (data) {
+                        if (data.flag) {
+                            var content = '<option value="">请选择</option>';
+                            data.categorys.forEach(function(item,index) {
+                                content += '<option value="'+item.id+'">'+item.name+'</option>';
+                            });
+                            if(level == "oneLevel") {
+                                $("#twoLevel").html(content);
+                            }else {
+                                $("#threeLevel").html(content);
+                            }
+                            form.render('select');
+                        } else {
+                            layer.msg("类目加载失败！");
+                        }
+                    }
+                });
+            }
+        });
     });
 </script>
 <script>

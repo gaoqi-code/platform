@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -67,6 +68,7 @@ public class CompanyAction extends BaseController{
 				Member member = new Member();
 				member.setId(super.getMemberId(request));
 				member.setCompanyId(company.getId());
+				member.setAddTime(new Date());
 				memberService.updateInfo(member);
 				flag = true;
 			}

@@ -6,12 +6,12 @@
         </ul>
         <p class="layui-elem-quote">需求管理</p>
         <ul>
-            <li><a href="member/need/add.html">发布需求</a></li>
+            <li><a href="member/need/toAdd/0.html">发布需求</a></li>
             <li><a href="member/need/list.html">需求列表</a></li>
         </ul>
         <p class="layui-elem-quote">账户管理</p>
         <ul>
-            <li><a href="javascript:void(0);">修改密码</a></li>
+            <li><a href="/member/account/toUpdatePW.html">修改密码</a></li>
         </ul>
         <p class="layui-elem-quote">店铺管理</p>
         <ul>

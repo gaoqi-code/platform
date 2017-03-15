@@ -33,7 +33,7 @@
         </javaClientGenerator>
 
         <!-- 配置表名跟pojo名  该table节点可以多个 -->
-        <table schema="project" tableName="j_company" domainObjectName="Company" enableCountByExample="false" enableUpdateByExample="false"
+        <table schema="project" tableName="j_need" domainObjectName="Need" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <!--<property name="useActualColumnNames" value="false" />-->

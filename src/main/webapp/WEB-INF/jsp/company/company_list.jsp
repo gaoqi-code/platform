@@ -36,7 +36,7 @@
                 <label class="layui-form-label">企业名称</label>
                 <div class="layui-input-block">
                     <input id ="companyName" style="width: 150px;display: inline;position: relative;top: 2px;" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入企业名称" class="layui-input">
-                    <button class="layui-btn">搜索</button>
+                    <button class="layui-btn" id="seek">搜索</button>
                 </div>
             </div>
 
@@ -60,34 +60,37 @@
         //以下将以jquery.ajax为例，演示一个异步分页
         var pageSize = 5;
         function paging(curr){
-            $.ajax({
-                type: "POST",
-                url: "/member/company/page.html",
-                data: {
-                    companyName :$("#companyName").val(),
-                    currentPage :curr || 1,
-                    pageSize : pageSize
-                },
-                success: function(data){
-                    $("#dataMsg").html(data);
-                    var totalPages = $("#totalPages").val();
-                    //显示分页
-                    laypage({
-                        cont: 'productPager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-                        pages: totalPages, //通过后台拿到的总页数
-                        curr: curr || 1, //当前页
-                        groups: 5 ,//连续显示分页数
-                        jump: function(obj, first){ //触发分页后的回调
-                            if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                paging(obj.curr);
+                $.ajax({
+                    type: "POST",
+                    url: "/member/company/page.html",
+                    data: {
+                        companyName :$("#companyName").val(),
+                        currentPage :curr || 1,
+                        pageSize : pageSize
+                    },
+                    success: function(data){
+                        $("#dataMsg").html(data);
+                        var totalPages = $("#totalPages").val();
+                        //显示分页
+                        laypage({
+                            cont: 'productPager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                            pages: totalPages, //通过后台拿到的总页数
+                            curr: curr || 1, //当前页
+                            groups: 5 ,//连续显示分页数
+                            jump: function(obj, first){ //触发分页后的回调
+                                if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
+                                    paging(obj.curr);
+                                }
                             }
-                        }
-                    });
-                }
-            });
-        };
+                        });
+                    }
+                });
+            };
         //运行
         paging();
+            $("#seek").click(function () {
+                paging();
+            });
         });
     })
 

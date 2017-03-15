@@ -121,33 +121,7 @@ public class RegisterAction extends BaseController{
         return result;
     }
 
-    /**
-     * 修改密码
-     * @param request
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "updatePW")
-    public Boolean updatePW(HttpServletRequest request){
-        Boolean result;
-        String oldPW =request.getParameter("oldPW");
-        String newPW =request.getParameter("newPW");
-        long memberId = super.getMemberId(request);
-        boolean flag= registerService.verifyPW(super.getMemberId(request),oldPW);
-        if (flag) {
-            if (!(oldPW.equals(newPW))) {
-                Member member = new Member();
-                member.setId(memberId);
-                member.setPassword(newPW);
-                memberService.updateMember(member);
-            }
-            result = true;
-        } else {
-            result = false;
-        }
 
-        return result;
-    }
 
 
 

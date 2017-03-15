@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/member/need")
+@RequestMapping("/member/aaa")
 public class AdviserAction {
 
 	@RequestMapping(value="/list")

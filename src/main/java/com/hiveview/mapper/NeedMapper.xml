@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hiveview.dao.INeedDao" >
+  <resultMap id="BaseResultMap" type="com.hiveview.entity.Need" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="member_id" property="memberId" jdbcType="BIGINT" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="hits" property="hits" jdbcType="INTEGER" />
+    <result column="confine_status" property="confineStatus" jdbcType="TINYINT" />
+    <result column="class_id" property="classId" jdbcType="BIGINT" />
+    <result column="timing_status" property="timingStatus" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="className" property="className" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, content, member_id, company_id, attribute, status, hits, confine_status, 
+    class_id, timing_status, type, add_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from j_need
+    where id = #{needId,jdbcType=BIGINT} and member_id = #{memberId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from j_need
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hiveview.entity.Need" >
+    insert into j_need (id, title, content, 
+      member_id, company_id, attribute, 
+      status, hits, confine_status, 
+      class_id, timing_status, type, 
+      add_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{memberId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{attribute,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{hits,jdbcType=INTEGER}, #{confineStatus,jdbcType=TINYINT}, 
+      #{classId,jdbcType=BIGINT}, #{timingStatus,jdbcType=TINYINT}, #{type,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hiveview.entity.Need" >
+    insert into j_need
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="attribute != null" >
+        attribute,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="hits != null" >
+        hits,
+      </if>
+      <if test="confineStatus != null" >
+        confine_status,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="timingStatus != null" >
+        timing_status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="attribute != null" >
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="hits != null" >
+        #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="confineStatus != null" >
+        #{confineStatus,jdbcType=TINYINT},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=BIGINT},
+      </if>
+      <if test="timingStatus != null" >
+        #{timingStatus,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hiveview.entity.Need" >
+    update j_need
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="attribute != null" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="hits != null" >
+        hits = #{hits,jdbcType=INTEGER},
+      </if>
+      <if test="confineStatus != null" >
+        confine_status = #{confineStatus,jdbcType=TINYINT},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=BIGINT},
+      </if>
+      <if test="timingStatus != null" >
+        timing_status = #{timingStatus,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hiveview.entity.Need" >
+    update j_need
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=BIGINT},
+      company_id = #{companyId,jdbcType=BIGINT},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      hits = #{hits,jdbcType=INTEGER},
+      confine_status = #{confineStatus,jdbcType=TINYINT},
+      class_id = #{classId,jdbcType=BIGINT},
+      timing_status = #{timingStatus,jdbcType=TINYINT},
+      type = #{type,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="getNeedPage" resultMap="BaseResultMap"  >
+        SELECT
+          n.id,
+          n.title,
+          n.content,
+          n.member_id,
+          n.company_id,
+          n.attribute,
+          n.status,
+          n.class_id,
+          n.add_time,
+          n.update_time,
+          c.name as className
+        FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
+        <where>
+            <if test="need != null" >
+                <if test="need.memberId != null" >
+                    member_id = #{need.memberId,jdbcType=BIGINT}
+                </if>
+            </if>
+        </where>
+        limit #{start},#{count};
+    </select>
+
+</mapper>
