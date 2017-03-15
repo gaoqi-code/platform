@@ -113,5 +113,11 @@ public class IndexAction {
 		return mav;
 	}
 
+	@RequestMapping(value="/toSuccess")
+	public ModelAndView toSuccess(HttpServletRequest request, ModelAndView mav) {
+		mav.setViewName("success");
+		return mav;
+	}
+
 
 }
