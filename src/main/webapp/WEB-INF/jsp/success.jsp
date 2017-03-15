@@ -32,7 +32,7 @@
         <jsp:include page="./common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">发布产品 -- 发布成功</p>
+            <div class="main_nav">发布产品 &gt; 发布成功</div>
             <div class="c_right_content">
                 <div class="s_left">
                     <div class="s_left_img"><img src="images/tips/success.png" /></div>
