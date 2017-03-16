@@ -26,4 +26,6 @@ public interface ICompanyDao extends IBaseDao<Company>{
      * @return
      */
     List<Company> getCompanyPage(@Param("company") Company company, @Param("start") int start, @Param("count") int count);
+
+    List<Company> getCompany(Company company);
 }

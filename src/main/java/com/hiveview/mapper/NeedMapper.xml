@@ -198,7 +198,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-    <select id="getNeedPage" resultMap="BaseResultMap"  >
+    <select id="getNeedPage" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >
         SELECT
           n.id,
           n.title,
@@ -213,13 +213,13 @@
           c.name as className
         FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
         <where>
-            <if test="need != null" >
-                <if test="need.memberId != null" >
-                    member_id = #{need.memberId,jdbcType=BIGINT}
-                </if>
+            <if test="memberId != null" >
+                member_id = #{memberId,jdbcType=BIGINT}
+            </if>
+            <if test="status != null" >
+             AND  status = #{status,jdbcType=TINYINT}
             </if>
         </where>
-        limit #{start},#{count};
     </select>
 
 </mapper>

@@ -23,7 +23,9 @@ public interface ICompanyService {
      * @param count 查询数
      * @return
      */
-    List<Company> getCompanyPage(Company company, int start, int count);
+    List<Company> getCompanyPage(Company company);
 
     int saveCompany(Company company);
+
+
 }

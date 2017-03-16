@@ -95,7 +95,7 @@ public class BaseController {
      * @param tableName
      * @return
      */
-    public  Paging getPaging(HttpServletRequest request,String tableName) {
+    public  Paging getPaging(HttpServletRequest request) {
         if(request == null) {
             return null;
         } else {
@@ -108,11 +108,11 @@ public class BaseController {
             if (StringUtils.isNotEmpty(currentPage)) {
                 paging.setCurrentPage(Integer.parseInt(currentPage));
             }
-            IPagingDao pagingDao =  BeanUtil.getBean("pagingDao");
-            int total = pagingDao.getTableTotal(tableName);
-            if (total>0) {
-                paging.setRecCount(total);
-            }
+//            IPagingDao pagingDao =  BeanUtil.getBean("pagingDao");
+//            int total = pagingDao.getTableTotal(tableName);
+//            if (total>0) {
+//                paging.setRecCount(total);
+//            }
             return paging;
         }
     }

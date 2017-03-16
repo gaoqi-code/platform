@@ -1,5 +1,7 @@
 package com.hiveview.action;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hiveview.entity.Company;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
@@ -37,8 +39,10 @@ public class CompanyAction extends BaseController{
 	 */
 	@RequestMapping(value="/page")
 	public ModelAndView list(HttpServletRequest request, ModelAndView mav, Company company) {
-		Paging paging = super.getPaging(request, "j_company");
-		List<Company> companys = companyService.getCompanyPage(company,paging.getSkipNo(),paging.getPageSize());
+		Paging paging = super.getPaging(request);
+		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+		List<Company> companys = companyService.getCompanyPage(company);
+		paging.setTotalPages(page.getPages());
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("companys",companys);
 		mav.setViewName("company/paging");

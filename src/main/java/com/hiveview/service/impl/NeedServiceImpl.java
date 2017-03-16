@@ -24,8 +24,8 @@ public class NeedServiceImpl implements INeedService {
     }
 
     @Override
-    public List<Need> getNeedPage(Need need, int skipNo, int pageSize) {
-        return needDao.getNeedPage(need,skipNo,pageSize);
+    public List<Need> getNeedPage(Need need) {
+        return needDao.getNeedPage(need);
     }
 
     @Override

@@ -141,4 +141,17 @@
     </where>
      limit #{start},#{count};
   </select>
+  <select id="getCompany" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Company" >
+    select
+    <include refid="Base_Column_List" />
+    from j_company
+    <where>
+        <if test="id != null" >
+          id = #{company.id,jdbcType=BIGINT}
+        </if>
+        <if test="companyName != null and companyName != ''" >
+          AND   company_name   LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR} ,'%')
+        </if>
+    </where>
+  </select>
 </mapper>

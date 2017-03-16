@@ -1,5 +1,7 @@
 package com.hiveview.action;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hiveview.entity.Category;
 import com.hiveview.entity.Need;
 import com.hiveview.entity.Paging;
@@ -35,11 +37,13 @@ public class NeedAction extends BaseController{
     }
     @RequestMapping(value="/page")
     public ModelAndView page(HttpServletRequest request, ModelAndView mav) {
-        Paging paging = super.getPaging(request, "j_need");
+        Paging paging = super.getPaging(request);
         Need need = new Need();
         need.setMemberId(super.getMemberId(request));
         need.setStatus(StatusUtil.VALID.getVal());
-        List<Need> needs =  needService.getNeedPage(need,paging.getSkipNo(),paging.getPageSize());
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        List<Need> needs =  needService.getNeedPage(need);
+        paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
         mav.getModel().put("needs",needs);
         mav.setViewName("need/paging");

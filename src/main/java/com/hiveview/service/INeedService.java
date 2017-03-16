@@ -14,11 +14,9 @@ public interface INeedService {
     /**
      * 获得需求页
      * @param need
-     * @param skipNo
-     * @param pageSize
      * @return
      */
-    List<Need> getNeedPage(Need need, int skipNo, int pageSize);
+    List<Need> getNeedPage(Need need);
 
     int updateNeed(Need need);
 
