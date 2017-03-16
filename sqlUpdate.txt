@@ -1,4 +1,4 @@
-3.15
+3.15 1
 ALTER TABLE `j_class`
 DROP COLUMN `parent_id`,
 ADD COLUMN `parent_id`  bigint(20) NULL COMMENT '父类目id' AFTER `full_name`;
