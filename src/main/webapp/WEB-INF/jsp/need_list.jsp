@@ -180,7 +180,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>需求名称1</td>
+                            <td><a href="need.html">需求名称1</a></td>
                             <td>金融贷款</td>
                             <td>张三三</td>
                             <td>156****3076</td>
