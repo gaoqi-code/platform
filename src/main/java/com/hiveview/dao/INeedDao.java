@@ -18,5 +18,7 @@ public interface INeedDao extends IBaseDao<Need>{
 
     int updateByPrimaryKey(Need record);
 
-    List<Need> getNeedPage(Need need);
+    List<Need> getNeed(Need need);
+
+    List<Need> getOpenNeed(Need need);
 }

@@ -115,11 +115,9 @@ public class NeedAction extends BaseController{
         return flag;
     }
 
-    @RequestMapping(value="/update")
-    public ModelAndView update(HttpServletRequest request, ModelAndView mav) {
-        request.setAttribute("nav","center");
-        mav.setViewName("need/need_update");
-        return mav;
+    @RequestMapping(value="/toSuccess")
+    public String toSuccess() {
+        return "need/success";
     }
 
 }

@@ -73,9 +73,9 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">执业年限</label>
+                    <label class="layui-form-label">执业时间</label>
                     <div class="layui-input-inline">
-                        <input type="input" name=""  value="${member.workTime}"  placeholder="" autocomplete="off" class="layui-input">
+                        <input type="input" id="workTime" name="workTime"  value="<fmt:formatDate value="${member.workTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -103,9 +103,10 @@
         <div class="clear"></div>
     </div>
 </div>
+
 <script src="../plugins/layui/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['form', 'layedit', 'laydate'], function(){
+    layui.use(['form', 'layedit', 'laydate','upload'], function(){
         var form = layui.form()
                 ,layer = layui.layer
                 ,layedit = layui.layedit
@@ -156,16 +157,14 @@
             return false;
         });
 
-
-    });
-    layui.use('upload', function(){
         layui.upload({
             url: '/fileUpload/upload.json'
             ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
             ,method: 'post' //上传接口的http类型
             ,success: function(data){
+                console.log(data);
                 if(data.flag) {
-                    var path = "<%=basePath%>"+data.path;
+                    var path = "<%=basePath%>"+data.data.src;
                     LAY_demo_upload.src = path;
                     $("#headPortrait").val(path);
                 }else {
@@ -173,7 +172,12 @@
                 }
             }
         });
+
     });
+
+
 </script>
+
+
 </body>
 </html>

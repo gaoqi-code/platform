@@ -15,12 +15,18 @@
     <result column="timing_status" property="timingStatus" jdbcType="TINYINT" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="className" property="className" jdbcType="TIMESTAMP" />
+    <association property="member" javaType="com.hiveview.entity.Member">
+      <result column="memberName" property="name" jdbcType="VARCHAR" />
+      <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+      <result column="address" property="address" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, title, content, member_id, company_id, attribute, status, hits, confine_status, 
-    class_id, timing_status, type, add_time, update_time
+    class_id, timing_status, type, add_time, update_time,end_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap"  >
     select 
@@ -37,12 +43,12 @@
       member_id, company_id, attribute, 
       status, hits, confine_status, 
       class_id, timing_status, type, 
-      add_time, update_time)
+      add_time, update_time,end_time)
     values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{memberId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{attribute,jdbcType=VARCHAR}, 
       #{status,jdbcType=TINYINT}, #{hits,jdbcType=INTEGER}, #{confineStatus,jdbcType=TINYINT}, 
       #{classId,jdbcType=BIGINT}, #{timingStatus,jdbcType=TINYINT}, #{type,jdbcType=VARCHAR}, 
-      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hiveview.entity.Need" >
     insert into j_need
@@ -198,7 +204,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-    <select id="getNeedPage" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >
+    <select id="getNeed" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >
         SELECT
           n.id,
           n.title,
@@ -217,9 +223,48 @@
                 member_id = #{memberId,jdbcType=BIGINT}
             </if>
             <if test="status != null" >
-             AND  status = #{status,jdbcType=TINYINT}
+             AND  n.status = #{status,jdbcType=TINYINT}
+            </if>
+            <if test="title != null and title != ''" >
+             AND  title like CONCAT('%',#{title},'%')
             </if>
         </where>
     </select>
+    <select id="getOpenNeed" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >
+        SELECT
+          n.id,
+          n.title,
+          n.content,
+          n.member_id,
+          n.company_id,
+          n.attribute,
+          n.status,
+          n.class_id,
+          n.add_time,
+          n.update_time,
+          n.hits,
+          n.end_time,
+          c.name as className,
+          m.name as memberName,
+          m.mobile,
+          m.address
+        FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
+                      LEFT JOIN  j_member m on m.id = n.member_id
+        <where>
+            <if test="memberId != null" >
+                member_id = #{memberId,jdbcType=BIGINT}
+            </if>
+            <if test="status != null" >
+             AND  n.status = #{status,jdbcType=TINYINT}
+            </if>
+            <if test="title != null and title != ''" >
+             AND  title like CONCAT('%',#{title},'%')
+            </if>
+            <if test="id != null and id != ''" >
+             AND  n.id =  #{id}
+            </if>
+        </where>
+    </select>
+
 
 </mapper>

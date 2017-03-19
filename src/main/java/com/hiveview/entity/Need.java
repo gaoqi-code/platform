@@ -31,7 +31,20 @@ public class Need {
 
     private Date addTime;
 
+    private Date endTime;
+
     private Date updateTime;
+
+    private Member member;
+
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 
     public String getClassName() {
         return className;
@@ -151,5 +164,13 @@ public class Need {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 }

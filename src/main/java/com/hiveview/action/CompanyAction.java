@@ -59,11 +59,12 @@ public class CompanyAction extends BaseController{
 		return "company/company_add";
 	}
 
+
 	@ResponseBody
 	@RequestMapping(value="/add")
 	public Boolean addCompany(HttpServletRequest request,Company company) {
-
 		Boolean flag = false;
+
 		try {
 			if (company != null && company.getId() == null) {
 				companyService.saveCompany(company);
@@ -83,6 +84,9 @@ public class CompanyAction extends BaseController{
 		return flag;
 	}
 
-
+	@RequestMapping(value="/toSuccess")
+	public String toSuccess(HttpServletRequest request) {
+		return "company/success";
+	}
 
 }

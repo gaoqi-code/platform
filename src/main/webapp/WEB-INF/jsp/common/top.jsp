@@ -14,6 +14,7 @@
         .login_left_content{width: 440px;}
         .login_right{text-align: center;}
         .login_right_company{margin:25px 0px;}
+        .selectType{color:red;}
     </style>
 </head>
 <body>
@@ -22,7 +23,7 @@
         <div class="top_logo">企巴巴</div>
         <div class="top_out_right">
             <div class="top_welcome">您好，欢迎来到企巴巴</div>
-            <div class="top_reg"><a href="login.html">登录</a><a href="reg.html">注册</a></div>
+            <div class="top_reg"><a href="/tologin.html">登录</a><a href="reg.html">注册</a></div>
             <div class="top_tuiguang">网站导航</div>
         </div>
     </div>
@@ -34,20 +35,17 @@
 
         <form action="" id="queryType" method="post" class="inlineb" target="_blank">
             <ul class="search-form-tab">
-                <li class="active" id="1"><a href="javascript:void(0)">找服务</a><i></i>
-                </li>
-                <li id="4"><a href="javascript:void(0)">找顾问</a><i></i>
-                </li>
-                <li id="2"><a href="javascript:void(0)">查公司</a><i></i></li>
-                <li id="3"><a href="javascript:void(0)">查商标</a><i></i>
-                </li>
+                <li class="active" id="1"><a name="searchType" searchType="1" class="selectType" href="javascript:void(0)">找服务</a><i></i></li>
+                <li ><a name="searchType" searchType="2" href="javascript:void(0)">找需求</a><i></i></li>
+                <li ><a name="searchType" searchType="3" href="javascript:void(0)">找顾问</a><i></i></li>
             </ul>
             <div class="tabBox">
                 <div class="search-form-box">
                     <input type="text" placeholder="请输入关键字查询" id="keyword" name="keyword" value="" maxlength="20">
-                    <button type="submit"><i class="size25 icon1"></i><span class="inline">搜索</span></button>
+                    <button type="button" id="topSearch" ><i class="size25 icon1"></i><span class="inline">搜索</span></button>
                 </div>
             </div>
+            <input>
         </form>
     </div>
     <div style="clear: both;"></div>
@@ -83,7 +81,7 @@
                 </div>
             </li>
             <li class="nav-li">
-                <a href="need/list.html">找需求</a>
+                <a href="/need/toSearch.html">找需求</a>
             </li>
             <li class="nav-li">
                 <a href="adviser/list.html">找顾问</a>
@@ -110,6 +108,25 @@
         $(".nav-l2-container").mouseout(function () {
             $(".nav-l2-container").css("display","none");
         });
+
+        $("a[name='searchType']").click(function () {
+            $("a[name='searchType']").removeClass("selectType");
+             $(this).addClass("selectType");
+        });
+        $("#topSearch").click(function () {
+            var searchType = $(".selectType").attr("searchType");
+            var keyword = $("#keyword").val();
+            var url;
+            if(searchType == 1) {
+            }
+            if(searchType == 2) {
+                url = "/need/toSearch.html?keyword="+keyword;
+            }
+            if(searchType == 3) {
+            }
+            location.href = url;
+        });
+
     });
 </script>
 </body>

@@ -8,7 +8,7 @@ public class Member {
 //	`sys_user_id` bigint(64) NOT NULL AUTO_INCREMENT,
     private Long id;
     
-//	`user_name` varchar(45) DEFAULT NULL COMMENT '用户名',
+//	`user_name` var嚒mbchar(45) DEFAULT NULL COMMENT '用户名',
     private String name;
     
 //	`user_pwd` varchar(65) DEFAULT NULL COMMENT '密码',
@@ -51,6 +51,16 @@ public class Member {
 	private Integer type;
 
 	private String personalProfile;
+
+	private String address;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public Long getId() {
 		return id;

@@ -19,18 +19,29 @@
         </div>
         <div class="t_search_s">
             <div class="search_select">
-                <a href="javascript:void(0);" class="search_a"><span id="cret">供应</span><s class="icon-down"></s></a>
-                <ul class="search_options" id="labObj"><li class="on"><a href="javaScript:loadNavi.setInexCreat(0)">供应</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(1)">求购</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(2)">公司</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(3)">招商</a></li></ul>
+                <a href="javascript:void(0);" class="search_a"><span id="cret">搜索</span><s class="icon-down"></s></a>
+                <%--<ul class="search_options" id="labObj"><li class="on"><a href="javaScript:loadNavi.setInexCreat(0)">供应</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(1)">求购</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(2)">公司</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(3)">招商</a></li></ul>--%>
             </div>
             <div class="t_form">
-                <input type="text" class="keywords inptText" placeholder="请输入您感兴趣的产品" id="txtKey">
+                <input type="text" class="keywords inptText" placeholder="请输入您感兴趣的产品" id="keyword">
             </div>
             <div class="t_btn_div">
-                <button class="search_btn" type="submit" id="btnSearch" hidefocus="" onclick="loadNavi.setIndex(0,0);">找<span>供应</span></button>
-
-                <button class="search_btn a" type="submit" id="unionSearch" hidefocus="" onclick="loadNavi.setIndex(0,1);">联盟搜</button>
-
+                <button class="search_btn" type="submit"  onclick="topSearch(1);">找服务</button>
+                <button class="search_btn" type="submit"  onclick="topSearch(2);">找需求</button>
+                <%--<button class="search_btn" type="submit"  hidefocus="" onclick="loadNavi.setIndex(0,0);">找顾问</button>--%>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function topSearch(type){
+        var keyword = encodeURIComponent(encodeURIComponent($("#keyword").val()));
+        if(type == 1) {
+            location.href = "/need/toSearch.html?keyword="+keyword;
+        }
+        if(type == 2) {
+            location.href = "/need/toSearch.html?keyword="+keyword;
+        }
+    }
+
+</script>

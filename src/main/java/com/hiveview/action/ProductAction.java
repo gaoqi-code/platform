@@ -27,4 +27,10 @@ public class ProductAction {
 		return "product/product_update";
 	}
 
+	@RequestMapping(value="/toSuccess")
+	public String toSuccess() {
+		return "product/success";
+	}
+
+
 }

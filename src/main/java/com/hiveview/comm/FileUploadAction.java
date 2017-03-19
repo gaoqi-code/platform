@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInput;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
@@ -63,15 +64,29 @@ public class FileUploadAction {
 					newFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
 					File localFile = null;
 					//				localFile = new File(realPath + "/" + newFileName);
-					filePath = realPath + "\\" + newFileName;
+					filePath = realPath + "//" + newFileName;
 					localFile = new File(filePath);
 					file.transferTo(localFile);
 				}
 			}
 			flag = true;
 		}
+
+//		{
+//				"code": 0 //0表示成功，其它失败
+//				,"msg": "" //提示信息 //一般上传失败后返回
+//				,"data": {
+//					 "src": "图片路径"
+//					,"title": "图片名称" //可选
+//					}
+//		}
+		String imgPath = imgUpload+"/"+newFileName;
 		result.put("flag", flag);
-		result.put("path", imgUpload+"/"+newFileName);
+		result.put("code", flag?0:1);
+		result.put("msg", flag?"图片上传成功！":"图片上传失败！");
+		Map<String, Object> data = Maps.newHashMap();
+		data.put("src", imgPath);
+		result.put("data", data);
 		return result;
 	}
 	

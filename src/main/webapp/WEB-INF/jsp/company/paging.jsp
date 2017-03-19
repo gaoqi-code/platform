@@ -51,10 +51,10 @@
                      success: function(data){
                          console.log(data);
                          if(data) {
-                             layer.msg("恭喜申请成功！");
-                             setTimeout(function () {
-                                 location.href = "/member/info.html";
-                             }, 1000);
+//                             layer.msg("恭喜申请成功！");
+//                             setTimeout(function () {
+                                 location.href = "/member/company/toSuccess.html";
+//                             }, 1000);
                          }else {
                              layer.msg("申请失败！");
                          }

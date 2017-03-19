@@ -15,7 +15,7 @@
         </ul>
         <p class="layui-elem-quote">店铺管理</p>
         <ul>
-            <li><a href="member/list.html">关联企业</a></li>
+            <li><a href="/member/company/list.html">关联企业</a></li>
         </ul>
         <p class="layui-elem-quote">产品管理</p>
         <ul>
