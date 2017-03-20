@@ -14,7 +14,7 @@
     <col width="150">
     <thead>
     <tr>
-        <th>需求标题</th>
+        <th>产品标题</th>
         <th>类目</th>
         <th>状态</th>
         <th>更新时间</th>
@@ -22,35 +22,35 @@
     </tr>
     </thead>
     <tbody>
-            <c:forEach items="${needs}" var="need" >
+            <c:forEach items="${products}" var="product" >
                 <tr>
-                    <td>${need.title}</td>
-                    <td>${need.className}</td>
-                    <td>
-                    <c:if test="${need.status == 0}">
-                        审核中
-                    </c:if>
-                    <c:if test="${need.status == 1}">
-                        审核成功
-                    </c:if>
-                    <c:if test="${need.status == 2}">
-                        审核失败
-                    </c:if>
-                    <c:if test="${need.status == 3}">
-                        下架
-                    </c:if>
+                    <td>${product.title}</td>
+                    <td>${product.className}</td>
+                    <td >
+                        <c:if test="${product.status == 0}">
+                            审核中
+                        </c:if>
+                        <c:if test="${product.status == 1}">
+                            审核成功
+                        </c:if>
+                        <c:if test="${product.status == 2}">
+                           审核失败
+                        </c:if>
+                        <c:if test="${product.status == 3}">
+                            下架
+                        </c:if>
                     </td>
-                    <td> <fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
+                    <td> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
                     <td>
-                        <a href="javascript:void(0);" needId="${need.id}" name="operation" op="update">修改</a>&nbsp;
-                        <a href="javascript:void(0);" needId="${need.id}" name="operation" op="soldOut">下架</a>&nbsp;
-                        <a href="javascript:void(0);" needId="${need.id}" name="operation" op="delete">删除</a>
+                        <a href="javascript:void(0);" productId="${product.id}" name="operation" op="update">修改</a>&nbsp;
+                        <a href="javascript:void(0);" productId="${product.id}" name="operation" op="soldOut">下架</a>&nbsp;
+                        <a href="javascript:void(0);" productId="${product.id}" name="operation" op="delete">删除</a>
                     </td>
                 </tr>
             </c:forEach>
-            <c:if test="${empty needs}">
+            <c:if test="${empty products}">
                 <tr>
-                    <td colspan="5" style="text-align: center;">您还没有创建需求！</td>
+                    <td colspan="4" style="text-align: center;">您还没有创建产品！</td>
                 </tr>
             </c:if>
     </tbody>
@@ -59,15 +59,15 @@
 
    <input type="hidden" id="totalPages" value="${paging.totalPages}"/>
    <input type="hidden" id="currentPage" value="${paging.currentPage}"/>
-   
+
  <script type="text/javascript">
      $(function () {
          $("a[name='operation']").click(function() {
              var thisObj = $(this);
              var operation = thisObj.attr("op");
-             var needId = thisObj.attr("needId");
+             var productId = thisObj.attr("productId");
              if(operation == "update") {
-                 location.href = "/member/need/toAdd/"+needId+".html";
+                 location.href = "/member/product/toAdd/"+productId+".html";
                  return;
              }
              var hint = "";
@@ -86,12 +86,15 @@
              }, function(index){
                  $.ajax({
                      type: "POST",
-                     url: "/member/need/operation.json",
-                     data: {id:needId,status:status},
+                     url: "/member/product/operation.json",
+                     data: {id:productId,status:status},
                      dataType: "json",
                      success: function(data){
                          layer.close(index);
                          if(data) {
+                             if(status == 3) {
+                                 thisObj.parents("tr").eq(2).html("下架");
+                             }
                              if(status == 3) {
                                  thisObj.parents("tr").remove();
                              }

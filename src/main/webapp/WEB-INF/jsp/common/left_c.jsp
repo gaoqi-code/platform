@@ -11,7 +11,7 @@
         </ul>
         <p class="layui-elem-quote">账户管理</p>
         <ul>
-            <li><a href="/member/account/toUpdatePW.html">修改密码</a></li>
+            <li><a href="member/account/toUpdatePW.html">修改密码</a></li>
         </ul>
         <p class="layui-elem-quote">店铺管理</p>
         <ul>
@@ -19,7 +19,7 @@
         </ul>
         <p class="layui-elem-quote">产品管理</p>
         <ul>
-            <li><a href="member/product/add.html">发布产品</a></li>
+            <li><a href="member/product/toAdd/0.html">发布产品</a></li>
             <li><a href="member/product/list.html">产品列表</a></li>
         </ul>
     </div>

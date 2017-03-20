@@ -40,9 +40,9 @@ public class NeedAction extends BaseController{
         Paging paging = super.getPaging(request);
         Need need = new Need();
         need.setMemberId(super.getMemberId(request));
-        need.setStatus(StatusUtil.VALID.getVal());
+//        need.setStatus(StatusUtil.VALID.getVal());
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
-        List<Need> needs =  needService.getNeedPage(need);
+            List<Need> needs =  needService.getNeedPage(need);
         paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
         mav.getModel().put("needs",needs);
@@ -56,13 +56,16 @@ public class NeedAction extends BaseController{
         category.setLevel(LevelUtil.ONE_LEVEL.getVal());
         List<Category> oneLevelCategories = categoryService.getCategory(category);
         if (needId > 0 ) {
-            category.setLevel(LevelUtil.TWO_LEVEL.getVal());
-            List<Category> twoLevelCategories = categoryService.getCategory(category);
-            category.setLevel(LevelUtil.THREE_LEVEL.getVal());
-            List<Category> threeLevelCategories = categoryService.getCategory(category);
             Long memberId = super.getMemberId(request);
             Need need= needService.getNeedByIdAndMId(needId,memberId);
             Category selectClass = categoryService.getCategoryById(need.getClassId());
+            category.setOneLevel(selectClass.getOneLevel());
+            category.setLevel(LevelUtil.TWO_LEVEL.getVal());
+            List<Category> twoLevelCategories = categoryService.getCategory(category);
+            category.setLevel(LevelUtil.THREE_LEVEL.getVal());
+            category.setTwoLevel(selectClass.getTwoLevel());
+            List<Category> threeLevelCategories = categoryService.getCategory(category);
+
             mav.getModel().put("selectClass", selectClass);
             mav.getModel().put("need", need);
             mav.getModel().put("twoLevelCategories", twoLevelCategories);
@@ -85,10 +88,12 @@ public class NeedAction extends BaseController{
                 if (companyId > 0) {
                     need.setCompanyId(companyId);
                 }
-                need.setAddTime(new Date());
                 if (need.getId() != null) {
+                    need.setStatus(StatusUtil.CHECKING.getVal());
+                    need.setUpdateTime(new Date());
                     needService.updateNeed(need);
                 } else {
+                    need.setAddTime(new Date());
                     needService.saveNeed(need);
                 }
                 flag = true;

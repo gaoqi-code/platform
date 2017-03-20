@@ -180,6 +180,9 @@
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
@@ -220,7 +223,7 @@
         FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
         <where>
             <if test="memberId != null" >
-                member_id = #{memberId,jdbcType=BIGINT}
+                n.member_id = #{memberId,jdbcType=BIGINT}
             </if>
             <if test="status != null" >
              AND  n.status = #{status,jdbcType=TINYINT}

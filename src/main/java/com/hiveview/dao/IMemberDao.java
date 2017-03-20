@@ -2,6 +2,8 @@ package com.hiveview.dao;
 
 import com.hiveview.entity.Member;
 
+import java.util.List;
+
 public interface IMemberDao extends IBaseDao<Member> {
 
 
@@ -33,4 +35,6 @@ public interface IMemberDao extends IBaseDao<Member> {
 	int updateByPrimaryKeyWithBLOBs(Member record);
 
 	int updateByPrimaryKey(Member record);
+
+    List<Member> getOpendMember(Member member);
 }

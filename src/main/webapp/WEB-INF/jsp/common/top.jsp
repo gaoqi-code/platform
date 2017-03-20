@@ -84,10 +84,10 @@
                 <a href="/need/toSearch.html">找需求</a>
             </li>
             <li class="nav-li">
-                <a href="adviser/list.html">找顾问</a>
+                <a href="/adviser/toSearch.html">找顾问</a>
             </li>
             <li class="nav-li">
-                <a href="product/list.html">找服务</a>
+                <a href="/product/toSearch.html">找服务</a>
             </li>
             <li class="nav-li">
                 <a href="introduce.html">关于企巴巴</a>
@@ -118,11 +118,13 @@
             var keyword = $("#keyword").val();
             var url;
             if(searchType == 1) {
+                url = "/product/toSearch.html?keyword="+keyword;
             }
             if(searchType == 2) {
                 url = "/need/toSearch.html?keyword="+keyword;
             }
             if(searchType == 3) {
+                url = "/adviser/toSearch.html?keyword="+keyword;
             }
             location.href = url;
         });

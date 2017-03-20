@@ -30,6 +30,8 @@ public class Member {
 
 	private Date workTime;
 
+	private int workAge;
+
 	private String description;
 
 	private String mobile;
@@ -228,5 +230,13 @@ public class Member {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public int getWorkAge() {
+		return workAge;
+	}
+
+	public void setWorkAge(int workAge) {
+		this.workAge = workAge;
 	}
 }

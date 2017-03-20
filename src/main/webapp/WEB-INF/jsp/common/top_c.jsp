@@ -37,7 +37,7 @@
     function topSearch(type){
         var keyword = encodeURIComponent(encodeURIComponent($("#keyword").val()));
         if(type == 1) {
-            location.href = "/need/toSearch.html?keyword="+keyword;
+            location.href = "/product/toSearch.html?keyword="+keyword;
         }
         if(type == 2) {
             location.href = "/need/toSearch.html?keyword="+keyword;

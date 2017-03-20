@@ -3,6 +3,7 @@ package com.hiveview.service.impl;
 import com.hiveview.dao.IMemberDao;
 import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +54,22 @@ public  class MemberServiceImpl implements IMemberService{
     @Override
     public int updateInfo(Member member) {
         return memberDao.updateByPrimaryKeySelective(member);
+    }
+
+    @Override
+    public List<Member> getOpendMemberPage(Member member) {
+        return memberDao.getOpendMember(member);
+    }
+
+    @Override
+    public Member getMemberDetail(long memberId) {
+        Member member = new Member();
+        member.setId(memberId);
+        List<Member> result = memberDao.getOpendMember(member);
+        if (CollectionUtils.isNotEmpty(result)) {
+            member = result.get(0);
+        }
+        return member;
     }
 
 }

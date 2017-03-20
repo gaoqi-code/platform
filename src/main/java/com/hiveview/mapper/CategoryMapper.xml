@@ -171,28 +171,28 @@
         id = #{id,jdbcType=BIGINT}
       </if>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR}
+       AND name = #{name,jdbcType=VARCHAR}
       </if>
       <if test="fullName != null" >
-        full_name = #{fullName,jdbcType=VARCHAR}
+        AND full_name = #{fullName,jdbcType=VARCHAR}
       </if>
       <if test="level != null" >
-        level = #{level,jdbcType=TINYINT}
+        AND level = #{level,jdbcType=TINYINT}
       </if>
       <if test="oneLevel != null" >
-        one_level = #{oneLevel,jdbcType=BIGINT}
+        AND  one_level = #{oneLevel,jdbcType=BIGINT}
       </if>
       <if test="twoLevel != null" >
-        two_level = #{twoLevel,jdbcType=BIGINT}
+        AND two_level = #{twoLevel,jdbcType=BIGINT}
       </if>
       <if test="threeLevel != null" >
-        three_level = #{threeLevel,jdbcType=BIGINT}
+        AND  three_level = #{threeLevel,jdbcType=BIGINT}
       </if>
       <if test="type != null" >
-        type = #{type,jdbcType=TINYINT}
+        AND type = #{type,jdbcType=TINYINT}
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=TINYINT}
+        AND status = #{status,jdbcType=TINYINT}
       </if>
     </where>
   </select>

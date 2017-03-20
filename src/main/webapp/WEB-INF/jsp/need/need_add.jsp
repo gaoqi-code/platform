@@ -139,10 +139,7 @@
                 async:false,
                 success: function (data) {
                     if (data) {
-                        layer.msg("恭喜发布成功！");
-                        setTimeout(function () {
-                            location.href = "/member/need/list.html";
-                        }, 1000);
+                        location.href = "/member/need/toSuccess.html";
                     } else {
                         layer.msg("发布失败！");
                     }
@@ -185,25 +182,6 @@
                         }
                     }
                 });
-            }
-        });
-    });
-</script>
-<script>
-    layui.use('upload', function(){
-        layui.upload({
-            url: '' //上传接口
-            ,success: function(res){ //上传成功后的回调
-                console.log(res)
-            }
-        });
-
-        layui.upload({
-            url: '/test/upload.json'
-            ,elem: '#test' //指定原始元素，默认直接查找class="layui-upload-file"
-            ,method: 'get' //上传接口的http类型
-            ,success: function(res){
-                LAY_demo_upload.src = res.url;
             }
         });
     });

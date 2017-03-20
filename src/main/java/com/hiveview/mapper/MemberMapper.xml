@@ -21,6 +21,9 @@
     <result column="real_name_authentication" property="realNameAuthentication" jdbcType="TINYINT" />
     <result column="company_id" property="companyId" jdbcType="BIGINT" />
     <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="workAge" property="workAge" jdbcType="TINYINT" />
+    <result column="companyName" property="companyName" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hiveview.entity.Member" extends="BaseResultMap" >
     <result column="personal_profile" property="personalProfile" jdbcType="LONGVARCHAR" />
@@ -361,6 +364,41 @@
         AND type = #{type,jdbcType=TINYINT}
       </if>
     </where>
+  </select>
+  <select id="getOpendMember" parameterType="com.hiveview.entity.Member"  resultMap="ResultMapWithBLOBs">
+    SELECT
+      m.id,
+      name,
+      head_portrait,
+      nation,
+      sex,
+      level,
+      work_time,
+      password,
+      description,
+      mobile,
+      qq,
+      email,
+      check_status,
+      m.add_time,
+      m.update_time,
+      m.status,
+      real_name_authentication,
+      company_id,
+      type,
+      m.address,
+      date_format(now(), '%Y') - date_format(m.work_time, '%Y') AS workAge,
+      c.company_name as companyName
+      FROM j_member m LEFT JOIN j_company c ON m.company_id = c.id
+      <where>
+        <if test="id != null" >
+          m.id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="name != null" >
+        AND  m.name like CONCAT('%',#{name},'%')
+        </if>
+        AND m.type = 1
+      </where>
   </select>
 
 </mapper>

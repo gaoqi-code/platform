@@ -29,5 +29,9 @@ public interface IMemberService {
 	 * @return
 	 */
 	int updateInfo(Member member);
+
+	List<Member> getOpendMemberPage(Member member);
+
+    Member getMemberDetail(long memberId);
 }
 
