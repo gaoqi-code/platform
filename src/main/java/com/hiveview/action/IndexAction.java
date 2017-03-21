@@ -17,6 +17,12 @@ public class IndexAction {
 		return mav;
 	}
 
+	@RequestMapping(value="/article")
+	public ModelAndView article(HttpServletRequest request, ModelAndView mav) {
+		mav.setViewName("article");
+		return mav;
+	}
+
 	@RequestMapping(value="/index")
 	public ModelAndView index(HttpServletRequest request, ModelAndView mav) {
 		mav.setViewName("index");
