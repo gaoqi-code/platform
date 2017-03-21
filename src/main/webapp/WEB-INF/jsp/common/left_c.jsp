@@ -37,7 +37,7 @@
     <div class="gonggao">
 
         <ul>
-            <li><a href="javascript:void(0);">公告1111111111111</a></li>
+            <li><a href="article.html">公告1111111111111</a></li>
             <li><a href="javascript:void(0);">公告1111111111111</a></li>
             <li><a href="javascript:void(0);">公告1111111111111</a></li>
             <li><a href="javascript:void(0);">公告1111111111111</a></li>
