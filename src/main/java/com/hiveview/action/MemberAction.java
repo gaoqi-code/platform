@@ -26,7 +26,6 @@ public class MemberAction extends BaseController{
 
 	/**
 	 * 会员中心首页
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value="/index")

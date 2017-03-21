@@ -30,7 +30,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, head_portrait,nation, sex, level, work_time, password, description, mobile, qq,email,
-    check_status, add_time, update_time, status, real_name_authentication, company_id, 
+    check_status, add_time, update_time, status, real_name_authentication, company_id, address,
     type
   </sql>
   <sql id="Blob_Column_List" >
@@ -233,7 +233,7 @@
       <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
-      <if test="address != address" >
+      <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
       <if test="personalProfile != null" >
@@ -400,7 +400,7 @@
         <if test="name != null" >
         AND  m.name like CONCAT('%',#{name},'%')
         </if>
-        AND m.type = 1
+        AND m.type = 1 and m.check_status = 2 and m.status = 1
       </where>
   </select>
 

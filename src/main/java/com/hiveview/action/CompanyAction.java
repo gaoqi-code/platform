@@ -2,6 +2,7 @@ package com.hiveview.action;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.google.common.collect.Maps;
 import com.hiveview.entity.Company;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/member/company")
@@ -60,11 +62,30 @@ public class CompanyAction extends BaseController{
 	}
 
 
+	/**
+	 * 查询会员是否已经有公司
+	 * @return 0 没有公司，1审核中，2审核成功
+	 */
+	@ResponseBody
+	@RequestMapping(value="/memberIsJoinCompany")
+	public Integer memberIsJoinCompany(HttpServletRequest request) {
+		Integer result = 0;
+		Long memberId = super.getMemberId(request);
+		Member member = memberService.getMemberDetail(memberId);
+		if (member.getCompanyId() != null) {
+			if (member.getCheckStatus() == 1) {
+				result = 1;
+			}
+			if (member.getCheckStatus() == 2) {
+				result = 2;
+			}
+		}
+		return result;
+	}
 	@ResponseBody
 	@RequestMapping(value="/add")
 	public Boolean addCompany(HttpServletRequest request,Company company) {
 		Boolean flag = false;
-
 		try {
 			if (company != null && company.getId() == null) {
 				companyService.saveCompany(company);
@@ -83,6 +104,8 @@ public class CompanyAction extends BaseController{
 
 		return flag;
 	}
+
+
 
 	@RequestMapping(value="/toSuccess")
 	public String toSuccess(HttpServletRequest request) {
