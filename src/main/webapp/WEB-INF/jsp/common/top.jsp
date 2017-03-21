@@ -20,7 +20,7 @@
 <body>
 <div class="top_out">
     <div class="content">
-        <div class="top_logo">企巴巴</div>
+        <div class="top_logo"><a href="index.html">企巴巴</a></div>
         <div class="top_out_right">
             <div class="top_welcome">您好，欢迎来到企巴巴</div>
             <div class="top_reg"><a href="/tologin.html">登录</a><a href="reg.html">注册</a></div>

@@ -17,7 +17,7 @@ iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .search-form-box{font-size: 0;}
 .search-form-box input, .search-form-box button {display: inline-block;vertical-align: middle;font-size: 14px;}
-.top_out{width: 100%;height: 30px;line-height: 30px;background-color: #e2e2e2;}
+.top_out{width: 100%;height: 30px;line-height: 30px;background-color:#fafafa;border-bottom: 1px solid #dfdfdf;font-family: tahoma,"Microsoft Yahei","Hiragino Sans GB",sans-serif;}
 .top_logo{float: left;}
 .top_out_right{float:right;}
 .top_welcome{float: left;margin-right: 10px;}

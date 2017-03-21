@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <div class="top_out">
     <div class="content">
-        <div class="top_logo">企巴巴</div>
+        <div class="top_logo"><a href="index.html">企巴巴</a></div>
         <div class="top_out_right">
             <div class="top_welcome">您好，欢迎XXX来到企巴巴</div>
             <div class="top_tuiguang">网站导航</div>
