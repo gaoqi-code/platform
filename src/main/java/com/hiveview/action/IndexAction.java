@@ -17,6 +17,11 @@ public class IndexAction {
 		return mav;
 	}
 
+	@RequestMapping(value="/index")
+	public ModelAndView index(HttpServletRequest request, ModelAndView mav) {
+		mav.setViewName("index");
+		return mav;
+	}
 
 	@RequestMapping(value="/pass_find")
 	public ModelAndView passFind(HttpServletRequest request, ModelAndView mav) {
