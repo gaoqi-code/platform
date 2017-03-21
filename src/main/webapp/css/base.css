@@ -9,6 +9,7 @@ div, ul, li {font-family: "微软雅黑",'microsoft yahei';font-size: 14px;paddi
 input, button {border: none medium;outline: none;font-family: "微软雅黑";}
 a{text-decoration: none;}
 a:hover{color: #ee4134;}
+s{text-decoration: none;}
 iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 .clear{clear: both !important;}
 .ta1{text-decoration: underline;color: blue;}
@@ -99,7 +100,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 
 /*** bottom part ***/
 .bottomCss{margin-top:5px;padding-top:40px;background-color:#2a3235;color: #FFF;}
-.bottomNav{width:240px;float:left;background: url(./images/line-border.png) no-repeat right center;margin-right: 22px;height:130px;}
+.bottomNav{width:400px;float:left;background: url(./images/line-border.png) no-repeat right center;margin-right: 22px;height:130px;}
 .bottomNav a{color: #FFF;width:120px;float: left;display: inline-block;line-height: 24px;}
 .app{float:left;background: url(./images/line-border.png) no-repeat right center;    height: 150px;width: 460px;}
 .erweima{width: 120px;text-align: center;float:left;margin-left: 30px;}
