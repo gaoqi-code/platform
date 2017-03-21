@@ -233,6 +233,9 @@
       <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
+      <if test="address != address" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
       <if test="personalProfile != null" >
         personal_profile = #{personalProfile,jdbcType=LONGVARCHAR},
       </if>

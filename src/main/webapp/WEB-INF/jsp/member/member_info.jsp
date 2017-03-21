@@ -73,6 +73,13 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">地址</label>
+                    <div class="layui-input-inline">
+                        <input type="input" name="address"  value="${member.address}"  placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">执业时间</label>
                     <div class="layui-input-inline">
                         <input type="input" id="workTime" name="workTime"  value="<fmt:formatDate value="${member.workTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
