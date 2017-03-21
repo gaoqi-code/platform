@@ -19,8 +19,12 @@
         </div>
         <div class="t_search_s">
             <div class="search_select">
-                <a href="javascript:void(0);" class="search_a"><span id="cret">搜索</span><s class="icon-down"></s></a>
-                <%--<ul class="search_options" id="labObj"><li class="on"><a href="javaScript:loadNavi.setInexCreat(0)">供应</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(1)">求购</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(2)">公司</a></li><li class=""><a href="javaScript:loadNavi.setInexCreat(3)">招商</a></li></ul>--%>
+                <a href="javascript:void(0);" class="search_a"><span id="cret">需求</span><s class="layui-icon">&#xe61a;</s></a>
+                <ul class="search_options" id="labObj">
+                    <li class="on"><a href="javaScript:loadNavi.setInexCreat(0)">需求</a></li>
+                    <li class=""><a href="javaScript:loadNavi.setInexCreat(1)">产品</a></li>
+                    <li class=""><a href="javaScript:loadNavi.setInexCreat(2)">顾问</a></li>
+                </ul>
             </div>
             <div class="t_form">
                 <input type="text" class="keywords inptText" placeholder="请输入您感兴趣的产品" id="keyword">
@@ -34,6 +38,18 @@
     </div>
 </div>
 <script type="text/javascript">
+    $(function () {
+        $(".search_a").mouseover(function () {
+            $("#labObj").css("display","block");
+        });
+        $("#labObj").mouseleave(function () {
+            $("#labObj").css("display","none");
+        });
+        $("#labObj a").click(function () {
+            $("#cret").html($(this).html());
+            $("#labObj").css("display","none");
+        });
+    });
     function topSearch(type){
         var keyword = encodeURIComponent(encodeURIComponent($("#keyword").val()));
         if(type == 1) {

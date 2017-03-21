@@ -9,6 +9,7 @@ div, ul, li {font-family: "微软雅黑",'microsoft yahei';font-size: 14px;paddi
 input, button {border: none medium;outline: none;font-family: "微软雅黑";}
 a{text-decoration: none;}
 a:hover{color: #ee4134;}
+s{text-decoration: none;}
 iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 .clear{clear: both !important;}
 .ta1{text-decoration: underline;color: blue;}
