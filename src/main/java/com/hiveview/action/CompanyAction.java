@@ -64,20 +64,25 @@ public class CompanyAction extends BaseController{
 
 	/**
 	 * 查询会员是否已经有公司
-	 * @return 0 没有公司，1审核中，2审核成功
+	 * @return 0 没有公司，1审核中，2审核成功,3申请公司没有改变
 	 */
 	@ResponseBody
 	@RequestMapping(value="/memberIsJoinCompany")
 	public Integer memberIsJoinCompany(HttpServletRequest request) {
+		String companyId = request.getParameter("id");
 		Integer result = 0;
 		Long memberId = super.getMemberId(request);
 		Member member = memberService.getMemberDetail(memberId);
 		if (member.getCompanyId() != null) {
-			if (member.getCheckStatus() == 1) {
-				result = 1;
-			}
-			if (member.getCheckStatus() == 2) {
-				result = 2;
+			if (!companyId.equals(member.getCompanyId().toString())) {
+				if (member.getCheckStatus() == 1) {
+					result = 1;
+				}
+				if (member.getCheckStatus() == 2) {
+					result = 2;
+				}
+			} else {
+				result = 3;
 			}
 		}
 		return result;

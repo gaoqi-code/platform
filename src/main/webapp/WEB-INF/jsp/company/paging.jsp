@@ -40,6 +40,31 @@
      $(function () {
          $("button[name='applyFor']").click(function() {
              var companyId = $(this).attr("companyId");
+                 $.ajax({
+                     type: "POST",
+                     url: "/member/company/memberIsJoinCompany.json",
+                     data: {id:companyId},
+                     dataType: "json",
+                     success: function(data){
+                         var msg ;
+                         if(data == 0) {
+                             msg = "您确定要申请加入吗？";
+                         }
+                         if(data == 1) {
+                             msg = "您已申请别的公司是否要继续申请此公司？";
+                         }
+                         if(data == 2) {
+                             msg = "您也加入别的公司是否还要申请此公司？";
+                         }
+                         if(data == 3) {
+                             msg = "您已申请此公司！";
+
+                             return;
+                         }
+                     }
+                 });
+
+
              layer.confirm('您确定要申请加入吗？', {
                  btn: ['确定','取消'] //按钮
              }, function(index){
