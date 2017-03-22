@@ -89,12 +89,12 @@
             <li class="nav-li">
                 <a href="/product/toSearch.html">找服务</a>
             </li>
-            <li class="nav-li">
-                <a href="introduce.html">关于企巴巴</a>
-            </li>
-            <li class="nav-li">
-                <a href="javascript:void(0);">商家入驻</a>
-            </li>
+            <%--<li class="nav-li">--%>
+                <%--<a href="introduce.html">关于企巴巴</a>--%>
+            <%--</li>--%>
+            <%--<li class="nav-li">--%>
+                <%--<a href="javascript:void(0);">商家入驻</a>--%>
+            <%--</li>--%>
             <li class="clear"></li>
         </ul>
     </div>

@@ -31,10 +31,14 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">关联企业</p>
+            <p class="layui-elem-quote noborderLeft">关联企业</p>
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                已关联到企业：北京同帮科技有限公司【<span class="redColorClass">已经审核通过</span>】
+                <br />关联时间：2017-01-30
+            </blockquote>
             <div class="layui-form-item">
-                <label class="layui-form-label">企业名称</label>
-                <div class="layui-input-block">
+                <label class="layui-form-label" style="width: auto;top: 4px;">企业名称</label>
+                <div class="layui-input-block" style="margin-left:0px;">
                     <input id ="companyName" style="width: 150px;display: inline;position: relative;top: 2px;" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入企业名称" class="layui-input">
                     <button class="layui-btn" id="seek">搜索</button>
                 </div>

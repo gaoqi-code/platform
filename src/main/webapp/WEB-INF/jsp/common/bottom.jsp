@@ -11,10 +11,10 @@
             </div>
             <div class="app">
                 <div class="erweima">
-                    <img style="width: 110px;" src="./images/link/kwx.jpg" /><span>客服微信</span>
+                    <img style="width: 110px;" src="http://www.mdtz2133.com/images/link/kwx.jpg" /><span>客服微信</span>
                 </div>
                 <div class="erweima">
-                    <img style="width: 110px;" src="./images/link/erweima.png" /><span>公从号</span>
+                    <img style="width: 110px;" src="http://www.mdtz2133.com/images/link/erweima.png" /><span>公从号</span>
                 </div>
                 <div class="clear"></div>
             </div>
