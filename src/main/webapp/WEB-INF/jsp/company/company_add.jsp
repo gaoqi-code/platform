@@ -94,16 +94,40 @@
             }
         });
 
-        //监听指定开关
-        form.on('switch(switchTest)', function(data){
-            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
 
         //监听提交
         form.on('submit(demo1)', function(data){
+            $.ajax({
+                type: "POST",
+                url: "/member/company/memberIsJoinCompany.json",
+                dataType: "json",
+                success: function(data){
+                    if(data == 0) {
+                        createCompany();
+                    }
+                    if(data == 1) {
+                        layer.confirm("您已申请别的公司是否要继续创建此公司？", {
+                            btn: ['确定','取消'] //按钮
+                        }, function(index){
+                            createCompany();
+                        }, function(index){
+                        });
+                    }
+                    if(data == 2) {
+                        layer.confirm("您已经加入别的公司是否还要创建此公司？", {
+                            btn: ['确定','取消'] //按钮
+                        }, function(index){
+                            createCompany();
+                        }, function(index){
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+
+        
+        function createCompany() {
             $.ajax({
                 type: "POST",
                 url: "/member/company/add.json",
@@ -113,38 +137,14 @@
                 success: function(data){
                     console.log(data);
                     if(data) {
-                        layer.msg("恭喜创建成功！");
-                        setTimeout(function () {
-                            location.href = "/member/info.html";
-                        }, 1000);
+                        location.href = "/member/company/toSuccess.html";
                     }else {
                         layer.msg("创建失败！");
                     }
                 }
             });
-            return false;
-        });
-
-
-    });
-</script>
-<script>
-    layui.use('upload', function(){
-        layui.upload({
-            url: '' //上传接口
-            ,success: function(res){ //上传成功后的回调
-                console.log(res)
-            }
-        });
-
-        layui.upload({
-            url: '/test/upload.json'
-            ,elem: '#test' //指定原始元素，默认直接查找class="layui-upload-file"
-            ,method: 'get' //上传接口的http类型
-            ,success: function(res){
-                LAY_demo_upload.src = res.url;
-            }
-        });
+        }
+        
     });
 </script>
 </body>

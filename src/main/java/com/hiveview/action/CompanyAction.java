@@ -72,18 +72,18 @@ public class CompanyAction extends BaseController{
 		String companyId = request.getParameter("id");
 		Integer result = 0;
 		Long memberId = super.getMemberId(request);
-		Member member = memberService.getMemberDetail(memberId);
+		Member member = memberService.getMemberById(memberId);
 		if (member.getCompanyId() != null) {
-			if (!companyId.equals(member.getCompanyId().toString())) {
-				if (member.getCheckStatus() == 1) {
-					result = 1;
-				}
-				if (member.getCheckStatus() == 2) {
-					result = 2;
-				}
-			} else {
-				result = 3;
+		}
+		if (companyId == null || !companyId.equals(member.getCompanyId().toString())) {
+			if (member.getCheckStatus() == 1) {
+				result = 1;
 			}
+			if (member.getCheckStatus() == 2) {
+				result = 2;
+			}
+		} else {
+			result = 3;
 		}
 		return result;
 	}
@@ -93,6 +93,7 @@ public class CompanyAction extends BaseController{
 		Boolean flag = false;
 		try {
 			if (company != null && company.getId() == null) {
+				//TODO 判断公司名称是否重复
 				companyService.saveCompany(company);
 			}
 			if (company.getId()!=null) {
@@ -100,6 +101,8 @@ public class CompanyAction extends BaseController{
 				member.setId(super.getMemberId(request));
 				member.setCompanyId(company.getId());
 				member.setAddTime(new Date());
+				member.setType(1);//顾问类型
+				member.setCheckStatus(1);//审核状态
 				memberService.updateInfo(member);
 				flag = true;
 			}
