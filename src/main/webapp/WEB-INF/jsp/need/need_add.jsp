@@ -78,6 +78,8 @@
                     <input type="hidden" id="classId" name ="classId" value="${need.classId}" >
                 </div>
 
+                <div class="layui-form-item" id="attrbute">
+                </div>
 
 
                 <div class="layui-form-item layui-form-text">
@@ -182,6 +184,31 @@
                         }
                     }
                 });
+
+                $.ajax({
+                    type: "POST",
+                    url: "/member/category/getAttribute.json",
+                    data: {categoryId:selectVal},
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data) {
+                            var html = '';
+                            var size = data.length;
+                            data.forEach(function(item,index){
+                                html += ' <label class="layui-form-label">' + item.name + '</label>';
+                                html += '<div class="layui-input-inline">';
+                                html += '<input type="input" name="title" attrName="' + item.name + '" autocomplete="off" class="layui-input attribute">';
+                                html += '  </div>';
+                                if(index != size && index % 3 == 0) {
+                                    html += ' </div><div class="layui-form-item">';
+                                }
+                            });
+                            $("#attrbute").html(html);
+                        }
+                    }
+                });
+
             }
         });
     });

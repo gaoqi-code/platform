@@ -56,6 +56,8 @@ public class Member {
 
 	private String address;
 
+	private Date relateCompanyDate;
+
 	public String getAddress() {
 		return address;
 	}
@@ -238,5 +240,13 @@ public class Member {
 
 	public void setWorkAge(int workAge) {
 		this.workAge = workAge;
+	}
+
+	public Date getRelateCompanyDate() {
+		return relateCompanyDate;
+	}
+
+	public void setRelateCompanyDate(Date relateCompanyDate) {
+		this.relateCompanyDate = relateCompanyDate;
 	}
 }

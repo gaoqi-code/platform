@@ -8,7 +8,7 @@
 <ul>
     <c:forEach items="${products}" var="product" >
     <li>
-        <div class="li-img"><img src="${product.member.headPortrait == null?'/images/portrait.jpg':product.member.headPortrait}"></div>
+        <div class="li-img"><img src="${product.picture}"></div>
         <div class="adviser-list-info">
             <div class="adviser-list-content">
                 <p>产品名称-${product.title}</p>

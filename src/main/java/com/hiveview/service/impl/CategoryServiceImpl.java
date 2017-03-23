@@ -1,6 +1,8 @@
 package com.hiveview.service.impl;
 
 import com.hiveview.dao.ICategoryDao;
+import com.hiveview.dao.IClassAttributeDao;
+import com.hiveview.entity.Attribute;
 import com.hiveview.entity.Category;
 import com.hiveview.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Autowired
     private ICategoryDao categoryDao;
+    @Autowired
+    private IClassAttributeDao classAttributeDao;
 
 
     @Override
@@ -31,5 +35,12 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public Category getCategoryById(Long classId) {
         return categoryDao.selectByPrimaryKey(classId);
+    }
+
+    @Override
+    public List<Attribute> getCategoryAttribute(long categoryId) {
+        Attribute attribute = new Attribute();
+        attribute.setClassId(categoryId);
+        return classAttributeDao.getList(attribute);
     }
 }

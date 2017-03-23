@@ -32,10 +32,17 @@
 
         <div class="c_right">
             <p class="layui-elem-quote noborderLeft">关联企业</p>
-            <blockquote class="layui-elem-quote layui-quote-nm">
-                已关联到企业：北京同帮科技有限公司【<span class="redColorClass">已经审核通过</span>】
-                <br />关联时间：2017-01-30
-            </blockquote>
+            <c:if test="${member.companyId != null}">
+                <blockquote class="layui-elem-quote layui-quote-nm">
+                    已关联到企业：${member.companyName}
+                    【<span class="redColorClass">
+                    <c:if test="${member.checkStatus == 3}">正在审核中</c:if>
+                    <c:if test="${member.checkStatus == 4}">已经审核通过</c:if>
+                    <c:if test="${member.checkStatus == 5}">审核未通过</c:if>
+                    </span>】
+                    <br />关联时间： <fmt:formatDate value="${member.relateCompanyDate}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" />
+                </blockquote>
+            </c:if>
             <div class="layui-form-item">
                 <label class="layui-form-label" style="width: auto;top: 4px;">企业名称</label>
                 <div class="layui-input-block" style="margin-left:0px;">

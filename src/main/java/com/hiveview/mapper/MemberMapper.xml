@@ -24,6 +24,7 @@
     <result column="workAge" property="workAge" jdbcType="TINYINT" />
     <result column="companyName" property="companyName" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="relate_company_date" property="relateCompanyDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hiveview.entity.Member" extends="BaseResultMap" >
     <result column="personal_profile" property="personalProfile" jdbcType="LONGVARCHAR" />
@@ -239,6 +240,9 @@
       <if test="personalProfile != null" >
         personal_profile = #{personalProfile,jdbcType=LONGVARCHAR},
       </if>
+      <if test="relateCompanyDate != null" >
+        relate_company_date = #{relateCompanyDate,jdbcType=TIMESTAMP}
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -386,8 +390,9 @@
       m.add_time,
       m.update_time,
       m.status,
-      real_name_authentication,
-      company_id,
+      m.real_name_authentication,
+      m.company_id,
+      m.relate_company_date,
       type,
       m.address,
       date_format(now(), '%Y') - date_format(m.work_time, '%Y') AS workAge,

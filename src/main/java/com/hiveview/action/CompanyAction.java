@@ -30,8 +30,12 @@ public class CompanyAction extends BaseController{
 
 
 	@RequestMapping(value="/list")
-	public String list() {
-		return "company/company_list";
+	public ModelAndView list(HttpServletRequest request,ModelAndView mav) {
+		Long memberId = super.getMemberId(request);
+		Member member =  memberService.getMemberDetail(memberId);
+		mav.getModel().put("member", member);
+		mav.setViewName("company/company_list");
+		return mav;
 	}
 
 	/**
@@ -96,7 +100,7 @@ public class CompanyAction extends BaseController{
 				Member member = new Member();
 				member.setId(super.getMemberId(request));
 				member.setCompanyId(company.getId());
-				member.setAddTime(new Date());
+				member.setRelateCompanyDate(new Date());
                 member.setCheckStatus(StatusUtil.CHECKING.getVal());
 				memberService.updateInfo(member);
 				flag = true;

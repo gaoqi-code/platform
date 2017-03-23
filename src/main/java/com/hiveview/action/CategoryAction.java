@@ -1,6 +1,7 @@
 package com.hiveview.action;
 
 import com.google.common.collect.Maps;
+import com.hiveview.entity.Attribute;
 import com.hiveview.entity.Category;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.util.log.LogMgr;
@@ -35,6 +36,19 @@ public class CategoryAction {
         }
         result.put("flag",flag);
         return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/getAttribute")
+    public List<Attribute> getAttribute(HttpServletRequest request) {
+        String categoryId = request.getParameter("categoryId");
+        List<Attribute> attributes = null;
+        try {
+             attributes= categoryService.getCategoryAttribute(Long.parseLong(categoryId));
+        } catch (Exception e) {
+            LogMgr.writeErrorLog(e);
+        }
+        return attributes;
     }
 
 

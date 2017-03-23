@@ -1,5 +1,6 @@
 package com.hiveview.service;
 
+import com.hiveview.entity.Attribute;
 import com.hiveview.entity.Category;
 
 import java.util.List;
@@ -23,4 +24,11 @@ public interface ICategoryService {
     List<Category> getSonCategory(long parentId);
 
     Category getCategoryById(Long classId);
+
+    /**
+     * 获得类目属性
+     * @param l
+     * @return
+     */
+    List<Attribute> getCategoryAttribute(long categoryId);
 }
