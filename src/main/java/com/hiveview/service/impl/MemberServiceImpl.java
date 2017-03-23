@@ -72,4 +72,9 @@ public  class MemberServiceImpl implements IMemberService{
         return member;
     }
 
+    @Override
+    public Member getMemberById(Long memberId) {
+        return memberDao.selectByPrimaryKey(memberId);
+    }
+
 }

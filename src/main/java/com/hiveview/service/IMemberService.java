@@ -33,5 +33,7 @@ public interface IMemberService {
 	List<Member> getOpendMemberPage(Member member);
 
     Member getMemberDetail(long memberId);
+
+    Member getMemberById(Long memberId);
 }
 

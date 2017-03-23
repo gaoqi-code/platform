@@ -29,7 +29,8 @@ public class MemberAction extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value="/index")
-	public ModelAndView memberIndex(ModelAndView mav) {
+	public ModelAndView memberIndex(HttpServletRequest request,ModelAndView mav) {
+		request.setAttribute("nav","center");
 		List<Member> counselors = memberService.getRecommendCounselorList();
 		mav.getModel().put("counselors", counselors);
 		mav.setViewName("member/index");

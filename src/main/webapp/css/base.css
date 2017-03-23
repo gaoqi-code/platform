@@ -12,7 +12,9 @@ a:hover{color: #ee4134;}
 s{text-decoration: none;}
 iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 .clear{clear: both !important;}
+.noborderLeft{border-left: none!important;}
 .redClass{color: #FFF;background-color: red;}
+.redColorClass{color: red;}
 .ta1{text-decoration: underline;color: blue;}
 
 button, html input[type="button"], input[type="submit"] {cursor: pointer;}
