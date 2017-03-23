@@ -72,17 +72,15 @@ public class CompanyAction extends BaseController{
 		Integer result = 0;
 		Long memberId = super.getMemberId(request);
 		Member member = memberService.getMemberDetail(memberId);
-		if (member.getCompanyId() != null) {
-			if (!companyId.equals(member.getCompanyId().toString())) {
-				if (member.getCheckStatus() == StatusUtil.CHECKING.getVal()) {
-					result = 1;
-				}
-				if (member.getCheckStatus() == StatusUtil.CHECK_SUCCESS.getVal()) {
-					result = 2;
-				}
-			} else {
-				result = 3;
+		if (companyId == null || !companyId.equals(member.getCompanyId().toString())) {
+			if (member.getCheckStatus() == StatusUtil.CHECKING.getVal()) {
+				result = 1;
 			}
+			if (member.getCheckStatus() == StatusUtil.CHECK_SUCCESS.getVal()) {
+				result = 2;
+			}
+		} else {
+			result = 3;
 		}
 		return result;
 	}
