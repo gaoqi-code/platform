@@ -400,7 +400,15 @@
         <if test="name != null" >
         AND  m.name like CONCAT('%',#{name},'%')
         </if>
-        AND m.type = 1 and m.check_status = 2 and m.status = 1
+        <if test="type != null" >
+        AND m.type = #{type,jdbcType=TINYINT}
+        </if>
+        <if test="checkStatus != null" >
+        AND  m.check_status= #{checkStatus,jdbcType=TINYINT}
+        </if>
+        <if test="status != null" >
+        AND  m.status= #{status,jdbcType=TINYINT}
+        </if>
       </where>
   </select>
 

@@ -231,6 +231,7 @@
             <if test="title != null and title != ''" >
              AND  title like CONCAT('%',#{title},'%')
             </if>
+          AND  n.status != 2
         </where>
     </select>
     <select id="getOpenNeed" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >

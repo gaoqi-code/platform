@@ -88,8 +88,8 @@ public class NeedAction extends BaseController{
                 if (companyId > 0) {
                     need.setCompanyId(companyId);
                 }
+                need.setStatus(StatusUtil.CHECKING.getVal());
                 if (need.getId() != null) {
-                    need.setStatus(StatusUtil.CHECKING.getVal());
                     need.setUpdateTime(new Date());
                     needService.updateNeed(need);
                 } else {

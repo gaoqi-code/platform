@@ -6,6 +6,7 @@ import com.github.pagehelper.StringUtil;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
 import com.hiveview.service.IMemberService;
+import com.hiveview.util.MemberType;
 import com.hiveview.util.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,6 +52,8 @@ public class AdviserAction extends BaseController{
 		if (StringUtil.isNotEmpty(keyword)) {
 			member.setName(keyword);
 		}
+		member.setCheckStatus(StatusUtil.CHECK_SUCCESS.getVal());
+		member.setType(MemberType.ADVISER.getVal());
 		member.setStatus(StatusUtil.VALID.getVal());
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
 		List<Member> members =  memberService.getOpendMemberPage(member);

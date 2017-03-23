@@ -51,7 +51,7 @@ public class OpenNeedAction extends BaseController{
         if (StringUtil.isNotEmpty(keyword)) {
             need.setTitle(keyword);
         }
-        need.setStatus(StatusUtil.VALID.getVal());
+        need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
         List<Need> needs =  needService.getOpendNeedPage(need);
         paging.setTotalPages(page.getPages());

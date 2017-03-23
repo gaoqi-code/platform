@@ -4,9 +4,12 @@ package com.hiveview.util;
  * Created by hxq on 2017/3/15.
  */
 public enum StatusUtil {
-    CHECKING(0),//有效（审核成功）
-    VALID(1),//有效（审核成功）
-    INVALID(2);//审核失败
+    VALID(1),//有效
+    INVALID(2),//无效（删除）
+    CHECKING(3),//审核中
+    CHECK_SUCCESS(4),//审核成功
+    CHECK_FAILED(5),//审核失败
+    UN_SHELVE(6);//下架
 
     private int val;
     StatusUtil(int p) {

@@ -42,7 +42,6 @@ public class ProductAction extends BaseController{
 		Paging paging = super.getPaging(request);
 		Product product = new Product();
 		product.setMemberId(super.getMemberId(request));
-//		product.setStatus(StatusUtil.VALID.getVal());
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
 		List<Product> products =  productService.getProductPage(product);
 		paging.setTotalPages(page.getPages());
@@ -106,8 +105,8 @@ public class ProductAction extends BaseController{
 				if (companyId > 0) {
 					product.setCompanyId(companyId);
 				}
+				product.setStatus(StatusUtil.CHECKING.getVal());
 				if (product.getId() != null) {
-                    product.setStatus(StatusUtil.CHECKING.getVal());
 					product.setUpdateTime(new Date());
 					productService.updateProduct(product);
 				} else {

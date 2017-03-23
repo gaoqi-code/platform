@@ -2,12 +2,12 @@ package com.hiveview.action;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.google.common.collect.Maps;
 import com.hiveview.entity.Company;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IMemberService;
+import com.hiveview.util.StatusUtil;
 import com.hiveview.util.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/member/company")
@@ -75,10 +74,10 @@ public class CompanyAction extends BaseController{
 		Member member = memberService.getMemberDetail(memberId);
 		if (member.getCompanyId() != null) {
 			if (!companyId.equals(member.getCompanyId().toString())) {
-				if (member.getCheckStatus() == 1) {
+				if (member.getCheckStatus() == StatusUtil.CHECKING.getVal()) {
 					result = 1;
 				}
-				if (member.getCheckStatus() == 2) {
+				if (member.getCheckStatus() == StatusUtil.CHECK_SUCCESS.getVal()) {
 					result = 2;
 				}
 			} else {
@@ -100,6 +99,7 @@ public class CompanyAction extends BaseController{
 				member.setId(super.getMemberId(request));
 				member.setCompanyId(company.getId());
 				member.setAddTime(new Date());
+                member.setCheckStatus(StatusUtil.CHECKING.getVal());
 				memberService.updateInfo(member);
 				flag = true;
 			}

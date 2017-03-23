@@ -250,7 +250,7 @@
           c.name as className
         FROM j_product p LEFT JOIN j_class c ON p.class_id = c.id
         where p.member_id =  #{memberId,jdbcType=BIGINT}
-        and p.status != 4
+        and p.status != 2
     </select>
     <select id="getOpendProduct" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Product" >
         SELECT

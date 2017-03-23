@@ -27,23 +27,23 @@
                     <td>${product.title}</td>
                     <td>${product.className}</td>
                     <td >
-                        <c:if test="${product.status == 0}">
+                        <c:if test="${product.status == 3}">
                             审核中
                         </c:if>
-                        <c:if test="${product.status == 1}">
+                        <c:if test="${product.status == 4}">
                             审核成功
                         </c:if>
-                        <c:if test="${product.status == 2}">
+                        <c:if test="${product.status == 5}">
                            审核失败
                         </c:if>
-                        <c:if test="${product.status == 3}">
+                        <c:if test="${product.status == 6}">
                             下架
                         </c:if>
                     </td>
                     <td> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
                     <td>
                         <a href="javascript:void(0);" productId="${product.id}" name="operation" op="update">修改</a>&nbsp;
-                        <a href="javascript:void(0);" productId="${product.id}" name="operation" op="soldOut">下架</a>&nbsp;
+                        <c:if test="${product.status != 6}">    <a href="javascript:void(0);" productId="${product.id}" name="operation" op="soldOut">下架</a></c:if>&nbsp;
                         <a href="javascript:void(0);" productId="${product.id}" name="operation" op="delete">删除</a>
                     </td>
                 </tr>
@@ -74,11 +74,11 @@
              var status;
              if(operation == "soldOut") {
                  hint = "您确定要下架吗？";
-                 status = 3;
+                 status = 6;
              }
              if(operation == "delete") {
                  hint = "您确定要删除吗？";
-                 status = 4;
+                 status = 2;
              }
 
              layer.confirm(hint, {
@@ -92,10 +92,11 @@
                      success: function(data){
                          layer.close(index);
                          if(data) {
-                             if(status == 3) {
-                                 thisObj.parents("tr").eq(2).html("下架");
+                             if(status == 6) {
+                                 thisObj.parents("tr").children().eq(2).html("下架");
+                                 thisObj.hide();
                              }
-                             if(status == 3) {
+                             if(status == 2) {
                                  thisObj.parents("tr").remove();
                              }
                          }else {

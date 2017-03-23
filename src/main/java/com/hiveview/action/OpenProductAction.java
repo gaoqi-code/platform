@@ -52,7 +52,7 @@ public class OpenProductAction extends BaseController{
         if (StringUtil.isNotEmpty(keyword)) {
             product.setTitle(keyword);
         }
-        product.setStatus(StatusUtil.VALID.getVal());
+        product.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
         List<Product> products =  productService.getOpendProductPage(product);
         paging.setTotalPages(page.getPages());
