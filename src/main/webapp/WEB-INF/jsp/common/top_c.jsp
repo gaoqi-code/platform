@@ -21,11 +21,11 @@
             <div class="search_select">
                 <a href="javascript:void(0);" class="search_a"><span id="cret">需求</span><s class="layui-icon">&#xe61a;</s></a>
                 <ul class="search_options" id="labObj">
-                    <li class="on"><a href="javaScript:$('#searchType').val(1);">需求</a></li>
-                    <li class=""><a href="javaScript:$('#searchType').val(2);;">产品</a></li>
+                    <li class=""><a href="javaScript:$('#searchType').val(1);;">产品</a></li>
+                    <li class="on"><a href="javaScript:$('#searchType').val(2);">需求</a></li>
                     <li class=""><a href="javaScript:$('#searchType').val(3);">顾问</a></li>
                 </ul>
-                <input type="hidden" id="searchType">
+                <input type="hidden" id="searchType" value="1">
             </div>
             <div class="t_form">
                 <input type="text" class="keywords inptText" placeholder="请输入您感兴趣的产品" id="keyword">

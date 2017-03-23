@@ -54,18 +54,18 @@
                              msg = "您已申请别的公司是否要继续申请此公司？";
                          }
                          if(data == 2) {
-                             msg = "您也加入别的公司是否还要申请此公司？";
+                             msg = "您已经加入别的公司是否还要申请此公司？";
                          }
                          if(data == 3) {
-                             msg = "您已申请此公司！";
-
+                             layer.alert("您已申请此公司!");
                              return;
                          }
+                         dialog(msg);
                      }
                  });
-
-
-             layer.confirm('您确定要申请加入吗？', {
+         });
+         function dialog(msg) {
+             layer.confirm(msg, {
                  btn: ['确定','取消'] //按钮
              }, function(index){
                  $.ajax({
@@ -76,19 +76,15 @@
                      success: function(data){
                          console.log(data);
                          if(data) {
-//                             layer.msg("恭喜申请成功！");
-//                             setTimeout(function () {
-                                 location.href = "/member/company/toSuccess.html";
-//                             }, 1000);
+                             location.href = "/member/company/toSuccess.html";
                          }else {
                              layer.msg("申请失败！");
                          }
                      }
                  });
              }, function(index){
-//                 layer.close(index);
              });
-         });
+         }
      });
 
  </script>
