@@ -58,6 +58,16 @@ public class Member {
 
 	private Date relateCompanyDate;
 
+	private Integer needReadCount;
+
+	public Integer getNeedReadCount() {
+		return needReadCount;
+	}
+
+	public void setNeedReadCount(Integer needReadCount) {
+		this.needReadCount = needReadCount;
+	}
+
 	public String getAddress() {
 		return address;
 	}

@@ -21,4 +21,6 @@ public interface INeedDao extends IBaseDao<Need>{
     List<Need> getNeed(Need need);
 
     List<Need> getOpenNeed(Need need);
+
+    Need getNeedDetail(Need need);
 }

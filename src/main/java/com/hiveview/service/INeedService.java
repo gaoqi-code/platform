@@ -1,5 +1,6 @@
 package com.hiveview.service;
 
+import com.hiveview.entity.Attribute;
 import com.hiveview.entity.Need;
 
 import java.util.List;
@@ -25,4 +26,25 @@ public interface INeedService {
     List<Need> getOpendNeedPage(Need need);
 
     Need getNeedDetail(long needId);
+
+    /**
+     * 删除需求属性
+     * @param id
+     * @return
+     */
+    int deleteAttributeByNeedId(Long needId);
+
+    /**
+     * 批量存储
+     * @param attributes
+     * @return
+     */
+    int batchSaveAttr(List<Attribute> attributes);
+
+    /**
+     * List<Attribute> attributes
+     * @param needId
+     * @return
+     */
+    List<Attribute> getNeedAttr(Long needId);
 }

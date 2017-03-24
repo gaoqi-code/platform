@@ -42,6 +42,13 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">联系方式</label>
+                    <div class="layui-input-inline">
+                        <input type="input" name="needMobile" value="${need.needMobile == null ? need.member.mobile : need.needMobile}" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">截止时间</label>
                     <div class="layui-input-inline">
                         <input type="input" name="endTime"  value="<fmt:formatDate value="${need.endTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
@@ -79,9 +86,15 @@
                 </div>
 
                 <div class="layui-form-item" id="attrbute">
+                    <c:forEach items="${attributes}" var="attribute" varStatus="status">
+                        <label class="layui-form-label">${attribute.name}</label>
+                        <div class="layui-input-inline">
+                            <input type="hidden" name="attributes[${status.index}].classId" value="${attribute.id}">
+                            <input type="hidden" name="attributes[${status.index}].name" value="${attribute.name}">
+                            <input type="input" name="attributes[${status.index}].value" value="${attribute.value}" autocomplete="off" class="layui-input">
+                        </div>
+                    </c:forEach>
                 </div>
-
-
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">需求简介</label>
                     <div class="layui-input-block">
@@ -184,32 +197,33 @@
                         }
                     }
                 });
-
-                $.ajax({
-                    type: "POST",
-                    url: "/member/category/getAttribute.json",
-                    data: {categoryId:selectVal},
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                        if (data) {
-                            var html = '';
-                            var size = data.length;
-                            data.forEach(function(item,index){
-                                html += ' <label class="layui-form-label">' + item.name + '</label>';
-                                html += '<div class="layui-input-inline">';
-                                html += '<input type="input" name="title" attrName="' + item.name + '" autocomplete="off" class="layui-input attribute">';
-                                html += '  </div>';
-                                if(index != size && index % 3 == 0) {
-                                    html += ' </div><div class="layui-form-item">';
-                                }
-                            });
-                            $("#attrbute").html(html);
-                        }
-                    }
-                });
-
             }
+            $.ajax({
+                type: "POST",
+                url: "/member/category/getAttribute.json",
+                data: {categoryId:selectVal},
+                dataType: "json",
+                success: function (data) {
+                    var html = '';
+                    if (data) {
+//                            var size = data.length + 1;
+//                            var  lineFeed;
+                        data.forEach(function(item,index){
+                            html += '<label class="layui-form-label">' + item.name + '</label>';
+                            html += '<div class="layui-input-inline">';
+                            html += '   <input type="hidden" name="attributes[' + index + '].classId" value="' + item.id + '">';
+                            html += '   <input type="hidden" name="attributes[' + index + '].name" value="' + item.name + '">';
+                            html += '   <input type="input" name="attributes[' + index + '].value"  autocomplete="off" class="layui-input attribute">';
+                            html += '</div>';
+//                                lineFeed = index + 1;
+//                                if(lineFeed != size && lineFeed % 3 == 0) {
+//                                    html += ' </div><div class="layui-form-item">';
+//                                }
+                        });
+                    }
+                    $("#attrbute").html(html);
+                }
+            });
         });
     });
 </script>

@@ -6,11 +6,12 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="value" property="value" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="need_id" property="needId" jdbcType="BIGINT" />
     <result column="class_id" property="classId" jdbcType="BIGINT" />
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, value, type, class_id, add_time
+    id, name, value, type, need_id,class_id, add_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select
@@ -104,7 +105,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
 
-  <select id="getList" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Attribute" >
+  <select id="getNeedAttr" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Attribute" >
     select
     <include refid="Base_Column_List" />
     from j_need_attribute
@@ -121,6 +122,9 @@
       <if test="type != null" >
         AND  type = #{type,jdbcType=TINYINT}
       </if>
+      <if test="needId != null" >
+        AND  need_id = #{needId,jdbcType=BIGINT}
+      </if>
       <if test="classId != null" >
         AND  class_id = #{classId,jdbcType=BIGINT}
       </if>
@@ -129,4 +133,24 @@
       </if>
     </where>
   </select>
+
+  <delete id="delete" parameterType="com.hiveview.entity.Attribute" >
+    delete from j_need_attribute
+    <where>
+      <if test="id != null" >
+        id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="needId != null" >
+        AND  need_id = #{needId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <insert id="batchSaveAttr" parameterType="com.hiveview.entity.Attribute" >
+    insert into j_need_attribute (id, name, value, type, need_id,class_id, add_time)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.id,jdbcType=BIGINT}, #{item.name,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR},
+      #{item.type,jdbcType=TINYINT}, #{item.needId,jdbcType=BIGINT},  #{item.classId,jdbcType=BIGINT},now())
+    </foreach>
+  </insert>
 </mapper>

@@ -9,7 +9,10 @@ public enum StatusUtil {
     CHECKING(3),//审核中
     CHECK_SUCCESS(4),//审核成功
     CHECK_FAILED(5),//审核失败
-    UN_SHELVE(6);//下架
+    UN_SHELVE(6),//下架
+    CLOSE(7),//关闭
+    FREE_OF_CHARGE(8),//免费
+    COLLECT_FEE(9);//收费
 
     private int val;
     StatusUtil(int p) {

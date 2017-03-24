@@ -1,6 +1,7 @@
 package com.hiveview.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Need {
     private Long id;
@@ -37,6 +38,37 @@ public class Need {
 
     private Member member;
 
+    private List<Attribute> attributes;
+
+    private String needMobile;
+
+    private Integer chargeType;
+
+    private Integer source;
+
+    public Integer getChargeType() {
+        return chargeType;
+    }
+
+    public void setChargeType(Integer chargeType) {
+        this.chargeType = chargeType;
+    }
+
+    public Integer getSource() {
+        return source;
+    }
+
+    public void setSource(Integer source) {
+        this.source = source;
+    }
+
+    public String getNeedMobile() {
+        return needMobile;
+    }
+
+    public void setNeedMobile(String needMobile) {
+        this.needMobile = needMobile;
+    }
 
     public Member getMember() {
         return member;
@@ -172,5 +204,13 @@ public class Need {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
     }
 }

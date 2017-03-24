@@ -11,6 +11,8 @@ public class Attribute {
 
     private Byte type;
 
+    private Long needId;
+
     private Long classId;
 
     private Date addTime;
@@ -61,5 +63,13 @@ public class Attribute {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public Long getNeedId() {
+        return needId;
+    }
+
+    public void setNeedId(Long needId) {
+        this.needId = needId;
     }
 }

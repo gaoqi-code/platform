@@ -60,21 +60,21 @@
                              layer.alert("您已申请此公司!");
                              return;
                          }
-                         dialog(msg);
+                         dialog(msg,companyId);
                      }
                  });
          });
-         function dialog(msg) {
+         function dialog(msg,companyId) {
              layer.confirm(msg, {
                  btn: ['确定','取消'] //按钮
              }, function(index){
+                 layer.close(index);
                  $.ajax({
                      type: "POST",
                      url: "/member/company/add.json",
                      data: {id:companyId},
                      dataType: "json",
                      success: function(data){
-                         console.log(data);
                          if(data) {
                              location.href = "/member/company/toSuccess.html";
                          }else {
