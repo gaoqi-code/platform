@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/adviser_tui.css">
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <style>
+        .product_in{margin-bottom: 15px;}
         .pro_img{float: left;}
         .pro_img img{width:550px;}
         .pro_intro{float: left;margin-left:15px;width:615px;}
