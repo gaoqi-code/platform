@@ -1,14 +1,18 @@
 package com.hiveview.service.impl;
 
+import com.hiveview.dao.IMemberViewNeedDao;
 import com.hiveview.dao.INeedAttributeDao;
 import com.hiveview.dao.INeedDao;
 import com.hiveview.entity.Attribute;
+import com.hiveview.entity.Member;
+import com.hiveview.entity.MemberViewNeed;
 import com.hiveview.entity.Need;
 import com.hiveview.service.INeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by hxq on 2017/3/13.
@@ -20,6 +24,8 @@ public class NeedServiceImpl implements INeedService {
     private INeedDao needDao;
     @Autowired
     private INeedAttributeDao needAttributeDao;
+    @Autowired
+    private IMemberViewNeedDao memberViewNeedDao;
 
 
     @Override
@@ -72,5 +78,27 @@ public class NeedServiceImpl implements INeedService {
         Attribute attribute = new Attribute();
         attribute.setNeedId(needId);
         return needAttributeDao.getNeedAttr(attribute);
+    }
+
+    @Override
+    public int addHitsByNid(long needId) {
+        return needDao.addHitsByNid(needId);
+    }
+
+    @Override
+    public int addMemberViewNeedRecord(Long memberId, long needId) {
+        MemberViewNeed memberViewNeed = new MemberViewNeed();
+        memberViewNeed.setMemberId(memberId);
+        memberViewNeed.setNeedId(needId);
+        return memberViewNeedDao.insert(memberViewNeed);
+    }
+
+    @Override
+    public boolean isViewed(Long memberId, long needId) {
+        MemberViewNeed memberViewNeed = new MemberViewNeed();
+        memberViewNeed.setNeedId(needId);
+        memberViewNeed.setMemberId(memberId);
+        memberViewNeed = memberViewNeedDao.get(memberViewNeed);
+        return Optional.of(memberViewNeed).isPresent();
     }
 }

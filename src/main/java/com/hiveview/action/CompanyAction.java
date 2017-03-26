@@ -105,7 +105,7 @@ public class CompanyAction extends BaseController{
 				member.setCompanyId(company.getId());
 				member.setRelateCompanyDate(new Date());
                 member.setCheckStatus(StatusUtil.CHECKING.getVal());
-				memberService.updateInfo(member);
+				memberService.updateMember(member);
 				flag = true;
 			}
 		} catch (Exception e) {

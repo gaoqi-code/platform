@@ -3,7 +3,7 @@
     <div class="content">
         <div class="top_logo"><a href="index.html">企巴巴</a></div>
         <div class="top_out_right">
-            <div class="top_welcome">您好，欢迎XXX来到企巴巴</div>
+            <div class="top_welcome">您好，欢迎${sessionScope.currentUser.name}来到企巴巴</div>
             <div class="top_tuiguang">网站导航</div>
         </div>
     </div>

@@ -58,14 +58,34 @@ public class Member {
 
 	private Date relateCompanyDate;
 
-	private Integer needReadCount;
+	private Integer needViewCount;
 
-	public Integer getNeedReadCount() {
-		return needReadCount;
+	private String adviserType;
+
+	private String areaCode;
+
+	public String getAdviserType() {
+		return adviserType;
 	}
 
-	public void setNeedReadCount(Integer needReadCount) {
-		this.needReadCount = needReadCount;
+	public void setAdviserType(String adviserType) {
+		this.adviserType = adviserType;
+	}
+
+	public String getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+
+	public Integer getNeedViewCount() {
+		return needViewCount;
+	}
+
+	public void setNeedViewCount(Integer needViewCount) {
+		this.needViewCount = needViewCount;
 	}
 
 	public String getAddress() {

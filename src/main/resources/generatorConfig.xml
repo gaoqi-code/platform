@@ -6,7 +6,7 @@
     <properties resource="config.properties" />
 
     <!-- 必须配置驱动包的路径 -->
-    <classPathEntry location="D:\IntelliJ IDEA 2016.2\lib\mysql-connector-java-5.1.35-bin.jar" />
+    <classPathEntry location="/Users/blydvi/.m2/repository/mysql/mysql-connector-java/5.0.8/mysql-connector-java-5.0.8.jar" />
 
     <context id="Mysql" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -20,20 +20,20 @@
 
         <!-- 指定生成pojo的包和此包在项目中的地址； -->
         <javaModelGenerator targetPackage="com.hiveview.entity"
-                            targetProject="src\main\java" />
+                            targetProject="/Users/blydvi/IdeaProjects/ideaSpacee/platform/src/main/java" />
 
         <!-- 指定生成pojo的映射xml文件的所在包和此包在项目中的地址 -->
         <sqlMapGenerator targetPackage="com.hiveview.mapper"
-                         targetProject="src\main\java" />
+                         targetProject="/Users/blydvi/IdeaProjects/ideaSpacee/platform/src/main/java" />
 
         <!-- 指定生成访问映射xml文件的接口所在包和此包在项目中的地址； -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.hiveview.dao"
-                             targetProject="src\main\java">
+                             targetProject="/Users/blydvi/IdeaProjects/ideaSpacee/platform/src/main/java">
         </javaClientGenerator>
 
         <!-- 配置表名跟pojo名  该table节点可以多个 -->
-        <table schema="project" tableName="j_class_attribute" domainObjectName="Attribute" enableCountByExample="false" enableUpdateByExample="false"
+        <table schema="project" tableName="j_area" domainObjectName="Area" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <!--<property name="useActualColumnNames" value="false" />-->

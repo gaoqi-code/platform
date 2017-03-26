@@ -52,6 +52,14 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" value="male" title="男"  <c:if test="${member.sex == 'male'}">checked=""</c:if> >
+                        <input type="radio" name="sex" value="female" title="女" <c:if test="${member.sex == 'female'}">checked=""</c:if>>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
                         <input type="input" name="mobile" value="${member.mobile}"  placeholder="" autocomplete="off" class="layui-input">
@@ -73,11 +81,52 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">区域</label>
+                    <div class="layui-input-inline">
+                        <select  lay-filter="selectArea" id="oneLevel">
+                            <option value="">请选择</option>
+                            <c:forEach items="${oneLevelAreas}" var="area">
+                                <option value="${area.id}" <c:if test="${area.id == selectArea.oneLevel}">selected=""</c:if>  >${area.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select  lay-filter="selectArea" id="twoLevel">
+                            <option value="">请选择</option>
+                            <%--<option value="宁波"selected="" disabled="">宁波</option>--%>
+                            <c:forEach items="${twoLevelAreas}" var="area">
+                                <option value="${area.id}" <c:if test="${area.id == selectArea.twoLevel}">selected=""</c:if> >${area.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select lay-filter="selectArea" id="threeLevel">
+                            <option value="">请选择</option>
+                            <c:forEach items="${threeLevelAreas}" var="area">
+                                <option value="${area.id}" <c:if test="${area.id == selectArea.threeLevel}">selected=""</c:if> >${area.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <input type="hidden" id="areaCode1" >
+                    <input type="hidden" id="areaCode" name="areaCode" value="${member.areaCode}">
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">地址</label>
                     <div class="layui-input-inline">
                         <input type="input" name="address"  value="${member.address}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">顾问类型</label>
+                    <div class="layui-input-inline">
+                        <select  lay-filter="oneLevel"  name="adviserType">
+                            <option value="">请选择</option>
+                            <option value="1" <c:if test="${member.adviserType == 1}">selected=""</c:if> >贷款</option>
+                            <option value="2"<c:if test="${member.adviserType == 2}">selected=""</c:if>  >金融</option>
+                            <option value="3" <c:if test="${member.adviserType == 3}">selected=""</c:if> >法律</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">执业时间</label>
@@ -135,19 +184,20 @@
             }
         });
 
-        //监听指定开关
-        form.on('switch(switchTest)', function(data){
-            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
 
         //监听提交
         form.on('submit(demo1)', function(data){
-//            layer.alert(JSON.stringify(data.field), {
-//                title: '最终的提交信息'
-//            })
+
+            var areaCode = $("#oneLevel").val()+"-";
+            var twoLevel = $("#twoLevel").val();
+            var threeLevel = $("#threeLevel").val();
+            if(twoLevel) {
+                areaCode += twoLevel + "-";
+            }
+            if(threeLevel) {
+                areaCode += threeLevel + "-";
+            }
+            $("#areaCode").val(areaCode);
             $.ajax({
                 type: "POST",
                 url: "/member/updateInfo.json",
@@ -180,6 +230,44 @@
             }
         });
 
+        form.on('select(selectArea)', function(data) {
+            var oldDom = data.elem;
+            var selectVal = data.value;
+            var areaCode = $("#areaCode1").val();
+            if (selectVal != areaCode) {
+                $("#areaCode1").val(selectVal)
+            } else {
+                return;
+            }
+            var level = $(oldDom).attr("id");
+            if (level != "threeLevel") {
+                $.ajax({
+                    type: "POST",
+                    url: "/area/getSonAreas.json",
+                    data: {parentId: selectVal},
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.flag) {
+                            var content = '<option value="">请选择</option>';
+                            var pleaseSelect = content;
+                            data.areas.forEach(function (item, index) {
+                                content += '<option value="' + item.id + '">' + item.name + '</option>';
+                            });
+                            if (level == "oneLevel") {
+                                $("#twoLevel").html(content);
+                                $("#threeLevel").html(pleaseSelect);
+                            } else {
+                                $("#threeLevel").html(content);
+                            }
+                            form.render('select');
+                        } else {
+                            layer.msg("区域加载失败！");
+                        }
+                    }
+                });
+            }
+        });
     });
 
 

@@ -187,6 +187,9 @@
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
+      <if test="chargeType != null" >
+        charge_type = #{chargeType,jdbcType=TINYINT},
+      </if>
       <if test="hits != null" >
         hits = #{hits,jdbcType=INTEGER},
       </if>
@@ -231,6 +234,11 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <update id="addHitsByNid" parameterType="long" >
+    UPDATE j_need
+     SET hits = hits+1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 
     <select id="getNeed" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >
         SELECT
@@ -245,6 +253,7 @@
           n.add_time,
           n.update_time,
           n.need_mobile,
+          n.charge_type,
           c.name as className,
           m.mobile
         FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
@@ -277,6 +286,7 @@
           n.hits,
           n.end_time,
           n.need_mobile,
+          n.charge_type,
           c.name as className,
           m.name as memberName,
           m.mobile,
@@ -296,6 +306,12 @@
             <if test="id != null and id != ''" >
              AND  n.id =  #{id}
             </if>
+            <if test="areaCode != null and areaCode != ''" >
+             AND  m.area_code like  CONCAT(#{areaCode},'%')
+            </if>
+            <if test="classCode != null and classCode != ''" >
+             AND  c.code  like  CONCAT(#{areaCode},'%')
+            </if>
         </where>
     </select>
     <select id="getNeedDetail" resultMap="BaseResultMap" parameterType="com.hiveview.entity.Need" >
@@ -313,6 +329,7 @@
           n.hits,
           n.end_time,
           n.need_mobile,
+          n.charge_type,
           c.name as className,
           m.name as memberName,
           m.mobile,

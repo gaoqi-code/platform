@@ -23,4 +23,6 @@ public interface INeedDao extends IBaseDao<Need>{
     List<Need> getOpenNeed(Need need);
 
     Need getNeedDetail(Need need);
+
+    int addHitsByNid(long id);
 }

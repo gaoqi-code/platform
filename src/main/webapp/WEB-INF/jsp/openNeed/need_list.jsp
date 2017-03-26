@@ -139,15 +139,17 @@
                 <ul>
                     <li>
                         <h3>业务类别：</h3>
-                        <div class="selectSpan">
+                        <div class="selectSpan" id="categorySearch">
                             <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);">工商注册</a></span><span><a href="javascript:void(0);">金融服务</a></span><span><a href="javascript:void(0);">法律顾问</a></span>
+                            <input type="hidden" id="categoryVal">
                         </div>
                         <div class="clear"></div>
                     </li>
                     <li style="border: 0px;">
                         <h3>服务区域：</h3>
-                        <div class="selectSpan">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);">上海</a></span><span><a href="javascript:void(0);">北京</a></span><span><a href="javascript:void(0);">天津</a></span>
+                        <div class="selectSpan" id="areaSearch">
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-" >上海</a></span><span><a href="javascript:void(0);" code="1-">北京</a></span><span><a href="javascript:void(0);" code="8-">天津</a></span>
+                            <input type="hidden" id="areaVal">
                         </div>
                         <div class="clear"></div>
                     </li>
@@ -277,7 +279,9 @@
                     type: "POST",
                     url: "/need/page.html",
                     data: {
-                        keyword:keyword,
+                        keyword:$("#keyword").val(),
+                        areaCode:$("#areaVal").val(),
+//                        keyword:keyword,
                         currentPage :curr || 1,
                         pageSize : pageSize
                     },
@@ -301,8 +305,19 @@
             };
             //运行
             paging();
-        });
+            $("#categorySearch a").click(function () {
 
+                paging();
+            });
+            $("#areaSearch a").click(function () {
+
+                var thisObj = $(this);
+                thisObj.parents("div").find("a").removeClass("allSelect");
+                thisObj.addClass("allSelect");
+                $("#areaVal").val(thisObj.attr("code"));
+                paging();
+            });
+        });
 
     });
 

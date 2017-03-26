@@ -26,6 +26,8 @@ public class Need {
 
     private String className;
 
+    private String classCode;
+
     private Integer timingStatus;
 
     private String type;
@@ -45,6 +47,24 @@ public class Need {
     private Integer chargeType;
 
     private Integer source;
+
+    private String areaCode;
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
 
     public Integer getChargeType() {
         return chargeType;

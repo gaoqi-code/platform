@@ -1,8 +1,10 @@
 package com.hiveview.dao;
 
 import com.hiveview.entity.Member;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IMemberDao extends IBaseDao<Member> {
 
@@ -37,4 +39,6 @@ public interface IMemberDao extends IBaseDao<Member> {
 	int updateByPrimaryKey(Member record);
 
     List<Member> getOpendMember(Member member);
+
+    Map<String,Object> getViewNeedCount(@Param("memberId") Long memberId, @Param("needId") long needId);
 }

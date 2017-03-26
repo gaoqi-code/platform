@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hxq on 2017/3/2.
@@ -51,10 +52,6 @@ public  class MemberServiceImpl implements IMemberService{
         return memberDao.getList(member);
     }
 
-    @Override
-    public int updateInfo(Member member) {
-        return memberDao.updateByPrimaryKeySelective(member);
-    }
 
     @Override
     public List<Member> getOpendMemberPage(Member member) {
@@ -75,6 +72,11 @@ public  class MemberServiceImpl implements IMemberService{
     @Override
     public Member getMemberById(Long memberId) {
         return memberDao.selectByPrimaryKey(memberId);
+    }
+
+    @Override
+    public Map<String, Object> getViewNeedCount(Long memberId, long needId) {
+        return memberDao.getViewNeedCount(memberId,needId);
     }
 
 }

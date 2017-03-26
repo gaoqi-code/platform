@@ -131,8 +131,9 @@
             <div class="needTitle">${need.title}&nbsp;&nbsp;<span class="n_redit">已核实</span></div>
             <div class="titleNav">详情：</div>
             <div class="needAtri">
-                <%--<span>贷款类型：有房车贷</span><span>贷款金额：100万</span><span>贷款期限：30年</span><span>贷款类型：有房车贷</span><span>贷款金额：100万</span><span>贷款期限：30年</span>--%>
-                <%--<span>贷款类型：有房车贷</span><span>贷款金额：100万</span><span>贷款期限：30年</span>--%>
+                <c:forEach items="${need.attributes}" var="attribute" >
+                  <span>${attribute.name}：${attribute.value}</span>
+                </c:forEach>
                 <div class="clear"></div>
             </div>
             <div class="needAtri" style="border-top:1px solid #fff;">
@@ -141,7 +142,7 @@
                 <div class="clear"></div>
             </div>
             <div class="needAtri" style="border-top:1px solid #fff;">
-                <span>查看次数：<i style="color: red;font-size: 16px;">${need.hits}</i>&nbsp;次</span>
+                <span>查看次数：<i style="color: red;font-size: 16px;">${need.hits != null ? need.hits : 0}</i>&nbsp;次</span>
                 <div class="clear"></div>
             </div>
             <div class="titleNav">联系方式：</div>

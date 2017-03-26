@@ -29,7 +29,6 @@ public interface INeedService {
 
     /**
      * 删除需求属性
-     * @param id
      * @return
      */
     int deleteAttributeByNeedId(Long needId);
@@ -47,4 +46,26 @@ public interface INeedService {
      * @return
      */
     List<Attribute> getNeedAttr(Long needId);
+
+    /**
+     * 根据需求ID增加此需求的点击量
+     * @param needId
+     */
+    int addHitsByNid(long needId);
+
+    /**
+     * 增加会员查看付费需求记录
+     * @param memberId
+     * @param needId
+     * @return
+     */
+    int addMemberViewNeedRecord(Long memberId, long needId);
+
+    /**
+     * 此需求是否被查看过
+     * @param memberId
+     * @param needId
+     * @return
+     */
+    boolean isViewed(Long memberId, long needId);
 }

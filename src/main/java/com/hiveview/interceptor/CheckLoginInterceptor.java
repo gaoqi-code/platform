@@ -11,25 +11,14 @@ import java.util.Map;
 
 public class CheckLoginInterceptor implements HandlerInterceptor{
 	
-		private static final String LoginUrl = "/login.html";
-		private static final String UploadUrl = "/fileUpload/upload.html";
-//		private SysAuthService sysAuthService;
+		private static final String LoginUrl = "/tologin.html";
 		@SuppressWarnings("unchecked")
 		@Override
 		public boolean preHandle(HttpServletRequest request,
 				HttpServletResponse response, Object handler) throws Exception {
-			//boolean s=request.getServletPath().lastIndexOf(".josn");
-//			System.out.println(request.getServletPath());
-			//http://localhost:8080/data_display/sysAuth/getLeftAuth.json
-
-
-			if(true)
+			String requestUrl = request.getServletPath();
+			if(!requestUrl.startsWith("/member"))
 				return true;
-			if(request.getServletPath().startsWith(LoginUrl))
-				return true;
-
-			if(request.getServletPath().startsWith(UploadUrl))
-				return true;  
 			Object usesession =request.getSession().getAttribute("currentUser");
 			if(usesession != null){
 				//return true;  

@@ -65,15 +65,26 @@ public class NeedAction extends BaseController{
             Long categoryId = need.getClassId();
             //获得需求选择的类目
             Category selectClass = categoryService.getCategoryById(categoryId);
-            //获得选择的1级类目下的所有二级类目
-            category.setOneLevel(selectClass.getOneLevel());
-            category.setLevel(LevelUtil.TWO_LEVEL.getVal());
-            List<Category> twoLevelCategories = categoryService.getCategory(category);
-            //获得选择的2级目录下所有3级目录
-            category.setTwoLevel(selectClass.getTwoLevel());
-            category.setLevel(LevelUtil.THREE_LEVEL.getVal());
-            List<Category> threeLevelCategories = categoryService.getCategory(category);
-
+            List<Category> twoLevelCategories = null;//二级类目
+            List<Category> threeLevelCategories = null;//三级类目
+            String code = selectClass.getCode();
+            if (code!= null) {
+                String[] ids = code.split("-");
+                for (int i = 0; i < ids.length; i++) {
+                    Long id = Long.parseLong(ids[i]);
+                    if (i == 0 ) {
+                        twoLevelCategories = categoryService.getSonCategory(id);
+                        selectClass.setOneLevel(id);
+                    }
+                    if (i == 1) {
+                        threeLevelCategories = categoryService.getSonCategory(id);
+                        selectClass.setTwoLevel(id);
+                    }
+                    if (i == 2) {
+                        selectClass.setThreeLevel(id);
+                    }
+                }
+            }
             //获得选择的类目的下所有属性
             List<Attribute> attributes = categoryService.getCategoryAttribute(categoryId);
             //获得需求的属性

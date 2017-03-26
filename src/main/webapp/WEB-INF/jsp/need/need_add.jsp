@@ -183,11 +183,13 @@
                     success: function (data) {
                         if (data.flag) {
                             var content = '<option value="">请选择</option>';
+                            var qingxuanze = content;
                             data.categorys.forEach(function(item,index) {
                                 content += '<option value="'+item.id+'">'+item.name+'</option>';
                             });
                             if(level == "oneLevel") {
                                 $("#twoLevel").html(content);
+                                $("#threeLevel").html(qingxuanze);
                             }else {
                                 $("#threeLevel").html(content);
                             }

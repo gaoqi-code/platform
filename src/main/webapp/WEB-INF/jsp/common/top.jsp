@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
@@ -22,8 +23,8 @@
     <div class="content">
         <div class="top_logo"><a href="index.html">企巴巴</a></div>
         <div class="top_out_right">
-            <div class="top_welcome">您好，欢迎来到企巴巴</div>
-            <div class="top_reg"><a href="/tologin.html">登录</a><a href="reg.html">注册</a></div>
+            <c:if test="${sessionScope.currentUser.name != null}"><div class="top_welcome"><a href="/member/index.html">您好，欢迎${sessionScope.currentUser.name}来到企巴巴</a></div></c:if>
+            <c:if test="${sessionScope.currentUser.name == null}"><div class="top_reg"><a href="/tologin.html">登录</a><a href="reg.html">注册</a></div></c:if>
             <div class="top_tuiguang">网站导航</div>
         </div>
     </div>

@@ -1,9 +1,12 @@
 package com.hiveview.action;
 
 import com.google.common.collect.Maps;
+import com.hiveview.entity.Area;
 import com.hiveview.entity.Member;
+import com.hiveview.service.IAreaService;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IMemberService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,8 @@ public class MemberAction extends BaseController{
 	private IMemberService memberService;
 	@Autowired
 	private ICompanyService companyService;
+	@Autowired
+	private IAreaService areaService;
 
 	/**
 	 * 会员中心首页
@@ -63,6 +68,32 @@ public class MemberAction extends BaseController{
 				member.setCompanyName(companyService.getCompanyNameById(companyId));
 			}
 		}
+		List<Area> oneLevelAreas = areaService.getAllOneLevel();
+		String areaCode = member.getAreaCode();
+		if (StringUtils.isNotEmpty(areaCode)) {
+			Area selectArea = new Area();
+			List<Area> twoLevelAreas;
+			List<Area> threeLevelAreas;
+			String[] areas = areaCode.split("-");
+			for (int i = 0; i < areas.length; i++) {
+				Long areaId = Long.parseLong(areas[i]);
+				if (i == 0) {
+					twoLevelAreas = areaService.getSonAreas(areaId);
+					mav.getModel().put("twoLevelAreas", twoLevelAreas);
+					selectArea.setOneLevel(areaId);
+				}
+				if (i == 1) {
+					threeLevelAreas = areaService.getSonAreas(areaId);
+					mav.getModel().put("threeLevelAreas", threeLevelAreas);
+					selectArea.setTwoLevel(areaId);
+				}
+				if (i == 2) {
+					selectArea.setThreeLevel(areaId);
+				}
+			}
+			mav.getModel().put("selectArea", selectArea);
+		}
+		mav.getModel().put("oneLevelAreas", oneLevelAreas);
 		mav.getModel().put("member", member);
 		mav.setViewName("member/member_info");
 		return mav;
@@ -75,7 +106,7 @@ public class MemberAction extends BaseController{
 	@RequestMapping(value="/updateInfo")
 	public Map<String,Object> updateInfo(HttpServletRequest request, Member member) {
 		member.setId(super.getMemberId(request));
-		int num =  memberService.updateInfo(member);
+		int num =  memberService.updateMember(member);
 		Map<String, Object> result = Maps.newHashMap();
 		result.put("flag", num>0?true:false);
 		return result;

@@ -24,6 +24,9 @@
     <result column="workAge" property="workAge" jdbcType="TINYINT" />
     <result column="companyName" property="companyName" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="need_view_count" property="needViewCount" jdbcType="VARCHAR" />
+    <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+    <result column="adviser_type" property="adviserType" jdbcType="TINYINT" />
     <result column="relate_company_date" property="relateCompanyDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hiveview.entity.Member" extends="BaseResultMap" >
@@ -32,7 +35,7 @@
   <sql id="Base_Column_List" >
     id, name, head_portrait,nation, sex, level, work_time, password, description, mobile, qq,email,
     check_status, add_time, update_time, status, real_name_authentication, company_id, address,
-    type
+    type,need_view_count,area_code,adviser_type
   </sql>
   <sql id="Blob_Column_List" >
     personal_profile
@@ -240,6 +243,15 @@
       <if test="personalProfile != null" >
         personal_profile = #{personalProfile,jdbcType=LONGVARCHAR},
       </if>
+      <if test="needViewCount != null" >
+        need_view_count = #{needViewCount,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="adviserType != null" >
+        adviser_type = #{adviserType,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        area_code = #{areaCode,jdbcType=LONGVARCHAR},
+      </if>
       <if test="relateCompanyDate != null" >
         relate_company_date = #{relateCompanyDate,jdbcType=TIMESTAMP}
       </if>
@@ -415,6 +427,19 @@
         AND  m.status= #{status,jdbcType=TINYINT}
         </if>
       </where>
+  </select>
+  <select id="getViewNeedCount" resultType="java.util.HashMap">
+      SELECT
+        m.need_view_count as needViewCount,
+        v.id AS viewId
+      FROM j_member m
+        LEFT JOIN
+        (SELECT
+           id,
+           member_id
+         FROM j_member_view_need
+         WHERE need_id = ${needId}) v ON v.member_id = m.id
+      WHERE m.id = #{memberId}
   </select>
 
 </mapper>
