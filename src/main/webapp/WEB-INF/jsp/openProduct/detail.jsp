@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/adviser_tui.css">
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <style>
+        .product_in{margin-bottom: 15px;}
         .pro_img{float: left;}
         .pro_img img{width:550px;}
         .pro_intro{float: left;margin-left:15px;width:615px;}
@@ -50,7 +51,8 @@
                     </div>
                 </div>
                 <div class="pro_type">服务类型：<span>${product.className}</span></div>
-                <div class="pro_type">在线咨询：<img src="images/qq/qq.gif" /></div>
+                <div class="pro_type">在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2153543428&amp;site=qq&amp;menu=yes"><img
+                        src="images/qq/qq.gif" /></a></div>
             </div>
             <div class="clear"></div>
         </div>
@@ -131,6 +133,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="clear"></div>
     </div>

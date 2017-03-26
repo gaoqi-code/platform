@@ -185,8 +185,8 @@
             </div>
 
             <div class="head-update-right">
-                <p class="tel-num"><i></i>13540250791</p>
-                <a href="javascript:void(0)" class="btn-free" onclick="freephone('http://o6yahvsqr.bkt.clouddn.com/detail/20160812184829965595.jpg','117','李婷婷')">免费电话</a>
+                <%--<p class="tel-num"><i></i>13540250791</p>--%>
+                <%--<a href="javascript:void(0)" class="btn-free" onclick="freephone('http://o6yahvsqr.bkt.clouddn.com/detail/20160812184829965595.jpg','117','李婷婷')">免费电话</a>--%>
                 <a href="javascript:openlive800()" class="btn-online">在线咨询</a>
             </div>
 
