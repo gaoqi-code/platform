@@ -140,7 +140,7 @@
                     <li>
                         <h3>业务类别：</h3>
                         <div class="selectSpan" id="categorySearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);">工商注册</a></span><span><a href="javascript:void(0);">金融服务</a></span><span><a href="javascript:void(0);">法律顾问</a></span>
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="3-" >工商注册</a></span><span><a href="javascript:void(0);" code="1-" >金融服务</a></span><span><a href="javascript:void(0);" code="5-" >法律顾问</a></span>
                             <input type="hidden" id="categoryVal">
                         </div>
                         <div class="clear"></div>
@@ -281,7 +281,7 @@
                     data: {
                         keyword:$("#keyword").val(),
                         areaCode:$("#areaVal").val(),
-//                        keyword:keyword,
+                        classCode:$("#categoryVal").val(),
                         currentPage :curr || 1,
                         pageSize : pageSize
                     },
@@ -305,18 +305,25 @@
             };
             //运行
             paging();
+            function selectStyle(thisObj) {
+                thisObj.parent().parent().find("a").removeClass("allSelect");
+                thisObj.addClass("allSelect");
+            }
             $("#categorySearch a").click(function () {
-
+                var thisObj = $(this);
+                selectStyle(thisObj);
+                $("#categoryVal").val(thisObj.attr("code"));
                 paging();
             });
-            $("#areaSearch a").click(function () {
 
+            $("#areaSearch a").click(function () {
                 var thisObj = $(this);
-                thisObj.parents("div").find("a").removeClass("allSelect");
-                thisObj.addClass("allSelect");
+                selectStyle(thisObj);
                 $("#areaVal").val(thisObj.attr("code"));
                 paging();
             });
+
+
         });
 
     });

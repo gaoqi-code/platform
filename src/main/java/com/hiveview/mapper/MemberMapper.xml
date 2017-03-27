@@ -28,6 +28,7 @@
     <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
     <result column="adviser_type" property="adviserType" jdbcType="TINYINT" />
     <result column="relate_company_date" property="relateCompanyDate" jdbcType="TIMESTAMP" />
+    <result column="areaFullName" property="areaFullName" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.hiveview.entity.Member" extends="BaseResultMap" >
     <result column="personal_profile" property="personalProfile" jdbcType="LONGVARCHAR" />
@@ -387,29 +388,32 @@
   <select id="getOpendMember" parameterType="com.hiveview.entity.Member"  resultMap="ResultMapWithBLOBs">
     SELECT
       m.id,
-      name,
+      m.name,
       head_portrait,
       nation,
       sex,
-      level,
+      m.level,
       work_time,
       password,
       description,
       mobile,
       qq,
       email,
-      check_status,
+      m.check_status,
       m.add_time,
       m.update_time,
       m.status,
       m.real_name_authentication,
       m.company_id,
       m.relate_company_date,
-      type,
+      m.type,
       m.address,
+      m.adviser_type,
       date_format(now(), '%Y') - date_format(m.work_time, '%Y') AS workAge,
-      c.company_name as companyName
+      c.company_name as companyName,
+      a.full_name as areaFullName
       FROM j_member m LEFT JOIN j_company c ON m.company_id = c.id
+                      LEFT JOIN  j_area a on a.code = m.area_code
       <where>
         <if test="id != null" >
           m.id = #{id,jdbcType=BIGINT}
@@ -425,6 +429,9 @@
         </if>
         <if test="status != null" >
         AND  m.status= #{status,jdbcType=TINYINT}
+        </if>
+        <if test="areaCode != null" >
+        AND  m.area_code like CONCAT(#{areaCode},'%')
         </if>
       </where>
   </select>

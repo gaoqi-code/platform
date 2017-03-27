@@ -52,6 +52,14 @@ public class OpenProductAction extends BaseController{
         if (StringUtil.isNotEmpty(keyword)) {
             product.setTitle(keyword);
         }
+        String areaCode = request.getParameter("areaCode");
+        if (StringUtil.isNotEmpty(areaCode)) {
+            product.setAreaCode(areaCode);
+        }
+        String classCode = request.getParameter("classCode");
+        if (StringUtil.isNotEmpty(classCode)) {
+            product.setClassCode(classCode);
+        }
         product.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
         List<Product> products =  productService.getOpendProductPage(product);

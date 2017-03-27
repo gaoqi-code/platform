@@ -60,15 +60,25 @@ public class Member {
 
 	private Integer needViewCount;
 
-	private String adviserType;
+	private Integer adviserType;
 
 	private String areaCode;
 
-	public String getAdviserType() {
+	private String areaFullName;
+
+	public String getAreaFullName() {
+		return areaFullName;
+	}
+
+	public void setAreaFullName(String areaFullName) {
+		this.areaFullName = areaFullName;
+	}
+
+	public Integer getAdviserType() {
 		return adviserType;
 	}
 
-	public void setAdviserType(String adviserType) {
+	public void setAdviserType(Integer adviserType) {
 		this.adviserType = adviserType;
 	}
 

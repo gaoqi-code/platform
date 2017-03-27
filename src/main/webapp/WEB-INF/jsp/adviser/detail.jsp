@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -165,7 +162,11 @@
                 <div class="til">
                     <span class="c-name">${member.name}</span>
                     <i class="size25 icon7"></i>
-                    <span class="c-post">金牌顾问</span>
+                    <span class="c-post">
+                        <c:if test="${member.adviserType == 1}">贷款顾问</c:if>
+                        <c:if test="${member.adviserType == 2}">金融顾问</c:if>
+                        <c:if test="${member.adviserType == 3}">法律顾问</c:if>
+                    </span>
                 </div>
                 <div class="sub-til">
                     <span>${member.companyName}</span>
@@ -180,7 +181,7 @@
                     <span>主营业务：公司注册、会计理财</span>
                 </div>
                 <div class="sub-til">
-                    <span>所在地区：${member.address}</span>
+                    <span>所在地区：${member.areaFullName}-${member.address}</span>
                 </div>
             </div>
 

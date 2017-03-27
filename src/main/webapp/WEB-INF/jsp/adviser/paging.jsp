@@ -11,8 +11,14 @@
             <div class="li-img"><img src="${member.headPortrait == null?'/images/portrait.jpg':member.headPortrait}"></div>
             <div class="adviser-list-info">
                 <div class="adviser-list-content">
-                    <p><span>${member.name}</span>贷款顾问 <img src="images/qq/qq.gif"></p>
-                    <p>${member.companyName}&nbsp;金牌顾问&nbsp;执行${member.workAge}年</p>
+                    <p><span>${member.name}</span>
+                        <c:if test="${member.adviserType == 1}">贷款顾问</c:if>
+                        <c:if test="${member.adviserType == 2}">金融顾问</c:if>
+                        <c:if test="${member.adviserType == 3}">法律顾问</c:if>
+                        <img src="images/qq/qq.gif"></p>
+                    <p>${member.companyName}&nbsp;
+                        <c:if test="${member.level == 1}">金牌顾问</c:if>
+                        &nbsp;执行${member.workAge}年</p>
                     <p>个人简介：${member.description}</p>
                 </div>
             </div>

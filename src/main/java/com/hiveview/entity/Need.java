@@ -50,6 +50,16 @@ public class Need {
 
     private String areaCode;
 
+    private String areaFullName;
+
+    public String getAreaFullName() {
+        return areaFullName;
+    }
+
+    public void setAreaFullName(String areaFullName) {
+        this.areaFullName = areaFullName;
+    }
+
     public String getClassCode() {
         return classCode;
     }

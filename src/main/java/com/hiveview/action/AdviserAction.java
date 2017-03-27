@@ -52,6 +52,14 @@ public class AdviserAction extends BaseController{
 		if (StringUtil.isNotEmpty(keyword)) {
 			member.setName(keyword);
 		}
+		String areaCode = request.getParameter("areaCode");
+		if (StringUtil.isNotEmpty(areaCode)) {
+			member.setAreaCode(areaCode);
+		}
+		String classCode = request.getParameter("classCode");
+		if (StringUtil.isNotEmpty(classCode)) {
+//			product.setClassCode(classCode);
+		}
 		member.setCheckStatus(StatusUtil.CHECK_SUCCESS.getVal());
 		member.setType(MemberType.ADVISER.getVal());
 		member.setStatus(StatusUtil.VALID.getVal());

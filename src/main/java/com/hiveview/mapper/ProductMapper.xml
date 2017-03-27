@@ -25,6 +25,7 @@
       <result column="description" property="description" jdbcType="VARCHAR" />
       <result column="mobile" property="mobile" jdbcType="VARCHAR" />
       <result column="address" property="address" jdbcType="VARCHAR" />
+      <result column="adviser_type" property="adviserType" jdbcType="TINYINT" />
     </association>
   </resultMap>
   <sql id="Base_Column_List" >
@@ -273,9 +274,11 @@
           c.name as className,
           m.name as memberName,
           m.head_portrait,
-          m.description
+          m.description,
+          m.adviser_type
         FROM j_product p LEFT JOIN j_class c ON p.class_id = c.id
-                        LEFT  JOIN  j_member m on p.member_id = m.id
+                         LEFT JOIN  j_member m on p.member_id = m.id
+                         LEFT JOIN j_area a on a.code = m.area_code
           <where>
             <if test="memberId != null" >
               p.member_id = #{memberId,jdbcType=BIGINT}
@@ -288,6 +291,12 @@
             </if>
             <if test="id != null and id != ''" >
               AND  p.id =  #{id}
+            </if>
+            <if test="areaCode != null and areaCode != ''" >
+              AND  m.area_code like  CONCAT(#{areaCode},'%')
+            </if>
+            <if test="classCode != null and classCode != ''" >
+              AND  c.code  like  CONCAT(#{classCode},'%')
             </if>
           </where>
     </select>

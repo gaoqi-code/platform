@@ -20,7 +20,8 @@
     <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="className" property="className" jdbcType="TIMESTAMP" />
+    <result column="className" property="className" jdbcType="VARCHAR" />
+    <result column="areaFullName" property="areaFullName" jdbcType="VARCHAR" />
     <association property="member" javaType="com.hiveview.entity.Member">
       <result column="memberName" property="name" jdbcType="VARCHAR" />
       <result column="mobile" property="mobile" jdbcType="VARCHAR" />
@@ -290,9 +291,11 @@
           c.name as className,
           m.name as memberName,
           m.mobile,
-          m.address
+          m.address,
+          a.full_name as areaFullName
         FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
                       LEFT JOIN  j_member m on m.id = n.member_id
+                      LEFT JOIN  j_area a on a.code = m.area_code
         <where>
             <if test="memberId != null" >
                 member_id = #{memberId,jdbcType=BIGINT}
@@ -310,7 +313,7 @@
              AND  m.area_code like  CONCAT(#{areaCode},'%')
             </if>
             <if test="classCode != null and classCode != ''" >
-             AND  c.code  like  CONCAT(#{areaCode},'%')
+             AND  c.code  like  CONCAT(#{classCode},'%')
             </if>
         </where>
     </select>
@@ -335,10 +338,12 @@
           m.mobile,
           m.address,
           a.name as attrName,
-          a.value as attrValue
+          a.value as attrValue,
+          a1.full_name as areaFullName
         FROM j_need n LEFT JOIN j_class c ON n.class_id = c.id
                       LEFT JOIN  j_member m on m.id = n.member_id
                       LEFT JOIN  j_need_attribute a on a.need_id = n.id
+                      LEFT JOIN  j_area a1 on a1.code = m.area_code
         <where>
             <if test="memberId != null" >
                 member_id = #{memberId,jdbcType=BIGINT}

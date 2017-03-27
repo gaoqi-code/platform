@@ -77,12 +77,27 @@ public class ProductAction extends BaseController{
 		if (productId > 0 ) {
 			Product product= productService.getProductById(productId);
 			Category selectClass = categoryService.getCategoryById(product.getClassId());
-			category.setOneLevel(selectClass.getOneLevel());
-			category.setLevel(LevelUtil.TWO_LEVEL.getVal());
-			List<Category> twoLevelCategories = categoryService.getCategory(category);
-			category.setLevel(LevelUtil.THREE_LEVEL.getVal());
-			category.setTwoLevel(selectClass.getTwoLevel());
-			List<Category> threeLevelCategories = categoryService.getCategory(category);
+
+			List<Category> twoLevelCategories = null;//二级类目
+			List<Category> threeLevelCategories = null;//三级类目
+			String code = selectClass.getCode();
+			if (code!= null) {
+				String[] ids = code.split("-");
+				for (int i = 0; i < ids.length; i++) {
+					Long id = Long.parseLong(ids[i]);
+					if (i == 0 ) {
+						twoLevelCategories = categoryService.getSonCategory(id);
+						selectClass.setOneLevel(id);
+					}
+					if (i == 1) {
+						threeLevelCategories = categoryService.getSonCategory(id);
+						selectClass.setTwoLevel(id);
+					}
+					if (i == 2) {
+						selectClass.setThreeLevel(id);
+					}
+				}
+			}
 			mav.getModel().put("selectClass", selectClass);
 			mav.getModel().put("product", product);
 			mav.getModel().put("twoLevelCategories", twoLevelCategories);

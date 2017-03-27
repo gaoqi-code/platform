@@ -29,7 +29,7 @@
             <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${need.title}</a></td>
             <td>${need.className}</td>
             <td>${need.member.name}</td>
-            <td>北京市</td>
+            <td>${need.areaFullName}</td>
             <td><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
         </tr>
 

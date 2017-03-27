@@ -150,7 +150,7 @@
                 <ul>
                     <li>联系人：${need.member.name}</li>
                     <li>联系电话：${need.member.mobile}</li>
-                    <li>所在地区：${need.member.address}</li>
+                    <li>所在地区：${need.areaFullName}-${need.member.address}</li>
                 </ul>
             </div>
         </div>

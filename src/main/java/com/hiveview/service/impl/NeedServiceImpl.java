@@ -99,6 +99,6 @@ public class NeedServiceImpl implements INeedService {
         memberViewNeed.setNeedId(needId);
         memberViewNeed.setMemberId(memberId);
         memberViewNeed = memberViewNeedDao.get(memberViewNeed);
-        return Optional.of(memberViewNeed).isPresent();
+        return Optional.ofNullable(memberViewNeed).isPresent();
     }
 }

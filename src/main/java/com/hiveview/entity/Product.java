@@ -38,7 +38,27 @@ public class Product {
 
     private String className;
 
+    private String classCode;
+
+    private String areaCode;
+
     private Member member;
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
+    }
 
     public Member getMember() {
         return member;
