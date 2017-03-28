@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">完成个人资料</p>
+            <p class="layui-elem-quote noborderLeft">完成个人资料</p>
             <form class="layui-form" action="" id="memberInfo">
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="margin-top: 80px;">个人头像</label>
@@ -117,6 +118,7 @@
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
+                <c:if test="${sessionScope.currentUser.type==1}">
                 <div class="layui-form-item">
                     <label class="layui-form-label">顾问类型</label>
                     <div class="layui-input-inline">
@@ -142,6 +144,7 @@
                     </div>
                     <div class="layui-form-mid layui-word-aux"><a href="member/company/list.html" class="ta1">修改所属企业</a></div>
                 </div>
+                </c:if>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">个人介绍</label>
                     <div class="layui-input-block">

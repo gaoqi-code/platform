@@ -8,6 +8,9 @@
 <head>
     <base href="<%=basePath%>">
     <title>企巴巴</title>
+    <meta name="keywords" content="企巴巴, 金融,顾问,法律">
+    <meta name="description" content="企巴巴.企业巴巴IB2E（Internet Business to Enterprise）模式是以互联网管理模式为向导，通过PC电脑、移动端等新媒体为载体，针对对企业经营战略咨询、企业管理咨询、电商模式开发及运营、企业认证辅导等，建立企业信息化大数据，在以互联网的思维改善、改变传统工厂运作">
+
     <jsp:include page="common/css.jsp"></jsp:include>
     <style>
         .notice{margin: 10px 0px;}

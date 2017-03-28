@@ -9,12 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <style>
-        .reg_css{margin-bottom:35px;}
-        .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
-        .login_left{width: 590px;border-right: 1px solid #e5e5e5;float: left;}
-        .login_left_content{width: 440px;}
-        .login_right{text-align: center;}
-        .login_right_company{margin:25px 0px;}
+        /*.reg_css{margin-bottom:35px;}*/
+        /*.login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}*/
+        /*.login_left{width: 590px;border-right: 1px solid #e5e5e5;float: left;}*/
+        /*.login_left_content{width: 440px;}*/
+        /*.login_right{text-align: center;}*/
+        /*.login_right_company{margin:25px 0px;}*/
         .selectType{color:red;}
     </style>
 </head>
@@ -23,7 +23,7 @@
     <div class="content">
         <div class="top_logo"><a href="index.html">企巴巴</a></div>
         <div class="top_out_right">
-            <c:if test="${sessionScope.currentUser.name != null}"><div class="top_welcome"><a href="/member/index.html">您好，欢迎${sessionScope.currentUser.name}来到企巴巴</a></div></c:if>
+            <c:if test="${sessionScope.currentUser.name != null}"><div class="top_welcome"><a href="/member/index.html"><span class="userName">${sessionScope.currentUser.name}</span>您好，欢迎来到企巴巴</a></div></c:if>
             <c:if test="${sessionScope.currentUser.name == null}"><div class="top_reg"><a href="/tologin.html">登录</a><a href="reg.html">注册</a></div></c:if>
             <div class="top_tuiguang">网站导航</div>
         </div>

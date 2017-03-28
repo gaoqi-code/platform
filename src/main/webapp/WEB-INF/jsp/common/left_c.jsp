@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>		<div class="c_left">
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div class="c_left">
     <div class="member_menu">
         <p class="layui-elem-quote">我的信息</p>
         <ul>
@@ -13,15 +15,17 @@
         <ul>
             <li><a href="member/account/toUpdatePW.html">修改密码</a></li>
         </ul>
-        <p class="layui-elem-quote">店铺管理</p>
-        <ul>
-            <li><a href="/member/company/list.html">关联企业</a></li>
-        </ul>
-        <p class="layui-elem-quote">产品管理</p>
-        <ul>
-            <li><a href="member/product/toAdd/0.html">发布产品</a></li>
-            <li><a href="member/product/list.html">产品列表</a></li>
-        </ul>
+        <c:if test="${sessionScope.currentUser.type==1}">
+            <p class="layui-elem-quote">店铺管理</p>
+            <ul>
+                <li><a href="/member/company/list.html">关联企业</a></li>
+            </ul>
+            <p class="layui-elem-quote">产品管理</p>
+            <ul>
+                <li><a href="member/product/toAdd/0.html">发布产品</a></li>
+                <li><a href="member/product/list.html">产品列表</a></li>
+            </ul>
+        </c:if>
     </div>
     <div class="kefu">
         <!--<div></div>-->
