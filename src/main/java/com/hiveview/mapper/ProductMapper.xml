@@ -299,5 +299,7 @@
               AND  c.code  like  CONCAT(#{classCode},'%')
             </if>
           </where>
+      order by 	p.weight_value DESC,p.recommend DESC
+
     </select>
 </mapper>

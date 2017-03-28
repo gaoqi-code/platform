@@ -3,7 +3,6 @@ package com.hiveview.action;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
-import com.hiveview.entity.Need;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
 import com.hiveview.service.IProductService;

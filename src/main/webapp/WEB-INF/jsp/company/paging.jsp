@@ -40,6 +40,7 @@
      $(function () {
          $("button[name='applyFor']").click(function() {
              var companyId = $(this).attr("companyId");
+
                  $.ajax({
                      type: "POST",
                      url: "/member/company/memberIsJoinCompany.json",
