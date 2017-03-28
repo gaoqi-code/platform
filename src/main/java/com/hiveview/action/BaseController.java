@@ -1,9 +1,7 @@
 package com.hiveview.action;
 
-import com.hiveview.dao.IPagingDao;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
-import com.hiveview.util.BeanUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;

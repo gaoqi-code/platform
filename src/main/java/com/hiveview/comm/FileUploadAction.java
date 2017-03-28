@@ -1,10 +1,9 @@
 package com.hiveview.comm;
 
 import com.google.common.collect.Maps;
-import com.hiveview.entity.Data;
+import com.hiveview.util.Data;
 import com.hiveview.util.Constants;
 import com.hiveview.util.ProperManager;
-import com.hiveview.util.log.LogMgr;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -12,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;

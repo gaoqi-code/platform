@@ -1,4 +1,4 @@
-package com.hiveview.entity;
+package com.hiveview.util;
 
 
 @SuppressWarnings("rawtypes")
@@ -16,7 +16,7 @@ public class Data {
 	public Data(){
 	}
 	
-	public Data(Integer code, String msg){
+	public Data(Integer code,String msg){
 		this.code=code;
 		this.msg=msg;
 	}

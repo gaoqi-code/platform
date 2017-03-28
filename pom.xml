@@ -285,6 +285,11 @@
 			<artifactId>pagehelper</artifactId>
 			<version>4.1.6</version>
 		</dependency>
+		<dependency>
+			<groupId>com.hiveview</groupId>
+			<artifactId>qibaba-service</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
 		<!-- jsp Template jar -->
 		<!--<dependency>-->

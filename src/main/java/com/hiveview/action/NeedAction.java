@@ -9,8 +9,6 @@ import com.hiveview.entity.Paging;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.service.INeedService;
 import com.hiveview.util.LevelUtil;
-import com.hiveview.util.StatusUtil;
-import com.hiveview.util.log.LogMgr;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import utils.StatusUtil;
+import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/member/need")

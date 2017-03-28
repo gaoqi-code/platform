@@ -9,7 +9,7 @@ import com.hiveview.entity.Need;
 import com.hiveview.entity.Paging;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.INeedService;
-import com.hiveview.util.StatusUtil;
+import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

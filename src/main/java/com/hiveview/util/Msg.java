@@ -1,8 +1,7 @@
-package com.hiveview.entity;
+package com.hiveview.util;
 
 import com.google.common.collect.Maps;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Msg {

@@ -3,7 +3,7 @@ package com.hiveview.action;
 import com.google.common.collect.Maps;
 import com.hiveview.entity.Area;
 import com.hiveview.service.IAreaService;
-import com.hiveview.util.log.LogMgr;
+import utils.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

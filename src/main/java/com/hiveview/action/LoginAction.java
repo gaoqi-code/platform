@@ -1,7 +1,7 @@
 package com.hiveview.action;
 
 import com.google.common.collect.Maps;
-import com.hiveview.entity.Data;
+import com.hiveview.util.Data;
 import com.hiveview.entity.Msg;
 import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
