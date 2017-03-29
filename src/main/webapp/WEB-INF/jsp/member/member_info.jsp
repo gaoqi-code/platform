@@ -46,7 +46,7 @@
                     <input type="hidden" name="headPortrait" id="headPortrait" value="${member.headPortrait}">
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">个人名称</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>个人名称</label>
                     <div class="layui-input-inline">
                         <input type="input" name="name" value="${member.name}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">联系电话</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>联系电话</label>
                     <div class="layui-input-inline">
                         <input type="input" name="mobile" value="${member.mobile}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
@@ -75,7 +75,7 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">常用邮箱</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>常用邮箱</label>
                     <div class="layui-input-inline">
                         <input type="input" name="email"  value="${member.email}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
@@ -120,7 +120,7 @@
                 </div>
                 <c:if test="${sessionScope.currentUser.type==1}">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">顾问类型</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>顾问类型</label>
                     <div class="layui-input-inline">
                         <select  lay-filter="oneLevel"  name="adviserType">
                             <option value="">请选择</option>
@@ -131,14 +131,14 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">执业时间</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>执业时间</label>
                     <div class="layui-input-inline">
                         <input type="input" id="workTime" name="workTime"  value="<fmt:formatDate value="${member.workTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">所属企业</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>所属企业</label>
                     <div class="layui-input-inline">
                         <input type="input" name="input"  value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
                     </div>
@@ -146,7 +146,7 @@
                 </div>
                 </c:if>
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">个人介绍</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>个人介绍</label>
                     <div class="layui-input-block">
                         <textarea placeholder="请输入内容" name="description" class="layui-textarea">${member.description}</textarea>
                     </div>

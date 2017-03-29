@@ -4,7 +4,7 @@
     <%@ include file="/common/global.jsp" %>
     <meta charset="UTF-8">
     <base href="<%=basePath%>">
-    <title>Title</title>
+    <title>会员中心-首页</title>
     <jsp:include page="../common/css.jsp"></jsp:include>
     <link rel="stylesheet" href="./css/buysell.css">
     <style>
@@ -28,7 +28,7 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">会员中心首页推荐信息</p>
+            <p class="layui-elem-quote noborderLeft">需求信息</p>
             <div class="layui-form">
                 <table class="layui-table" lay-skin="line">
                     <colgroup>
@@ -39,7 +39,7 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th>人物</th>
+                        <th>需求名称</th>
                         <th>民族</th>
                         <th>出场时间</th>
                         <th>格言</th>

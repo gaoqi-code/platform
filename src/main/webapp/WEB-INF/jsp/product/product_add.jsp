@@ -31,11 +31,11 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">发布新产品</p>
+            <p class="layui-elem-quote noborderLeft">发布新产品</p>
             <form class="layui-form" action="" id="productForm">
                 <input type="hidden" name="id" value="${product.id}">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">产品名称</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>产品名称</label>
                     <div class="layui-input-inline">
                         <input type="input" name="title" value="${product.title}"  autocomplete="off" class="layui-input">
                     </div>
@@ -44,7 +44,7 @@
 
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">产品类型</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>产品类型</label>
                     <div class="layui-input-inline">
                         <select  lay-filter="oneLevel" id="oneLevel">
                             <option value="">请选择</option>

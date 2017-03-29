@@ -15,7 +15,7 @@ iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 .noborderLeft{border-left: none!important;}
 .userName{color:#0088cc;}
 .redClass{color: #FFF;background-color: red;}
-.redColorClass{color: red;}
+.redColorClass{color: red;padding-right: 3px;}
 
 .ta1{text-decoration: underline;color: blue;}
 
