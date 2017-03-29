@@ -31,25 +31,25 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">发布新需求</p>
+            <p class="layui-elem-quote noborderLeft">发布新需求</p>
             <form class="layui-form" action="" id="needForm">
                 <input type="hidden" name="id" value="${need.id}">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">需求名称</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>需求名称</label>
                     <div class="layui-input-inline">
                         <input type="input" name="title" value="${need.title}" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">联系方式</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>联系方式</label>
                     <div class="layui-input-inline">
                         <input type="input" name="needMobile" value="${need.needMobile == null ? need.member.mobile : need.needMobile}" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">截止时间</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>截止时间</label>
                     <div class="layui-input-inline">
                         <input type="input" name="endTime"  value="<fmt:formatDate value="${need.endTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
                     </div>
