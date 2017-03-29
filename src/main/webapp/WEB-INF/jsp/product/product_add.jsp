@@ -145,7 +145,6 @@
                 url: "/member/product/add.json",
                 data: $("#productForm").serialize(),
                 dataType: "json",
-                async:false,
                 success: function (data) {
                     if (data) {
                             location.href = "/member/product/toSuccess.html";
