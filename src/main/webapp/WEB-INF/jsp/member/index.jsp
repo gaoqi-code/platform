@@ -17,7 +17,6 @@
         .member_info_font p{line-height: 35px;}
         .x_m{font-size: 24px;padding-right: 5px;}
         .memberTitle{font-size: 20px;}
-        .c_right{margin-left:10px;width: 958px;float: left;}
     </style>
 </head>
 <body>
@@ -28,10 +27,19 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
+
+            <c:if test="${member.type==0}">
+                <jsp:include page="person_center.jsp"></jsp:include>
+            </c:if>
+
+            <c:if test="${member.type==1}">
+                <jsp:include page="company_center.jsp"></jsp:include>
+            </c:if>
+
             <div class="member_info">
                 <div class="p_icon"><img src="http://qbb.open580.com/uploadFile/uploadImg/20170329/1490768323819.png" /></div>
                 <div class="member_info_font">
-                    <p><span class="x_m">${member.name}</span><span>金牌顾问</span></p>
+                    <p><span class="x_m">${member.name}</span><span>金牌顾问${member.type}</span></p>
                     <p class="memberTitle">${member.companyName}</p>
                     <p class="member_jieshao" style="line-height: 28px;">${member.description}</p>
                     <a href="adviser/detail/7.html"><button class="layui-btn" lay-submit="" lay-filter="demo1">查看店铺</button></a>
@@ -50,7 +58,7 @@
                     <thead>
                     <tr>
                         <th>需求名称</th>
-                        <th>民族</th>
+                        <th>1111</th>
                         <th>出场时间</th>
                         <th>格言</th>
                     </tr>

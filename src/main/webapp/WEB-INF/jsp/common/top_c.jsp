@@ -4,7 +4,7 @@
         <div class="top_logo"><a href="index.html">企巴巴</a></div>
         <div class="top_out_right">
             <div class="top_welcome"><span class="userName">${sessionScope.currentUser.name}</span>您好，欢迎来到企巴巴</div>
-            <div class="top_welcome"><a href="exit.html">退出</a></div>
+            <div class="top_welcome"><a href="logout.html">退出</a></div>
             <div class="top_tuiguang">网站导航</div>
         </div>
     </div>

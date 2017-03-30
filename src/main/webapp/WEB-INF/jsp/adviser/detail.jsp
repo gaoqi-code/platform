@@ -151,7 +151,7 @@
                 </div>
                 <div class="head-update-ewm">
                     <i></i>
-                    <p>扫一扫 手机访问</p>
+                    <%--<p>扫一扫 手机访问</p>--%>
                     <div class="ewm">
                         <div id="codeAdviser"></div>
                         <i></i>

@@ -122,6 +122,8 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 /*** 会员中心左侧导航 ***/
 .c_left{width: 210px;float:left;background-color: #FFFFFF;}
 .member_menu{border: 1px solid #EEE;}
+/*** 会员中心右侧导航 ***/
+.c_right{margin-left:10px;width: 958px;float: left;background-color: #FFFFFF;}
 
 /*** 会员中心导航下部区域 ***/
 #container{padding-top:15px;background-color: #f9f9fa;}
