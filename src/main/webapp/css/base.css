@@ -118,3 +118,17 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .footLogo{pdding-top: 25px;}
 .footBottom{padding: 20px 0 20px 0px;}
 .footBottom p{line-height: 22px;color: #888;}
+
+/*** 会员中心左侧导航 ***/
+.c_left{width: 210px;float:left;background-color: #FFFFFF;}
+.member_menu{border: 1px solid #EEE;}
+
+/*** 会员中心导航下部区域 ***/
+#container{padding-top:15px;background-color: #f9f9fa;}
+.memver_c{margin-bottom: 15px;}
+
+/*** 会员中心公告区域 ***/
+.gonggao_title{margin: 15px 5px;}
+.gonggao{border: 1px solid #EEE;}
+.gonggao li{width: 100%;height:45px;line-height:45px;border-bottom: 1px solid #eee;}
+.gonggao li a{margin-left: 15px;}

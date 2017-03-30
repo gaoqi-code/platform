@@ -8,15 +8,15 @@
     <jsp:include page="../common/css.jsp"></jsp:include>
     <link rel="stylesheet" href="./css/buysell.css">
     <style>
-        .memver_c{margin-top: 15px;margin-bottom: 15px;}
-        .c_left{width: 210px;float:left;}
-        .member_menu{border: 1px solid #EEE;}
         .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
         .member_menu li a{margin-left:20px;}
-        .gonggao_title{margin: 15px 5px;}
-        .gonggao{border: 1px solid #EEE;}
-        .gonggao li{width: 100%;height:45px;line-height:45px;border-bottom: 1px solid #eee;}
-        .gonggao li a{margin-left: 15px;}
+        .member_info{background-color: #FFF;padding:10px 5px 20px 5px;}
+        .p_icon{width: 210px;float: left;}
+        .p_icon img{width:200px;padding: 5px;}
+        .member_info_font{float: left;margin-left: 3px;width: 735px;}
+        .member_info_font p{line-height: 35px;}
+        .x_m{font-size: 24px;padding-right: 5px;}
+        .memberTitle{font-size: 20px;}
         .c_right{margin-left:10px;width: 958px;float: left;}
     </style>
 </head>
@@ -28,6 +28,16 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
+            <div class="member_info">
+                <div class="p_icon"><img src="http://qbb.open580.com/uploadFile/uploadImg/20170329/1490768323819.png" /></div>
+                <div class="member_info_font">
+                    <p><span class="x_m">${member.name}</span><span>金牌顾问</span></p>
+                    <p class="memberTitle">${member.companyName}</p>
+                    <p class="member_jieshao" style="line-height: 28px;">${member.description}</p>
+                    <a href="adviser/detail/7.html"><button class="layui-btn" lay-submit="" lay-filter="demo1">查看店铺</button></a>
+                </div>
+                <div class="clear"></div>
+            </div>
             <p class="layui-elem-quote noborderLeft">需求信息</p>
             <div class="layui-form">
                 <table class="layui-table" lay-skin="line">
