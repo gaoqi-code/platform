@@ -6,7 +6,7 @@
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>企巴巴-一站式商业服务平台</title>
+    <title>${member.companyName}-企巴巴</title>
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
     <link rel="stylesheet" type="text/css" href="css/adviser_tui.css">

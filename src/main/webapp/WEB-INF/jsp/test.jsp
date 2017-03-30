@@ -16,9 +16,9 @@
         .type_b_container{background-color: #e7e8eb;margin:20px 0px 0px 0px;padding:30px 0px;}
         .content_{border:1px solid #d9dadc;background-color: #FFF;}
         .h_step{border-bottom: 1px solid #e6e7ea;}
-        .h_step li{font-size:16px;float: left;text-align:center;width: 33%;height: 44px;line-height: 44px; background: transparent url(https://res.wx.qq.com/mpres/htmledition/images/bg/bg_processor218877.png) no-repeat 0 0;
+        .h_step li{font-size:16px;float: left;text-align:center;width: 33%;height: 44px;line-height: 44px; background: transparent url(images/icon/bg_process.png) no-repeat 0 0;
             background-position: right;}
-        .on{background-color: #44b549!important;background-position:-14px 0px!important;color: #fff;}
+        .c_on{background-color: #ee4134!important;background-position:-14px 0px!important;color: #fff;}
         .type_title{padding-left:10px;font-size:20px;height:50px;line-height:50px;border-bottom: 1px solid #e6e7ea;    background-color: #fff;}
         .type_content{padding:100px 0px;width: 616px;margin-left: auto;margin-right: auto;}
         .type_c{float: left;display: inline-block;
@@ -45,7 +45,7 @@
     <div class="content content_">
         <ul class="h_step">
             <li>1 注册会员</li>
-            <li class="on">2 选择类型</li>
+            <li class="c_on">2 选择类型</li>
             <li style="background-position: 0px -88px;">3 会员中心</li>
             <div class="clear"></div>
         </ul>
