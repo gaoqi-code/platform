@@ -19,7 +19,14 @@
                     <p>${member.companyName}&nbsp;
                         <c:if test="${member.level == 1}">金牌顾问</c:if>
                         &nbsp;执行${member.workAge}年</p>
-                    <p>个人简介：${member.description}</p>
+                    <p>个人简介：
+                        <c:if test="${fn:length(member.description)>100}">
+                            ${fn:substring(member.description,0,100)}...
+                        </c:if>
+                        <c:if test="${fn:length(member.description)<=100}">
+                            ${member.description}
+                        </c:if>
+                    </p>
                 </div>
             </div>
             <div class="adviser-list-href"><a href="/adviser/detail/${member.id}.html">访问主页</a></div>
