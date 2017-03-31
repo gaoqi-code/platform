@@ -30,7 +30,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>产品名称</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="title" value="${product.title}"  autocomplete="off" class="layui-input">
+                        <input type="input" name="title" value="${product.title}" lay-verify="title" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>产品类型</label>
                     <div class="layui-input-inline">
-                        <select  lay-filter="oneLevel" id="oneLevel">
+                        <select  lay-verify="oneLevel" lay-filter="oneLevel" id="oneLevel">
                             <option value="">请选择</option>
                             <c:forEach items="${oneLevelCategories}" var="category">
                                 <option value="${category.id}" <c:if test="${category.id == selectClass.oneLevel}">selected=""</c:if>  >${category.name}</option>
@@ -120,11 +120,15 @@
         //自定义验证规则
         form.verify({
             title: function(value){
-                if(value.length < 5){
-                    return '标题至少得5个字符啊';
+                if(value.length < 3){
+                    return '产品名称至少得5个字符！';
+                }
+            },
+            oneLevel: function(value){
+                if(value.length < 1){
+                    return '请选择产品类型！';
                 }
             }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
             ,content: function(value){
                 layedit.sync(editIndex);
             }

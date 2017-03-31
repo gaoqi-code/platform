@@ -14,7 +14,7 @@
                 <p>产品名称-${product.title}</p>
                 <p>产品类型-${product.className}</p>
                 <p><span>${product.member.name}</span>贷款顾问 <img src="/images/qq/qq.gif"></p>
-                <p>个人简介：${product.member.description}</p>
+                <p>个人简介：${fn:substring(product.member.description,0,80)}..</p>
             </div>
         </div>
         <div class="adviser-list-href"><a href="/product/detail/${product.id}.html">查看详情</a></div>

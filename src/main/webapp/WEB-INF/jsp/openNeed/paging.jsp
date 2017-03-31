@@ -6,18 +6,18 @@
 
 <table class="layui-table" lay-skin="line">
     <colgroup>
-        <col>
         <col width="150">
         <col width="100">
         <col width="80">
-        <col width="100">
         <col width="120">
+        <col width="200">
+        <col width="100">
     </colgroup>
     <thead>
     <tr>
         <td>需求名称</td>
         <td>类型</td>
-        <td>联系人</td>
+        <td>联系人</td><td>联系电话</td>
         <td>地区</td>
         <td>发布日期</td>
     </tr>
@@ -29,6 +29,7 @@
             <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${need.title}</a></td>
             <td>${need.className}</td>
             <td>${need.member.name}</td>
+            <td>${fn:substring(need.needMobile,0,7)}****</td>
             <td>${need.areaFullName}</td>
             <td><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
         </tr>

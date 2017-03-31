@@ -21,7 +21,7 @@
         .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .li-img img{width: 165px;}
         .adviser-list-info{height: 165px;float: left;width: 600px;}
-        .adviser-list-content{margin-top:30px;margin-left: 30px;}
+        .adviser-list-content{margin-top:8px;margin-left: 30px;}
         .adviser-list-info span{font-size:22px;margin-right: 20px;}
         .adviser-list-info p{line-height: 35px;height: 35px;}
         .adviser-list-href{height: 165px;line-height:165px;float: left}
