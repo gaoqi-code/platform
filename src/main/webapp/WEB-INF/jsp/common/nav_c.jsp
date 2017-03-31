@@ -12,7 +12,9 @@
             <c:when test="${nav eq 'myshop'}"><li class="current_c"></c:when>
             <c:otherwise><li></c:otherwise>
         </c:choose>
-            <a href="member/myshop.html">我的店铺</a>
+            <c:if test="${sessionScope.currentUser.type==1}">
+                <a href="member/myshop.html">我的店铺</a>
+            </c:if>
         </li>
         <%--<li><a href="#" class="pl60 pr60">会员信息</a></li>--%>
         <%--<li><a href="#" class="pl60 pr60">服务</a></li>--%>

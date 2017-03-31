@@ -37,6 +37,20 @@ public class MemberAction extends BaseController{
 	public ModelAndView memberIndex(HttpServletRequest request,ModelAndView mav) {
 		request.setAttribute("nav","center");
 		List<Member> counselors = memberService.getRecommendCounselorList();
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		member =  memberService.getMemberInfo(member);
+		if (member != null) {
+			Long companyId = member.getCompanyId();
+			if (Optional.ofNullable(companyId).isPresent()) {
+				member.setCompanyName(companyService.getCompanyNameById(companyId));
+			}
+			if(null!=member.getDescription()&&member.getDescription().length()>200){
+				member.setDescription(member.getDescription().substring(0,200)+"...");
+			}
+		}
+
+		mav.getModel().put("member", member);
 		mav.getModel().put("counselors", counselors);
 		mav.setViewName("member/index");
 		return mav;
