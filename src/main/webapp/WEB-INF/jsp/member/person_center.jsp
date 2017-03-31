@@ -99,3 +99,113 @@
         </div>
     </div>
 </form>
+<script src="../plugins/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate','upload'], function(){
+        var form = layui.form()
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+
+            var areaCode = $("#oneLevel").val()+"-";
+            var twoLevel = $("#twoLevel").val();
+            var threeLevel = $("#threeLevel").val();
+            if(twoLevel) {
+                areaCode += twoLevel + "-";
+            }
+            if(threeLevel) {
+                areaCode += threeLevel + "-";
+            }
+            $("#areaCode").val(areaCode);
+            $.ajax({
+                type: "POST",
+                url: "/member/updateInfo.json",
+                data: $("#memberInfo").serialize(),
+                dataType: "json",
+                success: function(data){
+                    if(data.flag) {
+                        layer.alert("保存成功！");
+                    }else {
+                        layer.alert("保存失败！");
+                    }
+                }
+            });
+            return false;
+        });
+
+        layui.upload({
+            url: '/fileUpload/upload.json'
+            ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
+            ,method: 'post' //上传接口的http类型
+            ,success: function(data){
+                console.log(data);
+                if(data.flag) {
+                    var path = data.data.src;
+                    LAY_demo_upload.src = path;
+                    $("#headPortrait").val(path);
+                }else {
+                    layer.alert("头像上传失败！");
+                }
+            }
+        });
+
+        form.on('select(selectArea)', function(data) {
+            var oldDom = data.elem;
+            var selectVal = data.value;
+            var areaCode = $("#areaCode1").val();
+            if (selectVal != areaCode) {
+                $("#areaCode1").val(selectVal)
+            } else {
+                return;
+            }
+            var level = $(oldDom).attr("id");
+            if (level != "threeLevel") {
+                $.ajax({
+                    type: "POST",
+                    url: "/area/getSonAreas.json",
+                    data: {parentId: selectVal},
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.flag) {
+                            var content = '<option value="">请选择</option>';
+                            var pleaseSelect = content;
+                            data.areas.forEach(function (item, index) {
+                                content += '<option value="' + item.id + '">' + item.name + '</option>';
+                            });
+                            if (level == "oneLevel") {
+                                $("#twoLevel").html(content);
+                                $("#threeLevel").html(pleaseSelect);
+                            } else {
+                                $("#threeLevel").html(content);
+                            }
+                            form.render('select');
+                        } else {
+                            layer.msg("区域加载失败！");
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -12,10 +12,6 @@
     <style>
         .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
         .member_menu li a{margin-left:20px;}
-        .gonggao_title{margin: 15px 5px;}
-        .gonggao{border: 1px solid #EEE;}
-        .gonggao li{width: 100%;height:45px;line-height:45px;border-bottom: 1px solid #eee;}
-        .gonggao li a{margin-left: 15px;}
         .c_right{margin-left:10px;width: 958px;float: left;}
     </style>
 </head>
@@ -27,24 +23,24 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">修改密码</p>
+            <p class="layui-elem-quote noborderLeft">修改密码</p>
             <form class="layui-form" action="" id="updatePWForm">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">原密码</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>原密码</label>
                     <div class="layui-input-inline">
                         <input type="password" name="oldPW"   placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">新密码</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>新密码</label>
                     <div class="layui-input-inline">
                         <input type="password" name="newPW"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">确认密码</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>确认密码</label>
                     <div class="layui-input-inline">
                         <input type="password"    placeholder="" autocomplete="off" class="layui-input">
                     </div>

@@ -10,15 +10,8 @@
     <link rel="stylesheet" href="../css/buysell.css">
     <link rel="stylesheet" href="../plugins/layui/css/global.css">
     <style>
-        .memver_c{margin-top: 15px;margin-bottom: 15px;}
-        .c_left{width: 210px;float:left;}
-        .member_menu{border: 1px solid #EEE;}
         .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
         .member_menu li a{margin-left:20px;}
-        .gonggao_title{margin: 15px 5px;}
-        .gonggao{border: 1px solid #EEE;}
-        .gonggao li{width: 100%;height:45px;line-height:45px;border-bottom: 1px solid #eee;}
-        .gonggao li a{margin-left: 15px;}
         .c_right{margin-left:10px;width: 958px;float: left;}
     </style>
 </head>
@@ -30,7 +23,7 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote">完成个人资料</p>
+            <p class="layui-elem-quote noborderLeft">完成个人资料</p>
             <form class="layui-form" action="" id="createCompany">
                 <div class="layui-form-item">
                     <label class="layui-form-label">公司名称</label>
