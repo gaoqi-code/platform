@@ -24,9 +24,9 @@
         .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .li-img img{width: 165px;}
         .adviser-list-info{height: 165px;float: left;width: 600px;}
-        .adviser-list-content{margin-top:30px;margin-left: 30px;}
+        .adviser-list-content{margin-left: 30px;}
         .adviser-list-info span{font-size:22px;margin-right: 20px;}
-        .adviser-list-info p{line-height: 35px;height: 35px;}
+        .adviser-list-info p{line-height: 35px;min-height: 35px;}
         .adviser-list-href{height: 165px;line-height:165px;float: left}
         .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
         .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
