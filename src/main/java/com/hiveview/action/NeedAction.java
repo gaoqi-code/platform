@@ -62,6 +62,7 @@ public class NeedAction extends BaseController{
             Need need= needService.getNeedById(needId);
             Long categoryId = need.getClassId();
             //获得需求选择的类目
+            //TODO 区分类目类型
             Category selectClass = categoryService.getCategoryById(categoryId);
             List<Category> twoLevelCategories = null;//二级类目
             List<Category> threeLevelCategories = null;//三级类目
