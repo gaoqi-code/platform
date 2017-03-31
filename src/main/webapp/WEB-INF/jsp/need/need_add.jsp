@@ -82,7 +82,7 @@
                     <c:forEach items="${attributes}" var="attribute" varStatus="status">
                         <label class="layui-form-label">${attribute.name}</label>
                         <div class="layui-input-inline">
-                            <input type="hidden" name="attributes[${status.index}].classId" value="${attribute.classId}">
+                            <input type="hidden" name="attributes[${status.index}].classId" value="${attribute.id}">
                             <input type="hidden" name="attributes[${status.index}].name" value="${attribute.name}">
                             <input type="input" name="attributes[${status.index}].value" value="${attribute.value}" autocomplete="off" class="layui-input">
                         </div>
