@@ -15,26 +15,26 @@
 <body>
 
 <div class="liuyan">
-    <form class="layui-form order-form" action="">
+    <form id="userNeedForm" class="layui-form order-form" action="">
         <div class="layui-form-item">
 
             <div class="layui-input-inline">
-                <select name="quiz1">
-                    <option value="">请选需求类型</option>
-                    <option value="浙江" selected="">金融</option>
-                    <option value="江西省">贷款</option>
-                    <option value="福建省">企业求助</option>
+                <select name="categoryCode">
+                    <option value="0">请选需求类型</option>
+                    <option value="1-" selected="">金融</option>
+                    <option value="2-">贷款</option>
+                    <option value="3-">企业求助</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <input type="text" name="n_needMobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号码" class="layui-input">
+                <input type="text" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号码" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <div class="layui-input-block">
-                <textarea placeholder="请输入需求内容" name="n_needContent" lay-verify="n_needContent" class="layui-textarea"></textarea>
+                <textarea placeholder="请输入需求内容" name="needDesc" lay-verify="n_needContent" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -46,6 +46,7 @@
 </div>
 <script src="../plugins/layui/layui.js" charset="utf-8"></script>
 <script>
+    var cureentTime = 0;
     layui.use(['form'], function(){
         var form = layui.form()
                 ,layer = layui.layer;
@@ -59,29 +60,36 @@
             }
         });
         //监听提交
-        form.on('submit(demo1)', function(data){
-            layer.alert("您的需求已提交，我们会尽快与您联系。"+JSON.stringify(data.field), {
-                title: '信息'
-            })
-            return false;
-        });
 //        form.on('submit(demo1)', function(data){
-//            $.ajax({
-//                type: "POST",
-//                url: "/member/need/add.json",
-//                data: $("#needForm").serialize(),
-//                dataType: "json",
-//                async:false,
-//                success: function (data) {
-//                    if (data) {
-//                        location.href = "/member/need/toSuccess.html";
-//                    } else {
-//                        layer.msg("发布失败！");
-//                    }
-//                }
+//            layer.alert("您的需求已提交，我们会尽快与您联系。"+JSON.stringify(data.field), {
+//                title: '信息'
 //            });
 //            return false;
 //        });
+        form.on('submit(demo1)', function(data){
+            if((new Date().getTime())-cureentTime<4000){
+                return false;
+            }
+            cureentTime = new Date().getTime();
+            $.ajax({
+                type: "POST",
+                url: "/need/liuyan.json",
+                data: $("#userNeedForm").serialize(),
+                dataType: "json",
+                async:false,
+                success: function (data) {
+                    if (data) {
+                        layer.alert("您的需求已提交，我们会尽快与您联系。", {
+                            title: '信息'
+                        });
+                        $(':input','#userNeedForm').val('');
+                    } else {
+                        layer.msg("发布失败！");
+                    }
+                }
+            });
+            return false;
+        });
 
     });
 </script>

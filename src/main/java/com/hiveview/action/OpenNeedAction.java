@@ -7,8 +7,10 @@ import com.google.common.collect.Maps;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Need;
 import com.hiveview.entity.Paging;
+import com.hiveview.entity.UserNeed;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.INeedService;
+import com.hiveview.util.Data;
 import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -139,6 +141,30 @@ public class OpenNeedAction extends BaseController{
         }
         result.put("flag", flag);
         return result;
+    }
+
+    /**
+     * 用户留言
+     * @return
+     */
+    @RequestMapping(value="/liuyan")
+    public @ResponseBody Data liuyan(HttpServletRequest request,UserNeed userNeed){
+        Data data = new Data();
+        try {
+            if(null==userNeed||userNeed.getMobile()==null){
+                data.setCode(501);
+                data.setMsg("手机号不完整！");
+            }
+            userNeed.setIsContact(0);
+            userNeed.setMemberId(super.getMemberId(request));
+            needService.addUserNeed(userNeed);
+            data.setCode(200);
+            return data;
+        }catch (Exception e){
+            data.setCode(500);
+            data.setMsg(e.getMessage());
+            return data;
+        }
     }
 
 }
