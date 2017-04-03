@@ -12,6 +12,7 @@ a:hover{color: #ee4134;}
 s{text-decoration: none;}
 iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 .clear{clear: both !important;}
+.clearfix:after{clear:both;content: "\20";display: block;}
 .noborderLeft{border-left: none!important;}
 .userName{color:#0088cc;}
 .redClass{color: #FFF;background-color: red;}
@@ -60,17 +61,19 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 
 
 /*** nav part start ***/
-.nav{height:48px;line-height:48px;border-bottom: 2px solid #ee4134;}
-.nav-li1{width: 300px;float:left;text-align: center;background-color:#ee4134;position: relative;}
-.nav-li1 a{display: inline-block;font-weight: bold;color: #FFF;}
+.nav{height:48px;line-height:48px;background-color: #637a8e;}
+.nav-li1{width: 220px;float:left;text-align: center;position: relative;}
+.navCurrent{background-color:#4f606f;}
+.nav-li1 i{background-position: -25px 0px;background: url("../images/icon/global_icon.png") no-repeat;width: 25px;height: 27px;display: inline-block;vertical-align: middle;}
+.nav-li1 a{display:block;font-weight: bold;text-align:left;color: #FFF;}
 .nav-li1 a:hover{color: #FFF;}
 .nav-li{width: 125px;float:left;text-align: center;}
-.nav-li a{color: #000;display: inline-block;}
-.nav-li a:hover{color: #ee4134;font-weight: bold;}
+.nav-li a{color: #000;display:block;color: #FFF;}
+.nav-li a:hover{background-color:#4f606f;font-weight: bold;color: #FFF;}
 .nav-t2{font-size: 15px;font-weight: bold;}
 .nav-c2{width: 95%;margin-left: auto;margin-right: auto;}
 .nav-c2-fenge{border-bottom: 1px dashed #e2e2e2;padding-top: 10px;width: 95%;margin-left: auto;margin-right: auto;}
-.nav-l2-container{background-color:#f8f8f8;position: absolute;top:49px;display: none;border: 1px solid #e2e2e2;padding-left: 5px;z-index: 2;}
+.nav-l2-container{background-color:#454444;color:#FFF;position: absolute;top:48px;display: none;padding-left: 5px;z-index: 2;}
 .nav-c2 span{display: inline-block;height:26px;line-height:26px;float: left;margin-right: 15px;font-size: 13px;}
 .nav-l2c{text-align: left;}
 

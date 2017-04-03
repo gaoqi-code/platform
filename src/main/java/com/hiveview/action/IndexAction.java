@@ -17,6 +17,12 @@ public class IndexAction {
 		return mav;
 	}
 
+	@RequestMapping(value="/mType")
+	public ModelAndView memberType(HttpServletRequest request,ModelAndView mav) {
+		mav.setViewName("member/member_type");
+		return mav;
+	}
+
 	@RequestMapping(value="/article")
 	public ModelAndView article(HttpServletRequest request, ModelAndView mav) {
 		mav.setViewName("article");
@@ -25,6 +31,7 @@ public class IndexAction {
 
 	@RequestMapping(value="/index")
 	public ModelAndView index(HttpServletRequest request, ModelAndView mav) {
+		mav.getModel().put("cIndexNav","navCurrent");
 		mav.setViewName("index");
 		return mav;
 	}

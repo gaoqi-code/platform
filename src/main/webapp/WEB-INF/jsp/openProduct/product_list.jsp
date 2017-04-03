@@ -118,12 +118,6 @@
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
         .layui-form-item .layui-input-inline{width:225px;margin-left:5px;}
     </style>
-    <script type="text/javascript">
-        $(function(){
-            $("#kinMaxShow").kinMaxShow({height:200});
-        });
-
-    </script>
 </head>
 <body>
 <jsp:include page="../common/top.jsp"></jsp:include>
@@ -167,36 +161,9 @@
             <div id="pager"></div>
         </div>
         <div class="adviser_right">
-            <div class="liuyan">
-                <form class="layui-form order-form" action="">
-                    <div class="layui-form-item">
 
-                        <div class="layui-input-inline">
-                            <select name="quiz1">
-                                <option value="">请选择省</option>
-                                <option value="浙江" selected="">浙江省浙江省浙江省浙江省</option>
-                                <option value="你的工号">江西省</option>
-                                <option value="你最喜欢的老师">福建省</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" style="width: 100%;" lay-filter="demo1">立即提交</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
+
             <div class="adviser_tj">
                 <div class="adviser_tj_title">顾问推荐</div>
                 <div class="adviser_tj_li">
@@ -259,7 +226,6 @@
 <jsp:include page="../common/bottom.jsp"></jsp:include>
 
 
-<script src="./plugins/layui/layui.js" charset="utf-8"></script>
 <script>
     $(function () {
         var keyword = "${keyword}";

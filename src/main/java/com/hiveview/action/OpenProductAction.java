@@ -30,7 +30,7 @@ public class OpenProductAction extends BaseController{
 
     @RequestMapping(value="/toSearch")
     public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
-
+        mav.getModel().put("cProductNav","navCurrent");
         String keyword = request.getParameter("keyword");
         if (StringUtil.isNotEmpty(keyword)) {
             try {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -54,6 +55,27 @@ public class MemberAction extends BaseController{
 		mav.getModel().put("counselors", counselors);
 		mav.setViewName("member/index");
 		return mav;
+	}
+
+	@RequestMapping(value="/toMember")
+	public String selectMemberType(HttpServletRequest request) {
+		Member member = new Member();
+		member.setId(super.getMemberId(request));
+		Object type = request.getParameter("type");
+		if(null!=type&&type.equals("adviser")){
+			member.setType(1);
+			member.setStatus(1);
+		}else{
+			member.setType(0);
+			member.setStatus(4);
+		}
+		memberService.updateMember(member);
+		//更新session里面的值
+		HttpSession session = request.getSession();
+		Member memberSession = (Member) request.getSession().getAttribute("currentUser");
+		memberSession.setType(member.getType());
+		session.setAttribute("currentUser", memberSession);
+		return "member/info";
 	}
 
 	/**

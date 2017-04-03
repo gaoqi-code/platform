@@ -37,7 +37,7 @@ public class OpenNeedAction extends BaseController{
 
     @RequestMapping(value="/toSearch")
     public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
-
+        mav.getModel().put("cNeedNav","navCurrent");
         String keyword = request.getParameter("keyword");
         if (StringUtil.isNotEmpty(keyword)) {
             try {

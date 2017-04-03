@@ -58,7 +58,7 @@
     <div class="content">
         <ul>
             <li class="nav-li1">
-                <a href="javascript:void(0);">全部服务分类</a>
+                <a href="javascript:void(0);"><i class="size25" style="background-position: -25px 0px;"></i>服务分类</a>
                 <div class="nav-l2-container">
                     <div class="nav-l2c">
                         <div class="nav-t2">金融服务</div>
@@ -83,13 +83,16 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-li">
+            <li class="nav-li ${cIndexNav}">
+                <a href="/index.html">首页</a>
+            </li>
+            <li class="nav-li ${cNeedNav}">
                 <a href="/need/toSearch.html">找需求</a>
             </li>
-            <li class="nav-li">
+            <li class="nav-li ${cAdviserNav}">
                 <a href="/adviser/toSearch.html">找顾问</a>
             </li>
-            <li class="nav-li">
+            <li class="nav-li ${cProductNav}">
                 <a href="/product/toSearch.html">找服务</a>
             </li>
             <%--<li class="nav-li">--%>
@@ -109,7 +112,9 @@
             $(".nav-l2-container").css("display","block");
         });
         $(".nav-l2-container").mouseout(function () {
-            $(".nav-l2-container").css("display","none");
+            if($("#nav").val()!="index"){
+                $(".nav-l2-container").css("display","none");
+            }
         });
 
         $("a[name='searchType']").click(function () {

@@ -123,6 +123,159 @@
         /*文本框样式调整*/
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
         .layui-form-item .layui-input-inline{width:225px;margin-left:5px;}
+
+
+
+
+
+
+
+
+
+
+
+        /*** 提供的服务 ***/
+        .provider-index-wrap {
+            margin-bottom: 88px;
+        }
+        .service-list-box {
+            margin-bottom: -22px;
+        }
+        .provider-index-box {
+            /*margin-top: 40px;*/
+        }
+
+        .provider-index-box .mod-head-small .mod-title {
+            font: 20px/26px microsoft yahei;
+            color: #323232;
+            margin-top: 0;
+        }
+        .mod-head .more {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #1cbcb4;
+            font-size: 16px;
+            line-height: normal;
+        }
+
+        .provider-index-box .service-list {
+            overflow: hidden;
+        }
+        .provider-index-box .service-list ul {
+            margin-right: -24px;
+        }
+        .provider-index-box .service-list .item {
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+            width: 240px;
+            height: 154px;
+            border: 1px solid #e2e2e2;
+            padding: 20px 20px 14px;
+            background-color: #fff;
+            position: relative;
+            font-size: 14px;
+            margin: 0 20px 24px 0;
+            cursor: pointer;
+        }
+        .provider-index-box .service-list .title {
+            font-size: 20px;
+            color: #323232;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .provider-index-box .service-list a {
+            text-decoration: none;
+            color: #323232;
+        }
+        .provider-index-box .service-list .intro {
+            color: #878787;
+            line-height: 20px;
+        }
+        .provider-index-box .service-list .record {
+            color: #9e9e9e;
+            line-height: 20px;
+            margin-top: 5px;
+        }
+        .provider-index-box .service-list .consult {
+            margin-left: 10px;
+        }
+        .provider-index-box .service-list .price-box {
+            position: absolute;
+            left: 20px;
+            bottom: 10px;
+        }
+        .provider-index-box .service-list .mod-red-redeem, .provider-index-box .service-list .mod-seckill-price {
+            color: #ff6547;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .mod-rating-star label, .mod-red-redeem:before, .mod-seckill-price:before {
+            background-image: url(../../../../sprite/sprite-7e8b7d8bbe.corp-index.base.png?max_age=31536000);
+            background-position: 0 0;
+        }
+        .provider-index-box .service-list .mod-red-redeem:before {
+            vertical-align: middle;
+            margin-top: -2px;
+        }
+        .mod-red-redeem:before {
+            content: "";
+            display: inline-block;
+            width: 19px;
+            height: 13px;
+            margin-right: 6px;
+            background-repeat: no-repeat;
+        }
+        .case-list li p, .provider-aboutpop-v, .provider-index-box .service-list .intro, .provider-index-box .service-list .originalprice, .provider-index-box .service-list .price {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            word-wrap: normal;
+        }
+        .provider-index-box .service-list .price {
+            font-size: 22px;
+            color: #ef6512;
+        }
+        .provider-index-box .service-list .ui-button {
+            position: absolute;
+            right: 17px;
+            bottom: 13px;
+        }
+        .ui-button-suc {
+            color: #fff!important;
+        }
+        .ui-button {
+            display: inline-block;
+            line-height: 42px;
+            font-size: 16px;
+            text-align: center;
+            color: #323232;
+            border-radius: 5px;
+            min-width: 108px;
+            padding: 0 20px;
+            -webkit-transition: background-color .15s,color .15s;
+            transition: background-color .15s,color .15s;
+            outline: none;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid #e2e2e2;
+        }
+        .ui-button-suc {
+            background-color: #1cbcb4;
+            color: #fff;
+            border-color: #1cbcb4;
+        }
+        .ui-button-sm {
+            min-width: 66px;
+            line-height: 30px;
+            padding: 0 8px;
+            font-size: 12px;
+        }
     </style>
     <script type="text/javascript">
         $(function(){
@@ -212,7 +365,46 @@
                 <div class="layui-colla-item">
                     <h2 class="layui-colla-title">提供的服务</h2>
                     <div class="layui-colla-content  layui-show">
-                        <p>有不少其他答案说是因为JS太差。我下面的答案已经说了，这不是根本性的原因。但除此之外，我还要纠正一些对JS具体问题的误解。JS当初是被作为脚本语言设计的，所以某些问题并不是JS设计得差或者是JS设计者的失误。比如var的作用域问题，并不是“错误”，而是当时绝大部分脚本语言都是这样的，如perl/php/sh等。模块的问题也是，脚本语言几乎都没有模块/命名空间功能。弱类型、for-in之类的问题也是，只不过现在用那些老的脚本语言的人比较少，所以很多人都误以为是JS才有的坑。另外有人说JS是半残语言，满足不了开发需求，1999年就该死。半残这个嘛，就夸张了。JS虽然有很多问题，但是设计总体还是优秀的。——来自知乎@贺师俊</p>
+
+
+
+                        <div class="provider-index-wrap jmod-tabcontent-wrap0">
+                            <div class="provider-index-box service-list-box">
+                                <div class="layout">
+                                    <%--<div class="mod-head mod-head-small jmod-hot-sku-header">--%>
+                                        <%--<h3 class="mod-title">热销服务</h3>--%>
+                                        <%--<a href="/seller/corpinfo?c_id=10021&amp;tab=2" _stat_click_id="9_100" class="more">更多服务</a>--%>
+                                    <%--</div>--%>
+                                    <div class="service-list">
+                                        <ul class="jmod-hot-skus">
+                                            <c:forEach items="${needs}" var="need">
+                                                <li class="item">
+
+                                                    <h4 class="title"><a _stat_click_id="9_13134" href="/cmdty/detail?csId=13134" target="_blank">${need.title}</a></h4>
+                                                    <p class="intro">提供员工入职到离职一系列HR相关文件模板</p>
+                                                    <div class="record">
+                                                        <span class="deal">销量&nbsp;690</span>
+                                                        <span class="consult">咨询量&nbsp;118</span>
+                                                    </div>
+                                                    <div class="price-box">
+
+
+                                                        <p class="mod-red-redeem">可抵64.9元</p>
+                                                        <p class="price">¥74.80</p>
+
+
+                                                    </div>
+                                                    <a href="/cmdty/detail?csId=13134" _stat_click_id="9_13134" target="_blank" class="ui-button ui-button-sm ui-button-suc">查看详情</a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
