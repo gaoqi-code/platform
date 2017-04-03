@@ -59,13 +59,6 @@
                 }
             }
         });
-        //监听提交
-//        form.on('submit(demo1)', function(data){
-//            layer.alert("您的需求已提交，我们会尽快与您联系。"+JSON.stringify(data.field), {
-//                title: '信息'
-//            });
-//            return false;
-//        });
         form.on('submit(demo1)', function(data){
             if((new Date().getTime())-cureentTime<4000){
                 return false;
