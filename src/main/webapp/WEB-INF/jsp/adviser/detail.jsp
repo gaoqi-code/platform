@@ -377,24 +377,20 @@
                                     <%--</div>--%>
                                     <div class="service-list">
                                         <ul class="jmod-hot-skus">
-                                            <c:forEach items="${needs}" var="need">
+                                            <c:forEach items="${products}" var="product">
                                                 <li class="item">
 
-                                                    <h4 class="title"><a _stat_click_id="9_13134" href="/cmdty/detail?csId=13134" target="_blank">${need.title}</a></h4>
+                                                    <h4 class="title"><a _stat_click_id="9_13134" href="product/detail/${product.id}.html" target="_blank">${product.title}</a></h4>
                                                     <p class="intro">提供员工入职到离职一系列HR相关文件模板</p>
                                                     <div class="record">
                                                         <span class="deal">销量&nbsp;690</span>
                                                         <span class="consult">咨询量&nbsp;118</span>
                                                     </div>
                                                     <div class="price-box">
-
-
-                                                        <p class="mod-red-redeem">可抵64.9元</p>
+                                                        <%--<p class="mod-red-redeem">可抵64.9元</p>--%>
                                                         <p class="price">¥74.80</p>
-
-
                                                     </div>
-                                                    <a href="/cmdty/detail?csId=13134" _stat_click_id="9_13134" target="_blank" class="ui-button ui-button-sm ui-button-suc">查看详情</a>
+                                                    <a href="product/detail/${product.id}.html" _stat_click_id="9_13134" target="_blank" class="ui-button ui-button-sm ui-button-suc">查看详情</a>
                                                 </li>
                                             </c:forEach>
                                         </ul>

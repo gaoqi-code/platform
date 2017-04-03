@@ -6,8 +6,10 @@ import com.github.pagehelper.StringUtil;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Need;
 import com.hiveview.entity.Paging;
+import com.hiveview.entity.Product;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.INeedService;
+import com.hiveview.service.IProductService;
 import com.hiveview.util.MemberType;
 import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ public class AdviserAction extends BaseController{
 	@Autowired
 	private IMemberService memberService;
 	@Autowired
-	private INeedService needService;
+	private IProductService productService;
 
 	@RequestMapping(value="/toSearch")
 	public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
@@ -84,15 +86,15 @@ public class AdviserAction extends BaseController{
 		mav.getModel().put("member", member);
 
 		Paging paging = super.getPaging(request);
-		Need need = new Need();
-		need.setMemberId(memberId);
+		Product product = new Product();
+		product.setMemberId(memberId);
 //        need.setStatus(StatusUtil.VALID.getVal());
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
-		List<Need> needs =  needService.getNeedPage(need);
+		List<Product> products =  productService.getProductPage(product);
 		paging.setTotalPages(page.getPages());
 		mav.getModel().put("paging",paging);
-		mav.getModel().put("needs",needs);
-		mav.setViewName("need/paging");
+		mav.getModel().put("products",products);
+//		mav.setViewName("need/paging");
 		mav.setViewName("adviser/detail");
 		return mav;
 	}

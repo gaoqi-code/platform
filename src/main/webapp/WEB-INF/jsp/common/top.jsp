@@ -63,7 +63,7 @@
                     <div class="nav-l2c">
                         <div class="nav-t2">金融服务</div>
                         <div class="nav-c2">
-                            <span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span>
+                            <span>快速贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span><span>小额贷款</span>
                             <div class="clear nav-c2-fenge"></div>
                         </div>
                     </div>

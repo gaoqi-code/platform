@@ -481,9 +481,8 @@
     </div>
     <div class="bd">
         <ul>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="http://o6yahvsqr.bkt.clouddn.com/banner/20170317104435275659.jpg?imageView2/1/w/1920/h/450" /></a></li>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="http://o6yahvsqr.bkt.clouddn.com/banner/20170316192458564206.jpg?imageView2/1/w/1920/h/450" /></a></li>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="http://o6yahvsqr.bkt.clouddn.com/banner/20170316192458564206.jpg?imageView2/1/w/1920/h/450" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.png" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/2.png" /></a></li>
         </ul>
     </div>
 
