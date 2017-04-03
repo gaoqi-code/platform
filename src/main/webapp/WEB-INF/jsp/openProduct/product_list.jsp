@@ -117,6 +117,106 @@
         /*文本框样式调整*/
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
         .layui-form-item .layui-input-inline{width:225px;margin-left:5px;}
+
+
+
+        .m-itemlist .grid {
+            margin-right: -17px;
+        }
+        .m-itemlist .grid .items {
+            margin-top: -1px;
+        }
+        .g-clearfix {
+            height: inherit;
+        }
+        .g-clearfix:after, .g-clearfix:before {
+            content: "";
+            display: table;
+        }
+        .m-itemlist .grid .item {
+            margin-right: 17px;
+            margin-top: 22px;
+            float: left;
+            border: 1px solid #ededed;
+            -webkit-transition: border-color .2s;
+            -moz-transition: border-color .2s;
+            -o-transition: border-color .2s;
+            transition: border-color .2s;
+        }
+        .m-itemlist .grid .item {
+            position: relative;
+            margin-right: 14px;
+            width: 220px;
+            height: 360px;
+        }
+        .m-itemlist .pic-box {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+        }
+        .m-itemlist .grid .pic, .m-itemlist .grid .pic-box, .m-itemlist .grid .pic-box-inner, .m-itemlist .grid .pic-link {
+            width: 220px;
+            height: 220px;
+            text-align: center;
+        }
+        .m-itemlist .pic-box-inner {
+            position: relative;
+            overflow: hidden;
+        }
+        .m-itemlist .pic-link {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .m-itemlist .grid .img {
+            max-width: 220px;
+            max-height: 220px;
+        }
+        .m-itemlist .grid .row {
+            padding: 0 10px;
+        }
+        .m-itemlist .grid .row-1 {
+            margin-top: 11px;
+            height: 22px;
+            line-height: 22px;
+            overflow: hidden;
+        }
+        .m-itemlist .grid .price {
+            float: left;
+        }
+        .g_price strong {
+            color: #F60;
+            font-weight: 700;
+            font-family: verdana, arial;
+            font-size: 18px;
+        }
+        .m-itemlist .grid .row {
+            padding: 0 10px;
+        }
+        .m-itemlist .grid .row-3 {
+            margin-top: 10px;
+            height: 22px;
+            line-height: 22px;
+            overflow: hidden;
+        }
+        .m-itemlist .shop {
+            float: left;
+        }
+        .m-itemlist .shopname {
+            color: #888;
+            float: left;
+        }
+        .m-itemlist .grid .icon {
+            float: left;
+            margin-right: 4px;
+            font-size: 0;
+        }
+        .m-itemlist .grid .icon.icon_first {
+            margin-left: 10px;
+        }
+        .mr0 {
+            margin-right: 0 !important;
+        }
     </style>
 </head>
 <body>

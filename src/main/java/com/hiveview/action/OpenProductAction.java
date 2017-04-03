@@ -1,10 +1,12 @@
 package com.hiveview.action;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
+import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IProductService;
 import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by huxunqiang on 17/3/19.
@@ -27,6 +32,8 @@ public class OpenProductAction extends BaseController{
 
     @Autowired
     private IProductService productService;
+    @Autowired
+    private ICompanyService companyService;
 
     @RequestMapping(value="/toSearch")
     public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
@@ -65,6 +72,14 @@ public class OpenProductAction extends BaseController{
         paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
         mav.getModel().put("products",products);
+        Set<Long> cNameSet = new HashSet<Long>();
+        for (Product p: products) {
+            cNameSet.add(p.getCompanyId());
+        }
+        if(cNameSet.size()>0){
+            List<Map<String,Object>> companyList = companyService.getCompanyByCompanyIds(cNameSet);
+            mav.getModel().put("companyInfos",JSON.toJSON(companyList));
+        }
         mav.setViewName("openProduct/paging");
         return mav;
     }
