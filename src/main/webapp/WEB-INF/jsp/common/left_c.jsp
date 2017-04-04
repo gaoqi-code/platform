@@ -40,12 +40,30 @@
     <div class="gonggao_title">公告栏</div>
     <div class="gonggao">
 
-        <ul>
-            <li><a href="article.html">公告1111111111111</a></li>
-            <li><a href="javascript:void(0);">公告1111111111111</a></li>
-            <li><a href="javascript:void(0);">公告1111111111111</a></li>
-            <li><a href="javascript:void(0);">公告1111111111111</a></li>
-            <li><a href="javascript:void(0);">公告1111111111111</a></li>
+        <ul id="notice">
+            <%--<li><a href="article.html">公告1111111111111</a></li>--%>
+            <%--<li><a href="javascript:void(0);">公告1111111111111</a></li>--%>
+            <%--<li><a href="javascript:void(0);">公告1111111111111</a></li>--%>
+            <%--<li><a href="javascript:void(0);">公告1111111111111</a></li>--%>
+            <%--<li><a href="javascript:void(0);">公告1111111111111</a></li>--%>
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: "get",
+            url: "/article/list.json",
+            success: function(data){
+                var articles = data.articles;
+                if(articles) {
+                    var content = '';
+                    articles.forEach(function (item, index) {
+                        content += '<li><a href="/article/detail/'+item.id+'.html">'+item.title+'</a></li>';
+                    });
+                    $("#notice").html(content);
+                }
+            }
+        });
+    });
+</script>
