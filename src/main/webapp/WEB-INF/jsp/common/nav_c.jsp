@@ -13,7 +13,8 @@
             <c:otherwise><li></c:otherwise>
         </c:choose>
             <c:if test="${sessionScope.currentUser.type==1}">
-                <a href="member/myshop.html">我的店铺</a>
+                <%--<a href="member/myshop.html">我的店铺</a>--%>
+                <a href="member/product/list.html">我的店铺</a>
             </c:if>
         </li>
         <%--<li><a href="#" class="pl60 pr60">会员信息</a></li>--%>

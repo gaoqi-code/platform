@@ -42,7 +42,7 @@
             var laypage = layui.laypage
                     ,layer = layui.layer;
             //以下将以jquery.ajax为例，演示一个异步分页
-            var pageSize = 5;
+            var pageSize = 10;
             function paging(curr){
                 $.ajax({
                     type: "POST",

@@ -6,6 +6,7 @@
 
 <table class="layui-table" lay-skin="line">
     <colgroup>
+        <col width="110">
         <col width="150">
         <col width="150">
         <col width="150">
@@ -14,6 +15,7 @@
     <col width="150">
     <thead>
     <tr>
+        <th>产品图片</th>
         <th>产品标题</th>
         <th>类目</th>
         <th>状态</th>
@@ -24,7 +26,8 @@
     <tbody>
             <c:forEach items="${products}" var="product" >
                 <tr>
-                    <td>${product.title}</td>
+                    <td><img src="${product.picture}" style="width:100px;"> </td>
+                    <td><a href="product/detail/${product.id}.html" target="_blank">${product.title}</a></td>
                     <td>${product.className}</td>
                     <td >
                         <c:if test="${product.status == 3}">
@@ -40,7 +43,7 @@
                             下架
                         </c:if>
                     </td>
-                    <td> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
+                    <td> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></td>
                     <td>
                         <a href="javascript:void(0);" productId="${product.id}" name="operation" op="update">修改</a>&nbsp;
                         <c:if test="${product.status != 6}">    <a href="javascript:void(0);" productId="${product.id}" name="operation" op="soldOut">下架</a></c:if>&nbsp;

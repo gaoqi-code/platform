@@ -40,7 +40,7 @@
                         下架
                     </c:if>
                     </td>
-                    <td> <fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
+                    <td> <fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></td>
                     <td>
                         <a href="javascript:void(0);" needId="${need.id}" name="operation" op="update">修改</a>&nbsp;
                         <c:if test="${need.status != 6}">    <a href="javascript:void(0);" needId="${need.id}" name="operation" op="soldOut">下架</a> </c:if>&nbsp;

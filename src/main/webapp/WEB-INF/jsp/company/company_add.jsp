@@ -23,10 +23,10 @@
         <jsp:include page="../common/left_c.jsp"></jsp:include>
 
         <div class="c_right">
-            <p class="layui-elem-quote noborderLeft">完成个人资料</p>
+            <p class="layui-elem-quote noborderLeft">添加新的企业</p>
             <form class="layui-form" action="" id="createCompany">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">公司名称</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>公司名称</label>
                     <div class="layui-input-inline">
                         <input type="input" name="companyName" autocomplete="off" class="layui-input">
                     </div>
@@ -40,7 +40,19 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">详细地址</label>
+                    <label class="layui-form-label"><span class="redColorClass">*</span>所在地区</label>
+                    <div class="layui-input-inline">
+                        <select  lay-verify="oneLevel" lay-filter="oneLevel" id="oneLevel">
+                            <option value="">请选择</option>
+                            <option value="1">北京</option>
+                            <option value="2">天津</option>
+                            <option value="3">湖北省</option>
+                            <option value="3">黑龙江省</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="redColorClass">*</span>详细地址</label>
                     <div class="layui-input-inline">
                         <input type="input" name="address" autocomplete="off" class="layui-input">
                     </div>

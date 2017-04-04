@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
             <div class="member_info">
-                <div class="p_icon"><img src="http://qbb.open580.com/uploadFile/uploadImg/20170329/1490768323819.png" /></div>
+                <div class="p_icon"><img src="${member.headPortrait}" /></div>
                 <div class="member_info_font">
                     <p><span class="x_m">${member.name}</span><span>金牌顾问${member.type}</span></p>
                     <p class="memberTitle">${member.companyName}</p>
