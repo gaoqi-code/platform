@@ -59,8 +59,9 @@
 
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>联系电话</label>
-                    <div class="layui-input-inline">
-                        <input type="input" name="mobile" value="${member.mobile}"  placeholder="" autocomplete="off" class="layui-input">
+                    <div class="layui-input-inline" style="width: 300px;">
+                        <span class="layui-span-input font22">${member.mobile}</span>
+                        <span class="layui-span-input font22 redColorClass">(登录账号)</span>
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -121,9 +122,9 @@
                     <div class="layui-input-inline">
                         <select  lay-filter="oneLevel"  name="adviserType">
                             <option value="">请选择</option>
-                            <option value="1" <c:if test="${member.adviserType == 1}">selected=""</c:if> >贷款</option>
-                            <option value="2"<c:if test="${member.adviserType == 2}">selected=""</c:if>  >金融</option>
-                            <option value="3" <c:if test="${member.adviserType == 3}">selected=""</c:if> >法律</option>
+                            <option value="1" <c:if test="${member.adviserType == 1}">selected=""</c:if> >金融服务</option>
+                            <option value="2" <c:if test="${member.adviserType == 2}">selected=""</c:if> >企业服务</option>
+                            <option value="3" <c:if test="${member.adviserType == 3}">selected=""</c:if> >法律服务</option>
                         </select>
                     </div>
                 </div>

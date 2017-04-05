@@ -10,7 +10,7 @@
     <col width="100">
     <thead>
     <tr>
-        <th>公司名称</th>
+        <th class="textLeft">公司名称</th>
         <th>所在地区</th>
         <th>操作</th>
     </tr>
@@ -18,7 +18,7 @@
     <tbody>
     <c:forEach items="${companys}" var="company" >
         <tr>
-            <td>${company.companyName}</td>
+            <td class="textLeft">${company.companyName}</td>
             <td>${company.address}</td>
             <td><a href="javascript:void(0);"><button name="applyFor" companyId="${company.id}" class="layui-btn layui-btn-small">申请加入</button></a></td>
         </tr>

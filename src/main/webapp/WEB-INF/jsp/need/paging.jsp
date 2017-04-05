@@ -6,9 +6,9 @@
 
 <table class="layui-table" lay-skin="line">
     <colgroup>
+        <col width="300">
         <col width="150">
-        <col width="150">
-        <col width="150">
+        <col width="120">
         <col width="200">
         <col></colgroup>
     <col width="150">
