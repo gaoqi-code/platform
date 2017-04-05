@@ -36,13 +36,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">市场价</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="marketPrice" lay-verify="marketPrice" value="0" autocomplete="off" placeholder="请输入市场价" class="layui-input">
+                        <input type="text" name="marketPrice" lay-verify="marketPrice" value="${product.marketPrice}" autocomplete="off" placeholder="请输入市场价" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">促销价</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="realPrice" lay-verify="realPrice" autocomplete="off" placeholder="请输入促销价" class="layui-input">
+                        <input type="text" name="realPrice" lay-verify="realPrice" value="${product.realPrice}" autocomplete="off" placeholder="请输入促销价" class="layui-input">
                     </div>
                 </div>
 
