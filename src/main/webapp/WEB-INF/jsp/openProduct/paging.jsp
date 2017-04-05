@@ -26,6 +26,7 @@
                 var companys = ${companyInfos};
                 for (var c in companys){
                     $(".company_name_span_"+companys[c].id).html(companys[c].companyName);
+                    $(".company_name_span_"+companys[c].id).prop("title",companys[c].companyName);
                 }
             }
 //            window.onload = loadCName;
@@ -56,30 +57,31 @@
                             </div>
                         </div>
                         <div class="row row-2">
-                            <a class="J_U2IStat" href="http://shop.99114.com/48112925/pd81816338.html" onclick="sendToPiwik('81816338','111101105');" target="_blank">
+                            <a class="J_U2IStat" href="/product/detail/${product.id}.html" target="_blank">
                                     ${product.title}【${product.className}】
                             </a>
-                            <a href="javascript:void();"><span class="coupons" title="优惠券"></span></a>
+                            <a href="javascript:void(0);"><span class="coupons" title="优惠券"></span></a>
                         </div>
                         <div class="row row-3 g-clearfix">
                             <div class="shop">
-                                <a class="shopname J_MouseEneterLeave J_ShopInfo" href="http://shop.99114.com/48112925" target="_blank" title="深圳市聚衫城服饰有限公司">
+                                <a class="shopname J_ShopInfo company_name_span_${product.companyId}" href="/product/detail/${product.id}.html" target="_blank" title="">
         				<span class="company_name_span_${product.companyId}">
-      						深圳市聚衫城服饰有限公司
+      						&nbsp;
         	   			</span>
                                 </a>
                             </div>
                         </div>
                         <li class="icon icon_first">
-                            <a target="_blank" href="http://plw.99114.com/dpt/" rel="nofollow" class="mr0">
-                                <img src="http://static.99114.com/static/portal/images/common/s_dpt.png">
+                            <a target="_blank" href="/adviser/detail/${product.member.id}.html" rel="nofollow" class="mr0">
+                                顾问：${product.member.name}
+                                    <%--<img src="http://static.99114.com/static/portal/images/common/aplay.png">--%>
                             </a>
                         </li>
-                        <li class="icon">
-                            <a class="new_a_ml" target="_blank" href="http://zhuanti.99114.com/ktzxjy/index.html">
-                                <img src="http://static.99114.com/static/portal/images/common/aplay.png">
-                            </a>
-                        </li>
+                        <%--<li class="icon">--%>
+                            <%--<a class="new_a_ml" target="_blank" href="http://zhuanti.99114.com/ktzxjy/index.html">--%>
+                            <%--<img src="http://static.99114.com/static/portal/images/common/aplay.png">--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
                         <li class="icon">
                             <a href="javascript:void(0);" title="">
                                 <span class="icon-zpbz"></span>

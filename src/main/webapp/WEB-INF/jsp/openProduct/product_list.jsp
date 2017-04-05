@@ -17,7 +17,6 @@
         .search-select h3{width:100px;height: 30px;line-height: 30px;display:block;float: left;}
         .allSelect{background-color:#ee4134;color: #FFF;display:block;}
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser_mainli li{height: 195px;border-bottom: 1px solid #eee;}
         .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .li-img img{width: 165px;}
         .adviser-list-info{height: 165px;float: left;width: 600px;}
@@ -209,10 +208,9 @@
         .m-itemlist .grid .icon {
             float: left;
             margin-right: 4px;
-            font-size: 0;
         }
         .m-itemlist .grid .icon.icon_first {
-            margin-left: 10px;
+            margin-left:10px;
         }
         .mr0 {
             margin-right: 0 !important;
@@ -254,7 +252,7 @@
                 </ul>
             </div>
 
-            <div class="adviser_mainli" id="dataMsg">
+            <div class="adviser_mainli clearfix" id="dataMsg">
 
 
             </div>

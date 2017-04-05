@@ -13,28 +13,28 @@
             <div class="layui-form">
                 <table class="layui-table" lay-skin="line">
                     <colgroup>
-                        <col width="150">
-                        <col width="150">
+                        <col width="260">
+                        <col width="110">
+                        <col width="120">
                         <col width="200">
                         <col>
                     </colgroup>
-                    <thead>
                     <tr>
                         <th>需求名称</th>
                         <th>联系人</th>
+                        <th>联系电话</th>
                         <th>所在地区</th>
                         <th>发布时间</th>
                     </tr>
-                    </thead>
-                    <tbody>
                     <c:forEach items="${counselors}" var="member">
                         <tr>
+                            <td>周先生申请100万元贷款</td>
                             <td>${member.name}</td>
-                            <td>${member.nation}</td>
+                            <td>1560018****</td>
+                            <td>北京-北京市-东城区</td>
                             <td><fmt:formatDate value="${member.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
-                            <td>${member.description}</td>
+                            <%--<td>${member.description}</td>--%>
                         </tr>
                     </c:forEach>
-                    </tbody>
                 </table>
             </div>
