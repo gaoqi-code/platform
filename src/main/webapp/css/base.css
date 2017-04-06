@@ -40,15 +40,15 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	line-height: 16px;
 	height: 16px;
 	padding: 8px 10px;
-	border: 2px #ee4134 solid;
+	border: 2px #004b92 solid;
 	width: 294px;
 	border-right: 0;
 	border-radius: 2px 0 0 2px;
 }
-.search-form-box button{line-height: 35px;
+.search-form-box button{line-height: 36px;
 	height: 35px;
 	padding: 0 20px 0 15px;
-	background: #ee4134;
+	background:#004b92;
 	color: #fff;
 	font-size: 16px;
 	border-radius: 0 2px 2px 0;}
@@ -57,7 +57,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	position: relative;
 	top: -2px;
 }
-.size25 {display: inline-block;vertical-align: middle;width: 25px;height: 25px;background-image: url(../images/public.png);}
+.size25 {display: inline-block;vertical-align: middle;width: 25px;height:31px;background-image: url(../images/public.png);}
 .contentTop{margin-top:10px;}
 
 
