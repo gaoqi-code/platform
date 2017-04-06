@@ -63,12 +63,12 @@
             width: 231px;
         }
         .promo .news {
-            width: 224px;
+            width: 240px;
             height: 96px;
             border: 1px solid #e2e2e2;
             background-color: #fff;
             float: left;
-            padding: 15px 10px;
+            padding: 15px 0px 15px 10px;
             line-height: 1;
         }
         .promo .news a{
@@ -467,6 +467,21 @@
             padding: 2px 14px;
             margin-top: 28px;
         }
+        .offerlistclss{margin-top: 5px;}
+        .offerlistclss span{padding:3px 5px; cursor: pointer; margin-top: 10px; margin-right:5px;background-color: #004b92;color:#FFF;}
+        .liuyan{    position: absolute;
+            padding-top: 25px;
+            right: 0;
+            top: 5px;
+            width: 246px;
+            height: 200px;
+            margin-top: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            z-index: 3;}
+        /*文本框样式调整*/
+        .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
+        .layui-form-item .layui-input-inline{width:225px;margin-left:10px;}
     </style>
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://lib.h-ui.net/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
@@ -476,6 +491,38 @@
 <input type="hidden" value="index" id="nav">
 <jsp:include page="common/top.jsp"></jsp:include>
 <div id="slideBox" class="slideBox">
+    <div class="content" style="position: relative;">
+        <div class="liuyan">
+            <form id="userNeedForm" class="layui-form order-form" action="">
+                <div class="layui-form-item">
+
+                    <div class="layui-input-inline">
+                        <select name="categoryCode">
+                            <option value="0">请选需求类型</option>
+                            <option value="1-" selected="">金融</option>
+                            <option value="2-">贷款</option>
+                            <option value="3-">企业求助</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="text" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号码" class="layui-input">
+                    </div>
+                </div>
+                <%--<div class="layui-form-item layui-form-text">--%>
+                    <%--<div class="layui-input-block">--%>
+                        <%--<textarea placeholder="请输入需求内容" name="needDesc" lay-verify="n_needContent" class="layui-textarea"></textarea>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" style="width: 100%;" lay-filter="demo1">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="hd">
         <ul><li>1</li><li>2</li><li>3</li></ul>
     </div>
@@ -854,239 +901,170 @@
     </div>
 
 
+
     <div class="index_need clearfix">
         <div class="mod-boxhd"><h3 class="mod-boxhd-tit">最新需求</h3></div>
-        <div class="offerlist">
-            <dl id="listoffer_7763e366bb88173e" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1489/0315/17/userface_7422797.jpg!normal" alt="深圳阳光奥美集团 刘燕峰" title="深圳阳光奥美集团 刘燕峰"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7422797);" onmouseout="Renhe.tipsMemberHidePopup();">刘燕峰</a>
-                    <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
+
+        <div class="layui-tab offerlist">
+            <ul class="layui-tab-title">
+                <li class="layui-this">全部</li>
+                <li>个人</li>
+                <li>同行</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="offerlist">
+                        <div class="offerlistclss"><span>工商注册</span><span>金融服务</span><span>企业服务</span></div>
+                        <dl id="listoffer_7763e366bb88173e" class="clearfix">
+                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e&#10;" target="_blank">
+                                <img class="face-box" width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1489/0315/17/userface_7422797.jpg!normal" alt="深圳阳光奥美集团 刘燕峰" title="深圳阳光奥美集团 刘燕峰"></a>
+                            <p>
+                                <a href="http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7422797);" onmouseout="Renhe.tipsMemberHidePopup();">刘燕峰</a>
+                                <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
+                            </dt>
+                            <dd>
+                                <h3>
             <span class="green">
       [供应服务]
         </span>
-                        <a href="http://www.renhe.cn/offer/1584024.html" target="_blank">基金销售牌照</a>
-                        <span class="ml10 f12">广东 深圳</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">重磅消息！！！
-                        现有一家靠谱资源，信息如下：
-                        1.基金销售牌照（区域：深圳）
-                        2.注册资金：不低于2000万
-                        3.一手对接
-                        5.只要买家靠谱，随时约见卖方
-                        6.交易地点：深圳
-                        难得靠谱资源，先到先得！
-                        有需要请联系深圳肖阳（广州陈海城通力合作大资源）&nbsp;&nbsp;<span>(3月29日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_9da74632bfa40108" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/62/538.jpg!normal" alt="上海皖商科技有限公司 王森林" title="上海皖商科技有限公司 王森林"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7562538);" onmouseout="Renhe.tipsMemberHidePopup();">王森林</a>
-                    <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
+                                    <a href="http://www.renhe.cn/offer/1584024.html" target="_blank">基金销售牌照</a>
+                                    <span class="ml10 f12">广东 深圳</span>
+                                    <b class="pic"></b>
+                                </h3>
+                                <p class="content">重磅消息！！！
+                                    现有一家靠谱资源，信息如下：
+                                    1.基金销售牌照（区域：深圳）
+                                    2.注册资金：不低于2000万
+                                    3.一手对接
+                                    5.只要买家靠谱，随时约见卖方
+                                    6.交易地点：深圳
+                                    难得靠谱资源，先到先得！
+                                    有需要请联系深圳肖阳（广州陈海城通力合作大资源）&nbsp;&nbsp;<span>(3月29日)</span></p>
+                            </dd>
+                        </dl>
+                        <dl id="listoffer_9da74632bfa40108" class="clearfix">
+                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17&#10;" target="_blank">
+                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/62/538.jpg!normal" alt="上海皖商科技有限公司 王森林" title="上海皖商科技有限公司 王森林"></a>
+                            <p>
+                                <a href="http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7562538);" onmouseout="Renhe.tipsMemberHidePopup();">王森林</a>
+                                <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
+                            </dt>
+                            <dd>
+                                <h3>
               <span class="orange">
         [需求服务]
         </span>
-                        <a href="http://www.renhe.cn/offer/1583895.html" target="_blank">代理记账、投资基金、基金备案、美元验资</a>
-                        <span class="ml10 f12">上海</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">一家从事工商注册、工商咨询、股权转让、各种资质审批的工商代理服务公司。
-                        公司主营业务：工商注册、融资租赁、商业保理、资金证明
-                        代理记账、投资基金、基金备案、美元验资
-                        大额融资、集团组建、互联网金融、增资验资
-                        保险代理及经纪、基金销售牌照&nbsp;&nbsp;<span>(3月24日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_77800b540efe1639" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=9a4565c8f4ba1cd5&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/54/11.jpg!normal" alt="深圳是佳诺企业管理顾问有限公司 许一飞" title="深圳是佳诺企业管理顾问有限公司 许一飞"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=9a4565c8f4ba1cd5" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7554011);" onmouseout="Renhe.tipsMemberHidePopup();">许一飞</a>
-                </p>
-                </dt>
-                <dd>
-                    <h3>
+                                    <a href="http://www.renhe.cn/offer/1583895.html" target="_blank">代理记账、投资基金、基金备案、美元验资</a>
+                                    <span class="ml10 f12">上海</span>
+                                    <b class="pic"></b>
+                                </h3>
+                                <p class="content">一家从事工商注册、工商咨询、股权转让、各种资质审批的工商代理服务公司。
+                                    公司主营业务：工商注册、融资租赁、商业保理、资金证明
+                                    代理记账、投资基金、基金备案、美元验资
+                                    大额融资、集团组建、互联网金融、增资验资
+                                    保险代理及经纪、基金销售牌照&nbsp;&nbsp;<span>(3月24日)</span></p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="offerlist">
+                        <div class="offerlistclss"><span>工商注册</span><span>金融服务</span><span>企业服务</span></div>
+                        <dl id="listoffer_77800b540efe1639" class="clearfix">
+                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=9a4565c8f4ba1cd5&#10;" target="_blank">
+                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/54/11.jpg!normal" alt="深圳是佳诺企业管理顾问有限公司 许一飞" title="深圳是佳诺企业管理顾问有限公司 许一飞"></a>
+                            <p>
+                                <a href="http://www.renhe.cn/viewprofile.html?sid=9a4565c8f4ba1cd5" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7554011);" onmouseout="Renhe.tipsMemberHidePopup();">许一飞</a>
+                            </p>
+                            </dt>
+                            <dd>
+                                <h3>
             <span class="green">
       [供应产品]
         </span>
-                        <a href="http://www.renhe.cn/offer/1583809.html" target="_blank">转让名下投资类公司，经营范围可做私募基金备案，</a>
-                        <span class="ml10 f12">广东 深圳</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">转让一批前海资产管理,商业保理，基金管理公司
-                        转让一家互联网金融服务公司 金融控股公司
-                        转让两家融资租赁公司 中外合资  外资
-                        转让一家催收业务的投资公司
-                        转让一家房地产开发的房地产公司
-                        13871717716&nbsp;&nbsp;<span>(3月22日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_b096fb575936b162" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/72/70/4h.jpg!normal" alt="北京阳光奥美资产管理有限公司 张东展" title="北京阳光奥美资产管理有限公司 张东展"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7270004);" onmouseout="Renhe.tipsMemberHidePopup();">张东展</a>
-                </p>
-                </dt>
-                <dd>
-                    <h3>
+                                    <a href="http://www.renhe.cn/offer/1583809.html" target="_blank">转让名下投资类公司，经营范围可做私募基金备案，</a>
+                                    <span class="ml10 f12">广东 深圳</span>
+                                    <b class="pic"></b>
+                                </h3>
+                                <p class="content">转让一批前海资产管理,商业保理，基金管理公司
+                                    转让一家互联网金融服务公司 金融控股公司
+                                    转让两家融资租赁公司 中外合资  外资
+                                    转让一家催收业务的投资公司
+                                    转让一家房地产开发的房地产公司
+                                    13871717716&nbsp;&nbsp;<span>(3月22日)</span></p>
+                            </dd>
+                        </dl>
+                        <dl id="listoffer_b096fb575936b162" class="clearfix">
+                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988&#10;" target="_blank">
+                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/72/70/4h.jpg!normal" alt="北京阳光奥美资产管理有限公司 张东展" title="北京阳光奥美资产管理有限公司 张东展"></a>
+                            <p>
+                                <a href="http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7270004);" onmouseout="Renhe.tipsMemberHidePopup();">张东展</a>
+                            </p>
+                            </dt>
+                            <dd>
+                                <h3>
             <span class="green">
       [供应产品]
         </span>
-                        <a href="http://www.renhe.cn/offer/1583325.html" target="_blank">国家局核名的资产管理公司转让</a>
-                        <span class="ml10 f12">北京</span>
-                    </h3>
-                    <p class="content">现有一家国家局核名的资产管理公司转让，此公司干净，无经营记录，注册资金实缴，名称大气  有需呀的老板可来电咨询，此公司也可用来做私募备案哦！15010707112&nbsp;&nbsp;<span>(3月7日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_c3b1d75627f89aa3" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/72/70/4h.jpg!normal" alt="北京阳光奥美资产管理有限公司 张东展" title="北京阳光奥美资产管理有限公司 张东展"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7270004);" onmouseout="Renhe.tipsMemberHidePopup();">张东展</a>
-                </p>
-                </dt>
-                <dd>
-                    <h3>
+                                    <a href="http://www.renhe.cn/offer/1583325.html" target="_blank">国家局核名的资产管理公司转让</a>
+                                    <span class="ml10 f12">北京</span>
+                                </h3>
+                                <p class="content">现有一家国家局核名的资产管理公司转让，此公司干净，无经营记录，注册资金实缴，名称大气  有需呀的老板可来电咨询，此公司也可用来做私募备案哦！15010707112&nbsp;&nbsp;<span>(3月7日)</span></p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="offerlist">
+                        <div class="offerlistclss"><span>工商注册</span><span>金融服务</span><span>企业服务</span></div>
+                        <dl id="listoffer_c3b1d75627f89aa3" class="clearfix">
+                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988&#10;" target="_blank">
+                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/72/70/4h.jpg!normal" alt="北京阳光奥美资产管理有限公司 张东展" title="北京阳光奥美资产管理有限公司 张东展"></a>
+                            <p>
+                                <a href="http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7270004);" onmouseout="Renhe.tipsMemberHidePopup();">张东展</a>
+                            </p>
+                            </dt>
+                            <dd>
+                                <h3>
             <span class="green">
       [供应服务]
         </span>
-                        <a href="http://www.renhe.cn/offer/1583323.html" target="_blank">专业提供私募基金、证券基金产品备案服务</a>
-                        <span class="ml10 f12">北京</span>
-                    </h3>
-                    <p class="content">专业提供私募基金、证券基金产品备案服务、自有律师事务所、专业私募股权基金团队写法律意见书、发行规模500-2000万。自有资金和券商、专业团队设计产品、专业的投资团队、签包过协议、不过退全款、有需要资金保壳的伙伴私聊，从付款50%起算，一般最快三周完成备案，电话：15010707112微信同号&nbsp;&nbsp;<span>(3月7日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_ef7f213c7992fc4f" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1418/2896/81/userface_6614431.jpg!normal" alt="香港环宇会计秘书有限公司 谭翠梅" title="香港环宇会计秘书有限公司 谭翠梅"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6614431);" onmouseout="Renhe.tipsMemberHidePopup();">谭翠梅</a>
-                    <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
+                                    <a href="http://www.renhe.cn/offer/1583323.html" target="_blank">专业提供私募基金、证券基金产品备案服务</a>
+                                    <span class="ml10 f12">北京</span>
+                                </h3>
+                                <p class="content">专业提供私募基金、证券基金产品备案服务、自有律师事务所、专业私募股权基金团队写法律意见书、发行规模500-2000万。自有资金和券商、专业团队设计产品、专业的投资团队、签包过协议、不过退全款、有需要资金保壳的伙伴私聊，从付款50%起算，一般最快三周完成备案，电话：15010707112微信同号&nbsp;&nbsp;<span>(3月7日)</span></p>
+                            </dd>
+                        </dl>
+                        <dl id="listoffer_ef7f213c7992fc4f" class="clearfix">
+                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df&#10;" target="_blank">
+                                <img class="face-box" width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1418/2896/81/userface_6614431.jpg!normal" alt="香港环宇会计秘书有限公司 谭翠梅" title="香港环宇会计秘书有限公司 谭翠梅"></a>
+                            <p>
+                                <a href="http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6614431);" onmouseout="Renhe.tipsMemberHidePopup();">谭翠梅</a>
+                                <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
+                            </dt>
+                            <dd>
+                                <h3>
             <span class="green">
       [供应产品]
         </span>
-                        <a href="http://www.renhe.cn/offer/1583120.html" target="_blank">转让现成香港公司，转让500万金融投资公司，现卖现用</a>
-                        <span class="ml10 f12">广东 深圳</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">出售转让深圳前海融资租赁公司，前海基金管理公司，前海金融投资公司
-                        目前我公司有以下金融投资空壳公司：
-                        深圳市洪X金融投资有限公司；
-                        深圳市国X金融投资有限公司。
-                        注册外商投资（含中外合资）融资租赁公司的基本要求：
-                        　　1）投资方必须为公司、企业和其它经济组织，成立时间不得低于1年，投资方财务报表必须显示有营业收入，且净资产不能为负。
-                        　　2）国外投资者的总资产不得低于500万美元。
-                        　　3）新公司至少3名以...&nbsp;&nbsp;<span>(2月28日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_558a8281628e2f91" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=4721e6c18880c64e&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1477/0270/65/userface_6204502.jpg!normal" alt="中企万业（北京）投资管理有限公司 张海鹏" title="中企万业（北京）投资管理有限公司 张海鹏"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=4721e6c18880c64e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6204502);" onmouseout="Renhe.tipsMemberHidePopup();">张海鹏</a>
-                    <a href="http://www.renhe.cn/vip" target="_blank"><s class="vip16" title="vip会员"></s><s class="year1" title="第1年"></s></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
-            <span class="green">
-      [供应服务]
-        </span>
-                        <a href="http://www.renhe.cn/offer/1583114.html" target="_blank">转让带备案基金公司备案发过产品</a>
-                        <span class="ml10 f12">北京</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">我们得优势
-
-                        1、所有备案公司均为最新公司，没有开银行，没有运营这样的公司，安全、干净。调档少，关联企业少人员结构简单公司结构简单。
-
-                        2、审核员愿意看，不想其他小公司，所以备案完全按照模块套用，一套法律意见书完全是一个模板，好几百页，审核员不想看
-                        3、我们知道审核员的思路，这就是为什么有的公司1-2个月没有反馈意见。
-                        4、法律意见书与其他人的区别，其他人都是按照自己的思路制作法律意见书，我们按照审核员的思路...&nbsp;&nbsp;<span>(2月28日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_b694b9e8e45db8a8" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=4721e6c18880c64e&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1477/0270/65/userface_6204502.jpg!normal" alt="中企万业（北京）投资管理有限公司 张海鹏" title="中企万业（北京）投资管理有限公司 张海鹏"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=4721e6c18880c64e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6204502);" onmouseout="Renhe.tipsMemberHidePopup();">张海鹏</a>
-                    <a href="http://www.renhe.cn/vip" target="_blank"><s class="vip16" title="vip会员"></s><s class="year1" title="第1年"></s></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
-              <span class="orange">
-        [需求服务]
-        </span>
-                        <a href="http://www.renhe.cn/offer/1582510.html" target="_blank">有2个2017年较新的投资管理公司转让</a>
-                        <span class="ml10 f12">北京</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">有2个2017年较新的投资管理公司转让   转让3亿股权投资基金管理公司---张海鹏—I85_OO99_I596
-                        特别推荐】: 1亿股权基金公司转让  全北京低价格！张海鹏—I85_OO99_I596（（诚信成就你我   北京企业服务品牌））（
-                        国泰广达（北京）投资有限公司无3000万小规模无无2017.01.03
-                        优品生活投资服务（北京）有限公司无1000万小规模无无2016.8.29
-                        联系人：张海鹏—I85_OO99_I596
-                        我公司为老企业提供全系列代理服务：1.地址变更、2.法人变...&nbsp;&nbsp;<span>(2月4日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_4f205f15c7ad6060" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=f0de71252a27e01a&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1486/6194/44/userface_2696350.jpg!normal" alt="上海华治集团 宣彪" title="上海华治集团 宣彪"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=f0de71252a27e01a" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 2696350);" onmouseout="Renhe.tipsMemberHidePopup();">宣彪</a>
-                    <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
-              <span class="orange">
-        [需求产品]
-        </span>
-                        <a href="http://www.renhe.cn/offer/1582444.html" target="_blank">东欧平台上线需要领筹合作</a>
-                        <span class="ml10 f12">上海</span>
-                    </h3>
-                    <p class="content">华东（上海）-东欧直销交易平台是经国家商务部批准、上海市商务委支持并扶持的海外中国商品第三方综合交易平台。它通过具有强大处理能力的互联网供应链管理服务系统连接工厂和海外直销展厅。目前已有供应商注册会员2000名实现订单交易8000万人民币。每年享受政府补贴279万。现在项目已经通过资本中国（九鼎投资）、百度百众平台、360平台、米筹金服审核，准备发行2000万股。需要几个大型基金公司或者小证券公司作为领募。资金50-10...&nbsp;&nbsp;<span>(1月23日)</span></p>
-                </dd>
-            </dl>
-            <dl id="listoffer_d3facdf54a8aa8d4" class="clearfix">
-                <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=ddb32bb2e0a054f5&#10;" target="_blank">
-                    <img class="face-box" width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1484/2736/78/userface_7546810.jpg!normal" alt="上海黄金交易所 卓庆文" title="上海黄金交易所 卓庆文"></a>
-                <p>
-                    <a href="http://www.renhe.cn/viewprofile.html?sid=ddb32bb2e0a054f5" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7546810);" onmouseout="Renhe.tipsMemberHidePopup();">卓庆文</a>
-                    <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                </dt>
-                <dd>
-                    <h3>
-              <span class="blue">
-        [合作服务]
-        </span>
-                        <a href="http://www.renhe.cn/offer/1582292.html" target="_blank">甘肃西瑞大宗建仓一手可以返佣多少.</a>
-                        <span class="ml10 f12">福建 三明</span>
-                        <b class="pic"></b>
-                    </h3>
-                    <p class="content">白银操作建议：
-                        1、回调16.5附近做多，止损16.3，目标上看168-17美元附近。
-                        2、17.2-17.0区间做空，止损17.5，目标16.5-16.3附近即可。
-
-                        甘肃西瑞大宗-燃料烃-一手成本10个点-假设您新建仓一手100T的燃料烃-那么手续费是1000元--保证金是5000元-- 交易无点差--
-                        ————————————————————————————————————————————
-                        燃料烃走势和原油走势一样- 西瑞燃料烃点位在5000左右-波动大-通过我们高...&nbsp;&nbsp;<span>(1月12日)</span></p>
-                </dd>
-            </dl>
+                                    <a href="http://www.renhe.cn/offer/1583120.html" target="_blank">转让现成香港公司，转让500万金融投资公司，现卖现用</a>
+                                    <span class="ml10 f12">广东 深圳</span>
+                                    <b class="pic"></b>
+                                </h3>
+                                <p class="content">出售转让深圳前海融资租赁公司，前海基金管理公司，前海金融投资公司
+                                    目前我公司有以下金融投资空壳公司：
+                                    深圳市洪X金融投资有限公司；
+                                    深圳市国X金融投资有限公司。
+                                    注册外商投资（含中外合资）融资租赁公司的基本要求：
+                                    　　1）投资方必须为公司、企业和其它经济组织，成立时间不得低于1年，投资方财务报表必须显示有营业收入，且净资产不能为负。
+                                    　　2）国外投资者的总资产不得低于500万美元。
+                                    　　3）新公司至少3名以...&nbsp;&nbsp;<span>(2月28日)</span></p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
         </div>
-
 
         <%--右侧部分--%>
         <div class="box">
@@ -1274,5 +1252,90 @@
 
 </div>
 <jsp:include page="common/bottom.jsp"></jsp:include>
+<script src="./plugins/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use('element', function(){
+        var $ = layui.jquery
+                ,element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        //触发事件
+        var active = {
+            tabAdd: function(){
+                //新增一个Tab项
+                element.tabAdd('demo', {
+                    title: '新选项'+ (Math.random()*1000|0) //用于演示
+                    ,content: '内容'+ (Math.random()*1000|0)
+                    ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                })
+            }
+            ,tabDelete: function(othis){
+                //删除指定Tab项
+                element.tabDelete('demo', '44'); //删除：“商品管理”
+
+
+                othis.addClass('layui-btn-disabled');
+            }
+            ,tabChange: function(){
+                //切换到指定Tab项
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+
+        $('.site-demo-active').on('click', function(){
+            var othis = $(this), type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#test=/, '');
+        element.tabChange('test', layid);
+
+        element.on('tab(test)', function(elem){
+            location.hash = 'test='+ $(this).attr('lay-id');
+        });
+
+    });
+</script>
+<script>
+    var cureentTime = 0;
+    layui.use(['form'], function(){
+        var form = layui.form()
+                ,layer = layui.layer;
+
+        //自定义验证规则
+        form.verify({
+            n_needContent: function(value){
+                if(value.length < 5){
+                    return '需求内容不要少于5个字，请尽可能的描述清楚！';
+                }
+            }
+        });
+        form.on('submit(demo1)', function(data){
+            if((new Date().getTime())-cureentTime<4000){
+                return false;
+            }
+            cureentTime = new Date().getTime();
+            $.ajax({
+                type: "POST",
+                url: "/need/liuyan.json",
+                data: $("#userNeedForm").serialize(),
+                dataType: "json",
+                async:false,
+                success: function (data) {
+                    if (data) {
+                        layer.alert("您的需求已提交，我们会尽快与您联系。", {
+                            title: '信息'
+                        });
+                        $(':input','#userNeedForm').val('');
+                    } else {
+                        layer.msg("发布失败！");
+                    }
+                }
+            });
+            return false;
+        });
+
+    });
+</script>
 </body>
 </html>
