@@ -37,7 +37,7 @@ public class MemberAction extends BaseController{
 	@RequestMapping(value="/index")
 	public ModelAndView memberIndex(HttpServletRequest request,ModelAndView mav) {
 		request.setAttribute("nav","center");
-		List<Member> counselors = memberService.getRecommendCounselorList();
+//		List<Member> counselors = memberService.getRecommendCounselorList();
 		Member member = new Member();
 		member.setId(super.getMemberId(request));
 		member =  memberService.getMemberInfo(member);
@@ -52,7 +52,7 @@ public class MemberAction extends BaseController{
 		}
 
 		mav.getModel().put("member", member);
-		mav.getModel().put("counselors", counselors);
+//		mav.getModel().put("counselors", counselors);
 		mav.setViewName("member/index");
 		return mav;
 	}

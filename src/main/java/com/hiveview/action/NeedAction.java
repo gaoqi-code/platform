@@ -42,7 +42,6 @@ public class NeedAction extends BaseController{
         Paging paging = super.getPaging(request);
         Need need = new Need();
         need.setMemberId(super.getMemberId(request));
-//        need.setStatus(StatusUtil.VALID.getVal());
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
             List<Need> needs =  needService.getNeedPage(need);
         paging.setTotalPages(page.getPages());
@@ -168,4 +167,18 @@ public class NeedAction extends BaseController{
         return "need/success";
     }
 
+    @RequestMapping(value="/memberNeedPage")
+    public ModelAndView memberNeedPage(HttpServletRequest request, ModelAndView mav) {
+        Paging paging = super.getPaging(request);
+        Need need = new Need();
+        need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+        need.setClassCode(super.getAdviserType(request));
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        List<Need> needs =  needService.getOpendNeedPage(need);
+        paging.setTotalPages(page.getPages());
+        mav.getModel().put("paging",paging);
+        mav.getModel().put("needs",needs);
+        mav.setViewName("need/member_need_paging");
+        return mav;
+    }
 }

@@ -75,6 +75,14 @@ public class BaseController {
 
         return memberId != null?memberId:-1L;
     }
+    public String getAdviserType(HttpServletRequest request) {
+        Member member = (Member) request.getSession().getAttribute("currentUser");
+        String adviserType = null;
+        if(member != null) {
+            adviserType = member.getAdviserType();
+        }
+        return adviserType;
+    }
 
     public long getCompanyId(HttpServletRequest request) {
         Member member = (Member) request.getSession().getAttribute("currentUser");
@@ -90,7 +98,6 @@ public class BaseController {
     /**
      * 获得paging对象用于分页
      * @param request
-     * @param tableName
      * @return
      */
     public  Paging getPaging(HttpServletRequest request) {

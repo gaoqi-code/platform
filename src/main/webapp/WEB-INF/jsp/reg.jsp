@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
     <script src="./plugins/layui/layui.js" charset="utf-8"></script>
+    <script src="/plugins/yzm/gVerify.js" charset="utf-8"></script>
     <style>
         .reg_css{margin-bottom:35px;}
         .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
@@ -40,9 +41,9 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码：</label>
                         <div class="layui-input-inline">
-                            <input type="text" value="15765056585" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" value="15765056585" id="yzmValue" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         </div>
-                        <div class="layui-form-mid layui-word-aux">图形验证码</div>
+                        <div style="width: 129px;height: 35px;float: left;" id="yzm"></div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
@@ -64,7 +65,7 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1" id="tj">立即提交</button>
+                            <button type="button" class="layui-btn" lay-submit="" lay-filter="demo1" id="tj">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
@@ -103,9 +104,15 @@
                 layedit.sync(editIndex);
             }
         });
-
+        var verifyCode = new GVerify("yzm");
         //监听提交
         form.on('submit(demo1)', function(data){
+            var res = verifyCode.validate($("#yzmValue").val());
+            if(!res){
+                layer.alert("验证码错误");
+                return;
+            }
+
             $.ajax({
                 type: "POST",
                 url: "/register/registerMember.json",
@@ -124,6 +131,8 @@
             });
             return false;
         });
+
+
     });
 </script>
 </body>

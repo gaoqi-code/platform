@@ -316,9 +316,9 @@
                     <span class="c-name">${member.name}</span>
                     <i class="size25 icon7"></i>
                     <span class="c-post">
-                        <c:if test="${member.adviserType == 1}">贷款顾问</c:if>
-                        <c:if test="${member.adviserType == 2}">金融顾问</c:if>
-                        <c:if test="${member.adviserType == 3}">法律顾问</c:if>
+                        <c:if test="${member.adviserType == '1-'}">金融顾问</c:if>
+                        <c:if test="${member.adviserType == '2-'}">企业顾问</c:if>
+                        <c:if test="${member.adviserType == '3-'}">法律顾问</c:if>
                     </span>
                 </div>
                 <div class="sub-til">
