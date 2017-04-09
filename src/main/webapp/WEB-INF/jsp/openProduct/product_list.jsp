@@ -43,6 +43,7 @@
         .green{background: #609833;}
         .ser{background: #fa4f4f;}
         .adviser_tj_title{height: 35px;line-height: 35px;}
+        .adviserName{font-size: 14px;padding-right: 3px;}
         .head-update-img img{width: 100%;border: 0 none;vertical-align: middle;max-width: 100%;}
         .head-update-ewm>i{display: inline-block;
             width: 17px;
@@ -278,7 +279,7 @@
                         <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser_right_tjperson">
                             <div style="margin-top: 15px;">
-                                <p><span>张三</span>金牌顾问</p>
+                                <p><span class="adviserName">李四</span>金牌顾问</p>
                                 <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
                                 <p>8年执业经验</p>
                             </div>
@@ -286,7 +287,7 @@
                         <div class="clear"></div>
                         <div class="adviser_right_tj_personwork clearfix">
                             <a href="adviser/detail/15.html" class="green">顾问主页</a>
-                            <a href="" class="ser">QQ留言/a>
+                            <a href="q" class="ser">QQ留言</a>
                         </div>
                     </div>
                 </div>
@@ -295,7 +296,7 @@
                         <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser_right_tjperson">
                             <div style="margin-top: 15px;">
-                                <p><span>张三</span>金牌顾问</p>
+                                <p><span class="adviserName">王如晶</span>金牌顾问</p>
                                 <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
                                 <p>8年执业经验</p>
                             </div>
@@ -312,7 +313,7 @@
                         <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser_right_tjperson">
                             <div style="margin-top: 15px;">
-                                <p><span>张三</span>金牌顾问</p>
+                                <p><span class="adviserName">张三</span>金牌顾问</p>
                                 <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
                                 <p>8年执业经验</p>
                             </div>
@@ -345,7 +346,7 @@
             var laypage = layui.laypage
                     ,layer = layui.layer;
             //以下将以jquery.ajax为例，演示一个异步分页
-            var pageSize = 5;
+            var pageSize =8;
             function paging(curr){
                 $.ajax({
                     type: "POST",
