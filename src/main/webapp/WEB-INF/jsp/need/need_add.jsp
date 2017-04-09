@@ -30,28 +30,28 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>需求名称</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="title" value="${need.title}" autocomplete="off" class="layui-input">
+                        <input type="input" name="title" lay-verify="required"  value="${need.title}" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>联系方式</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="needMobile" value="${need.needMobile == null ? need.member.mobile : need.needMobile}" autocomplete="off" class="layui-input">
+                        <input type="input" name="needMobile" lay-verify="phone"  value="${need.needMobile == null ? need.member.mobile : need.needMobile}" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>截止时间</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="endTime"  value="<fmt:formatDate value="${need.endTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
+                        <input type="input" name="endTime" lay-verify="required"  value="<fmt:formatDate value="${need.endTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">需求类型</label>
                     <div class="layui-input-inline">
-                        <select  lay-filter="oneLevel" id="oneLevel">
+                        <select  lay-filter="oneLevel" lay-verify="required"  id="oneLevel">
                             <option value="">请选择</option>
                             <c:forEach items="${oneLevelCategories}" var="category">
                                 <option value="${category.id}" <c:if test="${category.id == selectClass.oneLevel}">selected=""</c:if>  >${category.name}</option>
@@ -84,14 +84,14 @@
                         <div class="layui-input-inline">
                             <input type="hidden" name="attributes[${status.index}].classId" value="${attribute.id}">
                             <input type="hidden" name="attributes[${status.index}].name" value="${attribute.name}">
-                            <input type="input" name="attributes[${status.index}].value" value="${attribute.value}" autocomplete="off" class="layui-input">
+                            <input type="input" lay-verify="required"  name="attributes[${status.index}].value" value="${attribute.value}" autocomplete="off" class="layui-input">
                         </div>
                     </c:forEach>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">需求简介</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" name="content" class="layui-textarea">${need.content}</textarea>
+                        <textarea placeholder="请输入内容" lay-verify="required"  name="content" class="layui-textarea">${need.content}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -208,7 +208,7 @@
                             html += '<div class="layui-input-inline">';
                             html += '   <input type="hidden" name="attributes[' + index + '].classId" value="' + item.classId + '">';
                             html += '   <input type="hidden" name="attributes[' + index + '].name" value="' + item.name + '">';
-                            html += '   <input type="input" name="attributes[' + index + '].value"  autocomplete="off" class="layui-input attribute">';
+                            html += '   <input type="input" lay-verify="required"  name="attributes[' + index + '].value"  autocomplete="off" class="layui-input attribute">';
                             html += '</div>';
 //                                lineFeed = index + 1;
 //                                if(lineFeed != size && lineFeed % 3 == 0) {

@@ -45,7 +45,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>个人名称</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="name" value="${member.name}"  placeholder="" autocomplete="off" class="layui-input">
+                        <input type="input" lay-verify="required"  name="name" value="${member.name}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -131,14 +131,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>执业时间</label>
                     <div class="layui-input-inline">
-                        <input type="input" id="workTime" name="workTime"  value="<fmt:formatDate value="${member.workTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
+                        <input type="input" lay-verify="required"  id="workTime" name="workTime"  value="<fmt:formatDate value="${member.workTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>所属企业</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="input"  value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
+                        <input type="input" name="input" lay-verify="required"   value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"><a href="member/company/list.html" class="ta1">修改所属企业</a></div>
                 </div>
@@ -146,7 +146,7 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label"><span class="redColorClass">*</span>个人介绍</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" name="description" class="layui-textarea">${member.description}</textarea>
+                        <textarea placeholder="请输入内容" lay-verify="required"  name="description" class="layui-textarea">${member.description}</textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">

@@ -35,7 +35,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" value="15765056585" name="mobile" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="15765056585" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -48,19 +48,19 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" value="" name="msgCode" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="tel" value="" name="msgCode" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="123456" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="123456" name="password"  lay-verify="required"  placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">确认密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="123456" name="password2" placeholder="请重复上面密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="123456" name="password2" lay-verify="required"  placeholder="请重复上面密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -94,15 +94,7 @@
 
         //自定义验证规则
         form.verify({
-            mobile: function(value){
-                if(value.length < 5){
-                    return '请输入正确的手机号';
-                }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,content: function(value){
-                layedit.sync(editIndex);
-            }
+            pass: [/(.+){6,12}$/, '密码必须6到12位']
         });
         var verifyCode = new GVerify("yzm");
         //监听提交

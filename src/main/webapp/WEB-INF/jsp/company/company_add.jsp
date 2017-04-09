@@ -28,14 +28,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>公司名称</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="companyName" autocomplete="off" class="layui-input">
+                        <input type="input" lay-verify="required"  name="companyName" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="mobile" autocomplete="off" class="layui-input">
+                        <input type="input" name="phone" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -54,14 +54,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>详细地址</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="address" autocomplete="off" class="layui-input">
+                        <input type="input" lay-verify="required"  name="address" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">公司简介</label>
                     <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" name="introduce" class="layui-textarea"></textarea>
+                        <textarea placeholder="请输入内容" lay-verify="required"  name="introduce" class="layui-textarea"></textarea>
                     </div>
                 </div>
                 <div class="layui-form-item">
