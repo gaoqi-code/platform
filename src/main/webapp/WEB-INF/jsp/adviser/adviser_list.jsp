@@ -21,10 +21,10 @@
         .allSelect{background-color:#ee4134;color: #FFF;display:block;}
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
         .adviser_mainli li{height: 195px;border-bottom: 1px solid #eee;}
-        .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
+        .li-img{width: 165px;height: 165px;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .li-img img{width: 165px;}
         .adviser-list-info{height: 165px;float: left;width: 600px;}
-        .adviser-list-content{margin-left: 30px;}
+        .adviser-list-content{margin-left: 30px;padding-right: 5px;}
         .company{display: inline-block;
             vertical-align: bottom;
             font-size: 16px;

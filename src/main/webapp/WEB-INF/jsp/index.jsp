@@ -529,14 +529,14 @@
 <div class="promo">
     <div class="layout clearfix content">
         <%--<a href="/cmdty/detail?csId=13216" target="_blank" class="promo-card" _stat_click_id="5_10">&nbsp;</a>--%>
-        <a href="/cmdty/detail?csId=13216" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="http://p.qpic.cn/zc_pic/0/7e41cb2673f1459c245d04a43e75c9e314815479845626/0"></a>
-        <a href="/cmdty/detail?csId=10272" target="_blank" class="promo-card" _stat_click_id="5_11"><img src="http://p.qpic.cn/zc_pic/0/0eba100cd32cca46a47cd7658e006650148154808028/0"></a>
-        <a href="/cmdty/detail?csId=11626" target="_blank" class="promo-card" _stat_click_id="5_12"><img src="http://p.qpic.cn/zc_pic/0/5d796bbd57da739165489a75fa6800b914815481289252/0"></a>
+        <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="http://p.qpic.cn/zc_pic/0/7e41cb2673f1459c245d04a43e75c9e314815479845626/0"></a>
+        <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_11"><img src="http://p.qpic.cn/zc_pic/0/0eba100cd32cca46a47cd7658e006650148154808028/0"></a>
+        <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_12"><img src="http://p.qpic.cn/zc_pic/0/5d796bbd57da739165489a75fa6800b914815481289252/0"></a>
         <div class="news">
             <h6>平台最新动态</h6>
-            <p><a href="https://mp.weixin.qq.com/s?__biz=MzIxNTUxNDE4Ng==&amp;mid=2247484073&amp;idx=3&amp;sn=1602a278972ed7edbd7e348d65b91193&amp;chksm=97966f8ca0e1e69a62f6c62f57b0490a0363ad2b06173dd920af6596c6887f04992a251e5518&amp;mpshare=1&amp;scene=1&amp;srcid=0110EevHEHWXKlsUpNxUSNEw&amp;key=8ceefe41d95a4593180fea3fc44696db8b7201a4801dc194ac6d7cedc0e98b3e572d103ef3d0fcd7f2bd6ba77fe9483220a3e81ee3e73485371a07aeb44b35b2eb0aaf7da6511aead314a77c824310b3&amp;ascene=1&amp;uin=NDIwMjMxODU1" target="_blank" _stat_click_id="5_20">2017创业趋势360°拆解</a></p>
-            <p><a href="https://mp.weixin.qq.com/s?__biz=MzIxNTUxNDE4Ng==&amp;mid=100000328&amp;idx=1&amp;sn=59fcd7cfa58ad4c9fc293b56a9e24fad&amp;chksm=17966f6d20e1e67b29f73146a0b14e28ecf4230d2999f666a4a406bf7d088ab2340e7b7a069a&amp;mpshare=1&amp;scene=1&amp;srcid=1212BMw9j568uYxXg6LokhEJ&amp;key=9ed31d4918c154c8f10644edddb6f672502e0b405d3bccc66b653d720d73d70170ac786a672f6b4164ad8128ebbeb1ed39d22b0e40864aacd9012960ff6ad7dad761c446decf09cf0abf628edb65ac97&amp;ascene=1&amp;uin=NDIwMjMxODU1" target="_blank" _stat_click_id="5_21">腾讯“创业红包”致敬世界互联网大会</a></p>
-            <p><a href="https://mp.weixin.qq.com/s?__biz=MzIxNTUxNDE4Ng==&amp;mid=2247484063&amp;idx=3&amp;sn=aed4227b82bbbe4e7baeb8b885a94273&amp;chksm=97966fbaa0e1e6ac1d964ba8959dd51d9ed94d992fce5e3f55eb836abb0bd1d3b69f8fd8052e&amp;mpshare=1&amp;scene=1&amp;srcid=0110Hyz1ccaW6RqgsbYzbduZ&amp;key=4489c38d1d617d5cd4b47ce6b74a9b7e18016d0c0ec80c0e9fd62b20ae1175321bba61416641ec69d97f31d3bf843a6442bc256f38d50ca9965126ad45d138b5353551fd4cf124a0f2fe70ea10fc87c7&amp;ascene=1&amp;uin=NDIwMjMxODU1" target="_blank" _stat_click_id="5_22">初创企业的知识产权保护</a></p>
+            <p><a href="/article/detail/1.html" target="_blank">2017创业趋势360°拆解</a></p>
+            <p><a href="/article/detail/1.html" target="_blank">关于企巴巴</a></p>
+            <p><a href="/article/detail/1.html" target="_blank">初创企业的知识产权保护</a></p>
         </div>
     </div>
 </div>

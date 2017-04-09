@@ -26,7 +26,7 @@
 .t_form .keywords {width: 380px; padding: 0 10px; height: 36px; line-height: 36px; font-size: 14px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; float: left; color: #005; outline: none; border: 0;}
 .t_form input[type=text]:focus {border: none !important;}
 .t_btn_div {float: left;}
-.search_btn {float: left; width: 80px; height: 40px; border: none; display: inline-block; *display: inline; *zoom: 1; cursor: pointer; background: #ff6600; font-size: 14px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; color: #FFF;}
+.search_btn {float: left; width: 80px; height:39px; border: none; display: inline-block; *display: inline; *zoom: 1; cursor: pointer; background: #ff6600; font-size: 14px; font-family: "Microsoft Yahei", 'Hiragino Sans GB'; color: #FFF;}
 .search_btn:hover {background: #0088ee;}
 .search_btn.a {background: #0099ff;}
 .search_btn.a:hover {background: #0088ee;}
