@@ -25,8 +25,12 @@
         .li-img img{width: 165px;}
         .adviser-list-info{height: 165px;float: left;width: 600px;}
         .adviser-list-content{margin-left: 30px;}
-        .adviser-list-info span{font-size:22px;margin-right: 20px;}
-        .adviser-list-info p{line-height: 35px;min-height: 35px;}
+        .company{display: inline-block;
+            vertical-align: bottom;
+            font-size: 16px;
+            color: #004b92;
+            font-weight: 700;}
+        .adviser-list-info p{line-height: 35px;min-height: 35px;font-size: 12px;color: #666;}
         .adviser-list-href{height: 165px;line-height:165px;float: left}
         .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
         .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}

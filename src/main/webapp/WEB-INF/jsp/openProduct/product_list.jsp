@@ -31,8 +31,17 @@
         .adviser_right_tj img{width:90px;}
         .adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}
         .adviser_right_tjperson p{height:30px;line-height: 30px;}
-        .adviser_right_tj_personwork{text-align: left;border-bottom: 1px solid #eee;margin-bottom: 20px;}
-        .adviser_right_tj_personwork p{height:30px;line-height: 30px;padding-left:10px;}
+        .adviser_right_tj_personwork{text-align:center;border-bottom: 1px solid #eee;margin-bottom: 20px;}
+        .adviser_right_tj_personwork a{    display: inline-block;
+            width: 91px;
+            height: 27px;
+            line-height: 27px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            padding-left: 0;}
+        .green{background: #609833;}
+        .ser{background: #fa4f4f;}
         .adviser_tj_title{height: 35px;line-height: 35px;}
         .head-update-img img{width: 100%;border: 0 none;vertical-align: middle;max-width: 100%;}
         .head-update-ewm>i{display: inline-block;
@@ -269,15 +278,15 @@
                         <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser_right_tjperson">
                             <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
+                                <p><span>张三</span>金牌顾问</p>
+                                <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
+                                <p>8年执业经验</p>
                             </div>
                         </div>
                         <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
+                        <div class="adviser_right_tj_personwork clearfix">
+                            <a href="adviser/detail/15.html" class="green">顾问主页</a>
+                            <a href="" class="ser">QQ留言/a>
                         </div>
                     </div>
                 </div>
@@ -286,15 +295,15 @@
                         <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser_right_tjperson">
                             <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
+                                <p><span>张三</span>金牌顾问</p>
+                                <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
+                                <p>8年执业经验</p>
                             </div>
                         </div>
                         <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
+                        <div class="adviser_right_tj_personwork clearfix">
+                            <a href="" class="green">顾问主页</a>
+                            <a href="" class="ser">免费电话</a>
                         </div>
                     </div>
                 </div>
@@ -303,15 +312,15 @@
                         <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
                         <div class="adviser_right_tjperson">
                             <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
+                                <p><span>张三</span>金牌顾问</p>
+                                <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
+                                <p>8年执业经验</p>
                             </div>
                         </div>
                         <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
+                        <div class="adviser_right_tj_personwork clearfix">
+                            <a href="" class="green">顾问主页</a>
+                            <a href="" class="ser">免费电话</a>
                         </div>
                     </div>
                 </div>

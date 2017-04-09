@@ -30,6 +30,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/need")
+
 public class OpenNeedAction extends BaseController{
 
     @Autowired
@@ -75,6 +76,36 @@ public class OpenNeedAction extends BaseController{
         mav.getModel().put("paging",paging);
         mav.getModel().put("needs",needs);
         mav.setViewName("openNeed/paging");
+        return mav;
+    }
+
+    @RequestMapping(value="/pageIndex")
+    public ModelAndView pageIndex(HttpServletRequest request, ModelAndView mav) {
+        Paging paging = super.getPaging(request);
+        Need need = new Need();
+        String keyword = request.getParameter("keyword");
+        if (StringUtil.isNotEmpty(keyword)) {
+            need.setTitle(keyword);
+        }
+        String areaCode = request.getParameter("areaCode");
+        if (StringUtil.isNotEmpty(areaCode)) {
+            need.setAreaCode(areaCode);
+        }
+        String classCode = request.getParameter("classCode");
+        if (StringUtil.isNotEmpty(classCode)) {
+            need.setClassCode(classCode);
+        }
+        String memberType = request.getParameter("memberType");
+        if (StringUtil.isNotEmpty(memberType)) {
+            need.setMemberType(Integer.valueOf(memberType));
+        }
+        need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        List<Need> needs =  needService.getOpendNeedPage(need);
+        paging.setTotalPages(page.getPages());
+        mav.getModel().put("paging",paging);
+        mav.getModel().put("needs",needs);
+        mav.setViewName("openNeed/paging_index");
         return mav;
     }
 
@@ -166,5 +197,7 @@ public class OpenNeedAction extends BaseController{
             return data;
         }
     }
+
+
 
 }

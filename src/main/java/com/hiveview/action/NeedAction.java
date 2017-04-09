@@ -2,10 +2,7 @@ package com.hiveview.action;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hiveview.entity.Attribute;
-import com.hiveview.entity.Category;
-import com.hiveview.entity.Need;
-import com.hiveview.entity.Paging;
+import com.hiveview.entity.*;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.service.INeedService;
 import com.hiveview.util.LevelUtil;
@@ -113,35 +110,35 @@ public class NeedAction extends BaseController{
     @RequestMapping(value="/add")
     public Boolean add(HttpServletRequest request,Need need) {
         Boolean flag = false;
-        long memberId = super.getMemberId(request);
-        if (memberId > 0 ) {
-            try {
-                need.setMemberId(memberId);
-                long companyId = super.getCompanyId(request);
-                if (companyId > 0) {
-                    need.setCompanyId(companyId);
-                }
-                need.setStatus(StatusUtil.CHECKING.getVal());
-                if (need.getId() != null) {
-                    need.setUpdateTime(new Date());
-                    needService.updateNeed(need);
-                    needService.deleteAttributeByNeedId(need.getId());
-                } else {
-                    need.setAddTime(new Date());
-                    needService.saveNeed(need);
-                }
-                List<Attribute> attributes = need.getAttributes();
-                if (CollectionUtils.isNotEmpty(attributes)) {
-                    Long needId = need.getId();
-                    for (Attribute attribute : attributes) {
-                        attribute.setNeedId(needId);
-                    }
-                    needService.batchSaveAttr(attributes);
-                }
-                flag = true;
-            } catch (Exception e) {
-                LogMgr.writeErrorLog(e);
+        Member member = (Member) request.getSession().getAttribute("currentUser");
+        long memberId = member.getId();
+        try {
+            need.setMemberId(memberId);
+            long companyId = super.getCompanyId(request);
+            if (companyId > 0) {
+                need.setCompanyId(companyId);
             }
+            need.setStatus(StatusUtil.CHECKING.getVal());
+            if (need.getId() != null) {
+                need.setUpdateTime(new Date());
+                needService.updateNeed(need);
+                needService.deleteAttributeByNeedId(need.getId());
+            } else {
+                need.setAddTime(new Date());
+                need.setMemberType(member.getType());
+                needService.saveNeed(need);
+            }
+            List<Attribute> attributes = need.getAttributes();
+            if (CollectionUtils.isNotEmpty(attributes)) {
+                Long needId = need.getId();
+                for (Attribute attribute : attributes) {
+                    attribute.setNeedId(needId);
+                }
+                needService.batchSaveAttr(attributes);
+            }
+            flag = true;
+        } catch (Exception e) {
+            LogMgr.writeErrorLog(e);
         }
         return flag;
     }

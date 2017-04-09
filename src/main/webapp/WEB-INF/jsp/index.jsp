@@ -26,7 +26,7 @@
 
         /*幻灯片*/
         /* 本例子css */
-        .slideBox{ width:100%; overflow:hidden; position:relative;}
+        .slideBox{ width:100%;position:relative;}
         .slideBox .hd{ overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
         .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
         .slideBox .hd ul li{ float:left; margin-right:2px; padding:5px;line-height:14px; text-align:center; background:#fff; cursor:pointer; }
@@ -301,7 +301,7 @@
             color: #de373e;
             position: absolute;
             left: 16px;
-            bottom: 16px;
+            bottom: 18px;
         }
         .popular-serv .card .prd-main .btn {
             position: absolute;
@@ -367,28 +367,6 @@
         /*** 热门服务商 ***/
         .hot-provider {
             padding: 30px 0;
-        }
-        .mod-boxhd {
-            position: relative;
-            padding-left: 12px;
-            line-height: 1;
-            margin-bottom: 20px;
-        }
-        .mod-boxhd:before {
-            position: absolute;
-            content: '';
-            width: 4px;
-            height: 24px;
-            background-color: #de373e;
-            top: 0;
-            left: 0;
-        }
-        .mod-boxhd-tit {
-            display: inline-block;
-            vertical-align: top;
-            color: #323232;
-            margin-top: 0;
-            font-size: 22px;
         }
         .hot-provider .card.ml0{margin-left:0;}
 
@@ -470,11 +448,10 @@
         .offerlistclss{margin-top: 5px;}
         .offerlistclss span{padding:3px 5px; cursor: pointer; margin-top: 10px; margin-right:5px;background-color: #004b92;color:#FFF;}
         .liuyan{    position: absolute;
-            padding-top: 25px;
+            padding-top: 20px;
             right: 0;
             top: 5px;
             width: 246px;
-            height: 200px;
             margin-top: 20px;
             box-sizing: border-box;
             background-color: #fff;
@@ -614,80 +591,29 @@
                     <div class="hd">
                         <h3>我要开公司</h3>
                     </div>
-
-
                     <div class="prd-main">
                         <a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100040" target="_blank" _stat_click_id="8_00"><p class="tit" title="有限责任公司注册">有限责任公司注册<span class="tag-discount">限时特惠</span></p></a>
                         <p class="des" title="一站式开公司服务">一站式开公司服务</p>
-                        <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100040" target="_blank" _stat_click_id="8_00">¥0.01<small>起</small></a></p>
-                        <a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100040" target="_blank" class="btn" _stat_click_id="8_00">立即查看</a>
+                        <p class="price"><a href="javascript:void(0);">¥500<small>起</small></a></p>
+                        <a href="/product/productIntroduce.html" target="_blank" class="btn" _stat_click_id="8_00">立即查看</a>
                     </div>
-
-
-
-
                     <div class="prd-list">
-
-
-
-
                         <div class="prd bdr">
-                            <a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100045" target="_blank" class="serv-name" _stat_click_id="8_01" title="创业问诊">创业问诊</a>
+                            <a href="javascript:void(0);" class="serv-name" title="创业问诊">创业问诊</a>
                             <p class="des" title="创业咨询服务">创业咨询服务</p>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="prd">
-                            <a href="http://c.qq.com/ListSku/view?firstCateId=100002&amp;thirdCateId=100064" target="_blank" class="serv-name" _stat_click_id="8_02" title="国内普通商标注册">国内普通商标注册</a>
+                            <a href="javascript:void(0);" class="serv-name" title="国内普通商标注册">国内普通商标注册</a>
                             <p class="des" title="产权保护第一步">产权保护第一步</p>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
                         <div class="prd bdr">
-                            <a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100042" target="_blank" class="serv-name" _stat_click_id="8_03" title="公司注册地址">公司注册地址</a>
+                            <a href="javascript:void(0);" class="serv-name" title="公司注册地址">公司注册地址</a>
                             <p class="des" title="没有地址怎么办">没有地址怎么办</p>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="prd">
-                            <a href="http://c.qq.com/ListSku/view?firstCateId=100001&amp;thirdCateId=100016" target="_blank" class="serv-name" _stat_click_id="8_04" title="代理记账">代理记账</a>
+                            <a href="javascript:void(0);" class="serv-name" _stat_click_id="8_04" title="代理记账">代理记账</a>
                             <p class="des" title="专业会计帮你记账">专业会计帮你记账</p>
                         </div>
-
-
-
-
                     </div>
 
 
@@ -795,42 +721,14 @@
                             <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100416" target="_blank" class="serv-name" _stat_click_id="8_22" title="公众号申请">公众号申请</a>
                             <p class="des" title="公众号第一步">公众号第一步</p>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
                         <div class="prd bdr">
                             <a href="http://c.qq.com/ListSku/view?firstCateId=100136" target="_blank" class="serv-name" _stat_click_id="8_23" title="企业网站">企业网站</a>
                             <p class="des" title="网站定制服务">网站定制服务</p>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="prd">
                             <a href="http://c.qq.com/ListSku/view?firstCateId=100137&amp;thirdCateId=100350" target="_blank" class="serv-name" _stat_click_id="8_24" title="真机测试">真机测试</a>
                             <p class="des" title="腾讯真机服务">腾讯真机服务</p>
                         </div>
-
-
-
-
                     </div>
 
 
@@ -849,40 +747,15 @@
                         <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100264" target="_blank" _stat_click_id="8_30">¥1<small>起</small></a></p>
                         <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100264" target="_blank" class="btn" _stat_click_id="8_30">立即查看</a>
                     </div>
-
-
-
-
                     <div class="prd-list">
-
-
-
                         <div class="prd row">
                             <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100244" target="_blank" class="serv-name" _stat_click_id="8_31" title="微官网">微官网</a>
                             <span class="des" title="微信官方网站搭建">微信官方网站搭建</span>
                         </div>
-
-
-
-
-
-
-
-
-
                         <div class="prd row">
                             <a href="http://c.qq.com/ListSku/view?firstCateId=100142&amp;thirdCateId=100317" target="_blank" class="serv-name" _stat_click_id="8_32" title="朋友圈广告">朋友圈广告</a>
                             <span class="des" title="时下最火推广">时下最火推广</span>
                         </div>
-
-
-
-
-
-
-
-
-
                         <div class="prd row">
                             <a href="http://c.qq.com/ListSku/view?firstCateId=100142&amp;thirdCateId=100314" target="_blank" class="serv-name" _stat_click_id="8_33" title="手机短信营销">手机短信营销</a>
                             <span class="des" title="营销推广必备">营销推广必备</span>
@@ -904,163 +777,23 @@
 
     <div class="index_need clearfix">
         <div class="mod-boxhd"><h3 class="mod-boxhd-tit">最新需求</h3></div>
-
+<input type="text" id="areaVal" />
         <div class="layui-tab offerlist">
             <ul class="layui-tab-title">
-                <li class="layui-this">全部</li>
-                <li>个人</li>
-                <li>同行</li>
+                <li class="layui-this">个人</li>
+                <li>同业</li>
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
                     <div class="offerlist">
-                        <div class="offerlistclss"><span>工商注册</span><span>金融服务</span><span>企业服务</span></div>
-                        <dl id="listoffer_7763e366bb88173e" class="clearfix">
-                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e&#10;" target="_blank">
-                                <img class="face-box" width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1489/0315/17/userface_7422797.jpg!normal" alt="深圳阳光奥美集团 刘燕峰" title="深圳阳光奥美集团 刘燕峰"></a>
-                            <p>
-                                <a href="http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7422797);" onmouseout="Renhe.tipsMemberHidePopup();">刘燕峰</a>
-                                <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                            </dt>
-                            <dd>
-                                <h3>
-            <span class="green">
-      [供应服务]
-        </span>
-                                    <a href="http://www.renhe.cn/offer/1584024.html" target="_blank">基金销售牌照</a>
-                                    <span class="ml10 f12">广东 深圳</span>
-                                    <b class="pic"></b>
-                                </h3>
-                                <p class="content">重磅消息！！！
-                                    现有一家靠谱资源，信息如下：
-                                    1.基金销售牌照（区域：深圳）
-                                    2.注册资金：不低于2000万
-                                    3.一手对接
-                                    5.只要买家靠谱，随时约见卖方
-                                    6.交易地点：深圳
-                                    难得靠谱资源，先到先得！
-                                    有需要请联系深圳肖阳（广州陈海城通力合作大资源）&nbsp;&nbsp;<span>(3月29日)</span></p>
-                            </dd>
-                        </dl>
-                        <dl id="listoffer_9da74632bfa40108" class="clearfix">
-                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17&#10;" target="_blank">
-                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/62/538.jpg!normal" alt="上海皖商科技有限公司 王森林" title="上海皖商科技有限公司 王森林"></a>
-                            <p>
-                                <a href="http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7562538);" onmouseout="Renhe.tipsMemberHidePopup();">王森林</a>
-                                <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                            </dt>
-                            <dd>
-                                <h3>
-              <span class="orange">
-        [需求服务]
-        </span>
-                                    <a href="http://www.renhe.cn/offer/1583895.html" target="_blank">代理记账、投资基金、基金备案、美元验资</a>
-                                    <span class="ml10 f12">上海</span>
-                                    <b class="pic"></b>
-                                </h3>
-                                <p class="content">一家从事工商注册、工商咨询、股权转让、各种资质审批的工商代理服务公司。
-                                    公司主营业务：工商注册、融资租赁、商业保理、资金证明
-                                    代理记账、投资基金、基金备案、美元验资
-                                    大额融资、集团组建、互联网金融、增资验资
-                                    保险代理及经纪、基金销售牌照&nbsp;&nbsp;<span>(3月24日)</span></p>
-                            </dd>
-                        </dl>
+                        <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+                        <div id="needDataMsgPerson"></div>
                     </div>
                 </div>
                 <div class="layui-tab-item">
                     <div class="offerlist">
-                        <div class="offerlistclss"><span>工商注册</span><span>金融服务</span><span>企业服务</span></div>
-                        <dl id="listoffer_77800b540efe1639" class="clearfix">
-                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=9a4565c8f4ba1cd5&#10;" target="_blank">
-                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/54/11.jpg!normal" alt="深圳是佳诺企业管理顾问有限公司 许一飞" title="深圳是佳诺企业管理顾问有限公司 许一飞"></a>
-                            <p>
-                                <a href="http://www.renhe.cn/viewprofile.html?sid=9a4565c8f4ba1cd5" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7554011);" onmouseout="Renhe.tipsMemberHidePopup();">许一飞</a>
-                            </p>
-                            </dt>
-                            <dd>
-                                <h3>
-            <span class="green">
-      [供应产品]
-        </span>
-                                    <a href="http://www.renhe.cn/offer/1583809.html" target="_blank">转让名下投资类公司，经营范围可做私募基金备案，</a>
-                                    <span class="ml10 f12">广东 深圳</span>
-                                    <b class="pic"></b>
-                                </h3>
-                                <p class="content">转让一批前海资产管理,商业保理，基金管理公司
-                                    转让一家互联网金融服务公司 金融控股公司
-                                    转让两家融资租赁公司 中外合资  外资
-                                    转让一家催收业务的投资公司
-                                    转让一家房地产开发的房地产公司
-                                    13871717716&nbsp;&nbsp;<span>(3月22日)</span></p>
-                            </dd>
-                        </dl>
-                        <dl id="listoffer_b096fb575936b162" class="clearfix">
-                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988&#10;" target="_blank">
-                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/72/70/4h.jpg!normal" alt="北京阳光奥美资产管理有限公司 张东展" title="北京阳光奥美资产管理有限公司 张东展"></a>
-                            <p>
-                                <a href="http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7270004);" onmouseout="Renhe.tipsMemberHidePopup();">张东展</a>
-                            </p>
-                            </dt>
-                            <dd>
-                                <h3>
-            <span class="green">
-      [供应产品]
-        </span>
-                                    <a href="http://www.renhe.cn/offer/1583325.html" target="_blank">国家局核名的资产管理公司转让</a>
-                                    <span class="ml10 f12">北京</span>
-                                </h3>
-                                <p class="content">现有一家国家局核名的资产管理公司转让，此公司干净，无经营记录，注册资金实缴，名称大气  有需呀的老板可来电咨询，此公司也可用来做私募备案哦！15010707112&nbsp;&nbsp;<span>(3月7日)</span></p>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-                <div class="layui-tab-item">
-                    <div class="offerlist">
-                        <div class="offerlistclss"><span>工商注册</span><span>金融服务</span><span>企业服务</span></div>
-                        <dl id="listoffer_c3b1d75627f89aa3" class="clearfix">
-                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988&#10;" target="_blank">
-                                <img class="face-box" width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/72/70/4h.jpg!normal" alt="北京阳光奥美资产管理有限公司 张东展" title="北京阳光奥美资产管理有限公司 张东展"></a>
-                            <p>
-                                <a href="http://www.renhe.cn/viewprofile.html?sid=676bdf02e84c5988" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7270004);" onmouseout="Renhe.tipsMemberHidePopup();">张东展</a>
-                            </p>
-                            </dt>
-                            <dd>
-                                <h3>
-            <span class="green">
-      [供应服务]
-        </span>
-                                    <a href="http://www.renhe.cn/offer/1583323.html" target="_blank">专业提供私募基金、证券基金产品备案服务</a>
-                                    <span class="ml10 f12">北京</span>
-                                </h3>
-                                <p class="content">专业提供私募基金、证券基金产品备案服务、自有律师事务所、专业私募股权基金团队写法律意见书、发行规模500-2000万。自有资金和券商、专业团队设计产品、专业的投资团队、签包过协议、不过退全款、有需要资金保壳的伙伴私聊，从付款50%起算，一般最快三周完成备案，电话：15010707112微信同号&nbsp;&nbsp;<span>(3月7日)</span></p>
-                            </dd>
-                        </dl>
-                        <dl id="listoffer_ef7f213c7992fc4f" class="clearfix">
-                            <dt><a href="&#9;http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df&#10;" target="_blank">
-                                <img class="face-box" width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1418/2896/81/userface_6614431.jpg!normal" alt="香港环宇会计秘书有限公司 谭翠梅" title="香港环宇会计秘书有限公司 谭翠梅"></a>
-                            <p>
-                                <a href="http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6614431);" onmouseout="Renhe.tipsMemberHidePopup();">谭翠梅</a>
-                                <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a>	</p>
-                            </dt>
-                            <dd>
-                                <h3>
-            <span class="green">
-      [供应产品]
-        </span>
-                                    <a href="http://www.renhe.cn/offer/1583120.html" target="_blank">转让现成香港公司，转让500万金融投资公司，现卖现用</a>
-                                    <span class="ml10 f12">广东 深圳</span>
-                                    <b class="pic"></b>
-                                </h3>
-                                <p class="content">出售转让深圳前海融资租赁公司，前海基金管理公司，前海金融投资公司
-                                    目前我公司有以下金融投资空壳公司：
-                                    深圳市洪X金融投资有限公司；
-                                    深圳市国X金融投资有限公司。
-                                    注册外商投资（含中外合资）融资租赁公司的基本要求：
-                                    　　1）投资方必须为公司、企业和其它经济组织，成立时间不得低于1年，投资方财务报表必须显示有营业收入，且净资产不能为负。
-                                    　　2）国外投资者的总资产不得低于500万美元。
-                                    　　3）新公司至少3名以...&nbsp;&nbsp;<span>(2月28日)</span></p>
-                            </dd>
-                        </dl>
+                        <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+                        <div id="needDataMsgAdvier"></div>
                     </div>
                 </div>
             </div>
@@ -1145,7 +878,7 @@
                     <div class="top">
                         <a href="/seller/corpinfo?c_id=10021" target="_blank" _stat_click_id="7_10"><img src="http://p.qlogo.cn/zc_icon/0/eda4fbadd80dca63454ffd581cabe18a/0" class="logo"></a>
                         <h5 title="点米科技"><a href="/seller/corpinfo?c_id=10021" target="_blank" _stat_click_id="7_10">点米科技</a><a class="lv" href="/scenter/growth" target="_blank">Lv5</a></h5>
-                        <p>质量<em>4.7</em>速度<em>4.8</em>态度<em>4.8</em></p>
+                        <p>金融服务<em>平台合作企业</em></p>
                         <span class="cate-tag">社保服务</span>
                     </div>
                     <div class="btm">
@@ -1257,43 +990,6 @@
     layui.use('element', function(){
         var $ = layui.jquery
                 ,element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
-
-        //触发事件
-        var active = {
-            tabAdd: function(){
-                //新增一个Tab项
-                element.tabAdd('demo', {
-                    title: '新选项'+ (Math.random()*1000|0) //用于演示
-                    ,content: '内容'+ (Math.random()*1000|0)
-                    ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
-                })
-            }
-            ,tabDelete: function(othis){
-                //删除指定Tab项
-                element.tabDelete('demo', '44'); //删除：“商品管理”
-
-
-                othis.addClass('layui-btn-disabled');
-            }
-            ,tabChange: function(){
-                //切换到指定Tab项
-                element.tabChange('demo', '22'); //切换到：用户管理
-            }
-        };
-
-        $('.site-demo-active').on('click', function(){
-            var othis = $(this), type = othis.data('type');
-            active[type] ? active[type].call(this, othis) : '';
-        });
-
-        //Hash地址的定位
-        var layid = location.hash.replace(/^#test=/, '');
-        element.tabChange('test', layid);
-
-        element.on('tab(test)', function(elem){
-            location.hash = 'test='+ $(this).attr('lay-id');
-        });
-
     });
 </script>
 <script>
@@ -1335,6 +1031,54 @@
             return false;
         });
 
+    });
+
+    var pageSize=5;
+    function paging(classCode){
+        $.ajax({
+            type: "POST",
+            url: "/need/pageIndex.html",
+            data: {
+                classCode:classCode,
+                memberType:0,
+                currentPage:1,
+                pageSize : pageSize
+            },
+            success: function(data){
+                $("#needDataMsgPerson").html(data);
+            }
+        });
+    };
+
+    function paging2(classCode){
+        $.ajax({
+            type: "POST",
+            url: "/need/pageIndex.html",
+            data: {
+                classCode:classCode,
+                memberType:1,
+                currentPage:1,
+                pageSize : pageSize
+            },
+
+            success: function(data){
+                $("#needDataMsgAdvier").html(data);
+            }
+        });
+    };
+    $(function () {
+        $(".offerlistclssPerson span").click(function () {
+            var thisObj = $(this);
+            paging(thisObj.attr("code"));
+        });
+
+        $(".offerlistclssAdviser span").click(function () {
+            var thisObj = $(this);
+            paging2(thisObj.attr("code"));
+        });
+
+        paging();
+        paging2();
     });
 </script>
 </body>

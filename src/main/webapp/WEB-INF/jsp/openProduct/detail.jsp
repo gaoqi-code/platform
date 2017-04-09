@@ -14,8 +14,8 @@
     <style>
         .product_in{margin-bottom: 15px;}
         .pro_img{float: left;}
-        .pro_img img{width:550px;}
-        .pro_intro{float: left;margin-left:15px;width:615px;}
+        .pro_img img{width:430px;}
+        .pro_intro{float: left;margin-left:15px;width:725px;}
         .pro_title{height: 30px;line-height: 30px; font: 700 16px Arial,"microsoft yahei";
             color: #666;padding-top: 10px;line-height: 28px;margin-bottom:15px;}
         .pro_title2{color: #e4393c;margin-bottom: 15px;}

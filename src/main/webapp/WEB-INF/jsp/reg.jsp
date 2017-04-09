@@ -41,26 +41,26 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码：</label>
                         <div class="layui-input-inline">
-                            <input type="text" value="15765056585" id="yzmValue" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" value="" id="yzmValue" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         </div>
                         <div style="width: 129px;height: 35px;float: left;" id="yzm"></div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" value="15765056585" name="msgCode" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="tel" value="" name="msgCode" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="15765056585" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="123456" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">确认密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="15765056585" name="password2" placeholder="请重复上面密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="123456" name="password2" placeholder="请重复上面密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -76,8 +76,8 @@
         <div class="login_right">
             <div style="height: 40px;"></div>
             <img src="./images/logo_h.png">
-            <div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>
-            <button class="layui-btn layui-btn-big">商家入驻</button>
+            <%--<div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>--%>
+            <%--<button class="layui-btn layui-btn-big">商家入驻</button>--%>
         </div>
         <div class="clear"></div>
 

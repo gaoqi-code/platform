@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
+import com.hiveview.entity.UserNeed;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IProductService;
 import utils.StatusUtil;
@@ -93,6 +94,11 @@ public class OpenProductAction extends BaseController{
         mav.getModel().put("product", product);
         mav.setViewName("openProduct/detail");
         return mav;
+    }
+
+    @RequestMapping(value="/productIntroduce")
+    public String productIntroduce(HttpServletRequest request,UserNeed userNeed){
+        return "openProduct/product_introduce";
     }
 
 }

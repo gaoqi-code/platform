@@ -373,7 +373,7 @@
         }
         .hs-card--sale a, .hs-card--sale span, .hs-card .record a, .hs-card .record span, .mod-hotrecommend-card--sale a, .mod-hotrecommend-card--sale span, .mod-hotrecommend-card .record a, .mod-hotrecommend-card .record span {
             display: inline-block;
-             color: #878787;
+            color: #878787;
             margin-right: 14px;
         }
         .hs-card--sprice, .hs-card .np, .mod-hotrecommend-card--sprice, .mod-hotrecommend-card .np {
@@ -413,7 +413,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="./common/top.jsp"></jsp:include>
+<jsp:include page="../common/top.jsp"></jsp:include>
 
 <div id="container">
     <div class="position2">
@@ -451,7 +451,7 @@
                     <li>
                         <h3>公司注册：</h3>
                         <div class="selectSpan" id="categorySearch">
-                            <span><a class="" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="3-" class="allSelect">工商注册</a></span><span><a href="javascript:void(0);" code="1-">金融服务</a></span><span><a href="javascript:void(0);" code="5-">法律顾问</a></span>
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="3-">有限责任公司注册</a></span><span><a href="javascript:void(0);" code="1-">金融服务</a></span><span><a href="javascript:void(0);" code="5-">法律顾问</a></span>
                             <input type="hidden" id="categoryVal" value="3-">
                         </div>
                         <div class="clear"></div>
@@ -459,7 +459,7 @@
                     <li style="border: 0px;">
                         <h3>公司变更：</h3>
                         <div class="selectSpan" id="areaSearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-">上海</a></span><span><a href="javascript:void(0);" code="1-">北京</a></span><span><a href="javascript:void(0);" code="8-">天津</a></span>
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-">公司股权变更</a></span><span><a href="javascript:void(0);" code="1-">公司经营范围变更</a></span><span><a href="javascript:void(0);" code="8-">公司名称变更</a></span>
                             <input type="hidden" id="areaVal">
                         </div>
                         <div class="clear"></div>
@@ -467,7 +467,7 @@
                     <li style="border: 0px;">
                         <h3>注册相关服务：</h3>
                         <div class="selectSpan" id="areaSearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-">上海</a></span><span><a href="javascript:void(0);" code="1-">北京</a></span><span><a href="javascript:void(0);" code="8-">天津</a></span>
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-">国税地税报到</a></span><span><a href="javascript:void(0);" code="1-">办公地址</a></span>
                             <input type="hidden" id="areaVal">
                         </div>
                         <div class="clear"></div>
@@ -2046,7 +2046,7 @@
     </div>
 </div>
 
-<jsp:include page="./common/bottom.jsp"></jsp:include>
+<jsp:include page="../common/bottom.jsp"></jsp:include>
 
 
 <script>

@@ -11,7 +11,7 @@
             <div class="li-img"><img src="${member.headPortrait == null?'/images/portrait.jpg':member.headPortrait}"></div>
             <div class="adviser-list-info">
                 <div class="adviser-list-content">
-                    <p><span>${member.name}</span>
+                    <p><span class="company">${member.name}</span>
                         <c:if test="${member.adviserType == '1-'}">金融顾问</c:if>
                         <c:if test="${member.adviserType == '2-'}">企业顾问</c:if>
                         <c:if test="${member.adviserType == '3-'}">法律顾问</c:if>
@@ -20,7 +20,7 @@
                         <c:if test="${member.level == 1}">普通顾问</c:if>
                         <c:if test="${member.level == 2}">金牌顾问</c:if>
                         &nbsp;执行${member.workAge}年</p>
-                    <p>个人简介：
+                    <p style="color: #999;">个人简介：
                         <c:if test="${fn:length(member.description)>100}">
                             ${fn:substring(member.description,0,100)}...
                         </c:if>

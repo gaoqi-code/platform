@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
     <style>
         .search-select{border:1px solid #eee;}
         .search-select li{margin: 15px;border-bottom: 1px solid #eee;padding-bottom: 20px;}
