@@ -28,14 +28,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>原密码</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="oldPW"   placeholder="" autocomplete="off" class="layui-input">
+                        <input type="password" name="oldPW"  lay-verify="required"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>新密码</label>
                     <div class="layui-input-inline">
-                        <input type="password" name="newPW"  placeholder="" autocomplete="off" class="layui-input">
+                        <input type="password" name="newPW" lay-verify="required"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>

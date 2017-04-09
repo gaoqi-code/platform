@@ -36,13 +36,13 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" value="15765056585" name="mobile" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" lay-verify="phone"  value="15765056585" name="mobile"  autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="15765056585" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" lay-verify="required"  value="15765056585" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 
@@ -78,17 +78,6 @@
                 ,layer = layui.layer;
 
         //自定义验证规则
-        form.verify({
-            mobile: function(value){
-                if(value.length < 11){
-                    return '请输入正确的手机号';
-                }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,content: function(value){
-                layedit.sync(editIndex);
-            }
-        });
 
         //监听提交
         form.on('submit(demo1)', function(data){
