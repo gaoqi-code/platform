@@ -17,8 +17,8 @@
 .search_select {display: block;position: relative; float: left; font-size: 14px; font-family: "Microsoft Yahei", 'Hiragino Sans GB';}
 .search_select.search-select-active {position: relative;}
 .search_select .search_a {display: block; height: 36px; width: 76px; border: 2px solid #dfdfdf; background-color: #f8f8f8; text-align: center;}
-.search_select .search_a span {display: inline-block; *display: inline; *zoom: 1; line-height: 36px;}
-.search_select .search_a s {display: inline-block; margin-left: 6px; margin-top: 0; vertical-align: middle;}
+.search_select .search_a span {display: inline-block; *display: inline; *zoom: 1; line-height: 36px;color: #000;font-size: 12px;}
+.search_select .search_a s {display: inline-block; margin-left: 6px; margin-top: 0; vertical-align: middle;color:#000;}
 .search_select .search_options {background: #fff; border: 2px solid #dfdfdf; border-top: none; left: 0; right: 0; position: absolute; top: 36px; z-index: 100; display: none;}
 .search_select .search_options a {display: block; padding-left: 18px; height: 30px; line-height: 30px;}
 .search_select .search_options a:hover {background: #f8f8f8; color: #3c3c3c;}
@@ -34,12 +34,10 @@
 /*买家*/
 .t_buy .a_old {border: 1px solid #ff6600; color: #ff6600;}
 .t_buy .a_old:hover {background-color: #ff6600; color: #FFF;}
-.t_buy .search_select .search_a {color: #fff; border: 2px solid #ff6600; background-color: #ff6600;}
-.t_buy .search_select .search_options {background: #fff; border: 2px solid #ff6600;}
-.t_buy .search_select .search_options a:hover {background: #ffe2cf; color: #3c3c3c;}
-.t_buy .t_form {border-top: 2px solid #ff6600; border-bottom: 2px solid #ff6600;}
-.t_buy .search_btn {background: #ff6600;}
-.t_buy .search_btn:hover {background: #ff3300;}
+.t_buy .search_select .search_options {}
+.t_buy .search_select .search_options a:hover {background: #ffe2cf; color: #f8f8f8;}
+.t_buy .search_btn {background: #004b92;}
+.t_buy .search_btn:hover {background: #1786ef;}
 .t_buy .search_btn.a {background: #ff5500;}
 .t_buy .search_btn.a:hover {background: #ff3300;}
 

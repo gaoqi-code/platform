@@ -105,15 +105,10 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	height: 46px;
 	vertical-align: middle;
 	line-height: 46px;}
-.t_buy .search_select .search_a {
-	color: #fff;
-	border: 2px solid #ff6600;
-	background-color: #ff6600;
-}
-.t_nav{background-color: #ff5500;}
+.t_nav{background-color: #1786ef;}
 .t_nav li{height: 46px;line-height: 46px;text-align: center;width:210px;}
-.t_nav li a:hover{background-color: #ff3300;}
-.current_c{background-color: #ff6600 !important;}
+.t_nav li a:hover{background-color: #004b92;}
+.current_c{background-color: #36a8f8 !important;}
 /*** nav part end ***/
 .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
 
