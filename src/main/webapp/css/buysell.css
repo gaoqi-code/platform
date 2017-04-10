@@ -35,7 +35,6 @@
 .t_buy .a_old {border: 1px solid #ff6600; color: #ff6600;}
 .t_buy .a_old:hover {background-color: #ff6600; color: #FFF;}
 .t_buy .search_select .search_options {}
-.t_buy .search_select .search_options a:hover {background: #ffe2cf; color: #f8f8f8;}
 .t_buy .search_btn {background: #004b92;}
 .t_buy .search_btn:hover {background: #1786ef;}
 .t_buy .search_btn.a {background: #ff5500;}
