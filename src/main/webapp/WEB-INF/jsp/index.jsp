@@ -29,7 +29,7 @@
         .slideBox{ width:100%;position:relative;}
         .slideBox .hd{ overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
         .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
-        .slideBox .hd ul li{ float:left; margin-right:2px; padding:5px;line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+        .slideBox .hd ul li{ float:left; margin-right:2px; padding:5px 8px;line-height:14px; text-align:center; background:#fff; cursor:pointer; }
         .slideBox .hd ul li.on{ background:#f00; color:#fff; }
         .slideBox .bd{ position:relative; height:100%; z-index:0;   }
         .slideBox .bd li{ zoom:1; vertical-align:middle; }
@@ -505,8 +505,9 @@
     </div>
     <div class="bd">
         <ul>
+            <li><a href="javascript:void(0);" target="_blank"><img src="http://img.dd1008.com/aifa/image/20161020/1476931727170207.png" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="http://img.dd1008.com/aifa/image/20161020/1476932482181102.png" /></a></li>
             <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.png" /></a></li>
-            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/2.png" /></a></li>
         </ul>
     </div>
 
