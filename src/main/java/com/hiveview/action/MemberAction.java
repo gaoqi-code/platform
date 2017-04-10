@@ -75,7 +75,7 @@ public class MemberAction extends BaseController{
 		Member memberSession = (Member) request.getSession().getAttribute("currentUser");
 		memberSession.setType(member.getType());
 		session.setAttribute("currentUser", memberSession);
-		return "member/info";
+		return "member/member_info";
 	}
 
 	/**
