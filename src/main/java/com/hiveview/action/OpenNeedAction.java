@@ -100,7 +100,8 @@ public class OpenNeedAction extends BaseController{
             need.setMemberType(Integer.valueOf(memberType));
         }
         need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
-        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        //不进行count查询，第三个参数设为false
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
         List<Need> needs =  needService.getOpendNeedPage(need);
         paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
