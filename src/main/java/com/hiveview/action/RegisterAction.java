@@ -4,14 +4,17 @@ import com.google.common.collect.Maps;
 import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.IRegisterService;
-import com.hiveview.util.AuthCodeUtil;
-import utils.MemberUtil;
-import utils.log.LogMgr;
+import com.hiveview.util.SMS.SmsSendUtil;
+import com.hiveview.util.SMS.SmsUtil;
+import com.hiveview.util.VerifyCodeUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import utils.MemberUtil;
+import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -47,7 +50,7 @@ public class RegisterAction extends BaseController{
     @RequestMapping(value = "registerMember")
     public Map registerMember(HttpServletRequest request,Member member){
         String mobile = member.getMobile();
-        Map<String, Object> msg = AuthCodeUtil.checkPhoneNumber(member.getMobile());
+        Map<String, Object> msg = VerifyCodeUtil.checkPhoneNumber(member.getMobile());
         if(!Boolean.parseBoolean(msg.get("flag").toString())){
             return msg;
         }
@@ -84,13 +87,22 @@ public class RegisterAction extends BaseController{
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "checkAuthCode")
+    @RequestMapping(value = "checkVerifyCode")
     public Map checkVerificationCode(HttpServletRequest request){
-
-        HashMap<String, Object> result = Maps.newHashMap();
-
+        HashMap<String, Object> result;
+        String verifyCode = request.getParameter("verifyCode");
+        String verifyPhone = request.getParameter("verifyPhone");
+        if (StringUtils.isNotEmpty(verifyCode)) {
+            result = SmsSendUtil.verifyCode(request,verifyPhone,verifyCode ,SmsUtil.SendType.REGISTER_SMS.getVal());
+        } else {
+            result = Maps.newHashMap();
+            result.put("flag", false);
+            result.put("msg", "验证码错误！");
+        }
         return result;
     }
+
+
 
     /**
      * 发送手机验证码
@@ -101,9 +113,8 @@ public class RegisterAction extends BaseController{
     @ResponseBody
     @RequestMapping(value = "sendAuthCode")
     public Map sendVerificationCode(HttpServletRequest request,String phoneNumber){
-//        String phoneNumber = request.getParameter("phoneNumber");
 
-        Map<String, Object> msg = AuthCodeUtil.checkPhoneNumber(phoneNumber);
+        Map<String, Object> msg = VerifyCodeUtil.checkPhoneNumber(phoneNumber);
         if(!Boolean.parseBoolean(msg.get("flag").toString())){
             return msg;
         }
@@ -113,11 +124,15 @@ public class RegisterAction extends BaseController{
             result.put("msg", "此手机号已经被注册！");
             return result;
         }
-       String authCode= AuthCodeUtil.createAuthCode();
-        System.out.println(authCode);
-        request.getSession().setAttribute("",authCode);
-
-
+        boolean isSuccess = SmsSendUtil.sendRegisterSms(phoneNumber, request);
+        String sendMsg;
+        if (isSuccess) {
+            sendMsg = "发送成功！";
+        } else {
+            sendMsg = "发送失败！";
+        }
+        result.put("flag", isSuccess);
+        result.put("msg", sendMsg);
         return result;
     }
 

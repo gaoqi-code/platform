@@ -6,11 +6,15 @@ package com.hiveview.util;
 public class Test {
 
     public static void main(String[] args) {
-        String a = "2-1-";
-        String[] b = a.split("-");
-        System.out.println(b.length);
+//        String a = "2-1-";
+//        String[] b = a.split("-");
+//        System.out.println(b.length);
 
 //        System.out.printf(b[0]);
+
+        Object a= null;
+        Integer b = (Integer)a;
+        System.out.println(b);
     }
 }
 

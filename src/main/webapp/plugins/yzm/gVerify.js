@@ -110,7 +110,7 @@
 		validate: function(code){
 			var code = code.toLowerCase();
 			var v_code = this.options.code.toLowerCase();
-			console.log(v_code);
+			// console.log(v_code);
 			if(code == v_code){
 				return true;
 			}else{

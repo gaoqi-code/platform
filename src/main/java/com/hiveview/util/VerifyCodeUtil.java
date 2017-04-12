@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * Created by hxq on 2017/3/6.
  */
-public class AuthCodeUtil {
+public class VerifyCodeUtil {
 
     public static Map<String, Object> checkPhoneNumber(String number) {
         Map<String, Object> result = Maps.newHashMap();
@@ -29,7 +29,7 @@ public class AuthCodeUtil {
     public static Map sendPhoneNumber(String number) {
         return null;
     }
-    public static String createAuthCode() {
+    public static String createVerifyCode() {
         Random r = new Random();
         StringBuilder sb = new StringBuilder(6);
         for (int i = 0; i < 6; i++) {
@@ -40,7 +40,7 @@ public class AuthCodeUtil {
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
-            String aa = createAuthCode();
+            String aa = createVerifyCode();
             System.out.println(aa);
         }
     }
