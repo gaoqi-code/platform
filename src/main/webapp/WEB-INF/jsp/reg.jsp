@@ -35,7 +35,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" value="15765056585" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="15765056585" id="phoneNumber" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -48,7 +48,8 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" value="" name="msgCode" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="tel" id="verifyCode" name="msgCode" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="button" id="sendSms" value="免费获取验证码" />
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -88,43 +89,113 @@
 <jsp:include page="common/bottom.jsp"></jsp:include>
 
 <script>
-    layui.use(['form'], function(){
-        var form = layui.form()
-                ,layer = layui.layer;
+    $(function () {
+        var layer;
+        layui.use(['form'], function(){
+            var form = layui.form();
+               layer = layui.layer;
 
-        //自定义验证规则
-        form.verify({
-            pass: [/(.+){6,12}$/, '密码必须6到12位']
+            //自定义验证规则
+            form.verify({
+                pass: [/(.+){6,12}$/, '密码必须6到12位']
+            });
+            var verifyCode = new GVerify("yzm");
+            //监听提交
+            form.on('submit(demo1)', function(data){
+                var res = verifyCode.validate($("#yzmValue").val());
+                if(!res){
+                    layer.msg("验证码错误");
+                    return;
+                }
+                verifySms();
+                return false;
+            });
         });
-        var verifyCode = new GVerify("yzm");
-        //监听提交
-        form.on('submit(demo1)', function(data){
-            var res = verifyCode.validate($("#yzmValue").val());
-            if(!res){
-                layer.alert("验证码错误");
-                return;
-            }
+        
+        function verifySms() {
+            $.ajax({
+                type: "POST",
+                url: "/register/checkVerifyCode.json",
+                data: {
+                    verifyCode:$("#verifyCode").val(),
+                    verifyPhone:$("#phoneNumber").val()
+                },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.flag) {
+                        regMember()
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                }
+            });
+        }
 
+        function regMember() {
             $.ajax({
                 type: "POST",
                 url: "/register/registerMember.json",
                 data: $("#regForm").serialize(),
                 dataType: "json",
-                success: function(data){
-                    if(data.flag) {
+                success: function (data) {
+                    if (data.flag) {
                         layer.msg("恭喜注册成功！");
                         setTimeout(function () {
                             location.href = "/tologin.html";
                         }, 1000);
-                    }else {
+                    } else {
                         layer.msg(data.msg);
                     }
                 }
             });
-            return false;
+        }
+        function sendSmsCode() {
+            $.ajax({
+                type: "POST",
+                url: "/register/sendAuthCode.json",
+                data: {phoneNumber:$("#phoneNumber").val()},
+                dataType: "json",
+                success: function (data) {
+                    if (!data.flag) {
+                        layer.msg(data.msg);
+                        countdown = 0;
+                    }
+                }
+            });
+        }
+        var time=60;//倒计时的秒数
+        var countdown=time
+        function setTime($obj) {
+            if(countdown == time) {
+                sendSmsCode();
+            }
+            if (countdown == 0) {
+                $obj.attr("disabled", false);
+                $obj.val("免费获取验证码");
+                countdown = time;
+                return;
+            } else {
+                $obj.attr("disabled", true);
+                $obj.val("重新发送(" + countdown + ")");
+                countdown--;
+            }
+            setTimeout(function() {
+                setTime($obj);
+            },1000)
+        }
+        $("#sendSms").click(function () {
+            var phoneNumber = $("#phoneNumber").val();
+            if(!phoneNumber){
+                layer.msg("电话号码不能为空");
+                return;
+            }
+            if(!(/^1[34578]\d{9}$/.test(phoneNumber))){
+                layer.msg("手机号码有误，请重填");
+                return false;
+            }
+            setTime($(this));
         });
-
-
     });
 </script>
 </body>

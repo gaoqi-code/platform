@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!doctype html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <meta charset="utf-8">
     <base href="<%=basePath%>">
     <title>企巴巴-找回密码</title>
@@ -14,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
+    <script src="./plugins/layui/layui.js" charset="utf-8"></script>
+    <script src="/plugins/yzm/gVerify.js" charset="utf-8"></script>
     <style>
         .reg_css{margin-bottom:35px;}
         .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
@@ -38,25 +37,26 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="mobile" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="15765056585" id="phoneNumber" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" value="" id="yzmValue" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         </div>
-                        <div class="layui-form-mid layui-word-aux">图形验证码</div>
+                        <div style="width: 129px;height: 35px;float: left;" id="yzm"></div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" name="phone" lay-verify="phone" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="tel" id="verifyCode" name="msgCode" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
+                            <input type="button" id="sendSms" value="免费获取验证码" />
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">下一步</button>
+                            <button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">下一步</button>
                         </div>
                     </div>
                 </form>
@@ -75,34 +75,105 @@
 
 </div>
 <jsp:include page="common/bottom.jsp"></jsp:include>
-<script src="./plugins/layui/layui.js" charset="utf-8"></script>
+
 <script>
-    layui.use(['form'], function(){
-        var form = layui.form()
-                ,layer = layui.layer;
+    $(function () {
+        layui.use(['form'], function(){
+            var form = layui.form()
+                    ,layer = layui.layer;
 
-        //自定义验证规则
-        form.verify({
-            mobile: function(value){
-                if(value.length < 5){
-                    return '请输入正确的手机号';
+            //自定义验证规则
+            form.verify({
+                mobile: function(value){
+                    if(value.length < 5){
+                        return '请输入正确的手机号';
+                    }
                 }
+                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            });
+            var verifyCode = new GVerify("yzm");
+            //监听提交
+            form.on('submit(demo1)', function(data){
+                var res = verifyCode.validate($("#yzmValue").val());
+                if(!res){
+                    layer.msg("验证码错误");
+                    return;
+                }
+                verifySms();
+                return false;
+            });
+
+
+            function verifySms() {
+                $.ajax({
+                    type: "POST",
+                    url: "/retrieveAccount/checkVerifyCode.json",
+                    data: {
+                        verifyCode:$("#verifyCode").val(),
+                        verifyPhone:$("#phoneNumber").val()
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.flag) {
+                            layer.alert("验证正确");
+                        } else {
+                            layer.msg(data.msg);
+                        }
+                    }
+                });
             }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,content: function(value){
-                layedit.sync(editIndex);
+
+            function sendSmsCode() {
+                $.ajax({
+                    type: "POST",
+                    url: "/retrieveAccount/sendVerificationCode.json",
+                    data: {phoneNumber:$("#phoneNumber").val()},
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.flag) {
+                            layer.msg(data.msg);
+                            countdown = 0;
+                        }
+                    }
+                });
             }
+
+            var time=60;//倒计时的秒数
+            var countdown=time
+            function setTime($obj) {
+                if(countdown == time) {
+                    sendSmsCode();
+                }
+                if (countdown == 0) {
+                    $obj.attr("disabled", false);
+                    $obj.val("免费获取验证码");
+                    countdown = time;
+                    return;
+                } else {
+                    $obj.attr("disabled", true);
+                    $obj.val("重新发送(" + countdown + ")");
+                    countdown--;
+                }
+                setTimeout(function() {
+                    setTime($obj);
+                },1000)
+            }
+            $("#sendSms").click(function () {
+                var phoneNumber = $("#phoneNumber").val();
+                if(!phoneNumber){
+                    layer.msg("电话号码不能为空");
+                    return;
+                }
+                if(!(/^1[34578]\d{9}$/.test(phoneNumber))){
+                    layer.msg("手机号码有误，请重填");
+                    return false;
+                }
+                setTime($(this));
+            });
+
+
         });
-
-        //监听提交
-        form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
-        });
-
-
     });
 </script>
 </body>
