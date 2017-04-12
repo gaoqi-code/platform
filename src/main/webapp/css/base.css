@@ -120,6 +120,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 
 /*** bottom part ***/
 .bottomCss{margin-top:5px;padding-top:40px;background-color:#2a3235;color: #FFF;}
+.bottomCss:after{content: ' ';clear: both;}
 .bottomNav{width:400px;float:left;background: url(../images/line-border.png) no-repeat right center;margin-right: 22px;height:130px;}
 .bottomNav a{color: #FFF;width:120px;float: left;display: inline-block;line-height: 24px;}
 .app{float:left;background: url(../images/line-border.png) no-repeat right center;    height: 150px;width:360px;}
