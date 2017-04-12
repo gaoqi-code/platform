@@ -638,11 +638,11 @@
                         <span class="arrow"></span>
                     </div>
                     <div class="sv-card--bottom">
-                        <a href="/cmdty/detail?csId=14379" class="sv-card--type" target="_blank" title="有限责任公司注册（公司注册基础服务+核名+注册指导建议+工商年报+提供深圳地址）">有限责任公司注册（公司注册基础服务+核名+注册指导建议+工商年报+提供深圳地址）</a>
+                        <a href="/cmdty/detail?csId=14379" class="sv-card--type" target="_blank" title="此处放顾问简介。。。">此处放顾问简介。。。此处放顾问简介。。。此处放顾问简介。。。</a>
                         <div class="sv-card--sale">
-
-                            <a _stat_click_id="7_414379" href="/cmdty/detail?csId=14379" target="_blank">咨询 845</a>
-                            <a _stat_click_id="7_514379" href="/cmdty/detail?csId=14379" target="_blank">销量 1132</a>
+<%--咨询和销量暂时不要--%>
+                            <%--<a _stat_click_id="7_414379" href="/cmdty/detail?csId=14379" target="_blank">咨询 845</a>--%>
+                            <%--<a _stat_click_id="7_514379" href="/cmdty/detail?csId=14379" target="_blank">销量 1132</a>--%>
 
                         </div>
                         <div class="sv-card--price">
