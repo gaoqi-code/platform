@@ -366,7 +366,7 @@
 
         /*** 热门服务商 ***/
         .hot-provider {
-            padding: 30px 0;
+            padding-top: 30px;
         }
         .hot-provider .card.ml0{margin-left:0;}
 
@@ -459,6 +459,107 @@
         /*文本框样式调整*/
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
         .layui-form-item .layui-input-inline{width:225px;margin-left:10px;}
+
+        /*新闻部分*/
+        .media-new-list {
+            padding-bottom: 30px;
+            overflow: hidden;
+        }
+        .business-new-big {
+            position: relative;
+            display: block;
+            float: left;
+            margin: 0 15px 0 0px;
+            width: 475px;
+            height: 308px;
+            overflow: hidden;
+        }
+        .business-new-big>img {
+            width: 100%;
+            height: 100%;
+        }
+        .business-new-big>p {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            line-height: 36px;
+            font-size: 16px;
+            color: #fff;
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: url(../images/transparent60.png) repeat;
+        }
+        .media-report {
+            margin: 0 -14px;
+            float: left;
+        }
+        .media-report>li {
+            display: block;
+            float: left;
+            width: 210px;
+            padding: 0 15px;
+            margin: 0 -1px;
+            border-left: 1px #eee solid;
+        }
+        .media-report>li>a {
+            display: block;
+        }
+        .report-img {
+            width: 210px;
+            height: 140px;
+        }
+        .report-img>img {
+            width: 100%;
+            height: 100%;
+        }
+        .report-title {
+            font-size: 16px;
+            color: #666;
+            font-weight: bold;
+            padding: 15px 0 0;
+            line-height: 24px;
+            height: 60px;
+            display: -webkit-box;
+            overflow: hidden;
+            white-space: normal!important;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .report-txt {
+            font-size: 12px;
+            color: #999;
+            margin: 15px 0 20px;
+            display: -webkit-box;
+            overflow: hidden;
+            white-space: normal!important;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 20px;
+            height: 40px;
+        }
+        .report-time {
+            font-size: 12px;
+            color: #999;
+            overflow: hidden;
+            line-height: 25px;
+        }
+        .report-time>span {
+            margin-right: 15px;
+        }
+        .eye-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 15px;
+            height: 15px;
+            background: url(./images/eye_icon.png) no-repeat center 2px;
+        }
     </style>
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://lib.h-ui.net/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
@@ -879,11 +980,11 @@
                     <div class="top">
                         <a href="/seller/corpinfo?c_id=10021" target="_blank" _stat_click_id="7_10"><img src="http://p.qlogo.cn/zc_icon/0/eda4fbadd80dca63454ffd581cabe18a/0" class="logo"></a>
                         <h5 title="点米科技"><a href="/seller/corpinfo?c_id=10021" target="_blank" _stat_click_id="7_10">点米科技</a><a class="lv" href="/scenter/growth" target="_blank">Lv5</a></h5>
-                        <p>金融服务<em>平台合作企业</em></p>
+                        <p>金融服务<em>张三</em></p>
                         <span class="cate-tag">社保服务</span>
                     </div>
                     <div class="btm">
-                        <p class="des" title="新三板上市的权威HR服务商">“新三板上市的权威HR服务商”</p>
+                        <p class="des" title="公司一句话介绍（新加了一个这了段）">“公司一句话介绍（新加了一个这了段）”</p>
                         <a target="_blank" href="/seller/corpinfo?c_id=10021" class="btn" _stat_click_id="7_10">进入店铺</a>
                     </div>
                 </div>
@@ -984,6 +1085,69 @@
     </div>
 <div class="clear"></div>
 
+
+    <%--最闻部分--%>
+    <div class="media-new-list" style="display: block;">
+
+        <div class="mod-boxhd"><h3 class="mod-boxhd-tit">新闻部分</h3></div>
+
+        <a href="http://www.xiaodingwang.com/newsWiki/743.htm" class="business-new-big" target="_blank">
+            <img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170314104337_132.jpg">
+            <p>【重磅项目签约】再度提升顶呱呱集团品牌影响力！</p>
+        </a>
+
+        <ul class="media-report">
+
+            <li>
+                <a href="http://www.xiaodingwang.com/newsWiki/766.htm" target="_blank">
+                    <div class="report-img"><img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170314102808_20170302134312_20170302120200197.png"></div>
+                    <div class="report-title">武侯区委领导会见顶呱呱集团董事长黄建明先生</div>
+                    <i></i>
+                    <p class="report-txt">成都市武侯区区委副书记、区长林丽约见了成都顶呱呱集团董事长黄建明先生，双方就企业在武侯区投资发展事宜进行了深度的沟通和交流。</p>
+                    <div class="report-time">
+                        <span>2017-3-20</span>
+                        <span>
+										<i class="eye-icon"></i>
+                                         765
+									</span>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="http://www.xiaodingwang.com/newsWiki/909.htm" target="_blank">
+                    <div class="report-img"><img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170313190231_20170313104340_11.jpg"></div>
+                    <div class="report-title">小顶家装盛大开业 活动现场人气火爆</div>
+                    <i></i>
+                    <p class="report-txt">2017年3月12日，这是一个值得纪念的日子，顶呱呱集团旗下“小顶家装”在成都天紫界大厦中心广场正式开业了！</p>
+                    <div class="report-time">
+                        <span>2017-3-20</span>
+                        <span>
+										<i class="eye-icon"></i>
+                                         5346
+									</span>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="http://www.xiaodingwang.com/newsWiki/959.htm" target="_blank">
+                    <div class="report-img"><img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170330153231_20170317165419_1`2.png"></div>
+                    <div class="report-title">顶呱呱校园行启动 校企合作成功签约</div>
+                    <i></i>
+                    <p class="report-txt">2017年3月16日，顶呱呱集团与西南交通大学希望学院的校企合作正式签约了！</p>
+                    <div class="report-time">
+                        <span>2017-3-20</span>
+                        <span>
+										<i class="eye-icon"></i>
+                                         253
+									</span>
+                    </div>
+                </a>
+            </li>
+
+        </ul>
+    </div>
 </div>
 <jsp:include page="common/bottom.jsp"></jsp:include>
 <script src="./plugins/layui/layui.js" charset="utf-8"></script>
