@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
+import com.hiveview.entity.Category;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
 import com.hiveview.entity.UserNeed;
+import com.hiveview.service.ICategoryService;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IProductService;
 import utils.StatusUtil;
@@ -35,6 +37,9 @@ public class OpenProductAction extends BaseController{
     private IProductService productService;
     @Autowired
     private ICompanyService companyService;
+
+    @Autowired
+    private ICategoryService iCategoryService;
 
     @RequestMapping(value="/toSearch")
     public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
@@ -96,8 +101,13 @@ public class OpenProductAction extends BaseController{
         return mav;
     }
 
-    @RequestMapping(value="/productIntroduce")
-    public String productIntroduce(HttpServletRequest request,UserNeed userNeed){
+    @RequestMapping(value="/productIntroduce/{code}")
+    public String productIntroduce(HttpServletRequest request,@PathVariable("code") String code,UserNeed userNeed){
+
+        //获得所有分类信息
+        List<Category> list = iCategoryService.getListByCode(code);
+        System.out.println(list.size());
+        request.setAttribute("cateList",list);
         return "openProduct/product_introduce";
     }
 

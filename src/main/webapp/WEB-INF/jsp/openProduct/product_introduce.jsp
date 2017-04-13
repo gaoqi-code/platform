@@ -447,6 +447,27 @@
 
 
             <div class="search-select">
+                <input type="hidden" id="categoryVal" value="3-">
+                <ul>
+                <c:forEach items="${cateList}" var="c" >
+                    <c:if test="${c.level == 2}">
+                    <li>
+                        <h3>${c.name}：</h3>
+                        <div class="selectSpan" id="categorySearch">
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span>
+                            <c:forEach items="${cateList}" var="ca" >
+                                <c:if test="${ca.level == 3}">
+                                    <c:if test="${fn:indexOf(ca.code, c.code)==0}">
+                                        <span><a href="javascript:void(0);" code="3-">${ca.name}</a></span>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    </c:if>
+                </c:forEach>
+                </ul>
                 <ul>
                     <li>
                         <h3>公司注册：</h3>
