@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!doctype html>
 <html>
 <head>
+    <%@ include file="/common/global.jsp" %>
     <base href="<%=basePath%>">
     <title>企巴巴</title>
     <meta name="keywords" content="企巴巴, 金融,顾问,法律">
@@ -902,185 +899,15 @@
         </div>
 
         <%--右侧部分--%>
-        <div class="box">
-            <h2>实名供应商</h2>
-            <div class="bd clearfix">
-                <div class="pic"><img width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1489/0315/17/userface_7422797.jpg!normal" alt="深圳阳光奥美集团 刘先生" title="深圳阳光奥美集团 刘先生"></div>
-                <div class="info">
-                    <h3>        	<a href="http://www.renhe.cn/viewprofile.html?sid=d0b5d662d0aa932e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7422797);" onmouseout="Renhe.tipsMemberHidePopup();">刘燕峰</a>
-                        <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a><span class="ml10 f12">广东 深圳</span>
-                        <p><span class="green">[供应服务]</span>
-                            <a class="gray" href="http://www.renhe.cn/offer/1584024.html">基金销售牌照</a>
-                        </p>
-                    </h3>
-                </div>
-            </div>
-            <div class="bd clearfix">
-                <div class="pic"><img width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1418/2896/81/userface_6614431.jpg!normal" alt="香港环宇会计秘书有限公司 谭女士" title="香港环宇会计秘书有限公司 谭女士"></div>
-                <div class="info">
-                    <h3>        	<a href="http://www.renhe.cn/viewprofile.html?sid=139297b6427f11df" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6614431);" onmouseout="Renhe.tipsMemberHidePopup();">谭翠梅</a>
-                        <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a><span class="ml10 f12">广东 深圳</span>
-                        <p><span class="green">[供应产品]</span>
-                            <a class="gray" href="http://www.renhe.cn/offer/1583120.html">转让现成香港公司，转让500万金融投资公司，现卖现用</a>
-                        </p>
-                    </h3>
-                </div>
-            </div>
-            <div class="bd clearfix">
-                <div class="pic"><img width="50" height="50" src="http://u1.renhe.cn/userface/userdefinednew/1477/0270/65/userface_6204502.jpg!normal" alt="中企万业（北京）投资管理有限公司 张先生" title="中企万业（北京）投资管理有限公司 张先生"></div>
-                <div class="info">
-                    <h3>        	<a href="http://www.renhe.cn/viewprofile.html?sid=4721e6c18880c64e" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 6204502);" onmouseout="Renhe.tipsMemberHidePopup();">张海鹏</a>
-                        <a href="http://www.renhe.cn/vip" target="_blank"><s class="vip16" title="vip会员"></s><s class="year1" title="第1年"></s></a><span class="ml10 f12">北京</span>
-                        <p><span class="green">[供应服务]</span>
-                            <a class="gray" href="http://www.renhe.cn/offer/1583114.html">转让带备案基金公司备案发过产品</a>
-                        </p>
-                    </h3>
-                </div>
-            </div>
-            <div class="bd clearfix">
-                <div class="pic"><img width="50" height="50" src="http://u2.renhe.cn/userface/nameuserface/75/62/538.jpg!normal" alt="上海皖商科技有限公司 王先生" title="上海皖商科技有限公司 王先生"></div>
-                <div class="info">
-                    <h3>        	<a href="http://www.renhe.cn/viewprofile.html?sid=df654a387e043e17" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7562538);" onmouseout="Renhe.tipsMemberHidePopup();">王森林</a>
-                        <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a><span class="ml10 f12">上海</span>
-                        <p><span class="orange">[需求服务]</span>
-                            <a class="gray" href="http://www.renhe.cn/offer/1583895.html">代理记账、投资基金、基金备案、美元验资</a></p>
-                    </h3>
-                </div>
-            </div>
-            <div class="bd clearfix">
-                <div class="pic"><img width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1486/6194/44/userface_2696350.jpg!normal" alt="上海华治集团 宣先生" title="上海华治集团 宣先生"></div>
-                <div class="info">
-                    <h3>        	<a href="http://www.renhe.cn/viewprofile.html?sid=f0de71252a27e01a" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 2696350);" onmouseout="Renhe.tipsMemberHidePopup();">宣彪</a>
-                        <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a><span class="ml10 f12">上海</span>
-                        <p><span class="orange">[需求产品]</span>
-                            <a class="gray" href="http://www.renhe.cn/offer/1582444.html">东欧平台上线需要领筹合作</a></p>
-                    </h3>
-                </div>
-            </div>
-            <div class="bd clearfix">
-                <div class="pic"><img width="50" height="50" src="http://renheuserfaceimages.b0.upaiyun.com/userface/userdefinednew/1484/2736/78/userface_7546810.jpg!normal" alt="上海黄金交易所 卓先生" title="上海黄金交易所 卓先生"></div>
-                <div class="info">
-                    <h3>        	<a href="http://www.renhe.cn/viewprofile.html?sid=ddb32bb2e0a054f5" target="_blank" onmouseover="Renhe.tipsMemberPopup($j(this).offset().top, $j(this).offset().left, $j(this).width(), 7546810);" onmouseout="Renhe.tipsMemberHidePopup();">卓庆文</a>
-                        <a href="http://www.renhe.cn/nameauth.html" target="_blank"><b class="realname_s" title="已通过实名认证"></b></a><span class="ml10 f12">福建 三明</span>
-                        <p><span class="blue">[合作服务]</span>
-                            <a class="gray" href="http://www.renhe.cn/offer/1582292.html">甘肃西瑞大宗建仓一手可以返佣多少.</a></p>
-                    </h3>
-                </div>
-            </div>
+        <div class="box" id="recommendAdviser">
+
         </div>
 
     </div>
 
     <div class="hot-provider jmod-hot-provider">
-        <div class="layout clearfix">
-            <div class="mod-boxhd"><h3 class="mod-boxhd-tit">热门服务商</h3></div>
-            <div class="mod-boxbd clearfix">
+        <div class="layout clearfix" id="serviceProvider">
 
-                <div class="card ml0">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=10021" target="_blank" _stat_click_id="7_10"><img src="http://p.qlogo.cn/zc_icon/0/eda4fbadd80dca63454ffd581cabe18a/0" class="logo"></a>
-                        <h5 title="点米科技"><a href="/seller/corpinfo?c_id=10021" target="_blank" _stat_click_id="7_10">点米科技</a><a class="lv" href="/scenter/growth" target="_blank">Lv5</a></h5>
-                        <p>金融服务<em>张三</em></p>
-                        <span class="cate-tag">社保服务</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="公司一句话介绍（新加了一个这了段）">“公司一句话介绍（新加了一个这了段）”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=10021" class="btn" _stat_click_id="7_10">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=192043" target="_blank" _stat_click_id="7_11"><img src="http://p.qlogo.cn/zc_icon/0/817442df6df1e429ab90987bfba98dae/0" class="logo"></a>
-                        <h5 title="快法务"><a href="/seller/corpinfo?c_id=192043" target="_blank" _stat_click_id="7_11">快法务</a><a class="lv" href="/scenter/growth" target="_blank">Lv5</a></h5>
-                        <p>质量<em>4.7</em>速度<em>4.6</em>态度<em>4.7</em></p>
-                        <span class="cate-tag">法律咨询</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="一站式创业法律服务">“一站式创业法律服务”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=192043" class="btn" _stat_click_id="7_11">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=286679" target="_blank" _stat_click_id="7_12"><img src="http://p.qlogo.cn/zc_icon/0/cea5fc96a89eeb81576946ad5fee4470/0" class="logo"></a>
-                        <h5 title="神州顺利办"><a href="/seller/corpinfo?c_id=286679" target="_blank" _stat_click_id="7_12">神州顺利办</a><a class="lv" href="/scenter/growth" target="_blank">Lv8</a></h5>
-                        <p>质量<em>4.6</em>速度<em>4.6</em>态度<em>4.7</em></p>
-                        <span class="cate-tag">工商注册</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="无忧企业服务，上市公司专业品质">“无忧企业服务，上市公司专业品质”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=286679" class="btn" _stat_click_id="7_12">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=280779" target="_blank" _stat_click_id="7_13"><img src="http://p.qlogo.cn/zc_icon/0/dbbc99498ff6da48ff4766691e1a0d85/0" class="logo"></a>
-                        <h5 title="多有米"><a href="/seller/corpinfo?c_id=280779" target="_blank" _stat_click_id="7_13">多有米</a><a class="lv" href="/scenter/growth" target="_blank">Lv5</a></h5>
-                        <p>质量<em>4.3</em>速度<em>4.3</em>态度<em>4.3</em></p>
-                        <span class="cate-tag">财税服务</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="互联网+时代财税行业领跑者">“互联网+时代财税行业领跑者”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=280779" class="btn" _stat_click_id="7_13">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ml0">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=170268" target="_blank" _stat_click_id="7_14"><img src="http://p.qlogo.cn/zc_icon/0/f36d4194d095c6601cc0737ed3823d41/0" class="logo"></a>
-                        <h5 title="知果果"><a href="/seller/corpinfo?c_id=170268" target="_blank" _stat_click_id="7_14">知果果</a><a class="lv" href="/scenter/growth" target="_blank">Lv7</a></h5>
-                        <p>质量<em>4.6</em>速度<em>4.5</em>态度<em>4.6</em></p>
-                        <span class="cate-tag">知识产权</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="重新定义知识产权的价值">“重新定义知识产权的价值”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=170268" class="btn" _stat_click_id="7_14">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=284397" target="_blank" _stat_click_id="7_15"><img src="http://p.qlogo.cn/zc_icon/0/53fb27b3e40dbce98eada0ffcaf444ab/0" class="logo"></a>
-                        <h5 title="倍智"><a href="/seller/corpinfo?c_id=284397" target="_blank" _stat_click_id="7_15">倍智</a><a class="lv" href="/scenter/growth" target="_blank">Lv8</a></h5>
-                        <p>质量<em>4.4</em>速度<em>4.5</em>态度<em>4.5</em></p>
-                        <span class="cate-tag">人力资源</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="人岗匹配专家">“人岗匹配专家”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=284397" class="btn" _stat_click_id="7_15">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=304188" target="_blank" _stat_click_id="7_16"><img src="http://p.qlogo.cn/zc_icon/0/5c74fc8a07412a179829a0d6ff04650c/0" class="logo"></a>
-                        <h5 title="中细软"><a href="/seller/corpinfo?c_id=304188" target="_blank" _stat_click_id="7_16">中细软</a><a class="lv" href="/scenter/growth" target="_blank">Lv4</a></h5>
-                        <p>质量<em>5.0</em>速度<em>5.0</em>态度<em>5.0</em></p>
-                        <span class="cate-tag">知识产权</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="中国商标注册专业服务机构">“中国商标注册专业服务机构”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=304188" class="btn" _stat_click_id="7_16">进入店铺</a>
-                    </div>
-                </div>
-
-                <div class="card ">
-                    <div class="top">
-                        <a href="/seller/corpinfo?c_id=292346" target="_blank" _stat_click_id="7_17"><img src="http://p.qlogo.cn/zc_icon/0/204383ac1335c19b01a6a28dd21e7e50/0" class="logo"></a>
-                        <h5 title="小桔微信工作室"><a href="/seller/corpinfo?c_id=292346" target="_blank" _stat_click_id="7_17">小桔微信工作室</a><a class="lv" href="/scenter/growth" target="_blank">Lv4</a></h5>
-                        <p>质量<em>5.0</em>速度<em>5.0</em>态度<em>5.0</em></p>
-                        <span class="cate-tag">微信开发</span>
-                    </div>
-                    <div class="btm">
-                        <p class="des" title="企业微信公众平台一站式服务">“企业微信公众平台一站式服务”</p>
-                        <a target="_blank" href="/seller/corpinfo?c_id=292346" class="btn" _stat_click_id="7_17">进入店铺</a>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 <div class="clear"></div>
@@ -1244,7 +1071,52 @@
 
         paging();
         paging2();
+        recommendAdviser();
+        serviceProvider();
+//        recommendArticle();
     });
+
+    function recommendAdviser(){
+        $.ajax({
+            type: "POST",
+            url: "/adviserRecommend/list.html",
+            data: {
+                currentPage:1,
+                pageSize : 6,
+                type:"adviser"
+            },
+            success: function(data){
+                $("#recommendAdviser").html(data);
+            }
+        });
+    };
+    function serviceProvider(){
+        $.ajax({
+            type: "POST",
+            url: "/adviserRecommend/list.html",
+            data: {
+                currentPage:1,
+                pageSize : 6,
+                type:"serviceProvider"
+            },
+            success: function(data){
+                $("#serviceProvider").html(data);
+            }
+        });
+    };
+    function recommendArticle(){
+        $.ajax({
+            type: "POST",
+            url: "/adviserRecommend/list.html",
+            data: {
+                currentPage:1,
+                pageSize : 8
+            },
+            success: function(data){
+                $("#recommendAdviser").html(data);
+            }
+        });
+    };
 </script>
 </body>
 </html>

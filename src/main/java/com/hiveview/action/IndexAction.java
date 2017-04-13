@@ -36,11 +36,6 @@ public class IndexAction {
 		return mav;
 	}
 
-	@RequestMapping(value="/pass_find")
-	public ModelAndView passFind(HttpServletRequest request, ModelAndView mav) {
-		mav.setViewName("password_find");
-		return mav;
-	}
 
     @RequestMapping(value="/pass_update")
     public ModelAndView passUpdate(HttpServletRequest request, ModelAndView mav) {

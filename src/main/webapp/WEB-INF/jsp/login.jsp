@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-                    <div class="forget_m"><a href="pass_find.html">忘记密码？</a></div>
+                    <div class="forget_m"><a href="/retrieveAccount/passFind.html">忘记密码？</a></div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             <button class="layui-btn" lay-submit="" lay-filter="demo1">登录</button>

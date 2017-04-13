@@ -103,6 +103,7 @@
 <script>
     $(function () {
         var layer;
+        var verifyCode = new GVerify("yzm");
         layui.use(['form'], function(){
             var form = layui.form();
                layer = layui.layer;
@@ -111,7 +112,7 @@
             form.verify({
                 pass: [/(.+){6,12}$/, '密码必须6到12位']
             });
-            var verifyCode = new GVerify("yzm");
+
             //监听提交
             form.on('submit(demo1)', function(data){
                 var res = verifyCode.validate($("#yzmValue").val());
@@ -205,6 +206,16 @@
             if(!(/^1[34578]\d{9}$/.test(phoneNumber))){
                 layer.msg("手机号码有误，请重填");
                 return false;
+            }
+            var code = $("#yzmValue").val();
+            if(!code) {
+                layer.msg("请先填写验证码!");
+                return;
+            }
+            var res = verifyCode.validate(code);
+            if(!res){
+                layer.msg("验证码错误!");
+                return;
             }
             setTime($(this));
         });

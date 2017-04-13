@@ -11,10 +11,16 @@ public class Test {
 //        System.out.println(b.length);
 
 //        System.out.printf(b[0]);
-
-        Object a= null;
-        Integer b = (Integer)a;
+        Long b = 6666666666666666666L;
+        chage(b);
         System.out.println(b);
+//        String
+//                StringBuffer
+        Long[] c = new Long[1];
+
+    }
+    private  static void chage(Long a){
+        a = 8888888888888888888L;
     }
 }
 

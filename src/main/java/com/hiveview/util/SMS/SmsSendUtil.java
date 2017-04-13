@@ -100,19 +100,19 @@ public class SmsSendUtil {
                         verifyTime.add(Calendar.MINUTE, SmsUtil.TIME_OUT);//验证时间 加十分钟
                         if (currentTime.before(verifyTime)) {//当前在验证时间加十分钟之前说明没超时
                             flag = true;
-                            session.setAttribute(SmsUtil.SendType.REGISTER_SMS.getVal(), null);//验证完后把验证码清空
+                            session.setAttribute(type, null);//验证完后把验证码清空
                         }else {
-                            message = "验证码已超时！";
+                            message = "短信验证码已超时！";
                         }
                     }
                 }else {
-                    message = "验证码错误！";
+                    message = "短信验证码错误！";
                 }
             } else {
                 message = "验证电话错误！";
             }
         } else {
-            message = "请发送验证码！";
+            message = "请发送短信验证码！";
         }
         result.put("flag", flag);
         result.put("msg", message);
