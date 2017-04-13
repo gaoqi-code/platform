@@ -19,6 +19,18 @@
         .login_left_content{width: 440px;}
         .login_right{text-align: center;}
         .login_right_company{margin:25px 0px;}
+        .yzm_but{position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 110px;
+            height: 32px;
+            border: none;
+            background: #f2f2f2;
+            color: #333;
+            padding: 0;
+            line-height: 32px;
+            text-align: center;
+            cursor: pointer;}
     </style>
 </head>
 <body>
@@ -35,7 +47,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" value="15765056585" id="phoneNumber" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="" id="phoneNumber" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -47,21 +59,21 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
-                        <div class="layui-input-inline">
+                        <div class="layui-input-block">
                             <input type="tel" id="verifyCode" name="msgCode" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
-                            <input type="button" id="sendSms" value="免费获取验证码" />
+                            <a id="sendSms" class="yzm_but">获取验证码</a>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="123456" name="password"  lay-verify="required"  placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="" name="password"  lay-verify="required"  placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">确认密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" value="123456" name="password2" lay-verify="required"  placeholder="请重复上面密码" autocomplete="off" class="layui-input">
+                            <input type="password" value="" name="password2" lay-verify="required"  placeholder="请重复上面密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -172,12 +184,12 @@
             }
             if (countdown == 0) {
                 $obj.attr("disabled", false);
-                $obj.val("免费获取验证码");
+                $obj.html("获取验证码");
                 countdown = time;
                 return;
             } else {
                 $obj.attr("disabled", true);
-                $obj.val("重新发送(" + countdown + ")");
+                $obj.html("重新发送(" + countdown + ")");
                 countdown--;
             }
             setTimeout(function() {
