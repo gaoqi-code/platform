@@ -10,6 +10,7 @@
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="/js/jquery-1.9.1.js" charset="utf-8"></script>
+<script src="/plugins/layui/layui.js" charset="utf-8"></script>
 
 
 

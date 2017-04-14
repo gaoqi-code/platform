@@ -19,7 +19,7 @@
                     <p>${member.companyName}&nbsp;
                         <c:if test="${member.level == 1}">普通顾问</c:if>
                         <c:if test="${member.level == 2}">金牌顾问</c:if>
-                        &nbsp;执行${member.workAge}年</p>
+                        &nbsp;执业${member.workAge}年</p>
                     <p style="color: #999;">个人简介：
                         <c:if test="${fn:length(member.description)>100}">
                             ${fn:substring(member.description,0,100)}...

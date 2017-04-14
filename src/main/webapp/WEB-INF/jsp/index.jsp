@@ -694,7 +694,7 @@
                         <a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100040" target="_blank" _stat_click_id="8_00"><p class="tit" title="有限责任公司注册">有限责任公司注册<span class="tag-discount">限时特惠</span></p></a>
                         <p class="des" title="一站式开公司服务">一站式开公司服务</p>
                         <p class="price"><a href="javascript:void(0);">¥500<small>起</small></a></p>
-                        <a href="/product/productIntroduce.html" target="_blank" class="btn" _stat_click_id="8_00">立即查看</a>
+                        <a href="/product/productIntroduce/2-.html" target="_blank" class="btn" _stat_click_id="8_00">立即查看</a>
                     </div>
                     <div class="prd-list">
                         <div class="prd bdr">
@@ -914,66 +914,9 @@
 
 
     <%--最闻部分--%>
-    <div class="media-new-list" style="display: block;">
+    <div class="media-new-list" style="display: block;" id="recommendArticle">
 
-        <div class="mod-boxhd"><h3 class="mod-boxhd-tit">新闻部分</h3></div>
 
-        <a href="http://www.xiaodingwang.com/newsWiki/743.htm" class="business-new-big" target="_blank">
-            <img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170314104337_132.jpg">
-            <p>【重磅项目签约】再度提升顶呱呱集团品牌影响力！</p>
-        </a>
-
-        <ul class="media-report">
-
-            <li>
-                <a href="http://www.xiaodingwang.com/newsWiki/766.htm" target="_blank">
-                    <div class="report-img"><img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170314102808_20170302134312_20170302120200197.png"></div>
-                    <div class="report-title">武侯区委领导会见顶呱呱集团董事长黄建明先生</div>
-                    <i></i>
-                    <p class="report-txt">成都市武侯区区委副书记、区长林丽约见了成都顶呱呱集团董事长黄建明先生，双方就企业在武侯区投资发展事宜进行了深度的沟通和交流。</p>
-                    <div class="report-time">
-                        <span>2017-3-20</span>
-                        <span>
-										<i class="eye-icon"></i>
-                                         765
-									</span>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="http://www.xiaodingwang.com/newsWiki/909.htm" target="_blank">
-                    <div class="report-img"><img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170313190231_20170313104340_11.jpg"></div>
-                    <div class="report-title">小顶家装盛大开业 活动现场人气火爆</div>
-                    <i></i>
-                    <p class="report-txt">2017年3月12日，这是一个值得纪念的日子，顶呱呱集团旗下“小顶家装”在成都天紫界大厦中心广场正式开业了！</p>
-                    <div class="report-time">
-                        <span>2017-3-20</span>
-                        <span>
-										<i class="eye-icon"></i>
-                                         5346
-									</span>
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="http://www.xiaodingwang.com/newsWiki/959.htm" target="_blank">
-                    <div class="report-img"><img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170330153231_20170317165419_1`2.png"></div>
-                    <div class="report-title">顶呱呱校园行启动 校企合作成功签约</div>
-                    <i></i>
-                    <p class="report-txt">2017年3月16日，顶呱呱集团与西南交通大学希望学院的校企合作正式签约了！</p>
-                    <div class="report-time">
-                        <span>2017-3-20</span>
-                        <span>
-										<i class="eye-icon"></i>
-                                         253
-									</span>
-                    </div>
-                </a>
-            </li>
-
-        </ul>
     </div>
 </div>
 <jsp:include page="common/bottom.jsp"></jsp:include>
@@ -1073,7 +1016,7 @@
         paging2();
         recommendAdviser();
         serviceProvider();
-//        recommendArticle();
+        recommendArticle();
     });
 
     function recommendAdviser(){
@@ -1107,13 +1050,9 @@
     function recommendArticle(){
         $.ajax({
             type: "POST",
-            url: "/adviserRecommend/list.html",
-            data: {
-                currentPage:1,
-                pageSize : 8
-            },
+            url: "/article/indexPage.html",
             success: function(data){
-                $("#recommendAdviser").html(data);
+                $("#recommendArticle").html(data);
             }
         });
     };

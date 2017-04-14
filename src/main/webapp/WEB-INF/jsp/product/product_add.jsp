@@ -169,7 +169,7 @@
             ,method: 'post' //上传接口的http类型
             ,success: function(data){
                 if(data.flag) {
-                    var path = "<%=basePath%>"+data.data.src;
+                    var path = data.data.src;
                     LAY_demo_upload.src = path;
                     $("#picture").val(path);
                 }else {

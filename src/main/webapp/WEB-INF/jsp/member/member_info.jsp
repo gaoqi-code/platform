@@ -222,7 +222,7 @@
             ,success: function(data){
                 console.log(data);
                 if(data.flag) {
-                    var path = "<%=basePath%>"+data.data.src;
+                    var path = data.data.src;
                     LAY_demo_upload.src = path;
                     $("#headPortrait").val(path);
                 }else {

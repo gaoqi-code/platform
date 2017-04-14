@@ -48,6 +48,7 @@ public class ProductAction extends BaseController{
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("products",products);
 		mav.setViewName("product/paging");
+
 		return mav;
 	}
 

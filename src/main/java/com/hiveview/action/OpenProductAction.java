@@ -4,13 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
-import com.hiveview.entity.Category;
-import com.hiveview.entity.Paging;
-import com.hiveview.entity.Product;
-import com.hiveview.entity.UserNeed;
+import com.hiveview.entity.*;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IProductService;
+import org.apache.commons.lang.StringUtils;
 import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -103,12 +101,31 @@ public class OpenProductAction extends BaseController{
 
     @RequestMapping(value="/productIntroduce/{code}")
     public String productIntroduce(HttpServletRequest request,@PathVariable("code") String code,UserNeed userNeed){
-
         //获得所有分类信息
         List<Category> list = iCategoryService.getListByCode(code);
         System.out.println(list.size());
         request.setAttribute("cateList",list);
+        request.setAttribute("categoryCode",code);
         return "openProduct/product_introduce";
+    }
+
+
+    @RequestMapping(value="/productIntroduce")
+    public ModelAndView serviceProvider(HttpServletRequest request, ModelAndView mav) {
+        Paging paging = super.getPaging(request);
+        Product product = new Product();
+        String classCode = request.getParameter("classCode");
+        if (StringUtil.isNotEmpty(classCode)) {
+            product.setClassCode(classCode);
+        }
+        product.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        List<Product> products =  productService.getProductIntroduce(product);
+        paging.setTotalPages(page.getPages());
+        mav.getModel().put("paging",paging);
+        mav.getModel().put("products",products);
+        mav.setViewName("openProduct/productIntroducePage");
+        return mav;
     }
 
 }

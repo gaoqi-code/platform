@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.hiveview.entity.MemberRecommend;
 import com.hiveview.entity.Paging;
 import com.hiveview.service.IMemberRecommendService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,5 @@ public class AdviserRecommendAction extends BaseController {
         mav.setViewName(page);
         return mav;
     }
-
 
 }
