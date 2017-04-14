@@ -20,6 +20,18 @@
         .login_left_content{width: 440px;}
         .login_right{text-align: center;}
         .login_right_company{margin:25px 0px;}
+        .yzm_but{position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 110px;
+            height: 32px;
+            border: none;
+            background: #f2f2f2;
+            color: #333;
+            padding: 0;
+            line-height: 32px;
+            text-align: center;
+            cursor: pointer;}
     </style>
 </head>
 <body>
@@ -49,9 +61,10 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
-                        <div class="layui-input-inline">
+                        <div class="layui-input-block">
                             <input type="tel" id="verifyCode" name="msgCode" lay-verify="required" placeholder="请输入短信验证码" autocomplete="off" class="layui-input">
-                            <input type="button" id="sendSms" value="免费获取验证码" />
+                            <%--<input type="button" id="sendSms" value="免费获取验证码" />--%>
+                            <a id="sendSms" class="yzm_but">获取验证码</a>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -66,8 +79,8 @@
         <div class="login_right">
             <div style="height: 40px;"></div>
             <img src="./images/logo_h.png">
-            <div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>
-            <button class="layui-btn layui-btn-big">商家入驻</button>
+            <%--<div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>--%>
+            <%--<button class="layui-btn layui-btn-big">商家入驻</button>--%>
         </div>
         <div class="clear"></div>
 
