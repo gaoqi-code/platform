@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.hiveview.entity.Attribute;
 import com.hiveview.entity.Category;
 import com.hiveview.service.ICategoryService;
+import org.apache.commons.lang3.StringUtils;
 import utils.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/member/category")
+@RequestMapping("/category")
 public class CategoryAction {
 
     @Autowired
@@ -50,6 +51,15 @@ public class CategoryAction {
         }
         return attributes;
     }
-
+    @ResponseBody
+    @RequestMapping(value="/getCategory")
+    public Category getCategory(HttpServletRequest request) {
+        String classCode = request.getParameter("classCode");
+        Category category = null;
+        if (StringUtils.isNotEmpty(classCode)) {
+             category = categoryService.getCategoryByCode(classCode);
+        }
+        return category;
+    }
 
 }

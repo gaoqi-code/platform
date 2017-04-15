@@ -169,7 +169,7 @@
             if(level != "threeLevel") {
                 $.ajax({
                     type: "POST",
-                    url: "/member/category/getSonCategory.json",
+                    url: "/category/getSonCategory.json",
                     data: {parentId:selectVal},
                     dataType: "json",
                     async:false,
@@ -195,7 +195,7 @@
             }
             $.ajax({
                 type: "POST",
-                url: "/member/category/getAttribute.json",
+                url: "/category/getAttribute.json",
                 data: {categoryId:selectVal},
                 dataType: "json",
                 success: function (data) {

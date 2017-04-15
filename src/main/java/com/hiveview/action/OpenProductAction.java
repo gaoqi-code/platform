@@ -112,6 +112,7 @@ public class OpenProductAction extends BaseController{
 
     @RequestMapping(value="/productIntroduce")
     public ModelAndView serviceProvider(HttpServletRequest request, ModelAndView mav) {
+        Map<String, Object> model = mav.getModel();
         Paging paging = super.getPaging(request);
         Product product = new Product();
         String classCode = request.getParameter("classCode");
@@ -122,8 +123,8 @@ public class OpenProductAction extends BaseController{
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
         List<Product> products =  productService.getProductIntroduce(product);
         paging.setTotalPages(page.getPages());
-        mav.getModel().put("paging",paging);
-        mav.getModel().put("products",products);
+        model.put("paging",paging);
+        model.put("products",products);
         mav.setViewName("openProduct/productIntroducePage");
         return mav;
     }
