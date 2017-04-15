@@ -628,8 +628,8 @@
 <div class="promo">
     <div class="layout clearfix content">
         <%--<a href="/cmdty/detail?csId=13216" target="_blank" class="promo-card" _stat_click_id="5_10">&nbsp;</a>--%>
-        <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="http://p.qpic.cn/zc_pic/0/7e41cb2673f1459c245d04a43e75c9e314815479845626/0"></a>
-        <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_11"><img src="http://p.qpic.cn/zc_pic/0/0eba100cd32cca46a47cd7658e006650148154808028/0"></a>
+        <a href="/product/detail/22.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="http://p.qpic.cn/zc_pic/0/7e41cb2673f1459c245d04a43e75c9e314815479845626/0"></a>
+        <a href="/product/detail/23.html" target="_blank" class="promo-card" _stat_click_id="5_11"><img src="http://p.qpic.cn/zc_pic/0/0eba100cd32cca46a47cd7658e006650148154808028/0"></a>
         <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_12"><img src="http://p.qpic.cn/zc_pic/0/5d796bbd57da739165489a75fa6800b914815481289252/0"></a>
         <div class="news">
             <h6>平台最新动态</h6>
@@ -644,8 +644,8 @@
 <div class="content">
     <div class="notice">
         <p class="noticeGG">最新公告:</p>
-        <p class="noticeGG_content">[3.03]企巴巴需求量过10万条 <span class="redClass">new</span></p>
-        <p class="noticeGG_content">[3.03]企巴巴需求量过10万条 <span class="redClass">new</span></p>
+        <p class="noticeGG_content"><a href="/article/detail/1.html">[3.03]企巴巴需求量过10万条</a> <span class="redClass">new</span></p>
+        <p class="noticeGG_content"><a href="/article/detail/1.html">[3.03]企巴巴需求量过10万条</a> <span class="redClass">new</span></p>
         <div class="clear"></div>
     </div>
     <div class="main_business">
@@ -729,7 +729,7 @@
                         <a href="http://c.qq.com/ListSku/view?firstCateId=100143&amp;thirdCateId=100069" target="_blank" _stat_click_id="8_10"><p class="tit" title="批量招聘">批量招聘<span class="tag-discount">限时特惠</span></p></a>
                         <p class="des" title="捕获企业高端人才">捕获企业高端人才</p>
                         <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100143&amp;thirdCateId=100069" target="_blank" _stat_click_id="8_10">¥1000<small>起</small></a></p>
-                        <a href="http://c.qq.com/ListSku/view?firstCateId=100143&amp;thirdCateId=100069" target="_blank" class="btn" _stat_click_id="8_10">立即查看</a>
+                        <a href="/product/productIntroduce/1-.html" target="_blank" class="btn" _stat_click_id="8_10">立即查看</a>
                     </div>
 
 
@@ -788,7 +788,7 @@
                         <a href="http://c.qq.com/ListSku/view?firstCateId=100002&amp;thirdCateId=100090" target="_blank" _stat_click_id="8_20"><p class="tit" title="软件著作权">软件著作权<span class="tag-discount">限时特惠</span></p></a>
                         <p class="des" title="软件产品基础必备">软件产品基础必备</p>
                         <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100002&amp;thirdCateId=100090" target="_blank" _stat_click_id="8_20">¥100<small>起</small></a></p>
-                        <a href="http://c.qq.com/ListSku/view?firstCateId=100002&amp;thirdCateId=100090" target="_blank" class="btn" _stat_click_id="8_20">立即查看</a>
+                        <a href="/product/productIntroduce/3-.html" target="_blank" class="btn" _stat_click_id="8_20">立即查看</a>
                     </div>
 
 

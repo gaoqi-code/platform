@@ -53,7 +53,7 @@
             </c:forEach>
             <c:if test="${empty products}">
                 <tr>
-                    <td colspan="4" style="text-align: center;">您还没有创建产品！</td>
+                    <td colspan="6" style="text-align: center;">您还没有创建产品！</td>
                 </tr>
             </c:if>
     </tbody>
