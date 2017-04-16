@@ -52,7 +52,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">性别</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="sex" value="male" title="男"  <c:if test="${member.sex == 'male'}">checked=""</c:if> >
+                        <input type="radio"   name="sex" value="male" title="男"  <c:if test="${member.sex == 'male'}">checked=""</c:if> >
                         <input type="radio" name="sex" value="female" title="女" <c:if test="${member.sex == 'female'}">checked=""</c:if>>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>常用邮箱</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="email"  value="${member.email}"  placeholder="" autocomplete="off" class="layui-input">
+                        <input type="input" name="email" lay-verify="email"  value="${member.email}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -120,7 +120,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>顾问类型</label>
                     <div class="layui-input-inline">
-                        <select  lay-filter="oneLevel"  name="adviserType">
+                        <select  lay-filter="oneLevel" lay-verify="required"  name="adviserType">
                             <option value="">请选择</option>
                             <option value="1" <c:if test="${member.adviserType == '1-'}">selected=""</c:if> >金融服务</option>
                             <option value="2" <c:if test="${member.adviserType == '2-'}">selected=""</c:if> >企业服务</option>
@@ -138,9 +138,9 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>所属企业</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="input" lay-verify="required"   value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
+                        <input type="input" name="input"   value="${member.companyName}"  readonly disabled autocomplete="off" class="layui-input">
                     </div>
-                    <div class="layui-form-mid layui-word-aux"><a href="member/company/list.html" class="ta1">修改所属企业</a></div>
+                    <div class="layui-form-mid layui-word-aux"><a href="javascript:void(0);" id="updateCompany" class="ta1">修改所属企业</a></div>
                 </div>
                 </c:if>
                 <div class="layui-form-item layui-form-text">
@@ -163,114 +163,125 @@
 
 <script src="../plugins/layui/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['form', 'layedit', 'laydate','upload'], function(){
-        var form = layui.form()
-                ,layer = layui.layer
-                ,layedit = layui.layedit
-                ,laydate = layui.laydate;
+    $(function () {
+        layui.use(['form', 'layedit', 'laydate','upload'], function(){
+            var form = layui.form()
+                    ,layer = layui.layer
+                    ,layedit = layui.layedit
+                    ,laydate = layui.laydate;
 
-        //创建一个编辑器
-        var editIndex = layedit.build('LAY_demo_editor');
+            //创建一个编辑器
+            var editIndex = layedit.build('LAY_demo_editor');
 
-        //自定义验证规则
-        form.verify({
-            title: function(value){
-                if(value.length < 5){
-                    return '标题至少得5个字符啊';
-                }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,content: function(value){
-                layedit.sync(editIndex);
-            }
-        });
-
-
-        //监听提交
-        form.on('submit(demo1)', function(data){
-
-            var areaCode = $("#oneLevel").val()+"-";
-            var twoLevel = $("#twoLevel").val();
-            var threeLevel = $("#threeLevel").val();
-            if(twoLevel) {
-                areaCode += twoLevel + "-";
-            }
-            if(threeLevel) {
-                areaCode += threeLevel + "-";
-            }
-            $("#areaCode").val(areaCode);
-            $.ajax({
-                type: "POST",
-                url: "/member/updateInfo.json",
-                data: $("#memberInfo").serialize(),
-                dataType: "json",
-                success: function(data){
-                    if(data.flag) {
-                        layer.alert("保存成功！");
-                    }else {
-                        layer.alert("保存失败！");
+            //自定义验证规则
+            form.verify({
+                title: function(value){
+                    if(value.length < 5){
+                        return '标题至少得5个字符啊';
                     }
                 }
-            });
-            return false;
-        });
-
-        layui.upload({
-            url: '/fileUpload/upload.json'
-            ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
-            ,method: 'post' //上传接口的http类型
-            ,success: function(data){
-                console.log(data);
-                if(data.flag) {
-                    var path = data.data.src;
-                    LAY_demo_upload.src = path;
-                    $("#headPortrait").val(path);
-                }else {
-                    layer.alert("头像上传失败！");
+                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+                ,content: function(value){
+                    layedit.sync(editIndex);
                 }
-            }
-        });
+            });
 
-        form.on('select(selectArea)', function(data) {
-            var oldDom = data.elem;
-            var selectVal = data.value;
-            var areaCode = $("#areaCode1").val();
-            if (selectVal != areaCode) {
-                $("#areaCode1").val(selectVal)
-            } else {
-                return;
-            }
-            var level = $(oldDom).attr("id");
-            if (level != "threeLevel") {
+
+            //监听提交
+            form.on('submit(demo1)', function(data){
+
+                var areaCode = $("#oneLevel").val()+"-";
+                var twoLevel = $("#twoLevel").val();
+                var threeLevel = $("#threeLevel").val();
+                if(twoLevel) {
+                    areaCode += twoLevel + "-";
+                }
+                if(threeLevel) {
+                    areaCode += threeLevel + "-";
+                }
+                $("#areaCode").val(areaCode);
                 $.ajax({
                     type: "POST",
-                    url: "/area/getSonAreas.json",
-                    data: {parentId: selectVal},
+                    url: "/member/updateInfo.json",
+                    data: $("#memberInfo").serialize(),
                     dataType: "json",
-                    async: false,
-                    success: function (data) {
-                        if (data.flag) {
-                            var content = '<option value="">请选择</option>';
-                            var pleaseSelect = content;
-                            data.areas.forEach(function (item, index) {
-                                content += '<option value="' + item.id + '">' + item.name + '</option>';
-                            });
-                            if (level == "oneLevel") {
-                                $("#twoLevel").html(content);
-                                $("#threeLevel").html(pleaseSelect);
-                            } else {
-                                $("#threeLevel").html(content);
-                            }
-                            form.render('select');
-                        } else {
-                            layer.msg("区域加载失败！");
+                    success: function(data){
+                        if(data.flag) {
+                            layer.alert("保存成功！");
+                        }else {
+                            layer.alert("保存失败！");
                         }
                     }
                 });
-            }
+                return false;
+            });
+
+            layui.upload({
+                url: '/fileUpload/upload.json'
+                ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
+                ,method: 'post' //上传接口的http类型
+                ,success: function(data){
+                    console.log(data);
+                    if(data.flag) {
+                        var path = data.data.src;
+                        LAY_demo_upload.src = path;
+                        $("#headPortrait").val(path);
+                    }else {
+                        layer.alert("头像上传失败！");
+                    }
+                }
+            });
+
+            form.on('select(selectArea)', function(data) {
+                var oldDom = data.elem;
+                var selectVal = data.value;
+                var areaCode = $("#areaCode1").val();
+                if (selectVal != areaCode) {
+                    $("#areaCode1").val(selectVal)
+                } else {
+                    return;
+                }
+                var level = $(oldDom).attr("id");
+                if (level != "threeLevel") {
+                    $.ajax({
+                        type: "POST",
+                        url: "/area/getSonAreas.json",
+                        data: {parentId: selectVal},
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.flag) {
+                                var content = '<option value="">请选择</option>';
+                                var pleaseSelect = content;
+                                data.areas.forEach(function (item, index) {
+                                    content += '<option value="' + item.id + '">' + item.name + '</option>';
+                                });
+                                if (level == "oneLevel") {
+                                    $("#twoLevel").html(content);
+                                    $("#threeLevel").html(pleaseSelect);
+                                } else {
+                                    $("#threeLevel").html(content);
+                                }
+                                form.render('select');
+                            } else {
+                                layer.msg("区域加载失败！");
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("#updateCompany").click(function () {
+                layer.confirm("跳转到关联企业请先保存编辑的个人信息，否则将丢失！", {
+                    btn: ['确定','取消'] //按钮
+                }, function(index){
+                    location.href="member/company/list.html";
+                }, function(index){
+                });
+
+            });
         });
     });
-
 
 </script>
 

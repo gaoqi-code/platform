@@ -37,10 +37,10 @@ public class AccountAction extends BaseController{
         String oldPW =request.getParameter("oldPW");
         String newPW =request.getParameter("newPW");
         if (StringUtils.isNotEmpty(oldPW) && StringUtils.isNotEmpty(newPW)) {
-            oldPW = DigestUtils.md5DigestAsHex(oldPW.getBytes());
-            newPW = DigestUtils.md5DigestAsHex(newPW.getBytes());
             long memberId = super.getMemberId(request);
-            boolean flag = registerService.verifyPW(super.getMemberId(request), oldPW);
+            oldPW = DigestUtils.md5DigestAsHex((oldPW+memberId).getBytes());
+            newPW = DigestUtils.md5DigestAsHex((newPW+memberId).getBytes());
+            boolean flag = registerService.verifyPW(memberId, oldPW);
             if (flag) {
                 if (!(oldPW.equals(newPW))) {
                     Member member = new Member();

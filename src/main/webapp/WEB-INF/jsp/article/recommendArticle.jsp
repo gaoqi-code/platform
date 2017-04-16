@@ -9,7 +9,7 @@
 
 <c:if test="${articles != null}">
 
-<a href="http://www.xiaodingwang.com/newsWiki/743.htm" class="business-new-big" target="_blank">
+<a href="/article/detail/${articles[0].id}.html" class="business-new-big" target="_blank">
     <img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170314104337_132.jpg">
     <p>${articles[0].title}</p>
 </a>

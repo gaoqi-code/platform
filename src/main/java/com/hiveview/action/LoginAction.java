@@ -44,24 +44,28 @@ public class LoginAction {
 	@RequestMapping(value = "/login")
 	public Map<String ,Object> login(HttpServletRequest req, Member member) {
 		Map<String, Object> result = Maps.newHashMap();
-		Boolean flag;
-		String message;
+		Boolean flag = false;
+		String message = "用户名或密码错误！";
 		try {
-			member.setPassword(DigestUtils.md5DigestAsHex(member.getPassword().getBytes()));
-			Member currentUser = memberService.getMemberInfo(member);
-			if(null==currentUser){
-				flag = false;
-				message = "用户名或密码错误！";
-			}else{
-				HttpSession session = req.getSession();
-				session.setAttribute("currentUser", currentUser);
-				String sessionId = session.getId();
-				//登录用户的信息放到application
-				ServletContext application = session.getServletContext();
-				Msg.getInstance().put(currentUser.getId().toString(),sessionId);
-				application.setAttribute("sessionIdMap",Msg.sessionIdMap);
-				flag = true;
-				message = "登录成功！";
+			String mobile = member.getMobile();
+			if (mobile != null) {
+				Member tempMember= memberService.getMemberByMobile(mobile);
+				if (tempMember != null) {
+					String pass = member.getPassword()+ tempMember.getId();//密码加会员id加密
+					member.setPassword(DigestUtils.md5DigestAsHex(pass.getBytes()));
+					Member currentUser = memberService.getMemberInfo(member);
+					if( currentUser != null){
+						HttpSession session = req.getSession();
+						session.setAttribute("currentUser", currentUser);
+						String sessionId = session.getId();
+						//登录用户的信息放到application
+						ServletContext application = session.getServletContext();
+						Msg.getInstance().put(currentUser.getId().toString(),sessionId);
+						application.setAttribute("sessionIdMap",Msg.sessionIdMap);
+						flag = true;
+						message = "登录成功！";
+					}
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
