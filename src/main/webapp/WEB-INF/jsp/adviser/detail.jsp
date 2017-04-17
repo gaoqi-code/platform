@@ -406,90 +406,13 @@
             </div>
         </div>
         <div class="adviser_right">
-            <div class="liuyan">
-                <form class="layui-form order-form" action="">
-                    <div class="layui-form-item">
+            <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
 
-                        <div class="layui-input-inline">
-                            <select name="quiz1">
-                                <option value="">请选择省</option>
-                                <option value="浙江" selected="">企业服务</option>
-                                <option value="你的工号">金融服务</option>
-                                <option value="你最喜欢的老师">法律顾问</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" style="width: 100%;" lay-filter="demo1">立即提交</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="adviser_tj">
-                <div class="adviser_tj_title">顾问推荐</div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="/adviserRecommend/recommend.html">
+                <jsp:param value="201" name="plate"/>
+                <jsp:param value="1" name="currentPage"/>
+                <jsp:param value="3" name="pageSize"/>
+            </jsp:include>
         </div>
         <div class="clear"></div>
     </div>

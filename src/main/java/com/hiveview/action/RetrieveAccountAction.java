@@ -128,12 +128,15 @@ public class RetrieveAccountAction {
                 String passFindPhone = (String)session.getAttribute(PASS_FIND_KEY);
                 //验证修改密码的电话是否是通过的找回密码的手机号
                 if (StringUtils.isNotEmpty(passFindPhone) && phone.equals(passFindPhone)) {
-                        Member member = new Member();
+                    Member member = memberService.getMemberByMobile(passFindPhone);
+                    if (member != null) {
+                        password += member.getId();
                         member.setMobile(phone);
                         member.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
                         memberService.updateMemberByMobile(member);
                         session.setAttribute(PASS_FIND_KEY,null);//清空session
                         flag = true;
+                    }
                 }
             }
           return flag;
