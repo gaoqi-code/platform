@@ -18,7 +18,7 @@
     <div class="price">
         <p class="np"><i>¥</i>${productRecommend.realPrice}</p>
     </div>
-    <a _stat_click_id="8_513216" href="/productRecommend/detail/${productRecommend.productId}.html" target="_blank" class="btn">查看详情</a>
+    <a _stat_click_id="8_513216" href="/product/detail/${productRecommend.productId}.html" target="_blank" class="btn">查看详情</a>
 </div>
 </c:forEach>
 
