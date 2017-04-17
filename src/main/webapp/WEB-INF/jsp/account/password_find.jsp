@@ -154,28 +154,34 @@
                     }
                 });
             }
-
+            var smsClick = true;
             var time=60;//倒计时的秒数
-            var countdown=time
+            var countdown = time;
             function setTime($obj) {
                 if(countdown == time) {
+                    $obj.attr("disabled", true);
                     sendSmsCode();
                 }
                 if (countdown == 0) {
                     $obj.attr("disabled", false);
-                    $obj.val("免费获取验证码");
+                    $obj.html("获取验证码");
                     countdown = time;
+                    smsClick = true;
                     return;
                 } else {
-                    $obj.attr("disabled", true);
-                    $obj.val("重新发送(" + countdown + ")");
+                    $obj.html("重新发送(" + countdown + ")");
                     countdown--;
                 }
                 setTimeout(function() {
                     setTime($obj);
                 },1000)
             }
+
+
             $("#sendSms").click(function () {
+                if(!smsClick) {
+                    return;
+                }
                 var phoneNumber = $("#phoneNumber").val();
                 if(!phoneNumber){
                     layer.msg("电话号码不能为空");
@@ -195,10 +201,9 @@
                     layer.msg("验证码错误!");
                     return;
                 }
+                smsClick = false;
                 setTime($(this));
             });
-
-
         });
     });
 </script>
