@@ -66,24 +66,24 @@
                             <span><a href="/product/detail/22.html">车辆抵押贷款</a></span>
                             <span><a href="/product/detail/23.html">抵押贷款</a></span>
                             <span><a href="/product/detail/20.html">企业贷款</a></span>
-                            <span>小额贷款</span>
-                            <span>小额贷款</span>
-                            <span>小额贷款</span>
-                            <span>小额贷款</span>
+                            <span><a href="/product/detail/25.html">小额贷款</a></span>
                             <div class="clear nav-c2-fenge"></div>
                         </div>
                     </div>
                     <div class="nav-l2c">
                         <div class="nav-t2">法律顾问</div>
                         <div class="nav-c2">
-                            <span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span><span>找贷款</span>
+                            <span><a href="/product/detail/12.html">企业纠纷代理</a></span>
+                            <span><a href="/product/detail/14.html">工资赔偿</a></span>
+                            <span><a href="/product/detail/13.html">企业工资代理</a></span>
                             <div class="clear nav-c2-fenge"></div>
                         </div>
                     </div>
                     <div class="nav-l2c">
                         <div class="nav-t2">企业办证</div>
                         <div class="nav-c2">
-                            <span>房屋贷款</span><span>汽车贷款</span><span>快速贷款</span><span>小额贷款</span>
+                            <span><a href="/product/detail/26.html">商标注册</a></span><span><a href="/product/detail/24.html">国内普通商标注册</a></span><span><a href="/product/detail/16.html">公司股权变更</a></span><span><a href="/product/detail/17.html">个人独资企业注册
+</a></span>
                             <div class="clear nav-c2-fenge" style="border-bottom: 0px;"></div>
                         </div>
                     </div>
