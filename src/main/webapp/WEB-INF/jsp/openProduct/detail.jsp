@@ -27,6 +27,7 @@
         .pro_type span{border: 1px solid #ddd;padding:5px;}
         .product_left{width: 255px;margin-right:15px;float: left;}
         .product_right{float: left;width: 910px;}
+        ..layui-colla-content img{max-width: 880px;}
     </style>
 </head>
 <body>
