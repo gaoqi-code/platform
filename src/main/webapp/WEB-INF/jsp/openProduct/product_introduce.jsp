@@ -427,35 +427,20 @@
 
 
         <div class="main">
-            <div class="banner jmod_cate_banner">
-                <h3 class="banner--title">有限责任公司注册</h3>
-                <ul class="banner--list">
-
-                    <li class="banner--item">
-                        <p class="title">什么是有限责任公司注册？</p>
-                        <p class="pcontent">有限责任公司是指《中华人民共和国公司登记管理条例》规定登记注册，由五十个以下的股东出资设立，公司以全部资产对其债务承担责任的经济组织。</p>
-                    </li>
-
-
-                    <li class="banner--item">
-                        <p class="title">什么是五证合一？</p>
-                        <p class="pcontent">2016年10月1日起，国务院要求正式实施“五证合一、一照一码”，在更大范围、更深层次实现信息共享和业务协同，其中新增两证为社会保险登记证和统计登记证。</p>
-                    </li>
-
-                </ul>
+            <div class="banner jmod_cate_banner" id="categoryContent">
             </div>
 
 
             <input type="hidden" id="categoryCode" value="${categoryCode}">
+            <input type="hidden" id="parentCode" value="${categoryCode}">
             <div class="search-select">
 
                 <ul>
                 <c:forEach items="${cateList}" var="c" >
                     <c:if test="${c.level == 2}">
                     <li>
-                        <h3>${c.name}：</h3>
+                        <h3><a  name="categorySearch"  code="${c.code}" href="javascript:void(0);">${c.name}:</a></h3>
                         <div class="selectSpan">
-                            <span><a class="allSelect" name="categorySearch"  code="${c.code}" href="javascript:void(0);">全部</a></span>
                             <c:forEach items="${cateList}" var="ca" >
                                 <c:if test="${ca.level == 3}">
                                     <c:if test="${fn:indexOf(ca.code, c.code)==0}">
@@ -576,17 +561,52 @@
             //运行
             paging();
             hotProduct();
+            getCategoryContent();
             function selectStyle(thisObj) {
-                thisObj.parent().parent().find("a").removeClass("allSelect");
+                var pLi = thisObj.parent().parent().parent();
+                pLi.parent().find("a").removeClass("allSelect");
+//                pLi.siblings().find(".alla").addClass("allSelect");
                 thisObj.addClass("allSelect");
             }
             $("a[name='categorySearch']").click(function () {
                 var thisObj = $(this);
                 selectStyle(thisObj);
-                $("#categoryCode").val(thisObj.attr("code"));
+                var isAll = true;
+                var text = "";
+                $(".allSelect").each(function (i,val) {
+                    text = $(val).text();
+                    if(text != "全部") {
+                        isAll = false;
+                        return false;
+                    }
+                });
+                var code;
+                if(isAll) {
+                    code = $("#parentCode").val();
+                }else{
+                    code = thisObj.attr("code");
+                }
+                $("#categoryCode").val(code);
                 paging();
                 hotProduct();
+                getCategoryContent();
             });
+            function getCategoryContent() {
+                $.ajax({
+                    type: "POST",
+                    url: "/category/getCategory.json",
+                    data: {
+                        classCode:$("#categoryCode").val()
+                    },
+                    success: function(data){
+                        var content = "";
+                        if(data && data.content) {
+                            content = data.content;
+                        }
+                        $("#categoryContent").html(content);
+                    }
+                });
+            }
 
             function hotProduct() {
                 $.ajax({

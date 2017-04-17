@@ -11,11 +11,13 @@
             <div class="li-img"><img src="${member.headPortrait == null?'/images/portrait.jpg':member.headPortrait}"></div>
             <div class="adviser-list-info">
                 <div class="adviser-list-content">
-                    <p><span class="company">${member.name}</span>
+                    <p>
+                        <span class="company">${member.name}</span>
                         <c:if test="${member.adviserType == '1-'}">金融顾问</c:if>
                         <c:if test="${member.adviserType == '2-'}">企业顾问</c:if>
                         <c:if test="${member.adviserType == '3-'}">法律顾问</c:if>
-                        <img src="images/qq/qq.gif"></p>
+                        <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/qq/qq.gif" /></a>
+                    </p>
                     <p>${member.companyName}&nbsp;
                         <c:if test="${member.level == 1}">普通顾问</c:if>
                         <c:if test="${member.level == 2}">金牌顾问</c:if>

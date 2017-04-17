@@ -325,7 +325,7 @@
                     <span>${member.companyName}</span>
                 </div>
                 <div class="sub-til">
-                    <span>在线咨询：<a href="javascript:void(0);"><img src="images/qq/qq.gif" /></a></span>
+                    <span>在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank" ><img src="images/qq/qq.gif" /></a></span>
                 </div>
                 <div class="sub-til">
                     <span>联系电话：${member.mobile}</span>

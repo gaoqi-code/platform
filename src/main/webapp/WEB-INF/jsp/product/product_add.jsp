@@ -34,6 +34,12 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="redColorClass">*</span>简介</label>
+                    <div class="layui-input-inline">
+                        <input type="input" name="summary" value="${product.summary}" lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">市场价</label>
                     <div class="layui-input-inline">
                         <input type="text" name="marketPrice" lay-verify="marketPrice" value="${product.marketPrice}" autocomplete="off" placeholder="请输入市场价" class="layui-input">
@@ -193,7 +199,7 @@
             if(level != "threeLevel") {
                 $.ajax({
                     type: "POST",
-                    url: "/member/category/getSonCategory.json",
+                    url: "/category/getSonCategory.json",
                     data: {parentId:selectVal},
                     dataType: "json",
                     async:false,

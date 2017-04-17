@@ -171,60 +171,11 @@
 
             <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
 
-            <div class="adviser_tj">
-                <div class="adviser_tj_title">顾问推荐</div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p>金牌顾问</p><p>张三<img src="images/qq/qq.gif"></p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork">
-                            <p><span>执业经验：</span>8年</p>
-                            <p><span>主营业务：</span>8年</p>
-                            <p><span>个人简介：</span>8年</p>
-                            <p><span>所在地区：</span>北京市昌平区</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="/adviserRecommend/recommend.html">
+                <jsp:param value="201" name="plate"/>
+                <jsp:param value="1" name="currentPage"/>
+                <jsp:param value="3" name="pageSize"/>
+            </jsp:include>
         </div>
         <div class="clear"></div>
     </div>

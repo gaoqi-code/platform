@@ -59,10 +59,13 @@ public class RegisterAction extends BaseController{
         HashMap<String, Object> result = Maps.newHashMap();
         if (registerService.checkPhoneRegister(mobile)) {
             try {
-                member.setPassword(DigestUtils.md5DigestAsHex(member.getPassword().getBytes()));
-                member.setStatus(MemberUtil.STATUS.getNormal());
+                member.setStatus(MemberUtil.STATUS.getDisable());
                 member.setAddTime(new Date());
                 if (memberService.saveMember(member) > 0) {
+                    String pass = member.getPassword()+ member.getId();//密码加会员id加密
+                    member.setPassword(DigestUtils.md5DigestAsHex(pass.getBytes()));
+                    member.setStatus(MemberUtil.STATUS.getNormal());
+                    memberService.updateMember(member);
                     flag = true;
                     message ="注册成功！";
                 }

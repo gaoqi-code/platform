@@ -36,13 +36,13 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" lay-verify="phone"  value="15765056585" name="mobile"  autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" lay-verify="phone"  value="" name="mobile"  autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">登录密码：</label>
                         <div class="layui-input-block">
-                            <input type="password" lay-verify="required"  value="15765056585" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+                            <input type="password" lay-verify="required"  value="" name="password" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
 

@@ -271,61 +271,13 @@
         <div class="adviser_right">
 
             <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
+            <jsp:include page="/adviserRecommend/recommend.html">
+                <jsp:param value="201" name="plate"/>
+                <jsp:param value="1" name="currentPage"/>
+                <jsp:param value="3" name="pageSize"/>
+            </jsp:include>
 
-            <div class="adviser_tj">
-                <div class="adviser_tj_title">顾问推荐</div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p><span class="adviserName">李四</span>金牌顾问</p>
-                                <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
-                                <p>8年执业经验</p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork clearfix">
-                            <a href="adviser/detail/15.html" class="green">顾问主页</a>
-                            <a href="q" class="ser">QQ留言</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p><span class="adviserName">王如晶</span>金牌顾问</p>
-                                <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
-                                <p>8年执业经验</p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork clearfix">
-                            <a href="" class="green">顾问主页</a>
-                            <a href="" class="ser">免费电话</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="adviser_tj_li">
-                    <div>
-                        <div class="adviser_right_tj"><img src="http://www.dgg.net/images/portrait.jpg"></div>
-                        <div class="adviser_right_tjperson">
-                            <div style="margin-top: 15px;">
-                                <p><span class="adviserName">张三</span>金牌顾问</p>
-                                <p><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"><img src="../images/icon/star-on.png"></p>
-                                <p>8年执业经验</p>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="adviser_right_tj_personwork clearfix">
-                            <a href="" class="green">顾问主页</a>
-                            <a href="" class="ser">免费电话</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="clear"></div>
     </div>

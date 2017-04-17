@@ -33,6 +33,13 @@
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="redColorClass">*</span>简介</label>
+                    <div class="layui-input-inline">
+                        <input type="input" lay-verify="required"  name="summary" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux"></div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-inline">
                         <input type="input" name="phone" autocomplete="off" class="layui-input">
@@ -58,8 +65,22 @@
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="margin-top: 80px;">公司logo</label>
+                    <div class="layui-input-block">
+                        <div class="site-demo-upload">
+                            <img id="LAY_demo_upload" src="" >
+                            <div class="site-demo-upbar">
+                                <input type="file" name="file" class="layui-upload-file" id="uploadImg">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="logo" id="logo" value="" >
+                </div>
+
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">公司简介</label>
+                    <label class="layui-form-label">公司介绍</label>
                     <div class="layui-input-block">
                         <textarea placeholder="请输入内容" lay-verify="required"  name="introduce" class="layui-textarea"></textarea>
                     </div>
@@ -77,7 +98,7 @@
 </div>
 <script src="../plugins/layui/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['form', 'layedit', 'laydate'], function(){
+    layui.use(['form', 'layedit','upload'], function(){
         var form = layui.form()
                 ,layer = layui.layer
                 ,layedit = layui.layedit
@@ -149,7 +170,23 @@
                 }
             });
         }
-        
+
+        layui.upload({
+            url: '/fileUpload/upload.json'
+            ,elem: '#uploadImg' //指定原始元素，默认直接查找class="layui-upload-file"
+            ,method: 'post' //上传接口的http类型
+            ,success: function(data){
+                if(data.flag) {
+                    var path = data.data.src;
+                    LAY_demo_upload.src = path;
+                    $("#logo").val(path);
+                }else {
+                    layer.alert("图片上传失败！");
+                }
+            }
+        });
+
+
     });
 </script>
 </body>

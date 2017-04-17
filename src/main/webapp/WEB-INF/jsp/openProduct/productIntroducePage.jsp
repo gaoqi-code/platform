@@ -37,7 +37,7 @@
             <%--<a _stat_click_id="7_514379" href="/product/detail/${product.id}.html" target="_blank">销量 1132</a>--%>
         </div>
         <div class="sv-card--price">
-            <div class="sv-card--special"><span class="sv-card--red"></span></div>
+            <div class="sv-card--special"><span class="sv-card--red">${product.realPrice}</span></div>
         </div>
         <div class="sv-card--btn-wrap">
             <a class="ui-button ui-button-sm ui-button-primary jmod-consult-stat jmod-wpa-qq" _wpa_qq="${product.member.qq}" _stat_click_id="7_6305427" data-cid="305427" data-csid="14379" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=${product.member.qq}&amp;site=qq&amp;menu=yes">QQ咨询</a>

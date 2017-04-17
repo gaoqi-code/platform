@@ -42,13 +42,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>确认密码</label>
                     <div class="layui-input-inline">
-                        <input type="password"    placeholder="" autocomplete="off" class="layui-input">
+                        <input type="password"  name="twoPW"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        <button type="button" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
                     </div>
                 </div>
             </form>
@@ -85,6 +85,13 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
+            var newPW= $("input[name='newPW']").val();
+            var twoPW= $("input[name='twoPW']").val();
+            if(newPW != twoPW) {
+                layer.msg("两次密码输入不一致，请重新输入！");
+                return;
+            }
+
             $.ajax({
                 type: "POST",
                 url: "/member/account/updatePW.json",

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import utils.RecommendPlate;
 import utils.StatusUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ public class AdviserRecommendAction extends BaseController {
         Paging paging = super.getPaging(request);
         MemberRecommend memberRecommend = new MemberRecommend();
         memberRecommend.setStatus(StatusUtil.VALID.getVal());
+        memberRecommend.setPlate(RecommendPlate.HOME.getVal());
         PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
         List<MemberRecommend> memberRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend);
         mav.getModel().put("memberRecommends",memberRecommends);
@@ -40,4 +42,19 @@ public class AdviserRecommendAction extends BaseController {
         return mav;
     }
 
+    @RequestMapping(value="/recommend")
+    public ModelAndView recommend(HttpServletRequest request, ModelAndView mav) {
+        String plate = request.getParameter("plate");//板块
+        if (StringUtils.isNotEmpty(plate)) {
+            Paging paging = super.getPaging(request);
+            MemberRecommend memberRecommend = new MemberRecommend();
+            memberRecommend.setPlate(Integer.parseInt(plate));
+            memberRecommend.setStatus(StatusUtil.VALID.getVal());
+            PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
+            List<MemberRecommend> adviserRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend);
+            mav.getModel().put("adviserRecommends",adviserRecommends);
+        }
+        mav.setViewName("memberRecommend/adviserRecommendPaging");
+        return mav;
+    }
 }
