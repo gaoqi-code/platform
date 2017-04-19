@@ -1,5 +1,7 @@
 package com.hiveview.util;
 
+import utils.log.LogMgr;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
@@ -20,6 +22,21 @@ public class FilePathUtil {
 			saveFile.mkdir();
 		}
 		return realPath;
+	}
+
+	// 创建目录
+	public static boolean mkdir(String path) {
+		boolean flag = true;
+		try {
+			File saveFile = new File(path);
+			if (!saveFile.exists() && !saveFile.isDirectory()) {
+				saveFile.mkdirs();
+			}
+		} catch (Exception e) {
+			LogMgr.writeErrorLog("创建目录失败",e);
+			flag = false;
+		}
+		return flag;
 	}
 
 	// 生成时间(年月日)

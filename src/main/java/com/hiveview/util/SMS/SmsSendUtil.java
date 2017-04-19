@@ -3,7 +3,10 @@ package com.hiveview.util.SMS;
 import com.google.common.collect.Maps;
 import com.hiveview.util.ProperManager;
 import com.hiveview.util.VerifyCodeUtil;
+import com.hiveview.util.validateCode.ValidateCode;
+import com.hiveview.util.validateCode.ValidateCodeUtil;
 import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +33,7 @@ public class SmsSendUtil {
      */
     public static boolean sendRegisterSms(String phone, HttpServletRequest request) {
         Integer tmplId = Integer.parseInt(ProperManager.getString(SmsConfigKey.SMS_REGISTER_TEMPLATE.toString()));
-        return sendSms(phone,SmsUtil.SendType.REGISTER_SMS.getVal(),tmplId,request);
+        return sendSms(phone, VerifyUtil.SmsVerifyType.REGISTER.getVal(),tmplId,request);
     }
 
     /**
@@ -41,7 +44,7 @@ public class SmsSendUtil {
      */
     public static boolean sendRetrievePasswordSms(String phone, HttpServletRequest request) {
         Integer tmplId = Integer.parseInt(ProperManager.getString(SmsConfigKey.SMS_RETRIEVE_PASSWORD_TEMPLATE.toString()));
-        return sendSms(phone,SmsUtil.SendType.RETRIEVE_PASSWORD_SMS.getVal(),tmplId,request);
+        return sendSms(phone, VerifyUtil.SmsVerifyType.RETRIEVE_PASSWORD.getVal(),tmplId,request);
     }
 
     /**
@@ -55,15 +58,15 @@ public class SmsSendUtil {
         try {
             SmsSingleSender singleSender = SmsSingleSender.getIstance();
             ArrayList<String> params = new ArrayList<>();
-            String verifyCode = VerifyCodeUtil.createVerifyCode();
+            String verifyCode = VerifyCodeUtil.createVerifyCode(6);
             params.add(verifyCode);//验证码
-            params.add(SmsUtil.TIME_OUT.toString());//超时时间
+            params.add(VerifyUtil.TIME_OUT.toString());//超时时间
             SmsSingleSenderResult singleSenderResult = singleSender.sendWithParam("86", phone, tmplId, params, "", "", "");
-            if (singleSenderResult != null && singleSenderResult.result == SmsUtil.Status.SUCCESS.getVal()) {
+            if (singleSenderResult != null && singleSenderResult.result == VerifyUtil.Status.SUCCESS.getVal()) {
                 Map<String, Object> verifyMsg = Maps.newHashMap();
-                verifyMsg.put(SmsUtil.VERIFY_CODE_KEY, verifyCode);
-                verifyMsg.put(SmsUtil.VERIFY_TIME_KEY, new Date());
-                verifyMsg.put(SmsUtil.VERIFY_PHONE_KEY, phone);
+                verifyMsg.put(VerifyUtil.VERIFY_CODE_KEY, verifyCode);
+                verifyMsg.put(VerifyUtil.VERIFY_TIME_KEY, new Date());
+                verifyMsg.put(VerifyUtil.VERIFY_PHONE_KEY, phone);
                 request.getSession().setAttribute(type,verifyMsg);
                 flag = true;
             }
@@ -86,21 +89,21 @@ public class SmsSendUtil {
         Boolean flag = false;
         String message = "";
         HttpSession session = request.getSession();
-        Map<String,Object> regSmsVal = (Map<String, Object>) session.getAttribute(type);
-        if (MapUtils.isNotEmpty(regSmsVal)) {
-            String phone = (String) regSmsVal.get(SmsUtil.VERIFY_PHONE_KEY);
+        Map<String,Object> smsVal = (Map<String, Object>) session.getAttribute(type);
+        if (MapUtils.isNotEmpty(smsVal)) {
+            String phone = (String) smsVal.get(VerifyUtil.VERIFY_PHONE_KEY);
             if (phone != null && phone.equals(verifyPhone)) {
-                String code = (String) regSmsVal.get(SmsUtil.VERIFY_CODE_KEY);
+                String code = (String) smsVal.get(VerifyUtil.VERIFY_CODE_KEY);
                 if (code != null && verifyCode.equals(code)) {
-                    Date time = (Date) regSmsVal.get(SmsUtil.VERIFY_TIME_KEY);
+                    Date time = (Date) smsVal.get(VerifyUtil.VERIFY_TIME_KEY);
                     if (time != null) {
                         Calendar currentTime = Calendar.getInstance();//当前时间
                         Calendar verifyTime = Calendar.getInstance();
                         verifyTime.setTime(time);
-                        verifyTime.add(Calendar.MINUTE, SmsUtil.TIME_OUT);//验证时间 加十分钟
+                        verifyTime.add(Calendar.MINUTE, VerifyUtil.TIME_OUT);//验证时间 加十分钟
                         if (currentTime.before(verifyTime)) {//当前在验证时间加十分钟之前说明没超时
-                            flag = true;
                             session.setAttribute(type, null);//验证完后把验证码清空
+                            flag = true;
                         }else {
                             message = "短信验证码已超时！";
                         }
@@ -116,6 +119,42 @@ public class SmsSendUtil {
         }
         result.put("flag", flag);
         result.put("msg", message);
+        return result;
+    }
+
+
+    /**
+     * 验证图片和短信验证码
+     * @param request
+     * @return
+     */
+    public static HashMap<String, Object> validateSmsAndImgCode(HttpServletRequest request) {
+        HashMap<String, Object> result = Maps.newHashMap();
+        result.put("flag", false);
+        String type = request.getParameter("verifyType");
+        String imgCode = request.getParameter("imgCode");
+        //验证图片验证码
+        ValidateCode imgVerify = ValidateCodeUtil.validateImgCode(request, imgCode, type);
+        if (!imgVerify.isSuccess()) {
+            result.put("msg", imgVerify.getMsg());
+            return result;
+        }
+        String verifyCode = request.getParameter("msgCode");
+        String verifyPhone = request.getParameter("mobile");
+        //验证短信验证码
+        if (StringUtils.isNotEmpty(verifyCode)) {
+            if ("reg".equals(type)) {
+                result = SmsSendUtil.verifyCode(request,verifyPhone,verifyCode , VerifyUtil.SmsVerifyType.REGISTER.getVal());
+            } else {
+                result = SmsSendUtil.verifyCode(request,verifyPhone,verifyCode , VerifyUtil.SmsVerifyType.RETRIEVE_PASSWORD.getVal());
+                if ((boolean)result.get("flag") == true) {
+                    //找回密码通过sessionkey
+                    request.getSession().setAttribute("retrievePasswordThroughPhone",verifyPhone);
+                }
+            }
+        } else {
+            result.put("msg", "短信验证码错误！");
+        }
         return result;
     }
 }

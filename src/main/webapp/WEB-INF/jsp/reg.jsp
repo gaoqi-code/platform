@@ -44,18 +44,20 @@
         <div class="login_left">
             <div class="login_left_content">
                 <form class="layui-form" action="" id="regForm">
+                    <input type="hidden" name="verifyType" value="reg">
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
                         <div class="layui-input-block">
-                            <input type="text" value="" id="phoneNumber" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                            <input type="text" value="" id="mobile" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">验证码：</label>
                         <div class="layui-input-inline">
-                            <input type="text" value="" id="yzmValue" name="username" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                            <input type="text" value="" id="yzmValue" name="imgCode" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
                         </div>
-                        <div style="width: 129px;height: 35px;float: left;" id="yzm"></div>
+                        <%--<div style="width: 129px;height: 35px;float: left;" id="yzm"></div>--%>
+                        <img src=""  style="width: 130px;height: 37px;float: left;" id="yzm">
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">短信验证：</label>
@@ -103,7 +105,6 @@
 <script>
     $(function () {
         var layer;
-        var verifyCode = new GVerify("yzm");
         layui.use(['form'], function(){
             var form = layui.form();
                layer = layui.layer;
@@ -115,35 +116,11 @@
 
             //监听提交
             form.on('submit(demo1)', function(data){
-                var res = verifyCode.validate($("#yzmValue").val());
-                if(!res){
-                    layer.msg("验证码错误");
-                    return;
-                }
-                verifySms();
+                regMember();
                 return false;
             });
         });
         
-        function verifySms() {
-            $.ajax({
-                type: "POST",
-                url: "/register/checkVerifyCode.json",
-                data: {
-                    verifyCode:$("#verifyCode").val(),
-                    verifyPhone:$("#phoneNumber").val()
-                },
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    if (data.flag) {
-                        regMember()
-                    } else {
-                        layer.msg(data.msg);
-                    }
-                }
-            });
-        }
 
         function regMember() {
             $.ajax({
@@ -166,8 +143,12 @@
         function sendSmsCode() {
             $.ajax({
                 type: "POST",
-                url: "/register/sendAuthCode.json",
-                data: {phoneNumber:$("#phoneNumber").val()},
+                url: "/validate/sendSmsCode.json",
+                data: {
+                    mobile:$("#mobile").val(),
+                    imgCode:$("#yzmValue").val(),
+                    verifyType:"reg"
+                },
                 dataType: "json",
                 success: function (data) {
                     if (!data.flag) {
@@ -203,12 +184,12 @@
             if(!smsClick) {
                 return;
             }
-            var phoneNumber = $("#phoneNumber").val();
-            if(!phoneNumber){
+            var mobile = $("#mobile").val();
+            if(!mobile){
                 layer.msg("电话号码不能为空");
                 return;
             }
-            if(!(/^1[34578]\d{9}$/.test(phoneNumber))){
+            if(!(/^1[34578]\d{9}$/.test(mobile))){
                 layer.msg("手机号码有误，请重填");
                 return false;
             }
@@ -217,13 +198,30 @@
                 layer.msg("请先填写验证码!");
                 return;
             }
-            var res = verifyCode.validate(code);
-            if(!res){
-                layer.msg("验证码错误!");
-                return;
-            }
             smsClick = false;
             setTime($(this));
+        });
+
+        /**
+         *获得图片验证码
+         */
+        getImgCode();
+        function getImgCode() {
+            $.ajax({
+                type: "POST",
+                url: "/validate/sendImgCode.json",
+                data: {verifyType:"reg"},
+                dataType: "json",
+                success: function (data) {
+                    if (data && data.success) {
+                        $("#yzm").attr("src", data.codePath);
+                    }
+                }
+            });
+        }
+
+        $("#yzm").click(function () {
+            getImgCode();
         });
     });
 </script>

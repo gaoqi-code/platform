@@ -26,21 +26,28 @@ public class VerifyCodeUtil {
         }
         return result;
     }
-    public static Map sendPhoneNumber(String number) {
-        return null;
-    }
-    public static String createVerifyCode() {
-        Random r = new Random();
-        StringBuilder sb = new StringBuilder(6);
-        for (int i = 0; i < 6; i++) {
-            sb.append(r.nextInt(9));
+
+    /**
+     *生成指定位数的验证码
+     * @param bix 位数
+     * @return
+     */
+    public static String createVerifyCode(int bix) {
+        String code = "";
+        if (bix > 0 ) {
+            StringBuilder sb = new StringBuilder(bix);
+            Random r = new Random();
+            for (int i = 0; i < bix; i++) {
+                sb.append(r.nextInt(9));
+            }
+            code = sb.toString();
         }
-        return sb.toString();
+        return code;
     }
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
-            String aa = createVerifyCode();
+            String aa = createVerifyCode(4);
             System.out.println(aa);
         }
     }

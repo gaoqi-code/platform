@@ -1,13 +1,10 @@
 package com.hiveview.action;
 
-import com.google.common.collect.Maps;
 import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.IRegisterService;
 import com.hiveview.util.SMS.SmsSendUtil;
-import com.hiveview.util.SMS.SmsUtil;
 import com.hiveview.util.VerifyCodeUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
@@ -18,7 +15,6 @@ import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -33,14 +29,6 @@ public class RegisterAction extends BaseController{
     @Autowired
     private IMemberService memberService;
 
-    @ResponseBody
-    @RequestMapping(value = "uploadPic")
-    public Boolean uploadPic(HttpServletRequest request){
-
-        return true;
-    }
-
-
     /**
      * 注册会员
      * @param request
@@ -50,13 +38,17 @@ public class RegisterAction extends BaseController{
     @RequestMapping(value = "registerMember")
     public Map registerMember(HttpServletRequest request,Member member){
         String mobile = member.getMobile();
-        Map<String, Object> msg = VerifyCodeUtil.checkPhoneNumber(member.getMobile());
-        if(!Boolean.parseBoolean(msg.get("flag").toString())){
-            return msg;
+        Map<String, Object> result = VerifyCodeUtil.checkPhoneNumber(member.getMobile());
+        if(!Boolean.parseBoolean(result.get("flag").toString())){
+            return result;
+        }
+        result = SmsSendUtil.validateSmsAndImgCode(request);
+        if (!(boolean)result.get("flag")) {
+            return result;
         }
         Boolean flag = false;
         String message = "";
-        HashMap<String, Object> result = Maps.newHashMap();
+
         if (registerService.checkPhoneRegister(mobile)) {
             try {
                 member.setStatus(MemberUtil.STATUS.getDisable());
@@ -83,63 +75,6 @@ public class RegisterAction extends BaseController{
 
         return result;
     }
-
-    /**
-     * 验证手机验证码
-     * @param request
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "checkVerifyCode")
-    public Map checkVerificationCode(HttpServletRequest request){
-        HashMap<String, Object> result;
-        String verifyCode = request.getParameter("verifyCode");
-        String verifyPhone = request.getParameter("verifyPhone");
-        if (StringUtils.isNotEmpty(verifyCode)) {
-            result = SmsSendUtil.verifyCode(request,verifyPhone,verifyCode ,SmsUtil.SendType.REGISTER_SMS.getVal());
-        } else {
-            result = Maps.newHashMap();
-            result.put("flag", false);
-            result.put("msg", "验证码错误！");
-        }
-        return result;
-    }
-
-
-
-    /**
-     * 发送手机验证码
-     * @param request
-     * @param phoneNumber
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "sendAuthCode")
-    public Map sendVerificationCode(HttpServletRequest request,String phoneNumber){
-
-        Map<String, Object> msg = VerifyCodeUtil.checkPhoneNumber(phoneNumber);
-        if(!Boolean.parseBoolean(msg.get("flag").toString())){
-            return msg;
-        }
-        HashMap<String, Object> result = Maps.newHashMap();
-        if (!registerService.checkPhoneRegister(phoneNumber)) {
-            result.put("flag", false);
-            result.put("msg", "此手机号已经被注册！");
-            return result;
-        }
-        boolean isSuccess = SmsSendUtil.sendRegisterSms(phoneNumber, request);
-        String sendMsg;
-        if (isSuccess) {
-            sendMsg = "发送成功！";
-        } else {
-            sendMsg = "发送失败！";
-        }
-        result.put("flag", isSuccess);
-        result.put("msg", sendMsg);
-        return result;
-    }
-
-
 
 
 
