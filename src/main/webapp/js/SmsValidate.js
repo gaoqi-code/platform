@@ -77,7 +77,7 @@ $(function () {
             dataType: "json",
             success: function (data) {
                 if (data && data.success) {
-                    $("#yzm").attr("src", data.codePath);
+                    $("#yzm").attr("src", "/"+data.codePath);
                 }
             }
         });

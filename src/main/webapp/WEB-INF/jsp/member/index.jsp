@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+<input type="hidden" id="qbbPath" value="<%=qbbPath%>">
 <jsp:include page="../common/top_c.jsp"></jsp:include>
 <jsp:include page="../common/nav_c.jsp"></jsp:include>
 <div id="container">

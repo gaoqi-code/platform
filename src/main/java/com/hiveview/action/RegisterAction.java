@@ -3,13 +3,17 @@ package com.hiveview.action;
 import com.hiveview.entity.Member;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.IRegisterService;
+import com.hiveview.util.InviteCodeUtil;
 import com.hiveview.util.SMS.SmsSendUtil;
 import com.hiveview.util.VerifyCodeUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import utils.MemberUtil;
 import utils.log.LogMgr;
 
@@ -29,9 +33,16 @@ public class RegisterAction extends BaseController{
     @Autowired
     private IMemberService memberService;
 
+    @RequestMapping(value="/reg/{inviteCode}")
+    public ModelAndView reg(@PathVariable("inviteCode")String inviteCode, ModelAndView mav) {
+        mav.getModel().put("inviteCode", inviteCode);
+        mav.setViewName("reg");
+        return mav;
+    }
     /**
      * 注册会员
      * @param request
+     * @param member
      * @return
      */
     @ResponseBody
@@ -53,11 +64,17 @@ public class RegisterAction extends BaseController{
             try {
                 member.setStatus(MemberUtil.STATUS.getDisable());
                 member.setAddTime(new Date());
+                member.setInviteCode(InviteCodeUtil.getInviteCode());
                 if (memberService.saveMember(member) > 0) {
                     String pass = member.getPassword()+ member.getId();//密码加会员id加密
                     member.setPassword(DigestUtils.md5DigestAsHex(pass.getBytes()));
                     member.setStatus(MemberUtil.STATUS.getNormal());
                     memberService.updateMember(member);
+                    String otherInviteCode = request.getParameter("otherInviteCode");
+                    if (StringUtils.isNotEmpty(otherInviteCode) && !"0".equals(otherInviteCode)) {
+                        //邀请码增填邀请方查看需求次数
+                        memberService.addNeedViewCountByInviteCode(otherInviteCode,10);
+                    }
                     flag = true;
                     message ="注册成功！";
                 }

@@ -120,11 +120,6 @@ public class IndexAction {
 		mav.setViewName("introduce");
 		return mav;
 	}
-	@RequestMapping(value="/reg")
-	public ModelAndView reg(HttpServletRequest request, ModelAndView mav) {
-		mav.setViewName("reg");
-		return mav;
-	}
 
 	@RequestMapping(value="/toSuccess")
 	public ModelAndView toSuccess(HttpServletRequest request, ModelAndView mav) {

@@ -34,7 +34,7 @@
 </div>
 
 <div class="content top-search">
-    <div class="logo-box"><img src="./images/logo_h.png"></div>
+    <div class="logo-box"><img src="/images/logo_h.png"></div>
     <div class="search-form">
 
         <form action="" id="queryType" method="post" class="inlineb" target="_blank">

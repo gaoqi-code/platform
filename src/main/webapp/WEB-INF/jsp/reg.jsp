@@ -8,8 +8,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/plugins/layui/css/layui.css"  media="all">
     <script src="/js/SmsValidate.js" charset="utf-8"></script>
     <style>
         .reg_css{margin-bottom:35px;}
@@ -43,6 +43,7 @@
         <div class="login_left">
             <div class="login_left_content">
                 <form class="layui-form" action="" id="regForm">
+                    <input type="hidden" id="otherInviteCode" name="otherInviteCode" value="${inviteCode}">
                     <input type="hidden" id="verifyType" name="verifyType" value="reg">
                     <div class="layui-form-item">
                         <label class="layui-form-label">手机号：</label>
@@ -89,7 +90,7 @@
 
         <div class="login_right">
             <div style="height: 40px;"></div>
-            <img src="./images/logo_h.png">
+            <img src="/images/logo_h.png">
             <%--<div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>--%>
             <%--<button class="layui-btn layui-btn-big">商家入驻</button>--%>
         </div>

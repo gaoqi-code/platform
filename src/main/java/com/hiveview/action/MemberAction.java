@@ -158,4 +158,15 @@ public class MemberAction extends BaseController{
 		return "company/associate_member_list";
 	}
 
+	/**
+	 * 获得邀请注册邀请码
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/getInviteCode")
+	public String getInviteCode(HttpServletRequest request) {
+		long memberId = super.getMemberId(request);
+		return memberService.getInviteCodeById(memberId);
+	}
+
 }

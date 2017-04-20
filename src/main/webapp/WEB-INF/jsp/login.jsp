@@ -60,7 +60,7 @@
             <div style="height: 40px;"></div>
             <img src="./images/logo_h.png">
             <div class="login_right_company"><span>还不是企巴巴平台的会员，赶快去注册！</span></div>
-            <a href="reg.html"><button class="layui-btn layui-btn-big">免费注册</button></a>
+            <a href="/register/reg/0.html"><button class="layui-btn layui-btn-big">免费注册</button></a>
         </div>
         <div class="clear"></div>
 

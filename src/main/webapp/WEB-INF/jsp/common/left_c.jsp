@@ -5,6 +5,7 @@
         <p class="layui-elem-quote">我的信息</p>
         <ul>
             <li><a href="member/info.html">完善资料</a></li>
+            <li><a href="javascript:void(0);" id="getInviteUrl">邀请链接</a></li>
         </ul>
         <p class="layui-elem-quote">需求管理</p>
         <ul>
@@ -65,5 +66,42 @@
                 }
             }
         });
+        var inviteCode = "${sessionScope.currentUser.inviteCode}";
+        $("#getInviteUrl").click(function(){
+            var inviteUrl = $("#qbbPath").val()+"/register/reg/"+inviteCode+".html";
+            layer.open({
+                 type: 0
+                ,title: "邀请链接"
+                ,area: ['500px', '185px']
+                ,shade: 0.4
+                ,content: "<div style='font-size: 18px;'>已复制邀请链接，快去发给小伙伴们吧<div id='inviteUrl' style='font-size: 18px;' class='ts'>"+inviteUrl+"</div></div>"
+                ,btn: ['好的'] //按钮
+                ,scrollbar: false //屏蔽浏览器滚动条
+                ,好的:function(index){
+                    layer.close(index);
+                }
+            });
+            selectText("inviteUrl");
+            document.execCommand("Copy"); //执行浏览器复制命令
+        });
+        function selectText(element) {
+            var text = document.getElementById(element);
+            if (document.body.createTextRange) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if (window.getSelection) {
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(text);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                /*if(selection.setBaseAndExtent){
+                 selection.setBaseAndExtent(text, 0, text, 1);
+                 }*/
+            } else {
+                alert("none");
+            }
+        }
     });
 </script>
