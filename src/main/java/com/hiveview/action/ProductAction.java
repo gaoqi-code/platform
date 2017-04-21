@@ -8,6 +8,7 @@ import com.hiveview.entity.Product;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.service.IProductService;
 import com.hiveview.util.LevelUtil;
+import utils.IssueType;
 import utils.StatusUtil;
 import utils.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,7 @@ public class ProductAction extends BaseController{
 	@RequestMapping(value="/toAdd/{productId}")
 	public ModelAndView add(ModelAndView mav, @PathVariable("productId") Long productId) {
 		Category category = new Category();
+		category.setType(IssueType.PRODUCT.getVal());
 		category.setLevel(LevelUtil.ONE_LEVEL.getVal());
 		List<Category> oneLevelCategories = categoryService.getCategory(category);
 		if (productId > 0 ) {

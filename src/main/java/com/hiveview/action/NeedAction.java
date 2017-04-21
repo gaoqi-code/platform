@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import utils.IssueType;
 import utils.StatusUtil;
 import utils.log.LogMgr;
 
@@ -52,6 +53,7 @@ public class NeedAction extends BaseController{
     public ModelAndView toAdd(HttpServletRequest request,ModelAndView mav, @PathVariable("needId") Long needId) {
         Category category = new Category();
         category.setLevel(LevelUtil.ONE_LEVEL.getVal());
+        category.setType(IssueType.NEED.getVal());
         //获得所有一级类目
         List<Category> oneLevelCategories = categoryService.getCategory(category);
         if (needId > 0 ) {
