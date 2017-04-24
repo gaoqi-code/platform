@@ -27,7 +27,7 @@
                 <div class="top_welcome"><a href="/member/index.html"><span class="userName">${sessionScope.currentUser.name}</span>您好，欢迎来到企巴巴</a></div>
                 <div class="top_welcome"><a href="logout.html">退出</a></div>
             </c:if>
-            <c:if test="${sessionScope.currentUser.name == null}"><div class="top_reg"><a href="/tologin.html">登录</a><a href="reg.html">注册</a></div></c:if>
+            <c:if test="${sessionScope.currentUser.name == null}"><div class="top_reg"><a href="/tologin.html">登录</a><a href="/register/reg/0.html">注册</a></div></c:if>
             <div class="top_tuiguang">网站导航</div>
         </div>
     </div>
