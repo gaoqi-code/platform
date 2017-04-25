@@ -13,7 +13,7 @@
                         </span></p>
                     <p class="memberTitle">${member.companyName}</p>
                     <p class="member_jieshao" style="line-height: 28px;">${member.description}</p>
-                    <a href="adviser/detail/7.html"><button class="layui-btn" lay-submit="" lay-filter="demo1">查看店铺</button></a>
+                    <a href="/adviser/detail/${member.id}.html"><button class="layui-btn" lay-submit="" lay-filter="demo1">查看店铺</button></a>
                 </div>
                 <div class="clear"></div>
             </div>

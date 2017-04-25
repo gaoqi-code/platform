@@ -74,17 +74,17 @@ public class ProductAction extends BaseController{
 	@RequestMapping(value="/toAdd/{productId}")
 	public ModelAndView add(ModelAndView mav, @PathVariable("productId") Long productId) {
 		Category category = new Category();
-		category.setType(IssueType.PRODUCT.getVal());
 		category.setLevel(LevelUtil.ONE_LEVEL.getVal());
+		int type = IssueType.PRODUCT.getVal();
+		category.setType(type);
 		List<Category> oneLevelCategories = categoryService.getCategory(category);
 		if (productId > 0 ) {
 			Product product= productService.getProductById(productId);
-			Category selectClass = categoryService.getCategoryById(product.getClassId());
-
 			List<Category> twoLevelCategories = null;//二级类目
 			List<Category> threeLevelCategories = null;//三级类目
-			String code = selectClass.getCode();
-			if (code!= null) {
+			Category selectClass = categoryService.getCategoryByIdAndType(product.getClassId(),type);
+			if (selectClass != null && selectClass.getCode() != null) {
+				String code = selectClass.getCode();
 				String[] ids = code.split("-");
 				for (int i = 0; i < ids.length; i++) {
 					Long id = Long.parseLong(ids[i]);

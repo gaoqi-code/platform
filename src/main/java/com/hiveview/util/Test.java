@@ -1,22 +1,24 @@
 package com.hiveview.util;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 /**
  * Created by huxunqiang on 17/3/25.
  */
 public class Test {
 
     public static void main(String[] args) {
-//        String a = "2-1-";
-//        String[] b = a.split("-");
-//        System.out.println(b.length);
+//        List<Integer> a = Arrays.asList(1,2);
+        List<Integer> a = null;
+//        a.stream().forEach(b -> System.out.println(b));
 
-//        System.out.printf(b[0]);
-        Long b = 6666666666666666666L;
-        chage(b);
-        System.out.println(b);
-//        String
-//                StringBuffer
-        Long[] c = new Long[1];
+        Optional.ofNullable(a).ifPresent(as ->
+                as.stream().forEach(b -> {
+                    System.out.println(b);
+                })
+        );
 
     }
     private  static void chage(Long a){

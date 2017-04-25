@@ -122,9 +122,9 @@
                     <div class="layui-input-inline">
                         <select  lay-filter="oneLevel" lay-verify="required"  name="adviserType">
                             <option value="">请选择</option>
-                            <option value="1" <c:if test="${member.adviserType == '1-'}">selected=""</c:if> >金融服务</option>
-                            <option value="2" <c:if test="${member.adviserType == '2-'}">selected=""</c:if> >企业服务</option>
-                            <option value="3" <c:if test="${member.adviserType == '3-'}">selected=""</c:if> >法律服务</option>
+                            <option value="1-" <c:if test="${member.adviserType == '1-'}">selected=""</c:if> >金融服务</option>
+                            <option value="2-" <c:if test="${member.adviserType == '2-'}">selected=""</c:if> >企业服务</option>
+                            <option value="3-" <c:if test="${member.adviserType == '3-'}">selected=""</c:if> >法律服务</option>
                         </select>
                     </div>
                 </div>

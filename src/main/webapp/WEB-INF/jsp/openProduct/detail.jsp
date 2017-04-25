@@ -36,7 +36,7 @@
 <div id="container">
     <div class="position2">
         您当前位置：<a href="/index.htm">企巴巴</a> &gt;
-        <a href="/tmadviser/list.htm">产品</a>
+        <a href="/product/toSearch.html">产品</a>
         &gt;产品详情
     </div>
     <div class="content contentTop">

@@ -121,7 +121,7 @@
 <div id="container">
     <div class="position2">
         您当前位置：<a href="/index.htm">企巴巴</a> &gt;
-        <a href="/tmbrandsearch/index.htm">找需求</a> &gt;
+        <a href="/need/toSearch.html">找需求</a> &gt;
         <a href="javascript:void(0);">需求详情</a>
     </div>
 

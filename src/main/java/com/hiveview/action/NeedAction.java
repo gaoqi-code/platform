@@ -53,7 +53,8 @@ public class NeedAction extends BaseController{
     public ModelAndView toAdd(HttpServletRequest request,ModelAndView mav, @PathVariable("needId") Long needId) {
         Category category = new Category();
         category.setLevel(LevelUtil.ONE_LEVEL.getVal());
-        category.setType(IssueType.NEED.getVal());
+        int type = IssueType.NEED.getVal();
+        category.setType(type);
         //获得所有一级类目
         List<Category> oneLevelCategories = categoryService.getCategory(category);
         if (needId > 0 ) {
@@ -61,11 +62,11 @@ public class NeedAction extends BaseController{
             Long categoryId = need.getClassId();
             //获得需求选择的类目
             //TODO 区分类目类型
-            Category selectClass = categoryService.getCategoryById(categoryId);
             List<Category> twoLevelCategories = null;//二级类目
             List<Category> threeLevelCategories = null;//三级类目
-            String code = selectClass.getCode();
-            if (code!= null) {
+            Category selectClass = categoryService.getCategoryByIdAndType(categoryId,type);
+            if (selectClass != null && selectClass.getCode() != null) {
+                String code = selectClass.getCode();
                 String[] ids = code.split("-");
                 for (int i = 0; i < ids.length; i++) {
                     Long id = Long.parseLong(ids[i]);
@@ -81,22 +82,22 @@ public class NeedAction extends BaseController{
                         selectClass.setThreeLevel(id);
                     }
                 }
-            }
-            //获得选择的类目的下所有属性
-            List<Attribute> attributes = categoryService.getCategoryAttribute(categoryId);
-            //获得需求的属性
-            if (CollectionUtils.isNotEmpty(attributes)) {
-                List<Attribute> needAttrs =  needService.getNeedAttr(needId);
-                if (CollectionUtils.isNotEmpty(needAttrs)) {
-                    for (Attribute needAttr : needAttrs) {
-                        for (Attribute attribute : attributes) {
-                            if (attribute.getId() == needAttr.getClassId()) {
-                                attribute.setValue(needAttr.getValue());
+                //获得选择的类目的下所有属性
+                List<Attribute> attributes = categoryService.getCategoryAttribute(categoryId);
+                //获得需求的属性
+                if (CollectionUtils.isNotEmpty(attributes)) {
+                    List<Attribute> needAttrs =  needService.getNeedAttr(needId);
+                    if (CollectionUtils.isNotEmpty(needAttrs)) {
+                        for (Attribute needAttr : needAttrs) {
+                            for (Attribute attribute : attributes) {
+                                if (attribute.getName().equals(needAttr.getName())) {//问题属性相同，把答案放入
+                                    attribute.setValue(needAttr.getValue());
+                                }
                             }
                         }
                     }
+                    mav.getModel().put("attributes", attributes);
                 }
-                mav.getModel().put("attributes", attributes);
             }
             mav.getModel().put("selectClass", selectClass);
             mav.getModel().put("need", need);
