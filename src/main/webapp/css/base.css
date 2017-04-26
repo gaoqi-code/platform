@@ -4,6 +4,7 @@ html, body{
 	padding:0px;
 	height: 100%;
 	margin:0px;
+	background-color: #FFFFFF;
 }
 div, ul, li {font-family: "微软雅黑",'microsoft yahei';font-size: 12px;padding:0px;margin:0px;list-style: none;}
 input, button {border: none medium;outline: none;font-family: "微软雅黑";}
@@ -167,7 +168,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .c_right{margin-left:10px;width: 958px;float: left;background-color: #FFFFFF;}
 
 /*** 会员中心导航下部区域 ***/
-#container{padding-top:15px;background-color: #f9f9fa;}
+#container{padding-top:15px;}
 .memver_c{margin-bottom: 15px;}
 
 /*** 会员中心公告区域 ***/
