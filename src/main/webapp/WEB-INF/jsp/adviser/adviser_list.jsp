@@ -15,24 +15,27 @@
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
     <style>
-        .search-select{border:1px solid #eee;}
+        .search-select{border:1px solid #ddd;}
         .search-select li{margin: 15px;border-bottom: 1px solid #eee;padding-bottom: 20px;}
         .search-select h3{width:100px;height: 30px;line-height: 30px;display:block;float: left;}
-        .allSelect{background-color:#ee4134;color: #FFF;display:block;}
+        .allSelect{background-color:#2486b5;color: #FFF;display:block;}
+        .allSelect:hover{color: #FFF;}
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser_mainli li{height: 195px;border-bottom: 1px solid #eee;}
+        .adviser_mainli li{height: 180px;border: 1px solid #ddd; border-top:none;}
         .li-img{width: 165px;height: 165px;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .li-img img{width: 165px;}
-        .adviser-list-info{height: 165px;float: left;width: 600px;}
-        .adviser-list-content{margin-left: 30px;padding-right: 5px;}
+        .adviser-list-info{height: 165px;float: left;width: 830px;}
+        .adviser-list-content{margin-left: 30px;margin-top: 40px; padding-right: 5px;}
         .company{display: inline-block;
             vertical-align: bottom;
             font-size: 16px;
-            color: #004b92;
+            color:#2486b5;
             font-weight: 700;}
-        .adviser-list-info p{line-height: 35px;min-height: 35px;font-size: 12px;color: #666;}
-        .adviser-list-href{height: 165px;line-height:165px;float: left}
-        .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
+        .adviser-list-info p{line-height: 35px;min-height: 35px;font-size: 12px;color: #666;overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;}
+        .adviser-list-href{height: 165px;line-height:165px;float: right;margin-right: 25px;}
+        .adviser-list-href a{border: 2px solid #2486b5;padding: 10px 30px;color:#2486b5;}
         .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
 
         .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
@@ -118,7 +121,11 @@
             font-size: 12px;
         }
 
-        .adviser_left{width: 935px;margin-right:5px;float: left;}
+        .adviser_left{}
+        .advisertSortCon{border-top: none;height: 40px;line-height: 40px;background-color: #eaeaea;margin-bottom: 30px;}
+        .advisertSortCon:after{content: '';            clear: both;}
+        .adviserCountCont{float: right;margin-right: 10px;}
+        #adviserCount{color:red;font-size: 14px;}
         .adviser_right{width:240px; text-align: center; float: left;background: url("images/order-adviser.jpg") no-repeat;}
         .order-form{border:1px solid #eee;border-top:0px;text-align: center;margin-top: 105px;}
         /*文本框样式调整*/
@@ -150,7 +157,7 @@
                         </div>
                         <div class="clear"></div>
                     </li>
-                    <li style="border: 0px;">
+                    <li style="border: 0px;padding-bottom: 5px;">
                         <h3>服务区域：</h3>
                         <div class="selectSpan" id="areaSearch">
                             <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-" >上海</a></span><span><a href="javascript:void(0);" code="1-">北京</a></span><span><a href="javascript:void(0);" code="8-">天津</a></span>
@@ -161,21 +168,26 @@
                 </ul>
             </div>
 
+            <div class="search-select advisertSortCon">
+                <div class="adviserCountCont">共<span id="adviserCount">0</span>位顾问</div>
+            </div>
+
+            <div style="border-bottom: 1px solid #ddd;"></div>
             <div class="adviser_mainli" id="dataMsg">
 
 
             </div>
-            <div id="pager"></div>
+            <div id="pager" class="textCenter"></div>
         </div>
         <div class="adviser_right">
 
-            <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
+            <%--<jsp:include page="../openNeed/need_form.jsp"></jsp:include>--%>
 
-            <jsp:include page="/adviserRecommend/recommend.html">
-                <jsp:param value="201" name="plate"/>
-                <jsp:param value="1" name="currentPage"/>
-                <jsp:param value="3" name="pageSize"/>
-            </jsp:include>
+            <%--<jsp:include page="/adviserRecommend/recommend.html">--%>
+                <%--<jsp:param value="201" name="plate"/>--%>
+                <%--<jsp:param value="1" name="currentPage"/>--%>
+                <%--<jsp:param value="3" name="pageSize"/>--%>
+            <%--</jsp:include>--%>
         </div>
         <div class="clear"></div>
     </div>
@@ -183,7 +195,7 @@
 
 <jsp:include page="../common/bottom.jsp"></jsp:include>
 
-
+<script src="/plugins/layui/layui.js" charset="utf-8"></script>
 <script>
     $(function () {
         var keyword = "${keyword}";
@@ -193,8 +205,7 @@
         searchType.eq(2).addClass("selectType");
 
         layui.use(['laypage', 'layer'], function(){
-            var laypage = layui.laypage
-                    ,layer = layui.layer;
+            var laypage = layui.laypage;
             //以下将以jquery.ajax为例，演示一个异步分页
             var pageSize = 5;
             function paging(curr){
@@ -211,6 +222,7 @@
                     success: function(data){
                         $("#dataMsg").html(data);
                         var totalPages = $("#totalPages").val();
+                        $("#adviserCount").html(totalPages);
                         //显示分页
                         laypage({
                             cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>

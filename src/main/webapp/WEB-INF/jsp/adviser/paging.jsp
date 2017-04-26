@@ -13,15 +13,16 @@
                 <div class="adviser-list-content">
                     <p>
                         <span class="company">${member.name}</span>
-                        <c:if test="${member.adviserType == '1-'}">金融顾问</c:if>
-                        <c:if test="${member.adviserType == '2-'}">企业顾问</c:if>
-                        <c:if test="${member.adviserType == '3-'}">法律顾问</c:if>
-                        <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/qq/qq.gif" /></a>
+                        <%--<c:if test="${member.adviserType == '1-'}">金融顾问</c:if>--%>
+                        <%--<c:if test="${member.adviserType == '2-'}">企业顾问</c:if>--%>
+                        <%--<c:if test="${member.adviserType == '3-'}">法律顾问</c:if>--%>
+                        <%--<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/qq/qq.gif" /></a>--%>
                     </p>
-                    <p>${member.companyName}&nbsp;
+                    <p>${member.companyName}<span style="padding: 0px 10px;color: #eee;">|</span>
                         <c:if test="${member.level == 1}">普通顾问</c:if>
                         <c:if test="${member.level == 2}">金牌顾问</c:if>
-                        &nbsp;执业${member.workAge}年</p>
+                        <%--&nbsp;执业${member.workAge}年--%>
+                    </p>
                     <p style="color: #999;">个人简介：
                         <c:if test="${fn:length(member.description)>100}">
                             ${fn:substring(member.description,0,100)}...
@@ -32,7 +33,7 @@
                     </p>
                 </div>
             </div>
-            <div class="adviser-list-href"><a href="/adviser/detail/${member.id}.html">访问主页</a></div>
+            <div class="adviser-list-href"><a href="/adviser/detail/${member.id}.html">顾问主页</a></div>
             <div class="clear"></div>
         </li>
     </c:forEach>

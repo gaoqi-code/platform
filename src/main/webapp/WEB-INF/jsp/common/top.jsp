@@ -28,7 +28,7 @@
                 <div class="top_welcome"><a href="logout.html">退出</a></div>
             </c:if>
             <c:if test="${sessionScope.currentUser.name == null}"><div class="top_reg"><a href="/tologin.html">登录</a><a href="/register/reg/0.html">注册</a></div></c:if>
-            <div class="top_tuiguang">网站导航</div>
+            <%--<div class="top_tuiguang">网站导航</div>--%>
         </div>
     </div>
 </div>
@@ -54,7 +54,7 @@
     <div style="clear: both;"></div>
 </div>
 
-<div class="nav">
+<div class="nav content">
     <div class="content">
         <ul>
             <li class="nav-li1">
@@ -89,21 +89,24 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-li ${cIndexNav}">
-                <a href="/index.html">首页</a>
-            </li>
-            <li class="nav-li ${cNeedNav}">
-                <a href="/need/toSearch.html">找需求</a>
+            <%--<li class="nav-li ${cIndexNav}">--%>
+                <%--<a href="/index.html">首页</a>--%>
+            <%--</li>--%>
+            <li class="nav-li ${cProductNav}">
+                <a href="/product/toSearch.html">找企服</a>
             </li>
             <li class="nav-li ${cAdviserNav}">
-                <a href="/adviser/toSearch.html">找顾问</a>
+                <a href="/adviser/toSearch.html">企服顾问</a>
             </li>
-            <li class="nav-li ${cProductNav}">
-                <a href="/product/toSearch.html">找服务</a>
+            <li class="nav-li">
+                <a href="javascript:void(0);">企服申请</a>
             </li>
-            <%--<li class="nav-li">--%>
-                <%--<a href="introduce.html">关于企巴巴</a>--%>
-            <%--</li>--%>
+            <li class="nav-li ${cNeedNav}">
+                <a href="/need/toSearch.html">企服需求</a>
+            </li>
+            <li class="nav-li">
+                <a href="/article/detail/1.html">关于企巴巴</a>
+            </li>
             <%--<li class="nav-li">--%>
                 <%--<a href="javascript:void(0);">商家入驻</a>--%>
             <%--</li>--%>

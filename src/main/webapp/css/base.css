@@ -19,7 +19,7 @@ iframe{width: 100%;border: 0px;margin: 0px;padding: 0px;height:100%;}
 .redColorClass{color: red;padding-right: 3px;}
 .font22{font-size: 22px;}
 .textLeft{text-align: left!important;}
-
+.textCenter{text-align: center!important;}
 .ta1{text-decoration: underline;color: blue;}
 
 button, html input[type="button"], input[type="submit"] {cursor: pointer;}
@@ -40,7 +40,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	line-height: 16px;
 	height: 16px;
 	padding: 8px 10px;
-	border: 2px #004b92 solid;
+	border: 2px #2486b5 solid;
 	width: 294px;
 	border-right: 0;
 	border-radius: 2px 0 0 2px;
@@ -48,7 +48,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .search-form-box button{line-height: 36px;
 	height: 35px;
 	padding: 0 20px 0 15px;
-	background:#004b92;
+	background:#2486b5;
 	color: #fff;
 	font-size: 16px;
 	border-radius: 0 2px 2px 0;}
@@ -78,15 +78,15 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 /*.nav-l2-container{background-color:#454444;color:#FFF;position: absolute;top:48px;display: none;padding-left: 5px;z-index: 2;}*/
 /*.nav-c2 span{display: inline-block;height:26px;line-height:26px;float: left;margin-right: 15px;font-size: 13px;}*/
 /*.nav-l2c{text-align: left;}*/
-.nav{height:48px;line-height:48px;border-bottom: 2px solid #004b92;}
-.nav-li1{width: 220px;float:left;text-align: center;position: relative;background-color: #004b92;}
-.navCurrent>a{color: #004b92!important;font-weight: bold;}
+.nav{height:48px;line-height:48px;border-bottom: 2px solid #2486b5;}
+.nav-li1{width: 220px;float:left;text-align: center;position: relative;background-color: #2486b5;}
+.navCurrent>a{color:#2486b5!important;font-weight: bold;}
 .nav-li1 i{background-position: -25px 0px;background: url("../images/icon/global_icon.png") no-repeat;width: 25px;height: 27px;display: inline-block;vertical-align: middle;}
 .nav-li1 a{display:block;font-weight: bold;text-align:left;color: #FFF;margin-left: 15px;font-size: 16px;}
 .nav-li1 a:hover{color: #FFF;}
 .nav-li{width: 125px;float:left;text-align: center;}
 .nav-li a{color: #000;display:block;font-size: 16px;}
-.nav-li a:hover{font-weight: bold;color: #004b92;}
+.nav-li a:hover{font-weight: bold;color:#2486b5;}
 .nav-t2{font-size: 15px;font-weight: bold;color: #000;}
 .nav-c2{width: 95%;margin-left: auto;margin-right: auto;}
 .nav-c2-fenge{border-bottom: 1px dashed #e2e2e2;padding-top: 10px;width: 95%;margin-left: auto;margin-right: auto;}
