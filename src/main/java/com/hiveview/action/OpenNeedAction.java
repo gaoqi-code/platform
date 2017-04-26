@@ -71,6 +71,11 @@ public class OpenNeedAction extends BaseController{
         }
         need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        long memberId = super.getMemberId(request);
+        if (memberId > 0) {
+            need.setOpenShow(true);
+            need.setMemberId(memberId);
+        }
         List<Need> needs =  needService.getOpendNeedPage(need);
         paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
@@ -118,8 +123,10 @@ public class OpenNeedAction extends BaseController{
         Integer chargeType = need.getChargeType();
         if (chargeType != null && chargeType == StatusUtil.COLLECT_FEE.getVal()) {
             Long memberId =super.getMemberId(request);
-            if (!needService.isViewed(memberId, needId)) {
-                view ="redirect:/need/toSearch.html";
+            if (memberId != need.getMemberId()) {//不是自己发布的需求
+                if (!needService.isViewed(memberId, needId)) {
+                    view ="redirect:/need/toSearch.html";
+                }
             }
         }
         mav.getModel().put("need", need);
@@ -161,10 +168,12 @@ public class OpenNeedAction extends BaseController{
             if (chargeType != null && chargeType == StatusUtil.COLLECT_FEE.getVal()) {
                 Long memberId = super.getMemberId(request);
                 if (memberId > 0) {
-                    Map<String, Object> resultMap = memberService.getViewNeedCount(memberId, needId);
-                    if (resultMap.get("viewId") == null) {
-                        flag = 2;
-                        result.put("count",resultMap.get("needViewCount"));
+                    if (memberId != need.getMemberId()) {//不是自己发布的需求
+                        Map<String, Object> resultMap = memberService.getViewNeedCount(memberId, needId);
+                        if (resultMap.get("viewId") == null) {
+                            flag = 2;
+                            result.put("count",resultMap.get("needViewCount"));
+                        }
                     }
                 } else {
                     flag = 1;

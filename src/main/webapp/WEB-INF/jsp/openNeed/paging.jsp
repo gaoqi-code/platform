@@ -29,7 +29,19 @@
             <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${need.title}</a></td>
             <td>${need.className}</td>
             <td>${need.member.name}</td>
-            <td>${fn:substring(need.needMobile,0,7)}****</td>
+            <td   <c:if test="${need.memberViewNeedId != null}"> style="color: red;" </c:if>>
+                <c:if test="${need.chargeType == 9}">
+                    <c:if test="${need.memberViewNeedId != null}">
+                        ${need.needMobile}[已查看]
+                    </c:if>
+                    <c:if test="${need.memberViewNeedId == null}">
+                        ${fn:substring(need.needMobile,0,7)}****
+                    </c:if>
+                </c:if>
+                <c:if test="${need.chargeType == 8}">
+                      ${need.needMobile}
+                </c:if>
+            </td>
             <td>${need.areaFullName}</td>
             <td><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
         </tr>

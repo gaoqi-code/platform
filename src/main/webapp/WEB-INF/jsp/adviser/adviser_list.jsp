@@ -222,7 +222,7 @@
                     success: function(data){
                         $("#dataMsg").html(data);
                         var totalPages = $("#totalPages").val();
-                        $("#adviserCount").html(totalPages);
+                        $("#adviserCount").html($("#totalCount").val());
                         //显示分页
                         laypage({
                             cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>

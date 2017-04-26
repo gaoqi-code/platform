@@ -116,7 +116,7 @@ public class BaseController {
 //            IPagingDao pagingDao =  BeanUtil.getBean("pagingDao");
 //            int total = pagingDao.getTableTotal(tableName);
 //            if (total>0) {
-//                paging.setRecCount(total);
+//                paging.setTotalCount(total);
 //            }
             return paging;
         }
