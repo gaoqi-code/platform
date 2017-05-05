@@ -16,28 +16,49 @@
     <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
     <style>
         .search-select{border:1px solid #ddd;}
-        .search-select li{margin: 15px;border-bottom: 1px solid #eee;padding-bottom: 20px;}
-        .search-select h3{width:100px;height: 30px;line-height: 30px;display:block;float: left;}
+        .search-select li{    padding-left: 26px;
+            height: 66px;
+            line-height: 66px;
+            border-bottom: 1px solid #f7f6f6;}
+        .search-select h3{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            float: left;
+            margin-top: 15px;
+        }
         .allSelect{background-color:#2486b5;color: #FFF;display:block;}
         .allSelect:hover{color: #FFF;}
+        .selectSpan{
+            line-height: 30px;
+            height: 30px;
+            float: left;
+            margin-top: 15px;
+        }
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser_mainli li{height: 180px;border: 1px solid #ddd; border-top:none;}
-        .li-img{width: 165px;height: 165px;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
+        .adviser_mainli li{border: 1px solid #ddd; border-top:none;height: 217px;}
+        .li-img{    margin: 26px 56px 26px 30px;            float: left;}
         .li-img img{width: 165px;}
-        .adviser-list-info{height: 165px;float: left;width: 830px;}
-        .adviser-list-content{margin-left: 30px;margin-top: 40px; padding-right: 5px;}
+        .adviser-list-info{float: left;width: 645px;margin-top: 56px;}
+        .adviser-list-content{padding-right: 5px;}
         .company{display: inline-block;
             vertical-align: bottom;
-            font-size: 16px;
-            color:#2486b5;
+            font-size: 24px;
+            color:#2486b7;
             font-weight: 700;}
         .adviser-list-info p{line-height: 35px;min-height: 35px;font-size: 12px;color: #666;overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;}
-        .adviser-list-href{height: 165px;line-height:165px;float: right;margin-right: 25px;}
-        .adviser-list-href a{border: 2px solid #2486b5;padding: 10px 30px;color:#2486b5;}
-        .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
-
+        .adviser-list-href{float: right;
+            margin-right: 92px;}
+        .adviser-list-href a{border: 2px solid #2486b7;
+            width: 144px;height: 46px;
+            line-height: 46px;
+            text-align: center;
+            display: inline-block;
+            color: #2486b7;
+            margin-top: 80px;}
         .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .adviser_right_tj img{width:90px;}
         .adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}
@@ -122,7 +143,7 @@
         }
 
         .adviser_left{}
-        .advisertSortCon{border-top: none;height: 40px;line-height: 40px;background-color: #fafafa;margin-bottom: 30px;}
+        .advisertSortCon{border-top: none;height: 50px;line-height: 50px;background-color: #fafafa;margin-bottom: 30px;}
         .advisertSortCon:after{content: '';            clear: both;}
         .adviserCountCont{float: right;margin-right: 10px;}
         #adviserCount{color:red;font-size: 14px;}
@@ -138,7 +159,7 @@
 
 <div id="container">
     <div class="position2">
-        您当前位置：<a href="/index.htm">企巴巴</a> &gt;
+        您当前位置：<a href="/index.html">企巴巴</a> &gt;
         <a href="/tmbrandsearch/index.htm">找顾问</a>
     </div>
 
