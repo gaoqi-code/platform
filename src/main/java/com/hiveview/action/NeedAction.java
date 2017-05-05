@@ -41,7 +41,7 @@ public class NeedAction extends BaseController{
         Need need = new Need();
         need.setMemberId(super.getMemberId(request));
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
-            List<Need> needs =  needService.getNeedPage(need);
+        List<Need> needs =  needService.getNeedPage(need);
         paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
         mav.getModel().put("needs",needs);
@@ -172,6 +172,7 @@ public class NeedAction extends BaseController{
         Paging paging = super.getPaging(request);
         Need need = new Need();
         need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+        //根据会员类型推荐对应的需求
         need.setClassCode(super.getAdviserType(request));
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
         List<Need> needs =  needService.getOpendNeedPage(need);

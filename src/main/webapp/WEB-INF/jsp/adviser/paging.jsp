@@ -49,3 +49,4 @@
 
    <input type="hidden" id="totalPages" value="${paging.totalPages}"/>
    <input type="hidden" id="currentPage" value="${paging.currentPage}"/>
+   <input type="hidden" id="totalCount" value="${paging.totalCount}"/>

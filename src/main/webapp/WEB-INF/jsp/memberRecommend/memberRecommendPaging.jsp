@@ -17,7 +17,7 @@
                         <c:if test="${memberRecommend.adviserType == '2-'}">[企业顾问]</c:if>
                         <c:if test="${memberRecommend.adviserType == '3-'}">[法律顾问]</c:if>
                     </span>
-                    <a class="gray" href="javascript:void(0);">${memberRecommend.description}</a>
+                    <a class="gray beyond2" title="${memberRecommend.description}" href="javascript:void(0);">${memberRecommend.description}</a>
                 </p>
             </h3>
         </div>

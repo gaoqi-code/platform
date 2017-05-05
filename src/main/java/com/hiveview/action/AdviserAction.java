@@ -4,19 +4,17 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
 import com.hiveview.entity.Member;
-import com.hiveview.entity.Need;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
 import com.hiveview.service.IMemberService;
-import com.hiveview.service.INeedService;
 import com.hiveview.service.IProductService;
 import com.hiveview.util.MemberType;
-import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import utils.StatusUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -72,6 +70,7 @@ public class AdviserAction extends BaseController{
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
 		List<Member> members =  memberService.getOpendMemberPage(member);
 		paging.setTotalPages(page.getPages());
+		paging.setTotalCount(page.getTotal());
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("members",members);
 		mav.setViewName("adviser/paging");
