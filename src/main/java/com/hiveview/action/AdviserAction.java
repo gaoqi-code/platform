@@ -64,6 +64,12 @@ public class AdviserAction extends BaseController{
 		if (StringUtil.isNotEmpty(classCode)) {
 			member.setAdviserType(classCode);
 		}
+
+		String productId = request.getParameter("productId");
+		if (StringUtil.isNotEmpty(productId)) {
+			member.setProductId(Integer.valueOf(productId));
+		}
+
 		member.setCheckStatus(StatusUtil.CHECK_SUCCESS.getVal());
 		member.setType(MemberType.ADVISER.getVal());
 		member.setStatus(StatusUtil.VALID.getVal());

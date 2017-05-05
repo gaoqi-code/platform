@@ -216,6 +216,7 @@
                         keyword:keyword,
                         areaCode:$("#areaVal").val(),
                         classCode:$("#categoryVal").val(),
+                        productId:"",
                         currentPage :curr || 1,
                         pageSize : pageSize
                     },
