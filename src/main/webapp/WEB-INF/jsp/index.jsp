@@ -90,7 +90,7 @@
             margin-bottom: 10px;
             background: #fff;
             float: left;
-            width: 360px;
+            width: 375px;
             margin-top: 10px;
         }
         .box h2{padding: 10px;}
@@ -112,7 +112,7 @@
         .info a{font-size: 12px;}
 
         /*** tab切换部分（人脉、服务、产品） ***/
-        .offerlist{width: 780px;float: left;margin-right: 40px;}
+        .offerlist{width: 780px;float: left;margin-right: 25px;background-color: #FFF;}
         .offerlist dl {
             padding: 20px 0;
             border-bottom: 1px solid #ddd;
@@ -440,7 +440,8 @@
             padding: 2px 14px;
             margin-top: 28px;
         }
-        .offerlistclss{margin-top: 5px;}
+        #needDataMsgPerson{margin-left: 10px;}
+        .offerlistclss{margin-top:10px;margin-left: 10px;}
         .offerlistclss span{padding:3px 5px; cursor: pointer; margin-top: 10px; margin-right:5px;background-color: #004b92;color:#FFF;}
         .liuyan{    position: absolute;
             padding-top: 20px;
@@ -459,6 +460,7 @@
         .media-new-list {
             padding-bottom: 30px;
             overflow: hidden;
+            background-color: #FFF;
         }
         .business-new-big {
             position: relative;
@@ -570,6 +572,7 @@
             border: 1px #eee solid;
             border-top: 2px #2992f6 solid;
             overflow: hidden;
+            background-color: #FFF;
         }
         .boss-title {
             line-height: 73px;
@@ -766,10 +769,10 @@
         }
         .bottomCss{margin-top: 0px!important;}
         .gray{    padding: 0px 25px 0px 0px;}
-        .index_icon_contain{background-color: #FFF;    width: 360px;float: left;}
+        .index_icon_contain{background-color: #FFF;    width: 375px;float: left;}
         .index_icon{height:120px;border-bottom:1px solid #ddd;}
-        .index_icon_div{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 36px;}
-        .index_icon_font{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 36px;}
+        .index_icon_div{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 45px;}
+        .index_icon_font{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 45px;}
         .index_icon_font span{display: block;}
     </style>
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
@@ -897,12 +900,12 @@
         <div class="index_need clearfix">
             <%--<div class="mod-boxhd"><h3 class="mod-boxhd-tit">最新需求</h3></div>--%>
             <input type="hidden" id="areaVal" />
-            <div class="layui-tab offerlist">
+            <div class="layui-tab offerlist" style="margin-top: 0px;">
                 <ul class="layui-tab-title">
                     <li class="layui-this">个人</li>
                     <li>同业</li>
                 </ul>
-                <div class="layui-tab-content">
+                <div class="layui-tab-content" style="padding-left: 0px;">
                     <div class="layui-tab-item layui-show">
                         <div class="offerlist">
                             <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
