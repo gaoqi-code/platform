@@ -2,7 +2,6 @@ html, body{
 	font-family: "微软雅黑",'microsoft yahei';
 	font-size: 12px;
 	padding:0px;
-	height: 100%;
 	margin:0px;
 	background-color: #FFFFFF;
 }
@@ -59,6 +58,10 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	top: -2px;
 }
 .size25 {display: inline-block;vertical-align: middle;width: 25px;height:31px;background-image: url(../images/public.png);}
+.size14{font-size: 14px!important;}
+.size18{font-size: 18px!important;}
+.size22{font-size: 22px!important;}
+.qColor{color: #7fb5cf;}
 .contentTop{margin-top:10px;}
 
 
@@ -124,7 +127,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .titleNav{border-left:3px solid #ee4134; padding-left:5px;margin:20px 0px;font-size: 16px;}
 
 /*** bottom part ***/
-.bottomCss{margin-top:5px;padding-top:40px;background-color:#2a3235;color: #FFF;}
+.bottomCss{margin-top:107px;padding-top:40px;background-color:#2a3235;color: #FFF;}
 .bottomCss:after{content: ' ';clear: both;}
 .bottomNav{width:400px;float:left;background: url(../images/line-border.png) no-repeat right center;margin-right: 22px;height:130px;}
 .bottomNav a{color: #FFF;width:120px;float: left;display: inline-block;line-height: 24px;}
@@ -185,3 +188,9 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 }
+
+.module_nav{margin-bottom:56px;}
+.module_title{font-size: 16px;padding: 18px 0px;border-bottom: 1px solid #999999;}
+
+/*分隔线部分*/
+.border-line{border:1px solid #999999;margin-top: 70px;margin-bottom: 68px;}

@@ -1,0 +1,15 @@
+.adviser_tj{height: 505px;background-color: #fafafa}
+.adviser_tj:after{content: '';display: block;clear: both;}
+.adviser_tj_li{float:left;margin-left: 75px;margin-top: 50px;}
+.adviser_right_tj{width: 288px;
+    height: 288px;
+    border-radius: 50%;
+    border: 2px solid rgba(3,110,242,0.8);
+    overflow: hidden;}
+.adviser_right_tj img{width:288px;}
+.adviser_right_tjperson{margin-left: 82px;margin-top: 30px;}
+.adviser_right_tjperson p{font-size: 14px;}
+.adviserName{font-size: 22px;color: #2287b5;}
+.adviser_right_tj_personwork{text-align: left;margin-left: 82px; margin-top: 12px;}
+.adviser_right_tj_personwork p{height:30px;line-height: 30px;padding-left:10px;}
+.adviser_tj_title{height: 35px;line-height: 35px;}

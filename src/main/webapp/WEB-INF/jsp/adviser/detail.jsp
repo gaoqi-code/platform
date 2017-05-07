@@ -9,24 +9,18 @@
     <title>${member.companyName}-企巴巴</title>
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
-    <link rel="stylesheet" type="text/css" href="css/adviser_tui.css">
-    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/tui/adviser_tui.css">
     <style>
-        .counselor-head-update{width: 100%;min-width: 1180px;height: 330px;			background: url(./images/head-bg.jpg) no-repeat center center;}
-        .position2{    width: 1180px;
-            padding: 14px 0 10px;
-            margin: auto;
-            background: url(../images/position.png) no-repeat left center;
-            text-indent: 18px;
-            font-size: 12px;}
+        .counselor-head-update{min-width: 1180px;height: 404px; background: url(./images/head-bg.jpg) no-repeat center center;position: relative;}
         .head-update-box{position: relative;
             padding-top: 50px;
             overflow: hidden;}
-        .head-update-left{float: left;
-            width: 194px;}
-        .head-update-left{width: 180px;
-            height: 180px;			border-radius: 50%;			border: 7px solid rgba(255,255,255,.2);			overflow: hidden;}
+        .head-update-left{float: left;    width: 224px;
+            height: 224px;
+            border-radius: 50%;
+            border: 0px solid rgba(255,255,255,.2);
+            overflow: hidden;
+            margin-left: 25px;}
         .head-update-img img{width: 100%;border: 0 none;			vertical-align: middle;			max-width: 100%;}
         .head-update-ewm{    position: relative;
             padding-top: 10px;
@@ -44,7 +38,7 @@
             left: 49px;
             display: none;}
         .head-update-middle{float: left;
-            width: 580px;
+            width: 270px;
             color: white;
             margin-left: 25px;
         }
@@ -61,12 +55,12 @@
         .head-update-middle .recently-banli>p{    color: #999;
             margin-bottom: 8px;}
         .head-update-middle .til .c-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
         }
         .head-update-middle .sub-til {
             color: white;
-            font-size: 12px;
+            font-size: 14px;
         }
         .head-update-middle ul li.li-border {
             border-left: 1px dashed rgba(255,255,255,.2);
@@ -86,8 +80,7 @@
             line-height: 1;
         }
         .head-update-right {
-            float: right;
-            margin-top: 40px;
+            float: left;
         }
         .head-update-right .tel-num {
             color: #3fbff0;
@@ -104,13 +97,15 @@
         }
         .head-update-right a {
             display: block;
-            width: 208px;
-            height: 38px;
+            width: 199px;
+            height: 44px;
             border-radius: 2px;
             color: white;
             text-align: center;
-            line-height: 38px;
-            margin-bottom: 20px;
+            line-height: 44px;
+            font-size: 22px;
+            margin-left: 35px;
+            margin-top: 76px;
         }
         .head-update-middle ul li b {
             color: #999;
@@ -118,8 +113,8 @@
         }
 
         .adviser_left{width: 935px;margin-right:5px;float: left;}
-        .adviser_right{width:240px; text-align: center; float: left;background: url("images/order-adviser.jpg") no-repeat;}
-        .order-form{border:1px solid #eee;border-top:0px;text-align: center;margin-top: 105px;}
+        .adviser_right{width:240px; text-align: center; float: left;}
+        .order-form{border:1px solid #eee;text-align: center;}
         /*文本框样式调整*/
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
         .layui-form-item .layui-input-inline{width:225px;margin-left:5px;}
@@ -135,14 +130,8 @@
 
 
         /*** 提供的服务 ***/
-        .provider-index-wrap {
-            margin-bottom: 88px;
-        }
         .service-list-box {
             margin-bottom: -22px;
-        }
-        .provider-index-box {
-            /*margin-top: 40px;*/
         }
 
         .provider-index-box .mod-head-small .mod-title {
@@ -169,14 +158,14 @@
             display: inline-block;
             vertical-align: top;
             overflow: hidden;
-            width: 240px;
-            height: 154px;
+            width: 236px;
+            height: 124px;
             border: 1px solid #e2e2e2;
-            padding: 20px 20px 14px;
+            padding: 20px 19px;
             background-color: #fff;
             position: relative;
             font-size: 14px;
-            margin: 0 20px 24px 0;
+            margin: 0 10px 24px 0;
             cursor: pointer;
         }
         .provider-index-box .service-list .title {
@@ -244,7 +233,7 @@
         .provider-index-box .service-list .ui-button {
             position: absolute;
             right: 17px;
-            bottom: 13px;
+            bottom: 7px;
         }
         .ui-button-suc {
             color: #fff!important;
@@ -276,31 +265,40 @@
             padding: 0 8px;
             font-size: 12px;
         }
-    </style>
-    <script type="text/javascript">
-        $(function(){
-            $("#kinMaxShow").kinMaxShow({height:200});
-        });
 
-    </script>
+
+        .head-left-content{width: 590px;border-right: 1px solid #ddd;float: left;}
+        .head-left-content:after{content: '';clear: both;display: block;}
+        #userNeedForm{position: absolute;top: 25px;padding-top: 15px;left: 905px;}
+        .content:after{content: '';clear: both;display: block;}
+        .personImg{width: 650px;height: 275px;float:left;}
+        .personImg img{width: 484px;}
+        .personIntro{margin-left: 80px;float: left;height: 275px;width: 450px;display: table;}
+        .personIntro span{display:table-cell; vertical-align:middle;padding:0px 30px 0px 0px;}
+        .zxzx{float: left;margin-right: 50px;}
+        .zxzx img{height: 450px;}
+        .zxzx_need{float: left;margin-top: 50px;}
+
+        .tempWidth{margin-left:68px!important;}
+        .temp-layui-form-label{padding: 9px 0px!important;width: auto!important;color:#FFF;font-size: 16px;}
+        .temp-layui-form-item{margin-bottom: 0px;border: 1px solid #ddd;            border-bottom: none;    padding-left: 10px;}
+        .tempInput{    BACKGROUND-COLOR: transparent;          border: none;font-size: 16px;            color: #FFF;}
+    </style>
 </head>
 <body>
 <jsp:include page="../common/top.jsp"></jsp:include>
 
 <div id="container">
     <div class="position2">
-        您当前位置：<a href="/index.htm">企巴巴</a> &gt;
-        <a href="/adviser/toSearch.html">找顾问</a>
-        &gt;${member.name}个人主页
+        您当前位置：<a href="/index.htm">企巴巴</a> &gt;&gt;
+        <a href="/adviser/toSearch.html">企业顾问</a>&gt;&gt;我的店铺
     </div>
-    <div class="counselor-head-update">
+    <div class="counselor-head-update content">
         <div class="content head-update-box">
-            <div class="head-update-left">
+            <div class="head-left-content">
+            <div class="head-update-left" >
                 <div class="head-update-img">
-
                     <img src="${member.headPortrait == null?'/images/portrait.jpg':member.headPortrait}">
-
-
                 </div>
                 <div class="head-update-ewm">
                     <i></i>
@@ -314,7 +312,6 @@
             <div class="head-update-middle">
                 <div class="til">
                     <span class="c-name">${member.name}</span>
-                    <i class="size25 icon7"></i>
                     <span class="c-post">
                         <c:if test="${member.adviserType == '1-'}">金融顾问</c:if>
                         <c:if test="${member.adviserType == '2-'}">企业顾问</c:if>
@@ -322,20 +319,35 @@
                     </span>
                 </div>
                 <div class="sub-til">
-                    <span>${member.companyName}</span>
-                </div>
-                <div class="sub-til">
-                    <span>在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank" ><img src="images/qq/qq.gif" /></a></span>
-                </div>
-                <div class="sub-til">
-                    <span>联系电话：${member.mobile}</span>
-                </div>
-                <div class="sub-til">
-                    <span>主营业务：公司注册、会计理财</span>
+                    <span>
+                      <c:choose>
+                          <c:when test="${member.level==1}">
+                              普通顾问
+                          </c:when>
+                          <c:when test="${member.level==2}">
+                              高级顾问
+                          </c:when>
+                          <c:otherwise>
+                              顾问
+                          </c:otherwise>
+                      </c:choose>
+                    </span>
                 </div>
                 <div class="sub-til">
                     <span>所在地区：${member.areaFullName}-${member.address}</span>
                 </div>
+                <div class="sub-til">
+                    <span>职业经验：${member.workTime}</span>
+                </div>
+                <%--<div class="sub-til">--%>
+                    <%--<span>在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank" ><img src="images/qq/qq.gif" /></a></span>--%>
+                <%--</div>--%>
+                <div class="sub-til">
+                    <span style="font-size: 22px;">${member.mobile}</span>
+                </div>
+
+            </div>
+
             </div>
 
             <div class="head-update-right">
@@ -346,79 +358,137 @@
 
         </div>
         <div class="clear"></div>
+        <jsp:include page="../openNeed/adviser_need_form.jsp">
+            <jsp:param value="103" name="dataSource"/>
+        </jsp:include>
 
     </div>
+<div class="content"><img src="/images/adviser/xie.jpg" style="margin-left: 484px;"></div>
+    <div class="content">
+        <div class="personImg">
+            <img src="/images/adviser/personImg.jpg">
+        </div>
+        <div class="personIntro">
+            <span>${member.description}</span>
+        </div>
+    </div>
+
 
     <div class="content contentTop">
-
-        <div class="adviser_left">
-            <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">个人简介</h2>
-                    <div class="layui-colla-content layui-show">
-                        <%--<p>在前端技术快速变革的今天，layui 仍然坚持语义化的组织模式，甚至于模块理念都是采用类AMD组织形式，并非是有意与时代背道而驰。layui 认为以jQuery为核心的开发方式还没有到完全消亡的时候，而早期市面上基于jQuery的UI都普通做得差强人意，所以需要有一个新的UI去重新为这一领域注入活力，并采用一些更科学的架构方式。--%>
-                            <%--<br>--%>
-                            <%--因此准确地说，layui 更多是面向那些追求开发简单的前端工程师们，以及所有层次的服务端程序员。</p>--%>
-                            ${member.description}
-                    </div>
-                </div>
-                <div class="layui-colla-item">
-                    <h2 class="layui-colla-title">提供的服务</h2>
-                    <div class="layui-colla-content  layui-show">
+        <div class="layui-collapse" lay-accordion="">
+            <div class="layui-colla-item">
+                <h2 class="layui-colla-title">提供的服务</h2>
+                <div class="layui-colla-content  layui-show">
 
 
 
-                        <div class="provider-index-wrap jmod-tabcontent-wrap0">
-                            <div class="provider-index-box service-list-box">
-                                <div class="layout">
-                                    <%--<div class="mod-head mod-head-small jmod-hot-sku-header">--%>
-                                        <%--<h3 class="mod-title">热销服务</h3>--%>
-                                        <%--<a href="/seller/corpinfo?c_id=10021&amp;tab=2" _stat_click_id="9_100" class="more">更多服务</a>--%>
-                                    <%--</div>--%>
-                                    <div class="service-list">
-                                        <ul class="jmod-hot-skus">
-                                            <c:forEach items="${products}" var="product">
-                                                <li class="item">
+                    <div class="provider-index-wrap jmod-tabcontent-wrap0">
+                        <div class="provider-index-box service-list-box">
+                            <div class="layout">
+                                <%--<div class="mod-head mod-head-small jmod-hot-sku-header">--%>
+                                <%--<h3 class="mod-title">热销服务</h3>--%>
+                                <%--<a href="/seller/corpinfo?c_id=10021&amp;tab=2" _stat_click_id="9_100" class="more">更多服务</a>--%>
+                                <%--</div>--%>
+                                <div class="service-list">
+                                    <ul class="jmod-hot-skus">
+                                        <c:forEach items="${products}" var="product">
+                                            <li class="item">
 
-                                                    <h4 class="title"><a _stat_click_id="9_13134" href="product/detail/${product.id}.html" target="_blank">${product.title}</a></h4>
-                                                    <p class="intro">提供员工入职到离职一系列HR相关文件模板</p>
-                                                    <div class="record">
-                                                        <span class="deal">销量&nbsp;690</span>
-                                                        <span class="consult">咨询量&nbsp;118</span>
-                                                    </div>
-                                                    <div class="price-box">
+                                                <h4 class="title"><a _stat_click_id="9_13134" href="product/detail/${product.id}.html" target="_blank">${product.title}</a></h4>
+                                                <p class="intro">${product.summary}</p>
+                                                <%--<div class="record">--%>
+                                                    <%--<span class="deal">销量&nbsp;690</span>--%>
+                                                    <%--<span class="consult">咨询量&nbsp;118</span>--%>
+                                                <%--</div>--%>
+                                                <div class="price-box">
                                                         <%--<p class="mod-red-redeem">可抵64.9元</p>--%>
-                                                        <p class="price">¥74.80</p>
-                                                    </div>
-                                                    <a href="product/detail/${product.id}.html" _stat_click_id="9_13134" target="_blank" class="ui-button ui-button-sm ui-button-suc">查看详情</a>
-                                                </li>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
+                                                    <p class="price">
+                                                        <c:if test="${product.marketPrice==null}">
+                                                            面议
+                                                        </c:if>
+                                                        <c:if test="${product.marketPrice!=null}">
+                                                            ¥${product.marketPrice}
+                                                        </c:if>
+                                                    </p>
+                                                </div>
+                                                <a href="product/detail/${product.id}.html" _stat_click_id="9_13134" target="_blank" class="ui-button ui-button-sm ui-button-suc">查看详情</a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
+
+
+
                 </div>
             </div>
         </div>
-        <div class="adviser_right">
-            <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
-
-            <jsp:include page="/adviserRecommend/recommend.html">
-                <jsp:param value="201" name="plate"/>
-                <jsp:param value="1" name="currentPage"/>
-                <jsp:param value="3" name="pageSize"/>
-            </jsp:include>
-        </div>
         <div class="clear"></div>
     </div>
+
+    <div class="border-line content"></div>
+    <div class="content" style="background-color:#80b9d4; height: 450px;">
+        <div class="zxzx">
+            <img src="/images/adviser/zxzx.jpg">
+        </div>
+        <div class="zxzx_need">
+            <form class="layui-form order-form" id="form2" action="" style="border: none;">
+                <input type="hidden" value="102" name="dataSource">
+                <div class="layui-form-item temp-layui-form-item">
+                    <label class="layui-form-label temp-layui-form-label">姓&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
+                    <div class="layui-input-block tempWidth">
+                        <input type="text" name="userName" lay-verify="userName" autocomplete="off" placeholder="" class="layui-input tempInput">
+                    </div>
+                </div>
+                <div class="layui-form-item temp-layui-form-item">
+                    <label class="layui-form-label temp-layui-form-label">Q&nbsp;&nbsp;&nbsp;&nbsp;Q:</label>
+                    <div class="layui-input-block tempWidth">
+                        <input type="text" name="qq" lay-verify="qq" autocomplete="off" placeholder="" class="layui-input tempInput">
+                    </div>
+                </div>
+                <div class="layui-form-item temp-layui-form-item">
+                    <label class="layui-form-label temp-layui-form-label">手机号码:</label>
+                    <div class="layui-input-block tempWidth">
+                        <input type="text" name="mobile" lay-verify="phone" autocomplete="off" class="layui-input tempInput">
+                    </div>
+                </div>
+                <div class="layui-form-item temp-layui-form-item">
+                    <label class="layui-form-label temp-layui-form-label">电子邮件:</label>
+                    <div class="layui-input-block tempWidth">
+                        <input type="text" name="mail" lay-verify="mail" autocomplete="off" placeholder="" class="layui-input tempInput">
+                    </div>
+                </div>
+                <div class="layui-form-item temp-layui-form-item">
+                    <label class="layui-form-label temp-layui-form-label">留言主题:</label>
+                    <div class="layui-input-block tempWidth">
+                        <input type="text" name="needTitle" lay-verify="needTitle" autocomplete="off" placeholder="" class="layui-input tempInput">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text temp-layui-form-item" style="border-bottom: 1px solid #ddd;">
+                    <label class="layui-form-label temp-layui-form-label">留言内容:</label>
+                    <div class="layui-input-block tempWidth">
+                        <textarea name="needDesc" lay-verify="n_needContent" class="layui-textarea tempInput"></textarea>
+                    </div>
+                    <button lay-submit="" style="float: right;    font-size: 16px;padding: 7px;margin-right: 10px;    background: transparent;    color: #FFF;" lay-filter="demo2">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="border-line content"></div>
+
+
+        <jsp:include page="/adviserRecommend/recommendWithDetail.html">
+            <jsp:param value="201" name="plate"/>
+            <jsp:param value="1" name="currentPage"/>
+            <jsp:param value="3" name="pageSize"/>
+        </jsp:include>
+
 </div>
 <jsp:include page="../common/bottom.jsp"></jsp:include>
-<script src="./plugins/layui/layui.js" charset="utf-8"></script>
+<%--<script src="./plugins/layui/layui.js" charset="utf-8"></script>--%>
 <script>
     layui.use(['form'], function(){
         var form = layui.form()
@@ -438,13 +508,30 @@
         });
 
         //监听提交
-        form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+        form.on('submit(demo2)', function(data){
+            if((new Date().getTime())-cureentTime<4000){
+                return false;
+            }
+            cureentTime = new Date().getTime();
+            $.ajax({
+                type: "POST",
+                url: "/need/liuyan.json",
+                data: $("#form2").serialize(),
+                dataType: "json",
+                async:false,
+                success: function (data) {
+                    if (data) {
+                        layer.alert("您的需求已提交，我们会尽快与您联系。", {
+                            title: '信息'
+                        });
+                        $(':input','#userNeedForm').val('');
+                    } else {
+                        layer.msg("发布失败！");
+                    }
+                }
+            });
             return false;
         });
-
 
     });
 </script>

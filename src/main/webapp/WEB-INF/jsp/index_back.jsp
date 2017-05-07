@@ -24,7 +24,6 @@
         /*幻灯片*/
         /* 本例子css */
         .slideBox{ width:100%;position:relative;}
-        .slideBox:after{content: '';display: block;clear: both;}
         .slideBox .hd{ overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
         .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
         .slideBox .hd ul li{ float:left; margin-right:2px; padding:5px 8px;line-height:14px; text-align:center; background:#fff; cursor:pointer; }
@@ -43,20 +42,26 @@
         .slideBox .nextStop{ display:none;  }
 
         /*** promo部分 ***/
+        .promo {
+            margin: 5px auto 0;
+        }
         .promo .layout {
+            padding-left: 219px;
             box-sizing: border-box;
         }
         .promo-card {
             position: relative;
-            margin-right:1px;
+            margin-right: 5px;
+            width: 231px;
+            height: 128px;
             float: left;
         }
         .promo-card img{
-            height: 118px;
+            width: 231px;
         }
         .promo .news {
-            width: 242px;
-            height: 86px;
+            width: 240px;
+            height: 96px;
             border: 1px solid #e2e2e2;
             background-color: #fff;
             float: left;
@@ -75,7 +80,7 @@
             display: inline-block;
             width: 4px;
             height: 15px;
-            background-color: #4cacf8;
+            background-color: #de373e;
             margin-right: 8px;
             vertical-align: bottom;
         }
@@ -90,19 +95,17 @@
             margin-bottom: 10px;
             background: #fff;
             float: left;
-            width: 360px;
-            margin-top: 10px;
+            margin-left: 20px;
+            width: 380px;
         }
-        .box h2{padding: 10px;}
+        .box h2{margin-bottom: 5px;}
         .box .bd {
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
+            margin-bottom: 10px;
         }
         .box .pic {
             float: left;
             width: 60px;
-            margin: 10px;
-            height: 80px;
+            margin-top: 2px;
         }
         .box .info {
             word-wrap: break-word;
@@ -112,15 +115,16 @@
         .info a{font-size: 12px;}
 
         /*** tab切换部分（人脉、服务、产品） ***/
-        .offerlist{width: 780px;float: left;margin-right: 40px;}
+        .offerlist{width: 780px;float: left;}
         .offerlist dl {
             padding: 20px 0;
             border-bottom: 1px solid #ddd;
         }
         .offerlist dt {
+            text-align: center;
             font-size: 14px;
             float: left;
-            width: 15%;
+            width: 20%;
         }
         .offerlist dt img {
             vertical-align: middle;
@@ -129,8 +133,7 @@
             background: #fff;
             border: 1px solid #ddd;
             padding: 4px;
-            width: 80px;
-            height: 80px;
+            width: 50px;
             margin-bottom: 5px;
         }
         .offerlist p {
@@ -150,14 +153,11 @@
         }
         .offerlist dd {
             float: left;
-            width: 65%;margin-top: 10px;margin-right: 5%;
+            width: 79%;
         }
         .green {
-            /*color: #3b8e00;*/
+            color: #3b8e00;
             margin-right: 5px;
-            height: 35px;
-            line-height: 35px;
-            display: block;
         }
         .ml10 {
             margin-left: 10px;
@@ -173,6 +173,8 @@
         .offerlist .content {
             font-size: 12px;
             color: #585858;
+            margin: 11px 0;
+            line-height: 1.8;
             width: auto;
         }
 
@@ -555,228 +557,12 @@
             height: 15px;
             background: url(./images/eye_icon.png) no-repeat center 2px;
         }
-
-        /*我要当老板*/
-        .when-boss-list {
-            overflow: hidden;
-            margin: 0 -10px;
-            padding: 0 0 10px;
-        }
-        .when-boss-list>li {
-            display: block;
-            float: left;
-            width: 378px;
-            margin: 0 10px;
-            border: 1px #eee solid;
-            border-top: 2px #2992f6 solid;
-            overflow: hidden;
-        }
-        .boss-title {
-            line-height: 73px;
-            text-align: center;
-            font-size: 24px;
-            color: #999;
-        }
-        .boss-main {
-            position: relative;
-        }
-        .boss-main-txt {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            padding: 30px 30px;
-        }
-        .boss-main-txt>p {
-            color: #004b92;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        .boss-main-txt>p>span {
-            display: block;
-            font-size: 14px;
-            color: #666;
-            font-weight: normal;
-            margin-left: 3px;
-            margin: 5px 0 0;
-        }
-        .boss-main-txt>label {
-            color: #fa4f4f;
-            display: block;
-            margin: 10px 0 15px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .boss-main-txt>a {
-            display: block;
-            width: 78px;
-            line-height: 24px;
-            border: 1px #fa4f4f solid;
-            border-radius: 2px;
-            text-align: center;
-            color: #fa4f4f;
-        }
-        .boss-sub {
-            padding: 35px 0 40px;
-            margin: 0 -1px;
-            overflow: hidden;
-        }
-        .boss-sub>a {
-            display: block;
-            float: left;
-            width: 149px;
-            padding: 0 10px 0 30px;
-            border-left: 1px #eaeaea solid;
-            color: #999;
-            height: 45px;
-        }
-        .boss-sub>a label {
-            color: #333;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .boss-sub>a p {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .index-title{background-color:#1299f2;color: #FFF;    display: inline-block;
-            padding: 5px;
-            margin-bottom: 10px;}
-
-        /*时间轴*/
-        .time-line {
-            position: relative;
-            min-width: 1180px;
-            background: url(/images/index/time_line.jpg) top center;
-            padding: 15px 0 20px;
-        }
-        .time-line-main {
-            position: relative;
-            z-index: 1;
-            width: 1180px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        .time-line-main>h3 {
-            font-size: 30px;
-            font-weight: bold;
-            color: #fff;
-            line-height: 45px;
-        }
-        .city-list {
-            position: relative;
-            display: inline-block;
-            border-top: 1px #fff solid;
-            border-bottom: 1px #fff solid;
-            line-height: 32px;
-            color: #fff;
-            margin-top: 10px;
-        }
-        .city-list>label {
-            margin: 0 23px;
-        }
-        .city-list>span {
-            position: absolute;
-            left: 50%;
-            margin-left: -3px;
-            padding: 0 2px;
-            display: block;
-            background: #3e9aef;
-        }
-        .city-list>span.top {
-            top: -3px;
-        }
-        .city-list>span>i {
-            width: 2px;
-            height: 5px;
-            display: block;
-            background: #fff;
-        }
-        .city-list>span {
-            position: absolute;
-            left: 50%;
-            margin-left: -3px;
-            padding: 0 2px;
-            display: block;
-            background: #3e9aef;
-        }
-        .city-list>span.bottom {
-            bottom: -3px;
-        }
-        .time-line-warp {
-            width: 1180px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-        .time-list-main {
-            height: 356px;
-            width: 1224px;
-            overflow: hidden;
-        }
-        .time-list-main li {
-            display: block;
-            float: left;
-            width: 140px;
-            padding: 285px 64px 0 0;
-            text-align: left;
-            color: #fff;
-            font-size: 16px;
-            text-align: center;
-            position: relative;
-        }
-        .time-p-n.prev {
-            display: none;
-            left: 0;
-            background-position: 0 0;
-        }
-        .time-p-n {
-            position: absolute;
-            bottom: 34px;
-            display: block;
-            width: 35px;
-            height: 35px;
-            background-image: url(../images-v2/index/time_p_n.png);
-        }
-        .time-p-n.next {
-            right: 0;
-            background-position: -35px -35px;
-        }
-        .time-axis {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 55px;
-            min-width: 1180px;
-            height: 30px;
-            background: url(/images/index/time_line1.png) repeat center;
-        }
-        .time-txt {
-            position: absolute;
-            padding: 10px;
-            bottom: 105px;
-            width: 230px;
-            background: url(/images/index/transparent40.png) repeat;
-            color: #fff;
-            line-height: 25px;
-            border-radius: 5px;
-        }
-        .bottomCss{margin-top: 0px!important;}
-        .gray{    padding: 0px 25px 0px 0px;}
-        .index_icon_contain{background-color: #FFF;    width: 360px;float: left;}
-        .index_icon{height:120px;border-bottom:1px solid #ddd;}
-        .index_icon_div{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 36px;}
-        .index_icon_font{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 36px;}
-        .index_icon_font span{display: block;}
     </style>
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://lib.h-ui.net/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
 
 </head>
-<body style="background-color:#f7f7f7;">
+<body>
 <input type="hidden" value="index" id="nav">
 <jsp:include page="common/top.jsp"></jsp:include>
 <div id="slideBox" class="slideBox">
@@ -817,7 +603,9 @@
     </div>
     <div class="bd">
         <ul>
-            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.jpg" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="http://img.dd1008.com/aifa/image/20161020/1476931727170207.png" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="http://img.dd1008.com/aifa/image/20161020/1476932482181102.png" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.png" /></a></li>
         </ul>
     </div>
 
@@ -839,12 +627,12 @@
 <%-- promo部分 --%>
 <div class="promo">
     <div class="layout clearfix content">
-        <a href="/product/detail/22.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="/images/index/p1.jpg"></a>
-        <a href="/product/detail/22.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="/images/index/p2.jpg"></a>
-        <a href="/product/detail/22.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="/images/index/p3.jpg"></a>
-        <a href="/product/detail/22.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="/images/index/p4.jpg"></a>
+        <%--<a href="/cmdty/detail?csId=13216" target="_blank" class="promo-card" _stat_click_id="5_10">&nbsp;</a>--%>
+        <a href="/product/detail/22.html" target="_blank" class="promo-card" _stat_click_id="5_10"><img src="http://p.qpic.cn/zc_pic/0/7e41cb2673f1459c245d04a43e75c9e314815479845626/0"></a>
+        <a href="/product/detail/23.html" target="_blank" class="promo-card" _stat_click_id="5_11"><img src="http://p.qpic.cn/zc_pic/0/0eba100cd32cca46a47cd7658e006650148154808028/0"></a>
+        <a href="/product/detail/24.html" target="_blank" class="promo-card" _stat_click_id="5_12"><img src="http://p.qpic.cn/zc_pic/0/5d796bbd57da739165489a75fa6800b914815481289252/0"></a>
         <div class="news">
-            <h6>企服最新动态</h6>
+            <h6>平台最新动态</h6>
             <p><a href="/article/detail/1.html" target="_blank">2017创业趋势360°拆解</a></p>
             <p><a href="/article/detail/1.html" target="_blank">关于企巴巴</a></p>
             <p><a href="/article/detail/1.html" target="_blank">初创企业的知识产权保护</a></p>
@@ -853,195 +641,276 @@
 </div>
 
 
-<div class="content" style="margin-top: 20px;">
-    <%--<div class="notice">--%>
-        <%--<p class="noticeGG">最新公告:</p>--%>
-        <%--<p class="noticeGG_content"><a href="/article/detail/1.html">[3.03]企巴巴需求量过10万条</a> <span class="redClass">new</span></p>--%>
-        <%--<p class="noticeGG_content"><a href="/article/detail/1.html">[3.03]企巴巴需求量过10万条</a> <span class="redClass">new</span></p>--%>
-        <%--<div class="clear"></div>--%>
-    <%--</div>--%>
-    <%--<div class="main_business">--%>
-        <%--<div class="cc">--%>
-            <%--<div class="cc_img">--%>
-                <%--<img src="images/icon/logo1.png" />--%>
-            <%--</div>--%>
-            <%--<div class="cc_content">--%>
-                <%--<p class="cc_content_title">贷款服务</p>--%>
-                <%--<p>额度高，放款快，门槛低，利率低</p>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>--%>
-        <%--</div>--%>
-        <%--<div class="cc">--%>
-            <%--<div class="cc_img">--%>
-                <%--<img src="images/icon/logo2.png" />--%>
-            <%--</div>--%>
-            <%--<div class="cc_content">--%>
-                <%--<p class="cc_content_title">工商服务</p>--%>
-                <%--<p>价格透明，最快3天拿证</p>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="cc">--%>
-            <%--<div class="cc_img">--%>
-                <%--<img src="images/icon/logo3.png" />--%>
-            <%--</div>--%>
-            <%--<div class="cc_content">--%>
-                <%--<p class="cc_content_title">法律服务</p>--%>
-                <%--<p>专家团队，一对一服务</p>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="clear"></div>--%>
-    <%--</div>--%>
-
-
-        <div class="index_need clearfix">
-            <%--<div class="mod-boxhd"><h3 class="mod-boxhd-tit">最新需求</h3></div>--%>
-            <input type="hidden" id="areaVal" />
-            <div class="layui-tab offerlist">
-                <ul class="layui-tab-title">
-                    <li class="layui-this">个人</li>
-                    <li>同业</li>
-                </ul>
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <div class="offerlist">
-                            <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
-                            <div id="needDataMsgPerson"></div>
-                        </div>
-                    </div>
-                    <div class="layui-tab-item">
-                        <div class="offerlist">
-                            <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
-                            <div id="needDataMsgAdvier"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="index_icon_contain">
-                <div class="index_icon">
-                    <div class="index_icon_div">
-                        <img src="/images/index/i1.jpg">
-                        <span>实名认证</span>
-                    </div>
-                    <div class="index_icon_div">
-                        <img src="/images/index/i2.jpg">
-                        <span>不收费承诺</span>
-                    </div>
-                    <div class="index_icon_div">
-                        <img src="/images/index/i3.jpg">
-                        <span>免费服务</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="index_icon_font">
-                        <span class="size22">15万</span>
-                        <span class="size14">服务机构</span>
-                    </div>
-                    <div class="index_icon_font">
-                        <span class="size22">33万</span>
-                        <span class="size14">贷款顾问</span>
-                    </div>
-                    <div class="index_icon_font">
-                        <span class="size22">287万</span>
-                        <span class="size14">客户信赖</span>
-                    </div>
-                </div>
-            </div>
-            <%--右侧部分--%>
-            <div class="box" id="recommendAdviser">
-
-            </div>
-        </div>
-
-    <%--<div class="hot-provider jmod-hot-provider">--%>
-        <%--<div class="layout clearfix" id="serviceProvider">--%>
-
-        <%--</div>--%>
-    <%--</div>--%>
+<div class="content">
+    <div class="notice">
+        <p class="noticeGG">最新公告:</p>
+        <p class="noticeGG_content"><a href="/article/detail/1.html">[3.03]企巴巴需求量过10万条</a> <span class="redClass">new</span></p>
+        <p class="noticeGG_content"><a href="/article/detail/1.html">[3.03]企巴巴需求量过10万条</a> <span class="redClass">new</span></p>
         <div class="clear"></div>
+    </div>
+    <div class="main_business">
+        <div class="cc">
+            <div class="cc_img">
+                <img src="images/icon/logo1.png" />
+            </div>
+            <div class="cc_content">
+                <p class="cc_content_title">贷款服务</p>
+                <p>额度高，放款快，门槛低，利率低</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="cc">
+            <div class="cc_img">
+                <img src="images/icon/logo2.png" />
+            </div>
+            <div class="cc_content">
+                <p class="cc_content_title">工商服务</p>
+                <p>价格透明，最快3天拿证</p>
+            </div>
+        </div>
+        <div class="cc">
+            <div class="cc_img">
+                <img src="images/icon/logo3.png" />
+            </div>
+            <div class="cc_content">
+                <p class="cc_content_title">法律服务</p>
+                <p>专家团队，一对一服务</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
 
+    <%-- popular-serv jmod-popular-serv --%>
+    <div class="popular-serv jmod-popular-serv">
+        <div class="layout">
+            <div class="mod-boxhd"><h3 class="mod-boxhd-tit">常用服务</h3></div>
+            <div class="clearfix">
 
-
-
-        <div class="when-boss">
-            <p class="index-title size18">企服助您一臂之力</p>
-            <ul class="when-boss-list">
-                <li>
-                    <div class="boss-title" style="color:#1399f2;">注册公司</div>
-                    <div class="boss-main">
-                        <img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170313143142_boss1.jpg">
-                        <div class="boss-main-txt">
-                            <p>有限公司注册<span>足不出户开公司，轻松当老板</span></p>
-                            <label>3280.0起</label>
-                            <a target="_blank" href="/product/detail/12.html">查看详情</a>
+                <div class="card card-1">
+                    <div class="hd">
+                        <h3>我要开公司</h3>
+                    </div>
+                    <div class="prd-main">
+                        <a href="http://c.qq.com/ListSku/view?firstCateId=100003&amp;thirdCateId=100040" target="_blank" _stat_click_id="8_00"><p class="tit" title="有限责任公司注册">有限责任公司注册<span class="tag-discount">限时特惠</span></p></a>
+                        <p class="des" title="一站式开公司服务">一站式开公司服务</p>
+                        <p class="price"><a href="javascript:void(0);">¥500<small>起</small></a></p>
+                        <a href="/product/productIntroduce/2-.html" target="_blank" class="btn" _stat_click_id="8_00">立即查看</a>
+                    </div>
+                    <div class="prd-list">
+                        <div class="prd bdr">
+                            <a href="javascript:void(0);" class="serv-name" title="创业问诊">创业问诊</a>
+                            <p class="des" title="创业咨询服务">创业咨询服务</p>
+                        </div>
+                        <div class="prd">
+                            <a href="javascript:void(0);" class="serv-name" title="国内普通商标注册">国内普通商标注册</a>
+                            <p class="des" title="产权保护第一步">产权保护第一步</p>
+                        </div>
+                        <div class="prd bdr">
+                            <a href="javascript:void(0);" class="serv-name" title="公司注册地址">公司注册地址</a>
+                            <p class="des" title="没有地址怎么办">没有地址怎么办</p>
+                        </div>
+                        <div class="prd">
+                            <a href="javascript:void(0);" class="serv-name" _stat_click_id="8_04" title="代理记账">代理记账</a>
+                            <p class="des" title="专业会计帮你记账">专业会计帮你记账</p>
                         </div>
                     </div>
-                    <div class="boss-sub">
-                        <a target="_blank" href="/product/detail/12.html">
-                            <label>公司核名</label>
-                            <p>3秒免费告知结果</p>
 
-                        </a>
-                        <a target="_blank" href="/product/detail/12.html">
-                            <label>注册地址</label>
-                            <p>低价，快捷注册</p>
-                        </a>
+
+
+                </div>
+
+                <div class="card card-2">
+                    <div class="hd">
+                        <h3>我要建团队</h3>
                     </div>
-                </li>
-                <li>
-                    <div class="boss-title" style="color:#785012;">做账报税</div>
-                    <div class="boss-main">
-                        <img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170313143812_boss2.jpg">
-                        <div class="boss-main-txt">
-                            <p>会计定制<span>企业专属，定制不凡</span></p>
 
-                            <label>￥1500.0起</label>
 
-                            <a target="_blank" href="/product/detail/12.html">查看详情</a>
+                    <div class="prd-main">
+                        <a href="http://c.qq.com/ListSku/view?firstCateId=100143&amp;thirdCateId=100069" target="_blank" _stat_click_id="8_10"><p class="tit" title="批量招聘">批量招聘<span class="tag-discount">限时特惠</span></p></a>
+                        <p class="des" title="捕获企业高端人才">捕获企业高端人才</p>
+                        <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100143&amp;thirdCateId=100069" target="_blank" _stat_click_id="8_10">¥1000<small>起</small></a></p>
+                        <a href="/product/productIntroduce/1-.html" target="_blank" class="btn" _stat_click_id="8_10">立即查看</a>
+                    </div>
+
+
+
+
+                    <div class="prd-list">
+
+
+
+                        <div class="prd row">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100000&amp;thirdCateId=100096" target="_blank" class="serv-name" _stat_click_id="8_11" title="股权期权设计">股权期权设计</a>
+                            <span class="des" title="合伙人必看">合伙人必看</span>
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="prd row">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100004&amp;thirdCateId=100114" target="_blank" class="serv-name" _stat_click_id="8_12" title="社保服务">社保服务</a>
+                            <span class="des" title="团队基础必备">团队基础必备</span>
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="prd row">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100143&amp;thirdCateId=100393" target="_blank" class="serv-name" _stat_click_id="8_13" title="个人测评">个人测评</a>
+                            <span class="des" title="测测你的创业力">测测你的创业力</span>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="card card-3">
+                    <div class="hd">
+                        <h3>我要做产品</h3>
+                    </div>
+
+
+                    <div class="prd-main">
+                        <a href="http://c.qq.com/ListSku/view?firstCateId=100002&amp;thirdCateId=100090" target="_blank" _stat_click_id="8_20"><p class="tit" title="软件著作权">软件著作权<span class="tag-discount">限时特惠</span></p></a>
+                        <p class="des" title="软件产品基础必备">软件产品基础必备</p>
+                        <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100002&amp;thirdCateId=100090" target="_blank" _stat_click_id="8_20">¥100<small>起</small></a></p>
+                        <a href="/product/productIntroduce/3-.html" target="_blank" class="btn" _stat_click_id="8_20">立即查看</a>
+                    </div>
+
+
+
+
+                    <div class="prd-list">
+
+
+
+
+                        <div class="prd bdr">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100383&amp;thirdCateId=100055" target="_blank" class="serv-name" _stat_click_id="8_21" title="ICP经营许可证">ICP经营许可证</a>
+                            <p class="des" title="网络经营敲门砖">网络经营敲门砖</p>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="prd">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100416" target="_blank" class="serv-name" _stat_click_id="8_22" title="公众号申请">公众号申请</a>
+                            <p class="des" title="公众号第一步">公众号第一步</p>
+                        </div>
+                        <div class="prd bdr">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100136" target="_blank" class="serv-name" _stat_click_id="8_23" title="企业网站">企业网站</a>
+                            <p class="des" title="网站定制服务">网站定制服务</p>
+                        </div>
+                        <div class="prd">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100137&amp;thirdCateId=100350" target="_blank" class="serv-name" _stat_click_id="8_24" title="真机测试">真机测试</a>
+                            <p class="des" title="腾讯真机服务">腾讯真机服务</p>
                         </div>
                     </div>
-                    <div class="boss-sub">
-                        <a target="_blank" href="/product/detail/12.html">
-                            <label>小规模纳税人代理记账</label>
-                            <p>大团队，你永远不缺人</p>
 
-                        </a>
-                        <a target="_blank" href="/product/detail/12.html">
-                            <label>一般纳税人代理记账</label>
-                            <p>专业才能做到省钱</p>
 
-                        </a>
+
+                </div>
+
+                <div class="card card-4">
+                    <div class="hd">
+                        <h3>我要做推广</h3>
                     </div>
-                </li>
-                <li>
-                    <div class="boss-title" style="color:#e19c23;">合法经营</div>
-                    <div class="boss-main">
-                        <img src="http://7xrgpz.com2.z0.glb.clouddn.com/serviceImg/20170420133711_20170316162039_融资贷款.jpg">
-                        <div class="boss-main-txt">
-                            <p>ICP许可证办理<span>网络经营，在线订购、在线支付、收取信息费等</span></p>
-                            <label>￥20000.0起</label>
-                            <a target="_blank" href="/product/detail/12.html">查看详情</a>
+
+
+                    <div class="prd-main">
+                        <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100264" target="_blank" _stat_click_id="8_30"><p class="tit" title="电商解决方案">电商解决方案<span class="tag-discount">限时特惠</span></p></a>
+                        <p class="des" title="搭建你的专属微信商城">搭建你的专属微信商城</p>
+                        <p class="price"><a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100264" target="_blank" _stat_click_id="8_30">¥1<small>起</small></a></p>
+                        <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100264" target="_blank" class="btn" _stat_click_id="8_30">立即查看</a>
+                    </div>
+                    <div class="prd-list">
+                        <div class="prd row">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100139&amp;thirdCateId=100244" target="_blank" class="serv-name" _stat_click_id="8_31" title="微官网">微官网</a>
+                            <span class="des" title="微信官方网站搭建">微信官方网站搭建</span>
                         </div>
-                    </div>
-                    <div class="boss-sub">
-                        <a target="_blank" href="/product/detail/12.html">
-                            <label>网信认证</label>
-                            <p>真实安全，用户更放心</p>
+                        <div class="prd row">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100142&amp;thirdCateId=100317" target="_blank" class="serv-name" _stat_click_id="8_32" title="朋友圈广告">朋友圈广告</a>
+                            <span class="des" title="时下最火推广">时下最火推广</span>
+                        </div>
+                        <div class="prd row">
+                            <a href="http://c.qq.com/ListSku/view?firstCateId=100142&amp;thirdCateId=100314" target="_blank" class="serv-name" _stat_click_id="8_33" title="手机短信营销">手机短信营销</a>
+                            <span class="des" title="营销推广必备">营销推广必备</span>
+                        </div>
 
-                        </a>
-                        <a target="_blank" href="/product/detail/12.html">
-                            <label>IDC许可办理</label>
-                            <p>让您合法开展业务</p>
-                        </a>
+
+
                     </div>
-                </li>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="index_need clearfix">
+        <div class="mod-boxhd"><h3 class="mod-boxhd-tit">最新需求</h3></div>
+<input type="text" id="areaVal" />
+        <div class="layui-tab offerlist">
+            <ul class="layui-tab-title">
+                <li class="layui-this">个人</li>
+                <li>同业</li>
             </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div class="offerlist">
+                        <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+                        <div id="needDataMsgPerson"></div>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="offerlist">
+                        <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+                        <div id="needDataMsgAdvier"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <%--右侧部分--%>
+        <div class="box" id="recommendAdviser">
 
+        </div>
 
+    </div>
 
+    <div class="hot-provider jmod-hot-provider">
+        <div class="layout clearfix" id="serviceProvider">
 
+        </div>
+    </div>
+<div class="clear"></div>
 
 
     <%--最闻部分--%>
@@ -1049,53 +918,6 @@
 
 
     </div>
-</div>
-
-
-
-
-
-<div class="time-line">
-    <div class="time-line-main">
-        <h3>企巴巴  ·  一站式商业服务平台</h3>
-        <div class="city-list">
-            <label>北京</label>
-            <label>深圳</label>
-            <label>广州</label>
-            <label>武汉</label>
-            <label>成都</label>
-            <label>重庆</label>
-            <span class="top"><i></i></span>
-            <span class="bottom"><i></i></span>
-        </div>
-        <div class="time-line-warp">
-            <div class="time-list-main">
-                <div class="tempWrap" style="overflow:hidden; position:relative; width:1224px"><ul style="width: 2652px; left: -816px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
-                    <li data-src="/images-v2/img/time12.jpg" data-content="两省政府代表团视察顶呱呱" class="" style="float: left; width: 140px;"><a href="http://www.dgg.net/article/8759.html"></a>
-                        <i></i><p>2017.4</p></li>                    <li data-src="/images-v2/img/time11.jpg" data-content="小顶家装开业" class="" style="float: left; width: 140px;"><i></i><p>2017.３</p></li>
-                    <li data-src="/images-v2/img/time5.jpg" data-content="成立重庆分公司，巩固西南市场" class="" style="float: left; width: 140px;"><i></i><p>2016.12</p></li>
-                    <li data-src="/images-v2/img/time7.jpg" data-content="广州分公司成立，进一步拓宽并抢占沿海市场" class="" style="float: left; width: 140px;"><i></i><p>2016.9</p></li>
-                    <li data-src="/images-v2/img/time4.jpg" data-content="成立深圳分公司，立足闽南沿海市场" class="active" style="float: left; width: 140px;"><i></i><p>2016.8</p></li>
-                    <li data-src="/images-v2/img/time9.jpg" data-content="集团员工总数超2000人" class="" style="float: left; width: 140px;"><i></i><p>2016.6</p></li>
-                    <li data-src="/images-v2/img/time3.jpg" data-content="成立成都分公司，打开西南市场" style="float: left; width: 140px;" class=""><i></i><p>2016.2</p></li>
-                    <li data-src="/images-v2/img/time6.jpg" data-content="挂牌上市，集团上海股权交易中心" style="float: left; width: 140px;" class=""><i></i><p>2014.5</p></li>
-                    <li data-src="/images-v2/img/time2.jpg" data-content="被评为省级文明单位" style="float: left; width: 140px;" class=""><i></i><p>2013.9</p></li>
-                    <li data-src="/images-v2/img/time10.jpg" data-content="受邀参加第129届国际商标协会INTA年会并成为国际商标协会的会员" style="float: left; width: 140px;" class=""><i></i><p>2011.4</p></li>
-                    <li data-src="/images-v2/img/time8.jpg" data-content="集工商、会计、融资等业态，率先立足一站式商业服务领域" style="float: left; width: 140px;"><i></i><p>2009.8</p></li>
-                    <li data-src="/images-v2/img/time1.jpg" data-content="被评为高新技术企业" style="float: left; width: 140px;"><i></i><p>2003.9</p></li>
-                    <li data-src="/images-v2/img/time0.jpg" data-content="小顶网成立，注册资金1000万元" style="float: left; width: 140px;"><i></i><p>1996.6</p></li>
-                </ul></div>
-            </div>
-            <a href="javascript:void(0)" class="time-p-n prev" style="display: inline;"></a>
-            <a href="javascript:void(0)" class="time-p-n next"></a>
-        </div>
-    </div>
-    <div class="time-axis"></div>
-    <%--<div class="time-txt" style="display: block; left: 296.5px;">--%>
-        <%--<i></i>--%>
-        <%--<div class="time-img"><img src="/images-v2/img/time4.jpg"></div>--%>
-        <%--<p>成立深圳分公司，立足闽南沿海市场</p>--%>
-    <%--</div>--%>
 </div>
 <jsp:include page="common/bottom.jsp"></jsp:include>
 <script src="./plugins/layui/layui.js" charset="utf-8"></script>
@@ -1193,7 +1015,7 @@
         paging();
         paging2();
         recommendAdviser();
-//        serviceProvider();
+        serviceProvider();
         recommendArticle();
     });
 

@@ -7,24 +7,27 @@
 <c:forEach items="${needs}" var="need" >
 <dl id="listoffer_${need.id}" class="clearfix">
     <dt>
-        <a href="/adviser/detail/${need.member.id}.html" target="_blank">
+        <a href="/adviser/detail/${need.memberId}.html" target="_blank">
             <img class="face-box" width="50" height="50" src="${need.member.headPortrait}" alt="${need.member.name}" title="${need.member.name}">
         </a>
-    <p>
-        <a href="/adviser/detail/${need.member.id}" target="_blank">${need.member.name}</a>
+    <p style="width: 80px;text-align: center;">
+    <a href="/adviser/detail/${need.member.id}">${need.member.name}</a>
     </p>
     </dt>
     <dd>
         <h3>
-            <span class="green">${need.className}</span>
             <a href="/need/detail/${need.id}.html" target="_blank">${need.title}</a>
-            <span class="ml10 f12">${need.areaFullName}</span>
-            <b class="pic"></b>
+            <span class="green">产品类型：${need.className}</span>
+            <%--<span class="ml10 f12">${need.areaFullName}</span>--%>
         </h3>
         <p class="content">
-            ${need.content}
-            &nbsp;&nbsp;<span>(<fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" />)</span></p>
-    </dd>
+            产品介绍：${need.content}
+            &nbsp;&nbsp;
+            <%--<span>--%>
+                <%--(<fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" />)--%>
+            <%--</span>--%>
+        </p>
+    </dd><ddd style="margin-top: 30px;display: inline-block;"><a class="qfgw_enter" href="/need/detail/${need.id}.html">立即查看</a></ddd>
 </dl>
 </c:forEach>
 <script type="text/javascript">

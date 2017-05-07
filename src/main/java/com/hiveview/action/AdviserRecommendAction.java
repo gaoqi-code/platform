@@ -57,4 +57,21 @@ public class AdviserRecommendAction extends BaseController {
         mav.setViewName("memberRecommend/adviserRecommendPaging");
         return mav;
     }
+
+    @RequestMapping(value="/recommendWithDetail")
+    public ModelAndView recommendWithDetail(HttpServletRequest request, ModelAndView mav) {
+        String plate = request.getParameter("plate");//板块
+        if (StringUtils.isNotEmpty(plate)) {
+            Paging paging = super.getPaging(request);
+            MemberRecommend memberRecommend = new MemberRecommend();
+            System.out.println(plate);
+            memberRecommend.setPlate(Integer.parseInt(plate));
+            memberRecommend.setStatus(StatusUtil.VALID.getVal());
+            PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
+            List<MemberRecommend> adviserRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend);
+            mav.getModel().put("adviserRecommends",adviserRecommends);
+        }
+        mav.setViewName("memberRecommend/adviserRecommendPaging_detail");
+        return mav;
+    }
 }
