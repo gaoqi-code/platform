@@ -271,10 +271,10 @@
         .head-left-content:after{content: '';clear: both;display: block;}
         #userNeedForm{position: absolute;top: 25px;padding-top: 15px;left: 905px;}
         .content:after{content: '';clear: both;display: block;}
-        .personImg{width: 650px;height: 275px;float:left;}
-        .personImg img{width: 484px;}
-        .personIntro{margin-left: 80px;float: left;height: 275px;width: 450px;display: table;}
-        .personIntro span{display:table-cell; vertical-align:middle;padding:0px 30px 0px 0px;}
+        .personImg{width: 535px;height: 325px;float:left;}
+        .personImg img{width: 540px;}
+        .personIntro{margin-left: 80px;float: left;height: 275px;width:550px;display: table;}
+        .personIntro span{display:table-cell; vertical-align:middle;padding:0px 30px 0px 0px;text-indent: 20px;         line-height: 23px;}
         .zxzx{float: left;margin-right: 50px;}
         .zxzx img{height: 450px;}
         .zxzx_need{float: left;margin-top: 50px;}
