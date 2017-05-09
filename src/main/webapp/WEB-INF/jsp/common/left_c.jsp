@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+    String basePath = request.getScheme() + "://"
+        + request.getServerName();
+%>
 <div class="c_left">
     <div class="member_menu">
         <p class="layui-elem-quote">我的信息</p>
@@ -68,7 +72,8 @@
         });
         var inviteCode = "${sessionScope.currentUser.inviteCode}";
         $("#getInviteUrl").click(function(){
-            var inviteUrl = $("#qbbPath").val()+"/register/reg/"+inviteCode+".html";
+//            var inviteUrl = $("#qbbPath").val()+"/register/reg/"+inviteCode+".html";
+            var inviteUrl = "<%=basePath%>"+"/register/reg/"+inviteCode+".html";
             layer.open({
                  type: 0
                 ,title: "邀请链接"
