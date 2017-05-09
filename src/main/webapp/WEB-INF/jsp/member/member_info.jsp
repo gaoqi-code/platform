@@ -68,7 +68,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">QQ</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="qq"  value="${member.qq}"  placeholder="" autocomplete="off" class="layui-input">
+                        <input type="input" name="qq"  lay-verify="qq" value="${member.qq}"  placeholder="" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
@@ -180,7 +180,11 @@
                         return '标题至少得5个字符啊';
                     }
                 }
-                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+                ,qq: function(value){
+                    if(value!=null&&value.length>0&&isNaN(value)){
+                        return "请输入正确的QQ号";
+                    }
+                }
                 ,content: function(value){
                     layedit.sync(editIndex);
                 }
