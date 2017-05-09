@@ -21,7 +21,6 @@
 
             <div class="layui-input-inline">
                 <select name="categoryCode">
-                    <option value="0">请选需求类型</option>
                     <option value="1-" selected="">金融</option>
                     <option value="2-">企业</option>
                     <option value="3-">法律</option>

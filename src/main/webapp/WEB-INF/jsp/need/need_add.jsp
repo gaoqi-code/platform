@@ -44,7 +44,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>截止时间</label>
                     <div class="layui-input-inline">
-                        <input type="input" name="endTime" lay-verify="required"  value="<fmt:formatDate value="${need.endTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this})">
+                        <input type="input" name="endTime" lay-verify="required"  value="<fmt:formatDate value="${need.endTime}" pattern="yyyy-MM-dd" type="date" dateStyle="long" />" readonly="readonly" class="layui-input" onclick="layui.laydate({elem: this, min: laydate.now(0)})">
                     </div>
                     <div class="layui-form-mid layui-word-aux"></div>
                 </div>
