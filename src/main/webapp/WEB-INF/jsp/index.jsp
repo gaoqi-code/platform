@@ -772,6 +772,7 @@
         .index_icon_contain{background-color: #FFF;    width: 375px;float: left;}
         .index_icon{height:120px;border-bottom:1px solid #ddd;}
         .index_icon_div{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 45px;}
+        .index_icon_div img{margin-bottom: 5px;}
         .index_icon_font{text-align: center;width: 62px;float: left;margin: 25px 0px 10px 45px;}
         .index_icon_font span{display: block;}
     </style>
