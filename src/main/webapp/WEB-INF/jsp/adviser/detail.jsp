@@ -337,7 +337,7 @@
                     <span>所在地区：${member.areaFullName}-${member.address}</span>
                 </div>
                 <div class="sub-til">
-                    <span>职业经验：${member.workTime}</span>
+                    <span>职业经验：${member.workAge}</span>
                 </div>
                 <%--<div class="sub-til">--%>
                     <%--<span>在线咨询：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=${member.qq}&amp;site=qq&amp;menu=yes" target="_blank" ><img src="images/qq/qq.gif" /></a></span>--%>
