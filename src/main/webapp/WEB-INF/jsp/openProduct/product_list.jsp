@@ -14,7 +14,7 @@
     <style>
         .search-select{border:1px solid #eee;}
         .search-select li{margin: 15px;border-bottom: 1px solid #eee;padding-bottom: 20px;}
-        .search-select h3{width:100px;height: 30px;line-height: 30px;display:block;float: left;}
+        .search-select h3{width:80px;height: 30px;line-height: 30px;display:block;float: left;}
         .allSelect{background-color:#ee4134;color: #FFF;display:block;}
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
         .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
@@ -232,8 +232,8 @@
 
 <div id="container">
     <div class="position2">
-        您当前位置：<a href="/index.htm">企巴巴</a> &gt;
-        <a href="/tmbrandsearch/index.htm">找产品</a>
+        您当前位置：<a href="/index.html">企巴巴</a> &gt;&gt;
+        <a href="javascript:void(0);" class="defaultCursor">找企服</a>
     </div>
 
 

@@ -61,6 +61,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .size14{font-size: 14px!important;}
 .size18{font-size: 18px!important;}
 .size22{font-size: 22px!important;}
+.defaultCursor{cursor: default;}
 .qColor{color: #7fb5cf;}
 .contentTop{margin-top:10px;}
 

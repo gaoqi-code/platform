@@ -160,7 +160,7 @@
 <div id="container">
     <div class="position2">
         您当前位置：<a href="/index.html">企巴巴</a> &gt;&gt;
-        <a href="/tmbrandsearch/index.htm">找顾问</a>
+        <a href="javascript:void(0);" class="defaultCursor">找顾问</a>
     </div>
 
 

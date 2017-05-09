@@ -136,11 +136,8 @@
 
 <div id="container">
     <div class="position2">
-        您当前位置：<a href="/index.htm">企巴巴</a> &gt;
-        <a href="/tmbrandsearch/index.htm">公共</a>
+        您当前位置：<a href="/index.html">企巴巴</a> &gt;&gt;${article.title}
     </div>
-
-
     <div class="content">
 
         <div class="article_left">

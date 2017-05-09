@@ -290,7 +290,7 @@
 
 <div id="container">
     <div class="position2">
-        您当前位置：<a href="/index.htm">企巴巴</a> &gt;&gt;
+        您当前位置：<a href="/index.html">企巴巴</a> &gt;&gt;
         <a href="/adviser/toSearch.html">企业顾问</a>&gt;&gt;我的店铺
     </div>
     <div class="counselor-head-update content">
