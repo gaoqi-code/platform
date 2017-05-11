@@ -25,7 +25,6 @@
         .adviser-list-info p{line-height: 35px;height: 35px;}
         .adviser-list-href{height: 165px;line-height:165px;float: left}
         .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
-        .position2{width: 1180px;padding: 14px 0 10px;margin: auto;background: url(../images/position.png) no-repeat left center;text-indent: 18px;font-size: 12px;}
 
         .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .adviser_right_tj img{width:90px;}

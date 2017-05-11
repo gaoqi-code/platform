@@ -26,14 +26,21 @@
             <h1>用户小鬼申请贷款</h1>
             <ul>
                 <li class="libg">基本信息</li>
-                <li><span>姓名：小鬼</span><span>所在地区：北京市-北京</span><button>查看联系方式</button></li>
+                <li><span>姓名：${need.member.name}</span><span>所在地区：${need.areaFullName}-${need.member.address}</span><button>查看联系方式</button></li>
                 <li class="libg">贷款信息</li>
-                <li><span>贷款金额：<b class="b1">20.0万</b></span><span>贷款期限：一年内</span><span class="rs">查看次数：<b class="b2">5人</b></span></li>
-                <li><span>贷款类型：金融服务</span><span>发布日期：2017-3-5</span><span>截止日期：2017-3-20</span></li>
+                <li>
+                    <c:forEach items="${need.attributes}" var="attribute" >
+                        <span>${attribute.name}：<b class="b1">${attribute.value}</b></span>
+                    </c:forEach>
+                </li>
+                <li><span>贷款金额：<b class="b1">20.0万</b></span><span>贷款期限：一年内</span><span class="rs">查看次数：<b class="b2">${need.hits != null ? need.hits : 0}人</b></span></li>
+                <li>
+                    <span>贷款类型：金融服务</span>
+                    <span>发布日期：<fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></span>
+                    <span>截止日期：<fmt:formatDate value="${need.endTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></span>
+                </li>
                 <li class="posi"><span>审核状态：<b class="b2">已验证</b></span></li>
-                <li>需求详情：贷款需求量应基于借款人日常生产经营所需营运资金与现有流动资金的差额确定。
-                    一般来讲，影响流动资金需求的关键因素为存货应收账款和应付账款。同时，还会受到借款人所属行业、
-                    经营规模、发展阶段、谈判地位等重要因素的影响。
+                <li>需求详情：${need.content}
                 </li>
             </ul>
         </div>
@@ -46,6 +53,152 @@
             </div>
         </div>
     </div>
+
+    <div class="center_bg"></div>
+
+    <div class="content">
+        <div class="tab_left">
+            <h1>需求推荐</h1>
+            <ul>
+                <li>需求名称</li>
+                <li>类型</li>
+                <li>联系人</li>
+                <li>联系电话</li>
+                <li>地区</li>
+                <li>发布日期</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+            <ul>
+                <li>下午茶服务</li>
+                <li>员工福利</li>
+                <li>小鬼</li>
+                <li>1301111****</li>
+                <li>北京市-北京</li>
+                <li>2014-4-17</li>
+            </ul>
+        </div><!--tab_left-->
+        <div class="tab_right">
+            <div class="img1"><img src="/images/guwentuijian.jpg" alt=""><hr><p>顾问推荐</p><hr></div>
+            <div class="tab_right_list">
+                <div class="img2"><img src="images/man.jpg"></div>
+                <div class="text">
+                    <p>王如瑾</p>
+                    <p>普通顾问</p>
+                    <p></p>
+                    <p>七年职业经验</p>
+                    <p><a href="#">进入主页</a>&nbsp;<a href="#">QQ留言</a></p>
+                </div>
+            </div>
+            <div class="tab_right_list">
+                <div class="img2"><img src="images/woman.jpg"></div>
+                <div class="text">
+                    <p>李亚蓉</p>
+                    <p>普通顾问</p>
+                    <p></p>
+                    <p>七年职业经验</p>
+                    <p><a href="#">进入主页</a>&nbsp;<a href="#">QQ留言</a></p>
+                </div>
+            </div>
+            <div class="tab_right_list">
+                <div class="img2"><img src="images/woman.jpg"></div>
+                <div class="text">
+                    <p>李亚蓉</p>
+                    <p>普通顾问</p>
+                    <p></p>
+                    <p>七年职业经验</p>
+                    <p><a href="#">进入主页</a>&nbsp;<a href="#">QQ留言</a></p>
+                </div>
+            </div>
+        </div><!--tab_right-->
+    </div>
+
 </div>
 
 <jsp:include page="../common/bottom.jsp"></jsp:include>
