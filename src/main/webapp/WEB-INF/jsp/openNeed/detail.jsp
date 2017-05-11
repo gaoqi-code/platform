@@ -9,111 +9,9 @@
     <title>企巴巴-一站式商业服务平台</title>
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="/css/advier_detail.css"/>
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
-    <style>
-        .search-select li{margin: 15px;border-bottom: 1px solid #eee;padding-bottom: 20px;}
-        .search-select h3{width:100px;height: 30px;line-height: 30px;display:block;float: left;}
-        .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser-list-info span{font-size:22px;margin-right: 20px;}
-        .adviser-list-info p{line-height: 35px;height: 35px;}
-        .adviser-list-href a{border: 2px solid #ee4134;padding: 10px 30px;color:#ee4134;}
 
-        .need_mainli tr{height:80px;}
-        .layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{border-bottom:1px dashed #e2e2e2;}
-        .adviser_right_tj img{width:90px;}
-        .adviser_right_tjperson p{height:30px;line-height: 30px;}
-        .adviser_right_tj_personwork p{height:30px;line-height: 30px;padding-left:10px;}
-        .head-update-img img{width: 100%;border: 0 none;vertical-align: middle;max-width: 100%;}
-        .head-update-ewm>i{display: inline-block;
-            width: 17px;
-            height: 17px;
-            background: url(../images/counselor-details/update/update-icon.png) no-repeat 0 0;}
-        .head-update-ewm .ewm{position: absolute;
-            width: 92px;
-            height: 92px;
-            top: -94px;
-            left: 49px;
-            display: none;}
-        .head-update-middle .til{margin-bottom: 20px;}
-        .head-update-middle>div {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            font-size: 12px;
-            margin-bottom: 14px;
-            line-height: 1;
-        }
-        .recently-handled p{font-size: 12px;    padding-bottom: 5px;}
-        .head-update-middle .recently-banli>p{    color: #999;
-            margin-bottom: 8px;}
-        .head-update-middle .til .c-name {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .head-update-middle .sub-til {
-            color: white;
-            font-size: 12px;
-        }
-        .head-update-middle ul li.li-border {
-            border-left: 1px dashed rgba(255,255,255,.2);
-            width: 0;
-            height: 35px;
-            margin: 0 30px;
-        }
-        .head-update-middle ul li {
-            display: inline-block;
-            vertical-align: middle;
-            text-align: center;
-        }
-        .head-update-middle ul li p {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 5px;
-            line-height: 1;
-        }
-        .head-update-right .tel-num {
-            color: #3fbff0;
-            font-size: 28px;
-            font-weight: bold;
-            padding: 5px 0;
-        }
-        .head-update-right a.btn-free {
-            background-color: #3fbff0;
-            border: 1px solid #3fbff0;
-        }
-        .head-update-right a.btn-online {
-            border: 1px solid white;
-        }
-        .head-update-right a {
-            display: block;
-            width: 208px;
-            height: 38px;
-            border-radius: 2px;
-            color: white;
-            text-align: center;
-            line-height: 38px;
-            margin-bottom: 20px;
-        }
-        .head-update-middle ul li b {
-            color: #999;
-            font-size: 12px;
-        }
-        .needTitle{font-size: 24px;font-weight: normal;}
-        .n_redit{background-color: green;color: #FFF;font-size: 14px;padding: 3px;}
-.linkCss li{height:40px;line-height: 40px;}
-        .needAtri{background-color:#e2e2e2;padding: 10px;}
-.needAtri span{width: 33%;float: left;height: 30px;line-height: 30px;display:inline-block;}
-        /*文本框样式调整*/
-        .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
-        .layui-form-item .layui-input-inline{width:225px;margin-left:5px;}
-    </style>
-    <script type="text/javascript">
-        $(function(){
-            $("#kinMaxShow").kinMaxShow({height:200});
-        });
-
-    </script>
 </head>
 <body>
 <jsp:include page="../common/top.jsp"></jsp:include>
@@ -123,37 +21,30 @@
         您当前位置：<a href="/index.html">企巴巴</a> &gt;&gt;
         <a href="/need/toSearch.html">找需求</a> &gt;&gt;需求详情
     </div>
-
-
     <div class="content">
-        <div>
-            <div class="needTitle">${need.title}&nbsp;&nbsp;<span class="n_redit">已核实</span></div>
-            <div class="titleNav">详情：</div>
-            <div class="needAtri">
-                <c:forEach items="${need.attributes}" var="attribute" >
-                  <span>${attribute.name}：${attribute.value}</span>
-                </c:forEach>
-                <div class="clear"></div>
-            </div>
-            <div class="needAtri" style="border-top:1px solid #fff;">
-                <span>发布时间：<fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></span>
-                <span>截止时间：<fmt:formatDate value="${need.endTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></span>
-                <div class="clear"></div>
-            </div>
-            <div class="needAtri" style="border-top:1px solid #fff;">
-                <span>查看次数：<i style="color: red;font-size: 16px;">${need.hits != null ? need.hits : 0}</i>&nbsp;次</span>
-                <div class="clear"></div>
-            </div>
-            <div class="titleNav">联系方式：</div>
-            <div class="linkCss">
-                <ul>
-                    <li>联系人：${need.member.name}</li>
-                    <li>联系电话：${need.member.mobile}</li>
-                    <li>所在地区：${need.areaFullName}-${need.member.address}</li>
-                </ul>
+        <div class="user_left">
+            <h1>用户小鬼申请贷款</h1>
+            <ul>
+                <li class="libg">基本信息</li>
+                <li><span>姓名：小鬼</span><span>所在地区：北京市-北京</span><button>查看联系方式</button></li>
+                <li class="libg">贷款信息</li>
+                <li><span>贷款金额：<b class="b1">20.0万</b></span><span>贷款期限：一年内</span><span class="rs">查看次数：<b class="b2">5人</b></span></li>
+                <li><span>贷款类型：金融服务</span><span>发布日期：2017-3-5</span><span>截止日期：2017-3-20</span></li>
+                <li class="posi"><span>审核状态：<b class="b2">已验证</b></span></li>
+                <li>需求详情：贷款需求量应基于借款人日常生产经营所需营运资金与现有流动资金的差额确定。
+                    一般来讲，影响流动资金需求的关键因素为存货应收账款和应付账款。同时，还会受到借款人所属行业、
+                    经营规模、发展阶段、谈判地位等重要因素的影响。
+                </li>
+            </ul>
+        </div>
+        <div class="user_right">
+            <div class="user_right_u">
+                <div><img src="images/user-u.jpg" alt="请设置头像"></div>
+                <div class="user_right_top">小鬼</div>
+                <div class="user_right_center">个人简介：<span>早起的鸟儿有虫吃</span></div>
+                <button>查看个人中心</button>
             </div>
         </div>
-
     </div>
 </div>
 

@@ -190,8 +190,12 @@ public class HttpUtil {
 	}
 	
 	public static void main(String[] args) {
-		Map<String,String> map = new HashMap<String, String>();
-		map.put("trackName", "林成功地成");
-		reqPost("http://localhost:8080/codec/cdnapi/updateCdnTaskTrack.json", map);
+//		Map<String,String> map = new HashMap<String, String>();
+//		map.put("trackName", "林成功地成");
+//		reqPost("http://localhost:8080/codec/cdnapi/updateCdnTaskTrack.json", map);
+
+
+		String mobile = "15600183078";
+		reqGetRange("https://reg.jd.com/notifyuser/companyMobileCode?&mobile="+mobile+"&r=0.20237478352617666");
 	}
 }
