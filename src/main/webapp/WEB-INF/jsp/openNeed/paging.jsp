@@ -26,9 +26,9 @@
 
     <c:forEach items="${needs}" var="need" >
         <tr>
-            <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${need.title}</a></td>
-            <td>${need.className}</td>
-            <td>${need.member.name}</td>
+            <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${fn:substring(need.title,0,7)}</a></td>
+            <td> ${fn:substring(need.className,0,4)}</td>
+            <td> ${fn:substring(need.member.name,0,4)}</td>
             <td   <c:if test="${need.memberViewNeedId != null}"> style="color: red;" </c:if>>
                 <c:if test="${need.chargeType == 9}">
                     <c:if test="${need.memberViewNeedId != null}">
@@ -42,14 +42,15 @@
                       ${need.needMobile}
                 </c:if>
             </td>
-            <td>${need.areaFullName}</td>
+
+            <td>${fn:substring(need.areaFullName,0,9)}</td>
             <td><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
         </tr>
 
     </c:forEach>
     <c:if test="${empty needs}">
         <tr>
-            <td colspan="5" style="text-align: center;">没有搜索到您的需求！</td>
+            <td colspan="6" style="text-align: center;">没有搜索到您的需求！</td>
         </tr>
     </c:if>
     </tbody>

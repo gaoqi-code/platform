@@ -8,13 +8,15 @@ import com.hiveview.entity.*;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IProductService;
-import org.apache.commons.lang.StringUtils;
-import utils.StatusUtil;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import utils.IssueType;
+import utils.StatusUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -38,10 +40,11 @@ public class OpenProductAction extends BaseController{
 
     @Autowired
     private ICategoryService iCategoryService;
+    @Autowired
+    private ICategoryService categoryService;
 
     @RequestMapping(value="/toSearch")
     public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
-        mav.getModel().put("cProductNav","navCurrent");
         String keyword = request.getParameter("keyword");
         if (StringUtil.isNotEmpty(keyword)) {
             try {
@@ -51,9 +54,30 @@ public class OpenProductAction extends BaseController{
             }
             mav.getModel().put("keyword", keyword);
         }
+        //得到所需要的类目
+        String categoryCode = request.getParameter("code");
+        if (StringUtils.isNotEmpty(categoryCode)) {
+            mav.getModel().put("categoryCode", categoryCode);
+        }
+        LevelCategoriesDto levelCategories = categoryService.getLevelCategory(categoryCode, IssueType.PRODUCT.getVal());
+        List<Category> oneLevelCategories = levelCategories.getOneLevelCategories();
+        if (CollectionUtils.isNotEmpty(oneLevelCategories)) {
+            mav.getModel().put("oneLevelCategories", oneLevelCategories);
+            List<Category> twoLevelCategories = levelCategories.getTwoLevelCategories();
+            if (CollectionUtils.isNotEmpty(twoLevelCategories)) {
+                mav.getModel().put("twoLevelCategories", twoLevelCategories);
+                List<Category> threeLevelCategories = levelCategories.getThreeLevelCategories();
+                if (CollectionUtils.isNotEmpty(threeLevelCategories)) {
+                    mav.getModel().put("threeLevelCategories", threeLevelCategories);
+                }
+            }
+        }
         mav.setViewName("openProduct/product_list");
+        mav.getModel().put("cProductNav","navCurrent");
         return mav;
     }
+
+
     @RequestMapping(value="/page")
     public ModelAndView page(HttpServletRequest request, ModelAndView mav) {
         Paging paging = super.getPaging(request);
@@ -93,6 +117,8 @@ public class OpenProductAction extends BaseController{
     public ModelAndView detail(ModelAndView mav,@PathVariable("productId") long productId) {
 
         Product product = productService.getProductDetail(productId);
+        MemberRecommend memberRecommend1= new MemberRecommend();
+
 
         mav.getModel().put("product", product);
         mav.setViewName("openProduct/detail");

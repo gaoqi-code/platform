@@ -3,33 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<ul>
+    <li>产品图片</li>
+    <li>产品标题</li>
+    <li>类目</li>
+    <li>状态</li>
+    <li>更新时间</li>
+    <li>操作</li>
+</ul>
 
-<table class="layui-table" lay-skin="line">
-    <colgroup>
-        <col width="110">
-        <col width="150">
-        <col width="150">
-        <col width="150">
-        <col width="200">
-        <col></colgroup>
-    <col width="150">
-    <thead>
-    <tr>
-        <th>产品图片</th>
-        <th>产品标题</th>
-        <th>类目</th>
-        <th>状态</th>
-        <th>更新时间</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
             <c:forEach items="${products}" var="product" >
-                <tr>
-                    <td><img src="${product.picture}" style="width:100px;"> </td>
-                    <td><a href="product/detail/${product.id}.html" target="_blank">${product.title}</a></td>
-                    <td>${product.className}</td>
-                    <td >
+                <ul>
+                    <li><img src="${product.picture}" style="width:100px;"> </li>
+                    <li><a href="product/detail/${product.id}.html" target="_blank">${product.title}</a></li>
+                    <li>${product.className}</li>
+                    <li >
                         <c:if test="${product.status == 3}">
                             审核中
                         </c:if>
@@ -42,22 +30,24 @@
                         <c:if test="${product.status == 6}">
                             下架
                         </c:if>
-                    </td>
-                    <td> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></td>
-                    <td>
+                        <c:if test="${product.status == 7}">
+                            关闭
+                        </c:if>
+                    </li>
+                    <li> <fmt:formatDate value="${product.updateTime != null ? product.updateTime:product.addTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></li>
+                    <li>
                         <a href="javascript:void(0);" productId="${product.id}" name="operation" op="update">修改</a>&nbsp;
                         <c:if test="${product.status != 6}">    <a href="javascript:void(0);" productId="${product.id}" name="operation" op="soldOut">下架</a></c:if>&nbsp;
                         <a href="javascript:void(0);" productId="${product.id}" name="operation" op="delete">删除</a>
-                    </td>
-                </tr>
+                    </li>
+                </ul>
             </c:forEach>
             <c:if test="${empty products}">
-                <tr>
-                    <td colspan="6" style="text-align: center;">您还没有创建产品！</td>
-                </tr>
+                <ul>
+                    <li colspan="6" style="text-align: center;">您还没有创建产品！</li>
+                </ul>
             </c:if>
-    </tbody>
-</table>
+
 
 
    <input type="hidden" id="totalPages" value="${paging.totalPages}"/>

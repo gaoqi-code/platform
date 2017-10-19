@@ -1,0 +1,4 @@
+.layui-table thead tr {
+	background-color: #e9e8e6;
+}
+.layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th{font-weight: 400;font-size: 12px;}

@@ -50,6 +50,10 @@ public class AdviserRecommendAction extends BaseController {
             MemberRecommend memberRecommend = new MemberRecommend();
             memberRecommend.setPlate(Integer.parseInt(plate));
             memberRecommend.setStatus(StatusUtil.VALID.getVal());
+            String adviserType = request.getParameter("adviserType");//顾问类型(类目code)
+            if (StringUtils.isNotEmpty(adviserType)) {
+                memberRecommend.setAdviserType(adviserType);
+            }
             PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
             List<MemberRecommend> adviserRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend);
             mav.getModel().put("adviserRecommends",adviserRecommends);

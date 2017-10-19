@@ -3,17 +3,19 @@ package com.hiveview.action;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
-import com.hiveview.entity.Member;
-import com.hiveview.entity.Paging;
-import com.hiveview.entity.Product;
+import com.hiveview.entity.*;
+import com.hiveview.service.ICategoryService;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.IProductService;
 import com.hiveview.util.MemberType;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import utils.IssueType;
 import utils.StatusUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +34,10 @@ public class AdviserAction extends BaseController{
 	private IMemberService memberService;
 	@Autowired
 	private IProductService productService;
-
+	@Autowired
+	private ICategoryService categoryService;
 	@RequestMapping(value="/toSearch")
 	public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
-		mav.getModel().put("cAdviserNav","navCurrent");
 		String keyword = request.getParameter("keyword");
 		if (StringUtil.isNotEmpty(keyword)) {
 			try {
@@ -45,6 +47,25 @@ public class AdviserAction extends BaseController{
 			}
 			mav.getModel().put("keyword", keyword);
 		}
+		//得到所需要的类目
+		String categoryCode = request.getParameter("code");
+		if (StringUtils.isNotEmpty(categoryCode)) {
+			mav.getModel().put("categoryCode", categoryCode);
+		}
+		LevelCategoriesDto levelCategories = categoryService.getLevelCategory(categoryCode, IssueType.ADVISER.getVal());
+		List<Category> oneLevelCategories = levelCategories.getOneLevelCategories();
+		if (CollectionUtils.isNotEmpty(oneLevelCategories)) {
+			mav.getModel().put("oneLevelCategories", oneLevelCategories);
+			List<Category> twoLevelCategories = levelCategories.getTwoLevelCategories();
+			if (CollectionUtils.isNotEmpty(twoLevelCategories)) {
+				mav.getModel().put("twoLevelCategories", twoLevelCategories);
+				List<Category> threeLevelCategories = levelCategories.getThreeLevelCategories();
+				if (CollectionUtils.isNotEmpty(threeLevelCategories)) {
+					mav.getModel().put("threeLevelCategories", threeLevelCategories);
+				}
+			}
+		}
+		mav.getModel().put("cAdviserNav","navCurrent");
 		mav.setViewName("adviser/adviser_list");
 		return mav;
 	}
@@ -79,6 +100,7 @@ public class AdviserAction extends BaseController{
 		paging.setTotalCount(page.getTotal());
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("members",members);
+
 		mav.setViewName("adviser/paging");
 		return mav;
 	}

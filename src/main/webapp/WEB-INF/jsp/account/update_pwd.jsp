@@ -12,7 +12,6 @@
     <style>
         .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
         .member_menu li a{margin-left:20px;}
-        .c_right{margin-left:10px;width: 958px;float: left;}
     </style>
 </head>
 <body>
@@ -53,6 +52,7 @@
                 </div>
             </form>
 
+            <jsp:include page="../common/advert/advert1.jsp"></jsp:include>
         </div>
 
         <div class="clear"></div>

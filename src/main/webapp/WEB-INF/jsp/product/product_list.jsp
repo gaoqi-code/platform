@@ -17,24 +17,19 @@
     </style>
 </head>
 <body>
-<jsp:include page="../common/top_c.jsp"></jsp:include>
-<jsp:include page="../common/nav_c.jsp"></jsp:include>
-<div id="container">
-    <div class="content memver_c">
-        <jsp:include page="../common/left_c.jsp"></jsp:include>
 
-        <div class="c_right">
-            <p class="layui-elem-quote noborderLeft">产品管理</p>
+
+
+
+
+
             <div class="layui-form" id="dataMsg">
 
 
 
-            </div>
-<div id="productPager"></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
+
+
+
 
 <script>
     $(function () {

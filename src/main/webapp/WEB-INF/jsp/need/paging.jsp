@@ -26,7 +26,7 @@
                 <tr>
                     <td>${need.title}</td>
                     <td>${need.className}</td>
-                    <td>
+                    <td class="status">
                     <c:if test="${need.status == 3}">
                         审核中
                     </c:if>
@@ -39,12 +39,15 @@
                     <c:if test="${need.status == 6}">
                         下架
                     </c:if>
+                    <c:if test="${need.status == 7}">
+                        关闭
+                    </c:if>
                     </td>
                     <td> <fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></td>
                     <td>
-                        <a href="javascript:void(0);" needId="${need.id}" name="operation" op="update">修改</a>&nbsp;
+                        <a href="javascript:void(0);" class="status" needId="${need.id}" name="operation" op="update">修改</a>&nbsp;
                         <c:if test="${need.status != 6}">    <a href="javascript:void(0);" needId="${need.id}" name="operation" op="soldOut">下架</a> </c:if>&nbsp;
-                        <a href="javascript:void(0);" needId="${need.id}" name="operation" op="delete">删除</a>
+                        <a href="javascript:void(0);" class="status2" needId="${need.id}" name="operation" op="delete">删除</a>
                     </td>
                 </tr>
             </c:forEach>

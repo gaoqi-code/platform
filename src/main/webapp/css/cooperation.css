@@ -1,0 +1,114 @@
+.bg{
+	background: #a1cee5;
+	position: relative;
+}
+.img1{
+	width: 100%;
+	height: 450px;
+	margin-top: 20px;
+	background: url(../images/img1.jpg) no-repeat;
+	background-size:100% 100% ;
+}
+.img2{
+	width: 100%;
+	height: 450px;
+	background: url(../images/img2.jpg) no-repeat;
+	background-size:100% 100% ;
+}
+.img3 .img_box {
+	margin: 40px 80px 0 75px;
+	float: left;
+	width: 468px;
+	height: 400px;
+}
+.img3 .img_box img{
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+.img3 .form{
+	color:#fff;
+	font-size: 30px;
+	float: left;
+	width: 540px;
+	height: 450px;
+	margin-top: 40px;
+}
+.form ul{
+	height: 400px;
+}
+.form ul li{
+	font-size: 20px;
+	text-align: center;
+	line-height: 60px;
+	float: left;
+	width: 230px;
+	height: 60px;
+	border: 1px solid #fff;
+}
+.form ul li select{
+	color:#fff;
+	border-style: none;
+	
+	background: #A1CEE5;
+}
+.form ul li input{
+	background: #A1CEE5;
+}
+.form ul li:nth-of-type(2),.form ul li:nth-of-type(4),.form ul li:nth-of-type(6){
+    width: 280px;
+	border: 1px solid #fff;
+}
+.form p{
+	float: left;
+    width: 512px;;
+	height: 210px;
+	border: 1px solid #fff;
+	position: relative;
+}
+.form p input:nth-of-type(1){
+	padding: 30px 0 0 30px;
+	font-size: 18px;
+	background: #a1cee5;
+    width: 90%;
+}
+
+input::-webkit-input-placeholder{ /*WebKit browsers*/
+
+color: #fff;
+
+}
+
+input::-moz-input-placeholder{ /*Mozilla Firefox*/
+
+color: #fff;
+
+}
+
+input::-ms-input-placeholder{ /*Internet Explorer*/ 
+
+color: #fff;
+
+}
+.form p input:nth-of-type(2){
+	border-radius:3px ;
+	padding: 2px 8px ;
+	font-size: 16px;
+	background: #fff;
+	color: #2486B5;
+	position: absolute;
+	bottom:30px;
+	right: 50px;
+}
+.sanjiao{
+	width: 0;
+	height: 0;
+	border-top: 30px solid #fff;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	position: relative;
+	bottom: 0;
+	left: 550px;
+}
+

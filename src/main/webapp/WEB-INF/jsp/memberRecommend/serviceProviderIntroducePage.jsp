@@ -7,7 +7,7 @@
 <c:forEach items="${memberRecommends}" var="memberRecommend"  varStatus="status" >
 <li class="sv-card">
     <div class="sv-card--top clearfix">
-        <a _stat_click_id="7_114379" href="/adviser/detail/${memberRecommend.memberId}.html" target="_blank"><img src="http://p.qlogo.cn/zc_icon/0/a6cdb362d42233bad7894c5c860d9e88/0" class="sv-card--icon"></a>
+        <a _stat_click_id="7_114379" href="/adviser/detail/${memberRecommend.memberId}.html" target="_blank"><img src="../../../images/logo_h.png" class="sv-card--icon"></a>
 
         <p class="sv-card--name"><a class="name" _stat_click_id="7_214379" href="/adviser/detail/${memberRecommend.memberId}.html" target="_blank">${memberRecommend.companyName}</a>
             <span class="mod-icon-grantee"></span></p>
@@ -18,9 +18,7 @@
             </li>
             <li class="sv-card--review-item">
                 <span class="title">
-                <c:if test="${memberRecommend.adviserType == '1-'}">金融顾问</c:if>
-                <c:if test="${memberRecommend.adviserType == '2-'}">企业顾问</c:if>
-                <c:if test="${memberRecommend.adviserType == '3-'}">法律顾问</c:if>
+                    ${memberRecommend.categoryName}
                 </span>
             </li>
             <li class="sv-card--review-item">

@@ -1,10 +1,11 @@
 package com.hiveview.action;
 
 import com.google.common.collect.Maps;
-import com.hiveview.util.Data;
-import com.hiveview.entity.Msg;
 import com.hiveview.entity.Member;
+import com.hiveview.entity.Msg;
 import com.hiveview.service.IMemberService;
+import com.hiveview.util.Data;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
@@ -28,6 +29,10 @@ public class LoginAction {
 
 	@RequestMapping(value="/tologin")
 	public ModelAndView login(HttpServletRequest request, ModelAndView mav) {
+		String fromUrl = request.getParameter("fromUrl");
+		if (StringUtils.isNotEmpty(fromUrl)) {
+			mav.getModel().put("fromUrl", fromUrl);
+		}
 		mav.setViewName("login");
 		return mav;
 	}
@@ -64,6 +69,10 @@ public class LoginAction {
 						application.setAttribute("sessionIdMap",Msg.sessionIdMap);
 						flag = true;
 						message = "登录成功！";
+						String fromUrl = req.getParameter("fromUrl");
+						if (StringUtils.isNotEmpty(fromUrl)) {
+							result.put("fromUrl", fromUrl);
+						}
 					}
 				}
 			}

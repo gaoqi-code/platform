@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:forEach items="${needs}" var="need" >
+<c:forEach items="${needs}" var="need"    begin="0" end="3" step="1" >
 <dl id="listoffer_${need.id}" class="clearfix">
     <dt>
         <a href="/adviser/detail/${need.memberId}.html" target="_blank">
@@ -17,11 +17,22 @@
     <dd>
         <h3>
             <a href="/need/detail/${need.id}.html" target="_blank">${need.title}</a>
-            <span class="green">产品类型：${need.className}</span>
+            <span class="green">产品类型：<span class="chanpin${need.classId}">${need.className}</span></span>
             <%--<span class="ml10 f12">${need.areaFullName}</span>--%>
+
         </h3>
         <p class="content">
-            产品介绍：${need.content}
+
+            <c:if test="${type!=1}">
+                <span >联系电话：${fn:substring(need.member.mobile,0,7)}****   ${need.areaFullName}</span>
+
+
+            </c:if>
+            <c:if test="${type==1}">
+                <span >商家介绍：${need.content}</span>
+            </c:if>
+
+
             &nbsp;&nbsp;
             <%--<span>--%>
                 <%--(<fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" />)--%>
@@ -31,6 +42,8 @@
 </dl>
 </c:forEach>
 <script type="text/javascript">
+
+
     $("a[name='lookNeed']").click(function () {
         var needId = $(this).attr("needId");
         $.ajax({

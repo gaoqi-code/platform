@@ -20,8 +20,8 @@
             </div>
             <div class="kefuPhone">
                 <span>客服热线（工作日：8:30-21:00）</span>
-                <strong>020-61059612</strong>
-                <span>在线客服咨询请点击右侧浮窗</span>
+                <strong>010-80440313</strong>
+                <%--<span>在线客服咨询请点击右侧浮窗</span>--%>
                 <span>在线客服（工作日：8:30-21:00）</span>
 
             </div>

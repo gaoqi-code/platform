@@ -18,7 +18,7 @@
         .allSelect{background-color:#ee4134;color: #FFF;display:block;}
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
         .li-img{width: 165px;height: 165px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
-        .li-img img{width: 165px;}
+        .li-img img{width: 165px;max-height: 165px;}
         .adviser-list-info{height: 165px;float: left;width: 600px;}
         .adviser-list-content{margin-top:8px;margin-left: 30px;}
         .adviser-list-info span{font-size:22px;margin-right: 20px;}
@@ -241,23 +241,55 @@
         <div class="adviser_left">
 
             <div class="search-select">
-                <ul>
+                <ul id="searchUl">
                     <li>
-                        <h3>业务类别：</h3>
-                        <div class="selectSpan" id="categorySearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="3-" >工商注册</a></span><span><a href="javascript:void(0);" code="1-" >金融服务</a></span><span><a href="javascript:void(0);" code="5-" >法律顾问</a></span>
-                            <input type="hidden" id="categoryVal">
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li style="border: 0px;">
                         <h3>服务区域：</h3>
                         <div class="selectSpan" id="areaSearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-" >上海</a></span><span><a href="javascript:void(0);" code="1-">北京</a></span><span><a href="javascript:void(0);" code="8-">天津</a></span>
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span>
+                            <span><a href="javascript:void(0);" code="4-" >上海</a></span>
+                            <span><a href="javascript:void(0);" code="1-">北京</a></span>
+                            <span><a href="javascript:void(0);" code="8-">天津</a></span>
                             <input type="hidden" id="areaVal">
                         </div>
                         <div class="clear"></div>
                     </li>
+                    <div id="categorySearch">
+                        <input type="hidden" id="categoryVal" value="${categoryCode}">
+                        <div id="oneLevelCategory">
+                            <li  style="border: 0px;">
+                                <h3>业务类别：</h3>
+                                <div class="selectSpan">
+                                    <span><a class="allSelect" href="javascript:void(0);">全部</a></span>
+                                    <c:forEach items="${oneLevelCategories}" var="category">
+                                        <span><a href="javascript:void(0);" level="${category.level}"  categoryId ="${category.id}" code="${category.code}">${category.name}</a></span>
+                                    </c:forEach>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </div>
+                        <div id="twoLevelCategory">
+                            <li  style="border: 0px;">
+                                <h3></h3>
+                                <div class="selectSpan">
+                                    <c:forEach items="${twoLevelCategories}" var="category">
+                                        <span><a href="javascript:void(0);"  level="${category.level}"   categoryId ="${category.id}" code="${category.code}">${category.name}</a></span>
+                                    </c:forEach>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </div>
+                        <div id="threeLevelCategory">
+                            <li  style="border: 0px;">
+                                <h3></h3>
+                                <div class="selectSpan">
+                                    <c:forEach items="${threeLevelCategories}" var="category">
+                                        <span><a href="javascript:void(0);" level="${category.level}"    categoryId ="${category.id}" code="${category.code}">${category.name}</a></span>
+                                    </c:forEach>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </div>
+                    </div>
                 </ul>
             </div>
 
@@ -268,14 +300,13 @@
             <div id="pager"></div>
         </div>
         <div class="adviser_right">
-
             <jsp:include page="../openNeed/need_form.jsp"></jsp:include>
+            <%--plate 顾问推荐板块 101首页，201列表，1通用--%>
             <jsp:include page="/adviserRecommend/recommend.html">
                 <jsp:param value="201" name="plate"/>
                 <jsp:param value="1" name="currentPage"/>
                 <jsp:param value="3" name="pageSize"/>
             </jsp:include>
-
 
         </div>
         <div class="clear"></div>
@@ -287,12 +318,14 @@
 
 <script>
     $(function () {
+//搜索框设置---------------------
         var keyword = "${keyword}";
         $("#keyword").val(keyword);
         var searchType = $("a[name='searchType']");
         searchType.removeClass("selectType");
         searchType.eq(0).addClass("selectType");
 
+//分页--------------------
         layui.use(['laypage', 'layer'], function(){
             var laypage = layui.laypage
                     ,layer = layui.layer;
@@ -310,20 +343,22 @@
                         pageSize : pageSize
                     },
                     success: function(data){
-                        $("#dataMsg").html(data);
-                        var totalPages = $("#totalPages").val();
-                        //显示分页
-                        laypage({
-                            cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-                            pages: totalPages, //通过后台拿到的总页数
-                            curr: curr || 1, //当前页
-                            groups: 5 ,//连续显示分页数
-                            jump: function(obj, first){ //触发分页后的回调
-                                if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                    paging(obj.curr);
+                        if(data) {
+                            $("#dataMsg").html(data);
+                            var totalPages = $("#totalPages").val();
+                            //显示分页
+                            laypage({
+                                cont: 'pager', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                                pages: totalPages, //通过后台拿到的总页数
+                                curr: curr || 1, //当前页
+                                groups: 5 ,//连续显示分页数
+                                jump: function(obj, first){ //触发分页后的回调
+                                    if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
+                                        paging(obj.curr);
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
                 });
             };
@@ -331,22 +366,86 @@
             paging();
 
             function selectStyle(thisObj) {
-                thisObj.parent().parent().find("a").removeClass("allSelect");
+                thisObj.parents("div").eq(1).find("a").removeClass("allSelect");
                 thisObj.addClass("allSelect");
             }
-            $("#categorySearch a").click(function () {
+            $("#categorySearch").on("click","a",function () {
                 var thisObj = $(this);
                 selectStyle(thisObj);
                 $("#categoryVal").val(thisObj.attr("code"));
+                var categoryId = thisObj.attr("categoryId");
+                getSonCategory(categoryId);
                 paging();
             });
+            function getSonCategory(categoryId) {
+                var $twoLevelCategory = $("#twoLevelCategory");
+                var $threeLevelCategory = $("#threeLevelCategory");
+                if(categoryId) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/category/getSonCategory.json",
+                        data: {
+                            parentId:categoryId
+                        },
+                        success: function(data){
+                            if(data && data.categorys  && data.categorys.length) {
+                               var categorys = data.categorys;
+                                var _li = '<li style="border: none;"><h3></h3><div class="selectSpan">';
+                                categorys.forEach(function (item) {
+                                    _li += '<span><a href="javascript:void(0);" categoryId = "'+item.id+'" code = "'+item.code+'"> '+item.name+'</a></span>';
+                                });
+                                _li += '<div class="clear"></div></div></li>';
 
+                                if(categorys[0].level == 2) {
+                                    $twoLevelCategory.html(_li);
+                                    $threeLevelCategory.html("");
+                                }
+                                if(categorys[0].level == 3) {
+                                    $threeLevelCategory.html(_li);
+                                }
+                            }else{
+                                var level = $("a[categoryId='" + categoryId + "']").attr("level");
+                                if(level == 1) {
+                                    $twoLevelCategory.html("");
+                                    $threeLevelCategory.html("");
+                                }
+                                if(level == 2) {
+                                    $threeLevelCategory.html("");
+                                }
+                            }
+
+                        }
+                    });
+                }else{
+                    $twoLevelCategory.html("");
+                    $threeLevelCategory.html("");
+                }
+            }
             $("#areaSearch a").click(function () {
                 var thisObj = $(this);
-                selectStyle(thisObj);
+                $("#areaSearch a").removeClass("allSelect");
+                thisObj.addClass("allSelect");
                 $("#areaVal").val(thisObj.attr("code"));
                 paging();
             });
+            //类目选中定位-----------------
+            var categoryCode = "${categoryCode}";
+            if(categoryCode) {
+                $("#categorySearch a").removeClass("allSelect");
+                var codes = categoryCode.split("-");
+                var code;
+                if(codes.length > 1 ) {
+                    selectStyle($("#categorySearch a[code='" + codes[0] + "-']"));
+                }
+                if(codes.length > 2) {
+                    code =  codes[0] + "-" + codes[1];
+                    selectStyle($("#categorySearch a[code='" + code + "-']"));
+                }
+                if(codes.length > 3) {
+                    code =  codes[0] + "-" + codes[1]+ "-" + codes[2];
+                    selectStyle($("#categorySearch a[code='" + code + "-']"));
+                }
+            }
         });
 
     });

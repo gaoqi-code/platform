@@ -120,11 +120,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="redColorClass">*</span>顾问类型</label>
                     <div class="layui-input-inline">
-                        <select  lay-filter="oneLevel" lay-verify="required"  name="adviserType">
+                        <select  lay-filter="oneLevel" lay-verify="required"  id="oneLevel" name="adviserType">
                             <option value="">请选择</option>
-                            <option value="1-" <c:if test="${member.adviserType == '1-'}">selected=""</c:if> >金融服务</option>
-                            <option value="2-" <c:if test="${member.adviserType == '2-'}">selected=""</c:if> >企业服务</option>
-                            <option value="3-" <c:if test="${member.adviserType == '3-'}">selected=""</c:if> >法律服务</option>
+                            <c:forEach items="${oneLevelCategories}" var="category">
+                                <option value="${category.code}" <c:if test="${category.code == member.adviserType}">selected=""</c:if>  >${category.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -211,7 +211,10 @@
                     dataType: "json",
                     success: function(data){
                         if(data.flag) {
-                            layer.alert("保存成功！");
+                            layer.msg("保存成功！");
+                            setTimeout(function () {
+                                location.href = "/member/info.html";
+                            },500);
                         }else {
                             layer.alert("保存失败！");
                         }
@@ -221,7 +224,7 @@
             });
 
             layui.upload({
-                url: '/fileUpload/upload.json'
+                url: 'http://image.qibaba.cn/fileUpload/iframeCrossOriginUpload/master.html'
                 ,elem: '#uploadHeadPortrait' //指定原始元素，默认直接查找class="layui-upload-file"
                 ,method: 'post' //上传接口的http类型
                 ,success: function(data){

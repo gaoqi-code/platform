@@ -9,11 +9,14 @@
     <jsp:include page="../common/css.jsp"></jsp:include>
     <link rel="stylesheet" href="../css/buysell.css">
     <link rel="stylesheet" href="../plugins/layui/css/global.css">
+    <link rel="stylesheet" href="../css/relayui.css">
     <script src="../plugins/layui/layui.js" charset="utf-8"></script>
     <style>
         .member_menu li{width: 100%;height:35px;line-height:35px;border-bottom: 1px solid #eee;}
         .member_menu li a{margin-left:20px;}
         .c_right{margin-left:10px;width: 958px;float: left;}
+        .status{color:#35D326;}
+        .status2{color: #db2d44;}
     </style>
 </head>
 <body>

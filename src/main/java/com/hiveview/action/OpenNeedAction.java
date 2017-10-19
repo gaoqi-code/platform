@@ -4,13 +4,15 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.StringUtil;
 import com.google.common.collect.Maps;
-import com.hiveview.entity.Member;
-import com.hiveview.entity.Need;
-import com.hiveview.entity.Paging;
-import com.hiveview.entity.UserNeed;
+import com.hiveview.entity.*;
+import com.hiveview.service.ICategoryService;
+import com.hiveview.service.IMemberRecommendService;
 import com.hiveview.service.IMemberService;
 import com.hiveview.service.INeedService;
 import com.hiveview.util.Data;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import utils.IssueType;
 import utils.StatusUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,15 +34,18 @@ import java.util.Map;
 @RequestMapping("/need")
 
 public class OpenNeedAction extends BaseController{
-
+    @Autowired
+    private IMemberRecommendService memberRecommendService;
     @Autowired
     private INeedService needService;
     @Autowired
     private IMemberService memberService;
+    @Autowired
+    private ICategoryService categoryService;
 
     @RequestMapping(value="/toSearch")
     public ModelAndView toSearch(HttpServletRequest request, ModelAndView mav) {
-        mav.getModel().put("cNeedNav","navCurrent");
+
         String keyword = request.getParameter("keyword");
         if (StringUtil.isNotEmpty(keyword)) {
             try {
@@ -50,6 +55,25 @@ public class OpenNeedAction extends BaseController{
             }
             mav.getModel().put("keyword", keyword);
         }
+        //得到所需要的类目
+        String categoryCode = request.getParameter("code");
+        if (StringUtils.isNotEmpty(categoryCode)) {
+            mav.getModel().put("categoryCode", categoryCode);
+        }
+        LevelCategoriesDto levelCategories = categoryService.getLevelCategory(categoryCode, IssueType.NEED.getVal());
+        List<Category> oneLevelCategories = levelCategories.getOneLevelCategories();
+        if (CollectionUtils.isNotEmpty(oneLevelCategories)) {
+            mav.getModel().put("oneLevelCategories", oneLevelCategories);
+            List<Category> twoLevelCategories = levelCategories.getTwoLevelCategories();
+            if (CollectionUtils.isNotEmpty(twoLevelCategories)) {
+                mav.getModel().put("twoLevelCategories", twoLevelCategories);
+                List<Category> threeLevelCategories = levelCategories.getThreeLevelCategories();
+                if (CollectionUtils.isNotEmpty(threeLevelCategories)) {
+                    mav.getModel().put("threeLevelCategories", threeLevelCategories);
+                }
+            }
+        }
+        mav.getModel().put("cNeedNav","navCurrent");
         mav.setViewName("openNeed/need_list");
         return mav;
     }
@@ -83,9 +107,8 @@ public class OpenNeedAction extends BaseController{
         mav.setViewName("openNeed/paging");
         return mav;
     }
-
-    @RequestMapping(value="/pageIndex")
-    public ModelAndView pageIndex(HttpServletRequest request, ModelAndView mav) {
+    @RequestMapping(value="/page1")
+    public ModelAndView page1(HttpServletRequest request, ModelAndView mav) {
         Paging paging = super.getPaging(request);
         Need need = new Need();
         String keyword = request.getParameter("keyword");
@@ -100,17 +123,59 @@ public class OpenNeedAction extends BaseController{
         if (StringUtil.isNotEmpty(classCode)) {
             need.setClassCode(classCode);
         }
-        String memberType = request.getParameter("memberType");
-        if (StringUtil.isNotEmpty(memberType)) {
-            need.setMemberType(Integer.valueOf(memberType));
-        }
         need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
-        //不进行count查询，第三个参数设为false
-        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
+        long memberId = super.getMemberId(request);
+        if (memberId > 0) {
+            need.setOpenShow(true);
+            need.setMemberId(memberId);
+        }
         List<Need> needs =  needService.getOpendNeedPage(need);
         paging.setTotalPages(page.getPages());
         mav.getModel().put("paging",paging);
         mav.getModel().put("needs",needs);
+        mav.setViewName("openNeed/paging123");
+        return mav;
+    }
+
+    @RequestMapping(value="/pageIndex")
+    public ModelAndView pageIndex(HttpServletRequest request, ModelAndView mav) {
+        Paging paging = super.getPaging(request);
+        Need need = new Need();
+        String keyword = request.getParameter("keyword");
+
+        if (StringUtil.isNotEmpty(keyword)) {
+            need.setTitle(keyword);
+        }
+        String areaCode = request.getParameter("areaCode");
+
+        if (StringUtil.isNotEmpty(areaCode)) {
+            need.setAreaCode(areaCode);
+        }
+        String classCode = request.getParameter("classCode");
+
+        if (StringUtil.isNotEmpty(classCode)) {
+            need.setClassCode(classCode);
+        }
+        String memberType = request.getParameter("memberType");
+
+
+        if (StringUtil.isNotEmpty(memberType)) {
+            need.setMemberType(Integer.valueOf(memberType));
+        }
+        need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
+       Integer type =need.getMemberType();
+
+
+        //不进行count查询，第三个参数设为false
+        Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize(),false);
+        List<Need> needs =  needService.getOpendNeedPage(need);
+
+        paging.setTotalPages(page.getPages());
+        mav.getModel().put("paging",paging);
+        mav.getModel().put("needs",needs);
+        mav.getModel().put("type",type);
+
         mav.setViewName("openNeed/paging_index");
         return mav;
     }
@@ -120,6 +185,14 @@ public class OpenNeedAction extends BaseController{
         String view ="openNeed/detail";
         needService.addHitsByNid(needId);
         Need need = needService.getNeedDetail(needId);
+        MemberRecommend memberRecommend = new MemberRecommend();
+
+        memberRecommend.setStatus(StatusUtil.VALID.getVal());
+
+        List<MemberRecommend> memberRecommends =  memberRecommendService.getMemberRecommendList(memberRecommend);
+
+
+
         Integer chargeType = need.getChargeType();
         if (chargeType != null && chargeType == StatusUtil.COLLECT_FEE.getVal()) {
             Long memberId =super.getMemberId(request);
@@ -130,6 +203,9 @@ public class OpenNeedAction extends BaseController{
             }
         }
         mav.getModel().put("need", need);
+        mav.getModel().put("memberRecommends",memberRecommends);
+
+
         mav.setViewName(view);
         return mav;
     }
@@ -139,6 +215,7 @@ public class OpenNeedAction extends BaseController{
         String view;
         Long memberId =super.getMemberId(request);
         Member member = memberService.getMemberById(memberId);
+
         Integer viewCount = member.getNeedViewCount();
         if (viewCount != null && viewCount > 0) {
             member.setNeedViewCount(viewCount - 1);
@@ -149,6 +226,7 @@ public class OpenNeedAction extends BaseController{
             view = "redirect:/need/toSearch.html";
         }
         mav.setViewName(view);
+
         return mav;
     }
     /**

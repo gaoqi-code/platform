@@ -10,9 +10,7 @@
     <p class="record"><span><a _stat_click_id="8_213216" href="/productRecommend/detail/${productRecommend.productId}.html" target="_blank">${productRecommend.summary}</a></span></p>
     <p class="provider">${productRecommend.memberName}&nbsp;
         <a _stat_click_id="8_413216" href="/seller/corpinfo?c_id=288394&amp;tab=1" target="_blank">
-            <c:if test="${productRecommend.adviserType == '1-'}">金融顾问</c:if>
-            <c:if test="${productRecommend.adviserType == '2-'}">企业顾问</c:if>
-            <c:if test="${productRecommend.adviserType == '3-'}">法律顾问</c:if>
+          ${productRecommend.memberCategoryName}
          </a>
         <a class="lv" href="/scenter/growth" target="_blank">执业${productRecommend.workAge}年</a></p>
     <div class="price">

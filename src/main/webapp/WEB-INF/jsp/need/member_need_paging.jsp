@@ -3,45 +3,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<table class="layui-table" lay-skin="line">
-    <colgroup>
-        <col width="150">
-        <col width="100">
-        <col width="80">
-        <col width="120">
-        <col width="200">
-        <col width="100">
-    </colgroup>
-    <thead>
-    <tr>
-        <td>需求名称</td>
-        <td>类型</td>
-        <td>联系人</td>
-        <td>联系电话</td>
-        <td>所在地区</td>
-        <td>发布时间</td>
-    </tr>
-    </thead>
+
+
+
+    <ul>
+        <li>需求名称</li>
+        <li>类型</li>
+        <li>联系人</li>
+        <li>联系电话</li>
+        <li>所在地区</li>
+        <li>发布时间</li>
+        <li>操作</li>
+    </ul>
+
     <tbody>
 
     <c:forEach items="${needs}" var="need" >
-        <tr>
-            <td><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >${need.title}</a></td>
-            <td>${need.className}</td>
-            <td>${need.member.name}</td>
-            <td>${fn:substring(need.needMobile,0,7)}****</td>
-            <td>${need.areaFullName}</td>
-            <td><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></td>
-        </tr>
+        <ul>
+            <li  class="hidden_text" title="${need.title}">${need.title}</li>
+            <li>${need.className}</li>
+            <li>${need.member.name}</li>
+            <li>${fn:substring(need.needMobile,0,7)}****</li>
+            <li>${need.areaFullName}</li>
+            <li><fmt:formatDate value="${need.updateTime != null ? need.updateTime:need.addTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /></li>
+            <li><a name="lookNeed" href="javascript:void(0);" needId="${need.id}" >查看</a></li>
+        </ul>
 
     </c:forEach>
     <c:if test="${empty needs}">
-        <tr>
-            <td colspan="5" style="text-align: center;">没有搜索到您的需求！</td>
-        </tr>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li  style="text-align: center;">没有搜索到您的需求！</li>
+            <li></li>
+            <li></li>
+
+        </ul>
     </c:if>
     </tbody>
-</table>
+
 
    <input type="hidden" id="totalPages" value="${paging.totalPages}"/>
    <input type="hidden" id="currentPage" value="${paging.currentPage}"/>

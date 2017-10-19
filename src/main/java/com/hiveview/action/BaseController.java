@@ -65,6 +65,11 @@ public class BaseController {
 //    }
 
 
+    /**
+     * 获得会员id
+     * @param request
+     * @return
+     */
     public long getMemberId(HttpServletRequest request) {
         Member member = (Member) request.getSession().getAttribute("currentUser");
         Long memberId = null;
@@ -75,6 +80,12 @@ public class BaseController {
 
         return memberId != null?memberId:-1L;
     }
+
+    /**
+     * 获得顾问类型
+     * @param request
+     * @return
+     */
     public String getAdviserType(HttpServletRequest request) {
         Member member = (Member) request.getSession().getAttribute("currentUser");
         String adviserType = null;
@@ -84,6 +95,26 @@ public class BaseController {
         return adviserType;
     }
 
+    /**
+     * 获得会员类型
+     * '会员类型:0普通会员，1顾问'
+     * @param request
+     * @return
+     */
+    public Integer getMemberType(HttpServletRequest request) {
+        Member member = (Member) request.getSession().getAttribute("currentUser");
+        Integer memberType = 0;
+        if(member != null) {
+            memberType = member.getType();
+        }
+        return memberType;
+    }
+
+    /**
+     * 获得公司id
+     * @param request
+     * @return
+     */
     public long getCompanyId(HttpServletRequest request) {
         Member member = (Member) request.getSession().getAttribute("currentUser");
         Long companyId = null;

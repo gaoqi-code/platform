@@ -3,6 +3,7 @@ package com.hiveview.action;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hiveview.entity.*;
+import com.hiveview.enums.CategoryEnum;
 import com.hiveview.service.ICategoryService;
 import com.hiveview.service.INeedService;
 import com.hiveview.util.LevelUtil;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import utils.IssueType;
+import utils.MemberCategory;
 import utils.StatusUtil;
 import utils.log.LogMgr;
 
@@ -104,8 +106,16 @@ public class NeedAction extends BaseController{
             mav.getModel().put("twoLevelCategories", twoLevelCategories);
             mav.getModel().put("threeLevelCategories", threeLevelCategories);
         }
+        Integer memberType = super.getMemberType(request);
+        String page;
+        if (memberType == 1) {
+            page = "need/b_need_add";//商家
+            mav.getModel().put("store","hover");
+        } else {
+            page = "need/p_need_add";//个人
+        }
+        mav.setViewName(page);
         mav.getModel().put("oneLevelCategories", oneLevelCategories);
-        mav.setViewName("need/need_add");
         return mav;
     }
 
@@ -122,13 +132,13 @@ public class NeedAction extends BaseController{
                 need.setCompanyId(companyId);
             }
             need.setStatus(StatusUtil.CHECKING.getVal());
+            need.setMemberType(member.getType());
             if (need.getId() != null) {
                 need.setUpdateTime(new Date());
                 needService.updateNeed(need);
                 needService.deleteAttributeByNeedId(need.getId());
             } else {
                 need.setAddTime(new Date());
-                need.setMemberType(member.getType());
                 needService.saveNeed(need);
             }
             List<Attribute> attributes = need.getAttributes();
@@ -173,7 +183,7 @@ public class NeedAction extends BaseController{
         Need need = new Need();
         need.setStatus(StatusUtil.CHECK_SUCCESS.getVal());
         //根据会员类型推荐对应的需求
-        need.setClassCode(super.getAdviserType(request));
+        need.setClassCode(MemberCategory.getNeedCode(super.getAdviserType(request)));
         Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
         List<Need> needs =  needService.getOpendNeedPage(need);
         paging.setTotalPages(page.getPages());

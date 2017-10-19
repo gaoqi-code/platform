@@ -2,9 +2,11 @@ package com.hiveview.action;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.hiveview.entity.Area;
 import com.hiveview.entity.Company;
 import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
+import com.hiveview.service.IAreaService;
 import com.hiveview.service.ICompanyService;
 import com.hiveview.service.IMemberService;
 import utils.StatusUtil;
@@ -27,6 +29,8 @@ public class CompanyAction extends BaseController{
 	private IMemberService memberService;
 	@Autowired
 	private ICompanyService companyService;
+	@Autowired
+	private IAreaService areaService;
 
 
 	@RequestMapping(value="/list")
@@ -60,8 +64,11 @@ public class CompanyAction extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value="/toAdd")
-	public String toAdd(HttpServletRequest request) {
-		return "company/company_add";
+	public ModelAndView toAdd(HttpServletRequest request,ModelAndView mav) {
+		List<Area> oneLevelAreas = areaService.getAllOneLevel();
+		mav.getModel().put("oneLevelAreas", oneLevelAreas);
+		mav.setViewName("company/company_add");
+		return mav;
 	}
 
 

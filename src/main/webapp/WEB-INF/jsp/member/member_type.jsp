@@ -54,7 +54,7 @@
                     <li>2、发布需求，如贷款、法律、工商注册等</li>
                     <li>3、管理需求</li>
                 </ul>
-                <a href="member/toMember.html?type=person"><button class="layui-btn tempButton" lay-submit="" lay-filter="demo1">确定</button></a>
+                <a href="/member/toMember.html?type=person"><button class="layui-btn tempButton" lay-submit="" lay-filter="demo1">确定</button></a>
             </div>
             <div class="type_c" style="margin-left: 10px;">
                 <div class="type_select">我要提供服务
@@ -69,7 +69,7 @@
                     <li>4、发布需求，如贷款、法律、工商注册等</li>
                     <li>5、管理需求</li>
                 </ul>
-                <a href="member/toMember.html?type=adviser"><button class="layui-btn tempButton" lay-submit="" lay-filter="demo1">确定</button></a>
+                <a href="/member/toMember.html?type=adviser"><button class="layui-btn tempButton" lay-submit="" lay-filter="demo1">确定</button></a>
             </div>
             <div class="clear"></div>
         </div>

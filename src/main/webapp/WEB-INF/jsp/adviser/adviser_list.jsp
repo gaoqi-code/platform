@@ -1,15 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <%@ include file="/common/global.jsp" %>
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>企巴巴-一站式商业服务平台</title>
+    <link rel="shortcut icon" href="../../../images/icon/qibaba.icon">
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="./plugins/layui/css/layui.css"  media="all">
     <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
@@ -37,28 +35,113 @@
             margin-top: 15px;
         }
         .selectSpan span{float: left;display: inline-block;min-width: 60px;height: 30px;line-height:30px;text-align: center;margin-right: 10px;}
-        .adviser_mainli li{border: 1px solid #ddd; border-top:none;height: 217px;}
-        .li-img{    margin: 26px 56px 26px 30px;            float: left;}
-        .li-img img{width: 165px;}
-        .adviser-list-info{float: left;width: 645px;margin-top: 56px;}
+        .adviser_mainli li{border: 1px solid #ddd; border-top:none;height: 150px;}
+        /*.li-img{    margin: 26px 56px 26px 30px;            float: left;}*/
+        .li-img {
+            width: 120px;
+            height: 120px;
+            margin: 15px 25px;
+            float: left;
+        }
+        /*.li-img img{width: 165px;max-height: 165px;}*/
+        .li-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            /* width: 165px; */
+        }
+        .adviser-list-info {
+            margin: 22px 20px;
+            float: left;
+            width: 350px;
+        }
         .adviser-list-content{padding-right: 5px;}
         .company{display: inline-block;
             vertical-align: bottom;
             font-size: 24px;
-            color:#2486b7;
+            color:#333;
             font-weight: 700;}
+        .company2 {
+            display: inline-block;
+            padding: 3px;
+            border: 1px solid #2486b7;
+            color: #2486b7;
+            border-radius: 25px;
+            height: 12px;
+            line-height: 12px;
+            width: 70px;
+            text-align: center;
+        }
         .adviser-list-info p{line-height: 35px;min-height: 35px;font-size: 12px;color: #666;overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;}
         .adviser-list-href{float: right;
             margin-right: 92px;}
-        .adviser-list-href a{border: 2px solid #2486b7;
-            width: 144px;height: 46px;
-            line-height: 46px;
+        /*.adviser-list-href a{border: 2px solid #2486b7;*/
+            /*width: 144px;height: 46px;*/
+            /*line-height: 46px;*/
+            /*text-align: center;*/
+            /*display: inline-block;*/
+            /*color: #2486b7;*/
+            /*margin-top: 80px;}*/
+        .zixun {
+            padding: 45px 0;
+            margin-left: 75px;
+            float: left;
+            width: 150px;
+            text-align: center;
+        }
+        .zixun .xing {
+            display: inline-block;
+            height: 12px;
+            height: 12px;
+        }
+        .zixun .xing img {
+            width: 12px;
+            height: 12px;
+        }
+        .zixun label {
+            color: #fa4f4f;
+            font-size: 20px;
+            position: relative;
+            top: 5px;
+        }
+        .adviser-list-href {
+            float: left;
+            margin-left: 120px;
+        }
+        .counselor-opt {
+            padding: 25px 0;
+        }
+        .counselor-opt>label {
+            font-size: 20px;
+            color: #333;
+            background: url(/images/icon/phone_07.png) left center no-repeat;
+            padding-left: 18px;
+        }
+        .adviser-list-href .btn {
+            margin-top: 15px;
+        }
+        .adviser-list-href a:nth-of-type(1) {
+            border: 1px solid #2486b7;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
             text-align: center;
             display: inline-block;
             color: #2486b7;
-            margin-top: 80px;}
+            border-radius: 3px;
+        }
+        .adviser-list-href a:nth-of-type(2) {
+            border: 1px solid #DEDEDE;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+            color: #2486b7;
+            border-radius: 3px;
+        }
         .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
         .adviser_right_tj img{width:90px;}
         .adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}
@@ -147,7 +230,7 @@
         .advisertSortCon:after{content: '';            clear: both;}
         .adviserCountCont{float: right;margin-right: 10px;}
         #adviserCount{color:red;font-size: 14px;}
-        .adviser_right{width:240px; text-align: center; float: left;background: url("images/order-adviser.jpg") no-repeat;}
+        .adviser_right{width:240px; text-align: center; float: left;background: url("../../images/order-adviser.jpg") no-repeat;}
         .order-form{border:1px solid #eee;border-top:0px;text-align: center;margin-top: 105px;}
         /*文本框样式调整*/
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
@@ -169,23 +252,55 @@
         <div class="adviser_left">
 
             <div class="search-select">
-                <ul>
+                <ul id="searchUl">
                     <li>
-                        <h3>业务类别：</h3>
-                        <div class="selectSpan" id="categorySearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="3-" >工商注册</a></span><span><a href="javascript:void(0);" code="1-" >金融服务</a></span><span><a href="javascript:void(0);" code="5-" >法律顾问</a></span>
-                            <input type="hidden" id="categoryVal">
-                        </div>
-                        <div class="clear"></div>
-                    </li>
-                    <li style="border: 0px;padding-bottom: 5px;">
                         <h3>服务区域：</h3>
                         <div class="selectSpan" id="areaSearch">
-                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span><span><a href="javascript:void(0);" code="4-" >上海</a></span><span><a href="javascript:void(0);" code="1-">北京</a></span><span><a href="javascript:void(0);" code="8-">天津</a></span>
+                            <span><a class="allSelect" href="javascript:void(0);">全部</a></span>
+                            <span><a href="javascript:void(0);" code="4-" >上海</a></span>
+                            <span><a href="javascript:void(0);" code="1-">北京</a></span>
+                            <span><a href="javascript:void(0);" code="8-">天津</a></span>
                             <input type="hidden" id="areaVal">
                         </div>
                         <div class="clear"></div>
                     </li>
+                    <div id="categorySearch">
+                        <input type="hidden" id="categoryVal" value="${categoryCode}">
+                        <div id="oneLevelCategory">
+                            <li  style="border: 0px;">
+                                <h3>业务类别：</h3>
+                                <div class="selectSpan">
+                                    <span><a class="allSelect" href="javascript:void(0);">全部</a></span>
+                                    <c:forEach items="${oneLevelCategories}" var="category">
+                                        <span><a href="javascript:void(0);" level="${category.level}"  categoryId ="${category.id}" code="${category.code}">${category.name}</a></span>
+                                    </c:forEach>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </div>
+                        <div id="twoLevelCategory">
+                            <li  style="border: 0px;">
+                                <h3></h3>
+                                <div class="selectSpan">
+                                    <c:forEach items="${twoLevelCategories}" var="category">
+                                        <span><a href="javascript:void(0);"  level="${category.level}"   categoryId ="${category.id}" code="${category.code}">${category.name}</a></span>
+                                    </c:forEach>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </div>
+                        <div id="threeLevelCategory">
+                            <li  style="border: 0px;">
+                                <h3></h3>
+                                <div class="selectSpan">
+                                    <c:forEach items="${threeLevelCategories}" var="category">
+                                        <span><a href="javascript:void(0);" level="${category.level}"    categoryId ="${category.id}" code="${category.code}">${category.name}</a></span>
+                                    </c:forEach>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </div>
+                    </div>
                 </ul>
             </div>
 
@@ -262,24 +377,90 @@
             };
             //运行
             paging();
-
             function selectStyle(thisObj) {
-                thisObj.parent().parent().find("a").removeClass("allSelect");
+                thisObj.parents("div").eq(1).find("a").removeClass("allSelect");
                 thisObj.addClass("allSelect");
             }
-            $("#categorySearch a").click(function () {
+            $("#categorySearch").on("click","a",function () {
                 var thisObj = $(this);
                 selectStyle(thisObj);
                 $("#categoryVal").val(thisObj.attr("code"));
+                var categoryId = thisObj.attr("categoryId");
+                getSonCategory(categoryId);
                 paging();
             });
+            function getSonCategory(categoryId) {
+                var $twoLevelCategory = $("#twoLevelCategory");
+                var $threeLevelCategory = $("#threeLevelCategory");
+                if(categoryId) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/category/getSonCategory.json",
+                        data: {
+                            parentId:categoryId
+                        },
+                        success: function(data){
+                            if(data && data.categorys  && data.categorys.length) {
+                                var categorys = data.categorys;
+                                var _li = '<li style="border: none;"><h3></h3><div class="selectSpan">';
+                                categorys.forEach(function (item) {
+                                    _li += '<span><a href="javascript:void(0);" categoryId = "'+item.id+'" code = "'+item.code+'"> '+item.name+'</a></span>';
+                                });
+                                _li += '<div class="clear"></div></div></li>';
+
+                                if(categorys[0].level == 2) {
+                                    $twoLevelCategory.html(_li);
+                                    $threeLevelCategory.html("");
+                                }
+                                if(categorys[0].level == 3) {
+                                    $threeLevelCategory.html(_li);
+                                }
+                            }else{
+                                var level = $("a[categoryId='" + categoryId + "']").attr("level");
+                                if(level == 1) {
+                                    $twoLevelCategory.html("");
+                                    $threeLevelCategory.html("");
+                                }
+                                if(level == 2) {
+                                    $threeLevelCategory.html("");
+                                }
+                            }
+                        }
+                    });
+                }else{
+                    $twoLevelCategory.html("");
+                    $threeLevelCategory.html("");
+                }
+            }
 
             $("#areaSearch a").click(function () {
                 var thisObj = $(this);
-                selectStyle(thisObj);
+                $("#areaSearch a").removeClass("allSelect");
+                thisObj.addClass("allSelect");
                 $("#areaVal").val(thisObj.attr("code"));
                 paging();
             });
+
+
+
+            //类目选中定位-----------------
+            var categoryCode = "${categoryCode}";
+            if(categoryCode) {
+                $("#categorySearch a").removeClass("allSelect");
+                var codes = categoryCode.split("-");
+                var code;
+                if(codes.length > 1 ) {
+                    selectStyle($("#categorySearch a[code='" + codes[0] + "-']"));
+                }
+                if(codes.length > 2) {
+                    code =  codes[0] + "-" + codes[1];
+                    selectStyle($("#categorySearch a[code='" + code + "-']"));
+                }
+                if(codes.length > 3) {
+                    code =  codes[0] + "-" + codes[1]+ "-" + codes[2];
+                    selectStyle($("#categorySearch a[code='" + code + "-']"));
+                }
+            }
 
         });
 

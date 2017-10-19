@@ -1,15 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
 <head>
     <%@ include file="/common/global.jsp" %>
     <base href="<%=basePath%>">
     <title>企巴巴</title>
+    <link rel="shortcut icon" href="../../images/icon/qibaba.icon">
     <meta name="keywords" content="企巴巴, 金融,顾问,法律">
     <meta name="description" content="企巴巴.企业巴巴IB2E（Internet Business to Enterprise）模式是以互联网管理模式为向导，通过PC电脑、移动端等新媒体为载体，针对对企业经营战略咨询、企业管理咨询、电商模式开发及运营、企业认证辅导等，建立企业信息化大数据，在以互联网的思维改善、改变传统工厂运作">
-
     <jsp:include page="common/css.jsp"></jsp:include>
     <style>
+        /*developers：sunshenglin；*/
         .notice{margin: 10px 0px;}
         .noticeGG{background-color:#ffcc99;width: 60px;padding: 5px 15px;float: left;}
         .noticeGG_content{padding: 5px 15px;float: left;}
@@ -23,15 +24,15 @@
 
         /*幻灯片*/
         /* 本例子css */
-        .slideBox{ width:100%;position:relative;}
+        .slideBox{ width:100%;position:relative;height: 400px;}
         .slideBox:after{content: '';display: block;clear: both;}
-        .slideBox .hd{ overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+        .slideBox .hd{ overflow:hidden; position:absolute; right:5px; bottom:15px; z-index:1; }
         .slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
-        .slideBox .hd ul li{ float:left; margin-right:2px; padding:5px 8px;line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+        .slideBox .hd ul li{ float:left; margin-right:2px; padding:3px 6px;line-height:14px; text-align:center; background:#fff; cursor:pointer; }
         .slideBox .hd ul li.on{ background:#f00; color:#fff; }
         .slideBox .bd{ position:relative; height:100%; z-index:0;   }
         .slideBox .bd li{ zoom:1; vertical-align:middle; }
-        .slideBox .bd img{ width:100%;display:block;  }
+        .slideBox .bd img{ width:100%;display:block; height: 400px }
 
         /* 下面是前/后按钮代码，如果不需要删除即可 */
         .slideBox .prev,
@@ -114,7 +115,7 @@
         /*** tab切换部分（人脉、服务、产品） ***/
         .offerlist{width: 780px;float: left;margin-right: 25px;background-color: #FFF;}
         .offerlist dl {
-            padding: 20px 0;
+            padding: 18px 0;
             border-bottom: 1px solid #ddd;
         }
         .offerlist dt {
@@ -152,12 +153,22 @@
             float: left;
             width: 65%;margin-top: 10px;margin-right: 5%;
         }
+        /*产品类型样式*/
         .green {
-            /*color: #3b8e00;*/
+            /*color: red;*/
             margin-right: 5px;
             height: 35px;
             line-height: 35px;
             display: block;
+        }
+        .chanpin2{
+            color: yellow;
+        }
+        .chanpin3{
+            color: red;
+        }
+        .chanpin4{
+            color: blue;
         }
         .ml10 {
             margin-left: 10px;
@@ -441,17 +452,56 @@
             margin-top: 28px;
         }
         #needDataMsgPerson{margin-left: 10px;}
+        #needDataMsgAdvier{margin-left: 10px;}
         .offerlistclss{margin-top:10px;margin-left: 10px;}
         .offerlistclss span{padding:3px 5px; cursor: pointer; margin-top: 10px; margin-right:5px;background-color: #004b92;color:#FFF;}
-        .liuyan{    position: absolute;
+        .liuyan{   
+        	position: absolute;
             padding-top: 20px;
             right: 0;
             top: 5px;
-            width: 246px;
+            width: 280px;
+            height: 340px;
             margin-top: 20px;
             box-sizing: border-box;
-            background-color: #fff;
-            z-index: 3;}
+            background: url(../../images/tuming.jpg);
+            opacity: .9;
+            z-index: 3;
+            color: #fff;
+            }
+            .liuyan h1{
+            	text-align: center;
+				font-size: 16px;
+				height: 50px;
+				line-height: 50px;
+			}
+			
+			.liuyan .layui-form-item {
+			    margin-bottom: 25px;
+			    margin-left: 5px;
+			}
+			.liuyan .layui-form-label {
+			    padding: 9px 15px;
+			    width: 50px;
+			}
+			.liuyan .layui-form-item .layui-input-inline {
+			    float: left;
+			    width: 165px;
+			    margin-right: 10px;
+			}
+			.liuyan .layui-input-block {
+		    margin-left: 0px; 
+		    min-height: 36px;
+			}
+			.liuyan .layui-btn{
+				opacity: 1;
+				margin-left: 18px;
+				background: #2486B5;
+				width: 238px;
+			}
+			.liuyan .layui-btn:hover{
+				background: #0078AD;
+			}
         /*文本框样式调整*/
         .layui-input-block{width:225px;margin-left:auto;margin-right: auto;}
         .layui-form-item .layui-input-inline{width:225px;margin-left:10px;}
@@ -472,8 +522,8 @@
             overflow: hidden;
         }
         .business-new-big>img {
-            width: 100%;
-            height: 100%;
+            width: 98%;
+            height: 98%;
         }
         .business-new-big>p {
             position: absolute;
@@ -483,6 +533,7 @@
             line-height: 36px;
             font-size: 16px;
             color: #fff;
+            width: 94%;
             padding: 0 10px;
             white-space: nowrap;
             overflow: hidden;
@@ -664,7 +715,6 @@
         }
         .time-line-main>h3 {
             font-size: 30px;
-            font-weight: bold;
             color: #fff;
             line-height: 45px;
         }
@@ -711,7 +761,7 @@
         .time-line-warp {
             width: 1180px;
             margin: 0 auto;
-            overflow: hidden;
+            /*overflow: hidden;*/
             position: relative;
             z-index: 1;
         }
@@ -731,6 +781,50 @@
             text-align: center;
             position: relative;
         }
+        /*新加的样式*/
+        .time-list-main li div{
+        	display: none;
+        	width: 250px;
+        	height: 200px;
+        	border: 8px solid #F1F2F4;
+        	border-radius: 5px;
+        	position: absolute;
+        	top: 60px;
+    		right: -1px;
+        }
+        .time-list-main li .div111{
+        	top: 60px;
+    		right: -101px;
+        }
+        .time-list-main li .div111 span{
+        	top: 42px;
+    		left: 16px;
+        }
+         .time-list-main li div img{
+         	width: 100%;
+         	height:83%;
+         }
+         .time-list-main li div p{
+         	line-height: 30px;
+         	color: #fff;
+         	background: #000;
+         	height: 35px;
+         	position: relative;
+         }
+         .time-list-main li:hover{
+         	font-weight: bold;
+         }
+         .time-list-main li div span{
+         	width: 0;
+         	height: 0;
+        	border-top: 8px solid #F1F2F4;
+        	border-left: 8px solid transparent;
+        	border-right: 8px solid transparent;
+        	border-bottom: 8px solid transparent;
+        	position: absolute;
+    	    top: 42px;
+    		left: 115px;
+         }
         .time-p-n.prev {
             display: none;
             left: 0;
@@ -786,7 +880,7 @@
 <div id="slideBox" class="slideBox">
     <div class="content" style="position: relative;">
         <div class="liuyan">
-            <form id="userNeedForm" class="layui-form order-form" action="">
+            <!--<form id="userNeedForm" class="layui-form order-form" action="">
                 <input type="hidden" value="101" name="dataSource">
                 <div class="layui-form-item">
 
@@ -813,15 +907,53 @@
                         <button class="layui-btn" lay-submit="" style="width: 100%;" lay-filter="demo1">立即提交</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </form>      	-->
+            <h1>企服申请</h1>
+            <div class="layui-form-item">
+				<label class="layui-form-label">企服用途</label>
+				<div class="layui-input-inline">
+					<div class="layui-unselect layui-form-select">
+						<div class="layui-select-title"><input type="text" placeholder="不限" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div>
+						<dl class="layui-anim layui-anim-upbit">
+							<dd lay-value="" class=""></dd>
+						</dl>
+					</div>
+				</div>
+						
+			</div>
+            <div class="layui-form-item">
+				<label class="layui-form-label">企服用途</label>
+				<div class="layui-input-inline">
+					<div class="layui-unselect layui-form-select">
+						<div class="layui-select-title"><input type="text" placeholder="不限" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div>
+						<dl class="layui-anim layui-anim-upbit">
+							<dd lay-value="" class=""></dd>
+						</dl>
+					</div>
+				</div>
+						
+			</div>
+            <div class="layui-form-item">
+						<label class="layui-form-label">需求名称</label>
+						<div class="layui-input-inline">
+							<input type="input" lay-verify="required" name="name" value="" placeholder="请输入号码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                    </div>
+                </div>
+         </div>
     </div>
     <div class="hd">
         <ul><li>1</li><li>2</li><li>3</li></ul>
     </div>
-    <div class="bd">
+    <div class="bd" id="flexslider">
         <ul>
             <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/1.jpg" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/2.jpg" /></a></li>
+            <li><a href="javascript:void(0);" target="_blank"><img src="../images/banner/3.jpg" /></a></li>
         </ul>
     </div>
 
@@ -836,7 +968,7 @@
         $(".nav-l2-container").css("display","block");
     });
     var ary = location.href.split("&");
-    jQuery(".slideBox").slide( { mainCell:".bd ul", effect:ary[1],autoPlay:ary[2],trigger:ary[3],easing:ary[4],delayTime:ary[5],mouseOverStop:ary[6],pnLoop:ary[7] });
+    jQuery(".slideBox").slide({mainCell:".bd ul",effect:"fold",autoPlay:true});
 </script>
 
 
@@ -902,20 +1034,24 @@
             <input type="hidden" id="areaVal" />
             <div class="layui-tab offerlist" style="margin-top: 0px;">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">个人</li>
-                    <li>同业</li>
+                    <li class="layui-this">企服商家</li><%--个人需求--%>
+                    <li>企服需求</li><%--商户需求--%>
                 </ul>
                 <div class="layui-tab-content" style="padding-left: 0px;">
                     <div class="layui-tab-item layui-show">
                         <div class="offerlist">
-                            <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
-                            <div id="needDataMsgPerson"></div>
+                            <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+
+                            <div id="needDataMsgAdvier"></div>
+
                         </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="offerlist">
-                            <div class="offerlistclss offerlistclssAdviser"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
-                            <div id="needDataMsgAdvier"></div>
+                        <div class="offerlist" >
+                                <div class="offerlistclss offerlistclssPerson"><span code="1-">金融服务</span><span code="2-">企业服务</span><span code="3-">法律服务</span></div>
+
+
+                                <div id="needDataMsgPerson"></div>
                         </div>
                     </div>
                 </div>
@@ -984,7 +1120,6 @@
                         <a target="_blank" href="/product/detail/12.html">
                             <label>公司核名</label>
                             <p>3秒免费告知结果</p>
-
                         </a>
                         <a target="_blank" href="/product/detail/12.html">
                             <label>注册地址</label>
@@ -1041,23 +1176,10 @@
                 </li>
             </ul>
         </div>
-
-
-
-
-
-
-
-    <%--最闻部分--%>
+    <%--新闻部分--%>
     <div class="media-new-list" style="display: block;" id="recommendArticle">
-
-
     </div>
 </div>
-
-
-
-
 
 <div class="time-line">
     <div class="time-line-main">
@@ -1074,17 +1196,53 @@
         </div>
         <div class="time-line-warp">
             <div class="time-list-main">
-                <div class="tempWrap" style="overflow:hidden; position:relative; width:1224px"><ul style="width: 2652px; left: -816px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+                <div class="tempWrap" style=" position:relative; width:1224px"><ul style="width: 2652px; left: -816px; position: relative;  padding: 0px; margin: 0px;">
                     <li data-src="/images-v2/img/time12.jpg" data-content="两省政府代表团视察顶呱呱" class="" style="float: left; width: 140px;"><a href="http://www.dgg.net/article/8759.html"></a>
                         <i></i><p>2017.4</p></li>                    <li data-src="/images-v2/img/time11.jpg" data-content="小顶家装开业" class="" style="float: left; width: 140px;"><i></i><p>2017.３</p></li>
                     <li data-src="/images-v2/img/time5.jpg" data-content="成立重庆分公司，巩固西南市场" class="" style="float: left; width: 140px;"><i></i><p>2016.12</p></li>
                     <li data-src="/images-v2/img/time7.jpg" data-content="广州分公司成立，进一步拓宽并抢占沿海市场" class="" style="float: left; width: 140px;"><i></i><p>2016.9</p></li>
-                    <li data-src="/images-v2/img/time4.jpg" data-content="成立深圳分公司，立足闽南沿海市场" class="active" style="float: left; width: 140px;"><i></i><p>2016.8</p></li>
-                    <li data-src="/images-v2/img/time9.jpg" data-content="集团员工总数超2000人" class="" style="float: left; width: 140px;"><i></i><p>2016.6</p></li>
-                    <li data-src="/images-v2/img/time3.jpg" data-content="成立成都分公司，打开西南市场" style="float: left; width: 140px;" class=""><i></i><p>2016.2</p></li>
-                    <li data-src="/images-v2/img/time6.jpg" data-content="挂牌上市，集团上海股权交易中心" style="float: left; width: 140px;" class=""><i></i><p>2014.5</p></li>
-                    <li data-src="/images-v2/img/time2.jpg" data-content="被评为省级文明单位" style="float: left; width: 140px;" class=""><i></i><p>2013.9</p></li>
-                    <li data-src="/images-v2/img/time10.jpg" data-content="受邀参加第129届国际商标协会INTA年会并成为国际商标协会的会员" style="float: left; width: 140px;" class=""><i></i><p>2011.4</p></li>
+                    <li data-src="/images-v2/img/time4.jpg" data-content="成立深圳分公司，立足闽南沿海市场" style="float: left; width: 140px;"><i></i><p>2017.5</p>
+                    	<div class="div111"><img src="../../images/201705.png"/>
+                    		<p>企巴巴线上一条龙网站成功上线
+                    		<span></span>
+                    		</p>
+                    	</div>
+                    </li>
+                    <li data-src="" data-content="集团员工总数超2000人" class="" style="float: left; width: 140px;"><i></i><p>2017.3</p>
+                    	<div><img src="../../images/201703.png"/>
+                    		<p>与北京中讯担保强强合作
+                    		<span></span>
+                    		</p>
+                    	</div>
+                    </li>
+                    <li data-src="/images-v2/img/time3.jpg" data-content="成立成都分公司，打开西南市场" style="float: left; width: 140px;" class=""><i></i><p>2016.12</p>
+                    	<div><img src="../../images/201612.png"/>
+                    		<p>商业大数据数据库成功建立
+                    		<span></span>
+                    		</p>
+                    	</div>
+                    </li>
+                    <li data-src="/images-v2/img/time6.jpg" data-content="挂牌上市，集团上海股权交易中心" style="float: left; width: 140px;" class=""><i></i><p>2016.3</p>
+                    	<div><img src="../../images/201603.png"/>
+                    		<p>在深圳，上海，武汉设立办事处
+                    		<span></span>
+                    		</p>
+                    	</div>
+                    </li>
+                    <li data-src="/images-v2/img/time2.jpg" data-content="被评为省级文明单位" style="float: left; width: 140px;" class=""><i></i><p>2016.2</p>
+                    	<div><img src="../../images/201602.png"/>
+                    		<p style="line-height: 15px;">企巴巴企业管理软件与武汉市，荆州市政府签署合作协议，进军二三线城市
+                    		<span></span>
+                    		</p>
+                    	</div>
+                    </li>
+                    <li data-src="/images-v2/img/time10.jpg" data-content="受邀参加第129届国际商标协会INTA年会并成为国际商标协会的会员" style="float: left; width: 140px;" class=""><i></i><p>2015.9</p>
+                    	<div style="display: block;"><img src="../../images/201509.png"/>
+                    		<p>企巴巴企业管理有限公司在北京成立
+                    		<span></span>
+                    		</p>
+                    	</div>
+                    </li>
                     <li data-src="/images-v2/img/time8.jpg" data-content="集工商、会计、融资等业态，率先立足一站式商业服务领域" style="float: left; width: 140px;"><i></i><p>2009.8</p></li>
                     <li data-src="/images-v2/img/time1.jpg" data-content="被评为高新技术企业" style="float: left; width: 140px;"><i></i><p>2003.9</p></li>
                     <li data-src="/images-v2/img/time0.jpg" data-content="小顶网成立，注册资金1000万元" style="float: left; width: 140px;"><i></i><p>1996.6</p></li>
@@ -1108,6 +1266,23 @@
         var $ = layui.jquery
                 ,element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
     });
+</script>
+<script>
+//  $('#flexslider').flexslider({
+//      /*directionNav: true,
+//       pauseOnAction: false*/
+//      slideshowSpeed: 3000, //  定时器,时间间隔
+//      pauseOnHover: true // 鼠标悬停停止播放
+//  });
+//  鼠标移入显示
+	$('.time-list-main li').mouseover(function(){
+		$(this).find('div').show();
+		$(this).siblings().find('div').hide();
+	})
+//	鼠标离开隐藏
+//	$('.time-line-main').mouseleave(function(){
+//		$('.time-list-main li').find('div').hide();
+//	})
 </script>
 <script>
     var cureentTime = 0;
@@ -1162,6 +1337,7 @@
                 pageSize : pageSize
             },
             success: function(data){
+
                 $("#needDataMsgPerson").html(data);
             }
         });
@@ -1180,12 +1356,14 @@
 
             success: function(data){
                 $("#needDataMsgAdvier").html(data);
+
             }
         });
     };
     $(function () {
         $(".offerlistclssPerson span").click(function () {
             var thisObj = $(this);
+
             paging(thisObj.attr("code"));
         });
 
@@ -1208,9 +1386,11 @@
             data: {
                 currentPage:1,
                 pageSize : 6,
-                type:"adviser"
+                type:"adviser",
+
             },
             success: function(data){
+
                 $("#recommendAdviser").html(data);
             }
         });

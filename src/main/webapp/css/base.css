@@ -45,8 +45,8 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	border-right: 0;
 	border-radius: 2px 0 0 2px;
 }
-.search-form-box button{line-height: 36px;
-	height: 35px;
+.search-form-box button{
+	line-height: 36px;
 	padding: 0 20px 0 15px;
 	background:#2486b5;
 	color: #fff;
@@ -112,7 +112,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	height: 46px;
 	vertical-align: middle;
 	line-height: 46px;}
-.t_nav{background-color: #1786ef;}
+.t_nav{background-color: #349dcd;}
 .t_nav li{height: 46px;line-height: 46px;text-align: center;width:210px;}
 .t_nav li a:hover{background-color: #004b92;}
 .current_c{background-color: #36a8f8 !important;}
@@ -171,7 +171,7 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 .c_left{width: 210px;float:left;background-color: #FFFFFF;}
 .member_menu{border: 1px solid #EEE;}
 /*** 会员中心右侧导航 ***/
-.c_right{margin-left:10px;width: 958px;float: left;background-color: #FFFFFF;}
+.c_right{margin-left:10px;width: 958px;float: left;background-color: #FFFFFF;position: relative;}
 
 /*** 会员中心导航下部区域 ***/
 #container{padding-top:15px;}
@@ -189,7 +189,13 @@ button, html input[type="button"], input[type="submit"] {cursor: pointer;}
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 }
-
+.hidden_text {
+	width:200px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	overflow: hidden;
+}
 .module_nav{margin-bottom:56px;}
 .module_title{font-size: 16px;padding: 18px 0px;border-bottom: 1px solid #999999;}
 

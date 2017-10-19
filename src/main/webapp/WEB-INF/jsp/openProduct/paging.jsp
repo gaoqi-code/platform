@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
+<c:if test="${!empty products}">
 <ul>
     <%--<c:forEach items="${products}" var="product" >--%>
     <%--<li>--%>
@@ -94,15 +94,14 @@
             </div>
         </div>
     </div>
-
-    <c:if test="${empty products}">
-        <li>
-                <div class="adviser-list-content">
-                    <p>没有搜索到您所需要的产品信息！</p>
-                </div>
-        </li>
-    </c:if>
 </ul>
+</c:if>
+    <c:if test="${empty products}">
+                <div class="adviser-list-content">
+                    <p id="noSearchVale">没有搜索到您所需要的产品信息！</p>
+                </div>
+    </c:if>
+
 
    <input type="hidden" id="totalPages" value="${paging.totalPages}"/>
    <input type="hidden" id="currentPage" value="${paging.currentPage}"/>

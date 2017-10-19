@@ -17,9 +17,7 @@
             </li>
             <li class="sv-card--review-item">
                 <span class="title">
-                <c:if test="${product.member.adviserType == '1-'}">金融顾问</c:if>
-                <c:if test="${product.member.adviserType == '2-'}">企业顾问</c:if>
-                <c:if test="${product.member.adviserType == '3-'}">法律顾问</c:if>
+                    ${product.memberCategoryName}
                 </span>
             </li>
             <li class="sv-card--review-item">

@@ -4,13 +4,16 @@ import com.google.common.collect.Maps;
 import com.hiveview.util.Data;
 import com.hiveview.util.Constants;
 import com.hiveview.util.ProperManager;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +31,16 @@ import java.util.Map;
 public class FileUploadAction {
 	Logger logger = Logger.getLogger(FileUploadAction.class);
 
+	private static final String IMG_DOMAIN = "http://image.qibaba.cn/";
+	private static final String MASTER_DOMAIN = "http://www.qibaba.cn/";
+	private static final String ADMIN_DOMAIN = "http://admin.qibaba.cn/";
+
+	/**
+	 * 异步上传
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/upload")
 	public Map<String,Object> upload(HttpServletRequest request) throws Exception {
@@ -88,7 +101,75 @@ public class FileUploadAction {
 		result.put("data", data);
 		return result;
 	}
-	
+
+	/**
+	 * iframe跨域请求解决方案
+	 * @param request
+	 * @param mav
+	 * @author huxunqiang
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/iframeCrossOriginUpload/{system}")
+	public ModelAndView iframeCrossOriginUpload(HttpServletRequest request,@PathVariable("system")String system, ModelAndView mav) throws Exception {
+
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		String imgUpload ="uploadFile/uploadImg/"+DateFormatUtils.format(new Date(), "yyyyMMdd");
+		String realPath = request.getSession().getServletContext().getRealPath("/")+imgUpload;
+		HashMap<String, Object> result = Maps.newHashMap();
+		Boolean flag = false;
+		// 创建目录 -->若物理路径不存在，则创建物理路径
+		String newFileName = "";// 新文件名
+		if (mkdir(realPath)) {
+			String fileName;
+			String filePath;
+
+			Iterator<String> iter = multipartRequest.getFileNames();
+			while (iter.hasNext()) {
+				MultipartFile file = multipartRequest.getFile(iter.next());
+				fileName = file.getOriginalFilename();
+				if (fileName.lastIndexOf(".") > -1) {
+					newFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
+					File localFile = null;
+					//				localFile = new File(realPath + "/" + newFileName);
+					filePath = realPath + "//" + newFileName;
+					localFile = new File(filePath);
+					file.transferTo(localFile);
+				}
+			}
+			flag = true;
+		}
+//		{
+//				"code": 0 //0表示成功，其它失败
+//				,"msg": "" //提示信息 //一般上传失败后返回
+//				,"data": {
+//					 "src": "图片路径"
+//					,"title": "图片名称" //可选
+//					}
+//		}
+		String imgPath = imgUpload+"/"+newFileName;
+		result.put("flag", flag);
+		result.put("code", flag?0:1);
+		result.put("msg", flag?"图片上传成功！":"图片上传失败！");
+		Map<String, Object> data = Maps.newHashMap();
+		data.put("src", IMG_DOMAIN + imgPath);
+		result.put("data", data);
+		JSONObject jsonObject = JSONObject.fromObject(result);
+		StringBuffer sbHtml = new StringBuffer();
+		String url;
+		if ("master".equals(system)) {
+			url = MASTER_DOMAIN + "crossOrigin/receiveVal.jsp";
+		} else {
+			url = ADMIN_DOMAIN + "crossOrigin/receiveVal.jsp";
+		}
+		sbHtml.append("<form id=\"alipaysubmit\" name=\"alipaysubmit\" action=\"" + url+ "\" method=\"post\">");
+		sbHtml.append("<input type=\"hidden\" name=\"dataMsg\" value='" + jsonObject.toString() + "'/>");
+		sbHtml.append("<input type=\"submit\" value=\"提交\" style=\"display:none;\"></form>");
+		sbHtml.append("<script>document.forms['alipaysubmit'].submit();</script>");
+		mav.getModel().put("resultStr",sbHtml);
+		mav.setViewName("crossOrigin/transmitVal");
+		return mav;
+	}
+
 	@RequestMapping(value = "/uploadTemp")
 	public String upload(HttpServletRequest request,HttpServletResponse response, String propKey,String module, Integer ruleType,Integer visitWay) throws Exception {
 

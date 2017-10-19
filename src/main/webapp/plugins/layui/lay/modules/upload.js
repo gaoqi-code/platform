@@ -39,23 +39,27 @@
                     if (!RegExp("\\w\\.(" + (p || "jpg|png|gif|bmp|jpeg") + ")$", "i").test(escape(u)))return t.msg("不支持该图片格式", r), e.value = ""
             }
             s.before && s.before(e), l.parent().submit();
-            var c = a("#" + n), f = setInterval(function () {
-                var a;
-                try {
-                    a = c.contents().find("body").text()
-                } catch (i) {
-                    t.msg("上传接口存在跨域", r), clearInterval(f)
-                }
-                if (a) {
-                    clearInterval(f), c.contents().find("body").html("");
+            var c = a("#" + n), f = setInterval(function() {
+                    var a;
                     try {
-                        a = JSON.parse(a)
-                    } catch (i) {
-                        return a = {}, t.msg("请对上传接口返回JSON字符", r)
+                    a = c.contents().find("body").text()
+                    } catch(i) {
+                        // t.msg("上传接口存在跨域", r),
+                        a = false; //跨域设置
+                        // clearInterval(f)
                     }
-                    "function" == typeof s.success && s.success(a, e)
-                }
-            }, 30);
+                    if (a) {
+                    clearInterval(f), c.contents().find("body").html("");
+                        try {
+                            a = JSON.parse(a)
+                        } catch(i) {
+                            return a = {},
+                                t.msg("请对上传接口返回JSON字符", r)
+                        }
+                        "function" == typeof s.success && s.success(a, e)
+                    }
+                },
+                30);
             e.value = ""
         }
     }, e("upload", function (e) {

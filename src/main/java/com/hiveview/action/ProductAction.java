@@ -3,20 +3,22 @@ package com.hiveview.action;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.hiveview.entity.Category;
+import com.hiveview.entity.Member;
 import com.hiveview.entity.Paging;
 import com.hiveview.entity.Product;
 import com.hiveview.service.ICategoryService;
+import com.hiveview.service.IMemberService;
 import com.hiveview.service.IProductService;
 import com.hiveview.util.LevelUtil;
-import utils.IssueType;
-import utils.StatusUtil;
-import utils.log.LogMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import utils.IssueType;
+import utils.StatusUtil;
+import utils.log.LogMgr;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -25,7 +27,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/member/product")
 public class ProductAction extends BaseController{
-
+	@Autowired
+	private IMemberService memberService;
 	@Autowired
 	private ICategoryService categoryService;
 
@@ -40,12 +43,17 @@ public class ProductAction extends BaseController{
 	}
 	@RequestMapping(value="/page")
 	public ModelAndView page(HttpServletRequest request, ModelAndView mav) {
+		Member member = new Member();
+        long memberId = super.getMemberId(request);
+        member.setId(memberId);
+		member =  memberService.getMemberInfo(member);
 		Paging paging = super.getPaging(request);
 		Product product = new Product();
-		product.setMemberId(super.getMemberId(request));
+		product.setMemberId(memberId);
 		Page<Object> page = PageHelper.startPage(paging.getCurrentPage(), paging.getPageSize());
 		List<Product> products =  productService.getProductPage(product);
 		paging.setTotalPages(page.getPages());
+		mav.getModel().put("member", member);
 		mav.getModel().put("paging",paging);
 		mav.getModel().put("products",products);
 		mav.setViewName("product/paging");
@@ -60,6 +68,7 @@ public class ProductAction extends BaseController{
 		long memberId = super.getMemberId(request);
 		if (memberId > 0  && product.getStatus() != null) {
 			try {
+				product.setUpdateTime(new Date());
 				product.setMemberId(memberId);
 				productService.updateProduct(product);
 				flag = true;
@@ -72,7 +81,7 @@ public class ProductAction extends BaseController{
 
 
 	@RequestMapping(value="/toAdd/{productId}")
-	public ModelAndView add(ModelAndView mav, @PathVariable("productId") Long productId) {
+	public ModelAndView add(HttpServletRequest request,ModelAndView mav, @PathVariable("productId") Long productId) {
 		Category category = new Category();
 		category.setLevel(LevelUtil.ONE_LEVEL.getVal());
 		int type = IssueType.PRODUCT.getVal();
@@ -106,8 +115,16 @@ public class ProductAction extends BaseController{
 			mav.getModel().put("twoLevelCategories", twoLevelCategories);
 			mav.getModel().put("threeLevelCategories", threeLevelCategories);
 		}
+		Integer memberType = super.getMemberType(request);
+		String page;
+		if (memberType == 1) {
+			page = "product/b_product_add";//商家
+		} else {
+			page = "product/p_product_add";//个人
+		}
+		mav.setViewName(page);
+		mav.getModel().put("store","hover");
 		mav.getModel().put("oneLevelCategories", oneLevelCategories);
-		mav.setViewName("product/product_add");
 		return mav;
 	}
 

@@ -39,10 +39,35 @@
 		<url-pattern>*.xml</url-pattern>
 		<url-pattern>*.json</url-pattern>
 	</filter-mapping>
+	<!--========================ajax跨域处理================-->
+	<!--<filter>-->
+		<!--<filter-name>CrossOrigin</filter-name>-->
+		<!--<filter-class>com.hiveview.filter.crossOrigin.CrossOriginFilter</filter-class>-->
+		<!--<init-param>-->
+			<!--<param-name>AccessControlAllowOrigin</param-name>-->
+			<!--<param-value>*</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>AccessControlAllowMethods</param-name>-->
+			<!--<param-value>POST, GET, DELETE, PUT</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>AccessControlMaxAge</param-name>-->
+			<!--<param-value>3628800</param-value>-->
+		<!--</init-param>-->
+		<!--<init-param>-->
+			<!--<param-name>AccessControlAllowHeaders</param-name>-->
+			<!--<param-value>x-requested-with</param-value>-->
+		<!--</init-param>-->
+	<!--</filter>-->
+	<!--<filter-mapping>-->
+		<!--<filter-name>CrossOrigin</filter-name>-->
+		<!--<url-pattern>/*</url-pattern>-->
+	<!--</filter-mapping>-->
 	<!--========================xss过滤================-->
 	<filter>
 		<filter-name>stringEscapeFilter</filter-name>
-		<filter-class>com.hiveview.filter.StringEscapeFilter</filter-class>
+		<filter-class>com.hiveview.filter.xss.StringEscapeFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>stringEscapeFilter</filter-name>
@@ -70,7 +95,19 @@
 		<url-pattern>*.html</url-pattern>
 		<url-pattern>*.json</url-pattern>
 		<url-pattern>*.xml</url-pattern>
+		<!--图片服务器配置-->
+		<!--<url-pattern>/fileUpload/iframeCrossOriginUpload/master.html</url-pattern>-->
+		<!--<url-pattern>/fileUpload/iframeCrossOriginUpload/admin.html</url-pattern>-->
 	</servlet-mapping>
+	<!-- 错误页面 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

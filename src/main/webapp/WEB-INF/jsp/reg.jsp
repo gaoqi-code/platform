@@ -12,16 +12,13 @@
     <link rel="stylesheet" href="/plugins/layui/css/layui.css"  media="all">
     <script src="/js/SmsValidate.js" charset="utf-8"></script>
     <style>
-        .reg_css{margin-bottom:35px;}
-        .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 10px;margin-bottom: 50px;}
-        .login_left{width: 590px;border-right: 1px solid #e5e5e5;float: left;}
+        .reg_css{margin-bottom:35px; background-color: #f3f3f3;padding: 60px 0px;}
+        .login_title{font-size: 16px;border-bottom: 1px solid #c2c2c2;padding:20px 0px;margin-bottom: 10px;}
+        .login_left{width: 442px;border: 1px solid #dfdfdf;margin-left: 30px;padding: 60px 30px; background-color: #FFF; float: left;;}
         .login_left_content{width: 440px;}
-        .login_right{text-align: center;}
+        .login_right{text-align: center;margin-left: 18px;}
         .login_right_company{margin:25px 0px;}
-        .yzm_but{position: absolute;
-            right: 3px;
-            top: 3px;
-            width: 110px;
+        .yzm_but{position: absolute;  right: 3px;   top: 3px;       width: 110px;
             height: 32px;
             border: none;
             background: #f2f2f2;
@@ -89,10 +86,8 @@
         </div>
 
         <div class="login_right">
-            <div style="height: 40px;"></div>
-            <img src="/images/logo_h.png">
-            <%--<div class="login_right_company"><span>我是一个企业顾问，我想为用户提供更多的服务</span></div>--%>
-            <%--<button class="layui-btn layui-btn-big">商家入驻</button>--%>
+            <%--<div style="height: 40px;"></div>--%>
+            <img src="/images/registered1_bg.jpg" style="    height: 440px;">
         </div>
         <div class="clear"></div>
 
@@ -116,6 +111,20 @@
 
             //监听提交
             form.on('submit(demo1)', function(data){
+                var password = $("input[name='password']").val();
+                var password2 = $("input[name='password2']").val();
+                if(password == '' || password == null) {
+                    layer.msg("密码不能为空！");
+                    return;
+                }
+                if(password.length < 7) {
+                    layer.msg("密码最少为6位！");
+                    return;
+                }
+                if(password != password2) {
+                    layer.msg("登录密码和确认密码不一致！");
+                    return;
+                }
                 regMember();
                 return false;
             });

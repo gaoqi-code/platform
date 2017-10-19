@@ -166,7 +166,7 @@
         .sv-card {
             display: inline-block;
             vertical-align: top;
-            width: 390px;
+            width: 450px;
             height: 265px;
             box-sizing: border-box;
             border: 1px solid #e2e2e2;
@@ -410,6 +410,29 @@
             color: #1cbcb4;
             background-color: #e2f5f4;
         }
+        .content{width:1178px;}
+
+        /*右侧列表推荐样式*/
+        .adviser_right_tj{width:90px;height:90px;border-radius: 50%;border: 7px solid rgba(255,255,255,.2);overflow: hidden;float: left;}
+        .adviser_right_tj img{width:90px;}
+        .adviser_right_tjperson{float:left;height: 90px;line-height: 90px;}
+        .adviser_right_tjperson p{height:30px;line-height: 30px;}
+        .adviser_right_tj_personwork{text-align:center;border-bottom: 1px solid #eee;padding-bottom:10px;}
+        .adviser_right_tj_personwork a{    display: inline-block;
+            width: 91px;
+            height: 27px;
+            line-height: 27px;
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
+            padding-left: 0;}
+        .green{background: #609833;}
+        .ser{background: #fa4f4f;}
+        .adviser_tj{width: 251px;float: left;border: 1px solid #eee;border-bottom:none;margin-top: 5px;}
+        .adviser_tj_title{height: 35px;line-height: 35px;text-align: center;font-size: 18px;}
+        .adviserName{font-size: 14px;padding-right: 3px;}
+
+
     </style>
 </head>
 <body>
@@ -455,7 +478,7 @@
                 </ul>
             </div>
 
-            <ul class="sv-list jmod_service_list" style="min-height: 300px;" id="productIntroduce">
+            <ul class="sv-list jmod_service_list" style="float:left;min-height: 300px;width:925px;margin-top: 5px;" id="productIntroduce">
 
 
                 <%--<li class="sv-card">--%>
@@ -505,6 +528,15 @@
                     <%--</div>--%>
                 <%--</li>--%>
             </ul>
+            <div class="adviser_right">
+                <%--plate 顾问推荐板块 101首页，201列表，1通用--%>
+                <jsp:include page="/adviserRecommend/recommend.html">
+                    <jsp:param value="201" name="plate"/>
+                    <jsp:param value="1" name="currentPage"/>
+                    <jsp:param value="3" name="pageSize"/>
+                </jsp:include>
+            </div>
+            <div class="clear"></div>
             <div id="pager"></div>
         </div>
 
@@ -529,7 +561,7 @@
             var laypage = layui.laypage
                     ,layer = layui.layer;
             //以下将以jquery.ajax为例，演示一个异步分页
-            var pageSize = 9;
+            var pageSize = 8;
             function paging(curr){
                 $.ajax({
                     type: "POST",

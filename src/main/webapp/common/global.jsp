@@ -7,7 +7,7 @@
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
 	+ path + "/";
-	String qbbPath = "qbb.open580.com";
+	String qbbPath = "www.qibaba.cn";
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="/js/jquery-1.9.1.js" charset="utf-8"></script>

@@ -18,9 +18,7 @@
                 <a href="/adviser/detail/${memberRecommend.memberId}.html" target="_blank" _stat_click_id="7_10">${memberRecommend.companyName}</a>
             </h5>
             <p>
-                <c:if test="${memberRecommend.adviserType == '1-'}">金融顾问</c:if>
-                <c:if test="${memberRecommend.adviserType == '2-'}">企业顾问</c:if>
-                <c:if test="${memberRecommend.adviserType == '3-'}">法律顾问</c:if>
+                         ${memberRecommend.categoryName}
                 <em>
                         ${memberRecommend.memberName}
                 </em>
